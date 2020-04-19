@@ -1,0 +1,67 @@
+{
+	"pages": [
+		"pages/index/index",
+		"pages/details/details",
+		"pages/photos/home/index",
+		"pages/search/search",
+    "pages/type/index",
+		"pages/about/home/index",
+    "component/article-list/index"
+	],
+	"window": {
+		"navigationBarBackgroundColor": "#39b54a",
+    "navigationBarTitleText": "Ztool 博客",
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "white"
+	},
+	"usingComponents": {
+		"cu-custom": "/colorui/components/cu-custom"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#000000",
+		"borderStyle": "black",
+		"backgroundColor": "#fdfefa",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"iconPath": "images/icon/home.png",
+				"selectedIconPath": "images/icon/home-hover.png",
+				"text": "首页"
+			},
+      {
+        "pagePath": "pages/type/index",
+        "iconPath": "images/icon/type.png",
+        "selectedIconPath": "images/icon/type-hover.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/photos/home/index",
+        "iconPath": "images/icon/photo.png",
+        "selectedIconPath": "images/icon/photo-hover.png",
+        "text": "光影"
+      },
+			{
+				"pagePath": "pages/about/home/index",
+				"iconPath": "images/icon/about.png",
+				"selectedIconPath": "images/icon/about-hover.png",
+				"text": "关于"
+			}
+		]
+	},
+	"networkTimeout": {
+		"request": 60000,
+		"downloadFile": 60000
+	},
+  "plugins": {
+    "htmltowxml": {
+      "version": "1.4.0",
+      "provider": "wxa51b9c855ae38f3c"
+    }
+  },
+	"debug": true,
+	"navigateToMiniProgramAppIdList": [
+		"wxe5f52902cf4de896"
+	],
+	"sitemapLocation": "sitemap.json"
+}

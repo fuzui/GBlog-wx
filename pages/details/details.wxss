@@ -1,0 +1,39 @@
+
+/* 回到顶端按钮 */
+.returnTop{
+  position: fixed;
+  z-index: 1024;
+  height: 50rpx;
+  width: 50rpx;
+  bottom: 30rpx;
+	right: 30rpx;
+}
+
+/* 相关文章样式 */
+
+/* 正文标题 */
+.title {
+	font-size: 30rpx;
+	font-weight: 900;
+	color: var(--black);
+	line-height: 100rpx;
+	padding: 0 30rpx;
+}
+/* 分隔线--底部 */
+.line{
+  width: 90%;    /* 分隔线的长度 */
+  margin: auto;
+  height: 1px;    /* 分隔线粗细 */
+  text-align: center;
+  font-size: 24rpx;
+  color: #aaa;
+  background: #ccc;
+  margin-top: 5px;
+  margin-bottom: 22px;
+}
+.line span{
+  position: relative;
+  top: -8px;
+  background: #fff;
+  padding: 0px 10px;
+}

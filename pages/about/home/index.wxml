@@ -1,0 +1,72 @@
+<scroll-view scroll-y class="scrollPage">
+  <!-- 顶图 -->
+  <view class="UCenter-bg" style="background-image: url({{themeSettings.index_cover}});">
+    <view class="text-xl">
+      {{blogTitle}}
+    </view>
+    <view class="margin-top-sm">
+      <text>{{themeSettings.index_slogn}}</text>
+    </view>
+    <image src="https://raw.githubusercontent.com/weilanwl/ColorUI/master/demo/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+  </view>
+  <!-- 宫格 -->
+  <view class="cu-list grid col-4 no-border shadow-warp">
+    <view class="cu-item" bindtap="toNoticePage">
+      <view class="cuIcon-form text-yellow">
+        <view class="cu-tag badge">
+          <block>1</block>
+        </view>
+      </view>
+      <text>公告</text>
+    </view>
+    <view class="cu-item" bindtap="toArchivesPage">
+      <view class="cuIcon-read text-cyan">
+      </view>
+      <text>归档</text>
+    </view>
+    <view class="cu-item" bindtap="toJournalPage">
+      <view class="cuIcon-calendar text-olive">
+      </view>
+      <text>日记</text>
+    </view>
+    <view class="cu-item" bindtap="toGuestbookPage">
+      <view class="cuIcon-messagefill text-black">
+      </view>
+      <text>留言</text>
+    </view>
+  </view>
+  <!-- 功能列表 -->
+  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/about/links/index" hover-class="none">
+        <text class="cuIcon-friendfavor text-blue"></text>
+        <text class="text-grey">友情链接</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/about/disclaimer/index" hover-class="none">
+        <image src="/images/about/disclaimer.png" class="png"></image>
+        <text class="text-grey">免责声明</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/about/about/index" hover-class="none">
+        <image src="/images/about/about.png" class="png" mode="aspectFit"></image>
+        <text class="text-grey">关于我</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <button class="cu-btn content" open-type="contact">
+        <image src="/images/about/service.png" class="png" mode="aspectFit"></image>
+        <text class="text-grey">联系我</text>
+      </button>
+    </view>
+    <view class="cu-item arrow">
+      <button class="cu-btn content" open-type="feedback">
+        <text class="cuIcon-writefill text-cyan"></text>
+        <text class="text-grey">意见反馈</text>
+      </button>
+    </view>
+  </view>
+  <view class="cu-tabbar-height"></view>
+</scroll-view>

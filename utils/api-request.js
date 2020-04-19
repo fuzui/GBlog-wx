@@ -1,0 +1,60 @@
+import apiResult from './api-result';
+import { AccessKey } from './../config/api';
+
+
+function Get(url, data = {}) {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: url,
+      data: data,
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/json',
+        'API-Authorization': AccessKey
+      },
+      success(res) {
+        if (res.data.status == apiResult.StateCode.success) {
+          resolve(res.data.data)
+        } else {
+          apiResult.requestError(res.data);
+          reject(res.data)
+        }
+      },
+      fail(err) {
+        apiResult.error('网络连接失败');
+        reject(err)
+      }
+    })
+  });
+}
+
+function Post(url, data = {}) {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: url,
+      data: data,
+      method: 'POST',
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'API-Authorization': AccessKey
+      },
+      success(res) {
+        if (res.data.status == apiResult.StateCode.success) {
+          resolve(res.data.data)
+        } else {
+          apiResult.requestError(res.data);
+          reject(res.data)
+        }
+      },
+      fail(err) {
+        apiResult.error('网络连接失败');
+        reject(err)
+      }
+    })
+  });
+}
+
+module.exports = {
+  Get,
+  Post
+}

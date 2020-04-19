@@ -1,0 +1,31 @@
+<wxs src="../../../utils/tools.wxs" module="tools" />
+<cu-custom bgImage="{{topImage}}" isCustom="{{true}}">
+  <view slot="content">日记</view>
+</cu-custom>
+<view class="cu-bar justify-center bg-white">
+    <view class="action sub-title">
+      <text class="text-xl text-bold text-blue" space="ensp">       记我所见所闻所思       </text>
+      <text class="text-blue">Remember what I saw, heard and thought</text>
+      <!-- last-child选择器-->
+    </view>
+</view>
+<view class="cu-timeline">
+  <block wx:for="{{content}}" wx:for-item="item" wx:key="index">
+    <view class="cu-time">{{tools.getDateDiff(item.createTime)}}</view>
+      <view class="cu-item text-{{bgColor[index%6]}} cuIcon-edit ">
+        <view class="content bg-{{bgColor[index%6]}} shadow-blur">
+          <htmltowxml text="{{item.sourceContent}}" type="md" bindWxmlTagATap="wxmlTagATap" highlightLanguages="{{['html','js','java','css','nginx','shell']}}"></htmltowxml>
+          
+        </view>
+      </view> 
+  </block>
+  <!-- 底部分割线 -->
+  <view class="line" wx-if="{{bottomFlag}}">
+    <span>这天开始写日记的~</span>
+  </view>
+</view>
+<!-- 加载框 -->
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <image src="{{logo}}" class='png' mode='aspectFit'></image>
+  <view class='gray-text'>加载中...</view>
+</view>

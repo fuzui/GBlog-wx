@@ -1,0 +1,127 @@
+<cu-custom bgImage="{{topImage}}" isCustom="{{true}}">
+  <view slot="content">{{title}}</view>
+</cu-custom>
+<!-- 顶图 -->
+<!-- <view class="UCenter-bg">
+</view> -->
+<!-- 统计信息 -->
+<view class="padding flex text-center text-grey bg-white shadow-warp">
+  <view class="flex flex-sub flex-direction solid-right">
+    <view class="text-xxl text-orange">{{statistics.postCount}}</view>
+    <view class="margin-top-sm">
+      <text class="cuIcon-read"></text> 文章总数
+    </view>
+  </view>
+  <view class="flex flex-sub flex-direction solid-right">
+    <view class="text-xxl text-blue">{{statistics.categoryCount}}</view>
+    <view class="margin-top-sm">
+      <text class="cuIcon-cascades"></text> 分类总数
+    </view>
+  </view>
+  <view class="flex flex-sub flex-direction">
+    <view class="text-xxl text-green">{{statistics.tagCount}}</view>
+    <view class="margin-top-sm">
+      <text class="cuIcon-tag"></text> 标签总数
+    </view>
+  </view>
+</view>
+<view class="padding flex text-center text-grey bg-white shadow-warp">
+  <view class="flex flex-sub flex-direction solid-right">
+    <view class="text-xxl text-orange">{{statistics.commentCount}}</view>
+    <view class="margin-top-sm">
+      <text class="cuIcon-mark"></text> 评论数量
+    </view>
+  </view>
+  <view class="flex flex-sub flex-direction solid-right">
+    <view class="text-xxl text-blue">{{statistics.likeCount}}</view>
+    <view class="margin-top-sm">
+      <text class="cuIcon-group"></text> 点赞数量
+    </view>
+  </view>
+  <view class="flex flex-sub flex-direction">
+    <view class="text-xxl text-green">{{statistics.establishDays}}</view>
+    <view class="margin-top-sm">
+      <text class="cuIcon-calendar"></text> 运行天数
+    </view>
+  </view>
+</view>
+<!-- 关于我 -->
+<view class="cu-bar bg-white">
+  <view class="action sub-title">
+    <text class="text-xl text-bold text-blue">联系方式</text>
+    <text class="text-ABC text-blue">contact</text>
+  </view>
+</view>
+<view class="cu-list menu">
+<view class="cu-item">
+  <view class="content">
+    <image src="/images/about/blog.png" class="png" mode="aspectFit"></image>
+    <text class="text-grey">https://ztool.cloud</text>
+  </view>
+</view>
+<view class="cu-item">
+  <view class="content">
+    <image src="/images/about/qq.png" class="png" mode="aspectFit"></image>
+    <text class="text-grey">229999223</text>
+  </view>
+</view>
+<view class="cu-item">
+  <view class="content">
+    <image src="/images/about/wx.png" class="png" mode="aspectFit"></image>
+    <text class="text-grey">15555542203</text>
+  </view>
+</view>
+<view class="cu-item">
+  <view class="content">
+    <image src="/images/about/mail.png" class="png" mode="aspectFit"></image>
+    <text class="text-grey">zzzl@163.COM</text>
+  </view>
+</view>
+<view class="cu-item">
+  <view class="content">
+    <image src="/images/about/github.png" class="png" mode="aspectFit"></image>
+    <text class="text-grey">https://github.com/fuzui</text>
+  </view>
+</view>
+<view class="cu-item">
+  <view class="content">
+    <image src="/images/about/gitee.png" class="png" mode="aspectFit"></image>
+    <text class="text-grey">https://gitee.com/fuzui</text>
+  </view>
+</view>
+</view>
+
+<!-- 关于小程序 -->
+<view class="cu-bar bg-white">
+  <view class="action sub-title">
+    <text class="text-xl text-bold text-blue">关于GBLOG-WX</text>
+    <text class="text-ABC text-blue">about</text>
+  </view>
+</view>
+
+<view class="cu-item margin-left">
+  <view class="content padding-tb-sm"></view>
+  <text class="cuIcon-likefill text-blue margin-right-xs"></text> 后端采用HALO
+  <view class="text-gray text-sm">
+    <text class="cuIcon-infofill margin-right-xs"></text> 一个优秀的开源博客发布应用
+  </view>
+  <view class="text-gray text-sm">
+    <text class="cuIcon-link margin-right-xs"></text> https://halo.run
+  </view>
+  <view class="text-gray text-sm">
+    <text class="cuIcon-github margin-right-xs"></text> https://github.com/halo-dev/halo
+  </view>
+</view>
+<view class="cu-item margin-left">
+  <view class="content padding-tb-sm"></view>
+  <text class="cuIcon-likefill text-blue margin-right-xs"></text> 小程序使用ColorUI组件库
+  <view class="text-gray text-sm">
+    <text class="cuIcon-infofill margin-right-xs"></text> 鲜亮的高饱和色彩，专注视觉的小程序组件库
+  </view>
+  <view class="text-gray text-sm">
+    <text class="cuIcon-link margin-right-xs"></text> https://www.color-ui.com
+  </view>
+  <view class="text-gray text-sm">
+    <text class="cuIcon-github margin-right-xs"></text> https://github.com/weilanwl/ColorUI
+  </view>
+</view>

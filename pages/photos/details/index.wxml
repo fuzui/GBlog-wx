@@ -1,0 +1,50 @@
+<wxs src="../../../utils/tools.wxs" module="tools" />
+<cu-custom bgImage="{{topImage}}" isCustom="{{true}}">
+  <view slot="content">{{title}}</view>
+</cu-custom>
+<!-- 标题 -->
+<view class="text-cut title bg-white margin-0">
+  {{item.name}}
+</view>
+<!-- 阅读、点赞、发表时间 -->
+<view class="padding flex text-center text-grey bg-white shadow-warp">
+  <view class="cu-capsule">
+    <view class="cu-tag bg-red">
+      <text class="cuIcon-tag"></text>
+    </view>
+    <view class="cu-tag line-red">
+      {{item.team}}
+    </view>
+  </view>
+  <view class="cu-capsule round">
+    <view class="cu-tag bg-grey ">
+      <text class="cuIcon-location"></text>
+    </view>
+    <view class="cu-tag line-grey">
+      {{item.location}}
+    </view>
+  </view>
+  <view class="cu-capsule round">
+    <view class="cu-tag bg-blue ">
+      拍摄于
+    </view>
+    <view class="cu-tag line-blue">
+      <!-- {{tools.tsformatTime(item.takeTime)}} -->
+      {{tools.tsFormatTime(item.takeTime)}}
+    </view>
+  </view>
+</view>
+<!-- 文章 -->
+<view class='margin-xs bg-white padding-xs radius shadow-lg'>
+  <htmltowxml text="{{item.description}}" type="md" bindWxmlTagATap="wxmlTagATap" highlightLanguages="{{['html','js','java','css','nginx','shell']}}"></htmltowxml>
+  <image src="{{item.url}}" mode="widthFix" bindtap="showImage" data-url="{{item.url}}"></image>
+</view>
+<!-- 返回顶端 -->
+<image class="returnTop" src='/images/returntop.png' bindtap="returnTop" hidden='{{!floorstatus}}'></image>
+
+<!-- 加载框 -->
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <image src="{{logo}}" class='png' mode='aspectFit'></image>
+  <view class='gray-text'>加载中...</view>
+</view>
+

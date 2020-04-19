@@ -1,0 +1,18 @@
+page {
+  background: #fff;
+}
+.UCenter-bg {
+  background-image: url(https://fuzui.oss-cn-shenzhen.aliyuncs.com/img/notice11.png);
+  background-size: cover;
+  height: 400rpx;
+  display: flex;
+  justify-content: center;
+  padding-top: 40rpx;
+  overflow: hidden;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  font-weight: 300;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}

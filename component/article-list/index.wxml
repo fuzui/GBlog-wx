@@ -1,0 +1,31 @@
+<wxs src="../../utils/tools.wxs" module="tools" />
+<view class="cu-card article">
+  <view class="cu-item shadow" id="{{item.id}}" bindtap='details' wx:for="{{content}}" wx:key="key">
+    <navigator url="/pages/details/details?id={{item.id}}">
+      <view class="title">
+        <view class="text-cut">
+          <view class="cu-tag bg-red light sm round" wx:if="{{item.topPriority==true}}">置顶</view>
+          {{item.title}}
+        </view>
+      </view>
+      <view class="content">
+
+      <image src="{{item.thumbnail}}" mode="aspectFill"></image>
+
+      <view class="desc">
+          <view class="text-content"> {{item.summary}} </view>
+          <view class="text-gray text-sm">
+          
+            <view class="cu-tag bg-blue light sm round" wx:if="{{item.categories}}"> {{item.categories[0].name}} </view>
+            <text class="cuIcon-timefill margin-lr-xs"></text> {{tools.tsFormatTime(item.createTime)}}
+          </view>
+          <view class="text-gray text-sm">
+            <text class="cuIcon-attentionfill margin-lr-xs"></text> {{item.visits}}
+            <text class="cuIcon-appreciatefill margin-lr-xs"></text> {{item.likes}}
+            <text class="cuIcon-messagefill margin-lr-xs" wx:if="{{item.commentCount!=null}}"></text> {{item.commentCount}}
+          </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>

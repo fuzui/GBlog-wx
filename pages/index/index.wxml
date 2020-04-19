@@ -1,0 +1,27 @@
+<cu-custom bgImage="{{topImage}}" isBack="{{false}}">
+  <view slot="content">{{blogTitle}}</view>
+</cu-custom>
+<!--  搜索框  -->
+<view class="cu-bar search bg-white">
+  <view class="search-form round">
+    <text class="cuIcon-search"></text>
+    <input type="text" placeholder="搜索文章" confirm-type="search" bindconfirm="onSearch"></input>
+  </view>
+</view>
+<!--轮播图 -->
+<swiper class="card-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
+  <swiper-item wx:for="{{swiper}}" wx:key="index" class="{{cardCur==index?'cur':''}}">
+    <view class="swiper-item" bindtap="swaper" data-id="{{item.id}}">
+      <image src="{{item.thumbnail}}" mode="aspectFill" ></image>
+    </view>
+  </swiper-item>
+</swiper>
+<!--  文章列表展示  -->
+<article-list content="{{content}}"></article-list>
+<!-- 下拉加载分页 -->
+<view class="cu-load bg-grey {{loading==true?'loading':'over'}}"></view>
+<!-- 加载框 -->
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <image src="{{logo}}" class='png' mode='aspectFit'></image>
+  <view class='gray-text'>加载中...</view>
+</view>

@@ -1,0 +1,20 @@
+<!-- 顶图 -->
+<view class="UCenter-bg fixed-bg" style="background-image: url('https://cdn.fuzui.net/blog/photo_1587292902110.jpg');">
+</view>
+<!-- 避免遮挡，可能有更多的处理方法 -->
+<view style="margin-top:390rpx;"></view>
+<!-- 相册 -->
+<view class="grid col-2 padding-sm">
+  <view class="padding-xs" wx:for="{{content}}" wx:for-item="item" wx:key="index">
+    <view class="bg-img padding-top-xl flex align-end shadow-blur" bindtap="toDetailsPage" data-index="{{index}}" style="background-image: url({{item.thumbnail}});height: 207rpx;">
+      <view class="bg-shadeBottom padding padding-top-xl flex-sub">
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 弹框加载 -->
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <image src='{{logo}}' class='png' mode='aspectFit'></image>
+  <view class='gray-text'>加载中...</view>
+</view>

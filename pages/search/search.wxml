@@ -1,0 +1,12 @@
+<cu-custom bgImage="{{topImage}}" isCustom="{{true}}">
+  <view slot="content">{{title}}</view>
+</cu-custom>
+<!--  文章列表展示  -->
+<article-list content="{{content}}"></article-list>
+<!-- 下拉加载 -->
+<view class="cu-load bg-grey {{loading==true?'loading':'over'}}"></view>
+<!-- 弹框加载 -->
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <image src="{{logo}}" class='png' mode='aspectFit'></image>
+  <view class='gray-text'>加载中...</view>
+</view>

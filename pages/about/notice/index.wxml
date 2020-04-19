@@ -1,0 +1,14 @@
+<cu-custom bgImage="{{topImage}}" isCustom="{{true}}">
+  <view slot="content">公告</view>
+</cu-custom>
+<!-- 顶图 -->
+<view class="UCenter-bg">
+</view>
+<view class="grid bg-white padding-sm">
+  <view class="padding-sm">
+    <view class="bg-grey padding radius light">
+      <view class="text-lg  text-center text-bold">{{blogTitle}}</view>
+      <view class="margin-top-sm text-left text-Abc">{{notice}}</view>
+    </view>
+  </view>
+</view>

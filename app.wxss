@@ -1,0 +1,45 @@
+/* 
+微信小程序不支持CSS3的CSS变量，但是这里定义样式变量，主要是为了规范诸如颜色、边线、字体大小等
+*/
+@import "colorui/main.wxss";
+@import "colorui/icon.wxss";
+page{
+  font-family:-apple-system-font,Helvetica Neue,sans-serif;
+}
+
+/* 显示两行，溢出文字用‘...’替换 */
+.ellipsis-1row{
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.ellipsis-2row{
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.ellipsis-3row{
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.ellipsis-4row{
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.text-muted{
+  color: #888888;
+   font-size: 28rpx; 
+  line-height: 170%;
+  text-align: left;
+}

@@ -1,0 +1,20 @@
+<!-- 顶图 -->
+<view class="UCenter-bg fixed-bg" style="background-image: url({{themeSettings.tags_cover}});">
+</view>
+<!--  分类导航  -->
+<scroll-view scroll-x class="bg-black nav text-center fixed-nav">
+  <view class="cu-item {{index==selected?'text-orange cur':''}}" wx:for="{{navlist}}" bindtap="handleChangeTab" wx:for-item="tab" data-id='{{index}}' wx:key="index">
+    {{tab.name}}
+  </view>
+</scroll-view>
+<!-- 避免遮挡，可能有更多的处理方法 -->
+<view style="margin-top:400rpx;"></view>
+<!--  文章列表展示  -->
+<article-list content="{{content}}"></article-list>
+<!-- 下拉加载 -->
+<view class="cu-load bg-grey {{loading==true?'loading':'over'}}"></view>
+<!-- 弹框加载 -->
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <image src='{{logo}}' class='png' mode='aspectFit'></image>
+  <view class='gray-text'>加载中...</view>
+</view>
