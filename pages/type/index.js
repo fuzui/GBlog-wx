@@ -145,14 +145,8 @@ Page({
         size: config.PageSize.categorySize,
       };
       const result = await apiService.getCategoriesArticle(slug,param);
-      if (result.page < result.pages) {
-        if(result.total<=result.rpp){
-          that.setData({
-            loading: false,
-          });
-        }
+      if (result.page < result.pages ) {
         return that.data.content.concat(result.content);
-        
       } else {
         that.setData({
           loading: false,
