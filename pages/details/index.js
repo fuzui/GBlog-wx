@@ -20,6 +20,14 @@ Page({
 		checkStatus: true //评论开关
   },
   /**
+   * 点赞结果
+   */
+  async share(event) {
+    var that = this;
+    const postId = event.currentTarget.dataset.gid;
+    console.log(postId)
+  },
+  /**
    * 分享
    * @param {*} res 
    */

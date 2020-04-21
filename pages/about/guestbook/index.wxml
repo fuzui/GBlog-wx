@@ -4,12 +4,12 @@
 
 <view class="cu-card dynamic no-card">
   <view class="cu-item shadow">
-     
+
     <view class="cu-list menu-avatar comment solids-top">
       <view class="cu-item">
         <view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png);"></view>
         <view class="content">
-          <view class="text-grey">莫甘娜</view>
+          <view class="text-grey">评论者1</view>
           <view class="text-gray text-content text-df">
             凯尔，你被自己的光芒变的盲目。
           </view>

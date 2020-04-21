@@ -41,7 +41,7 @@
   <!-- 点赞、分线 -->
   <view class="flex solid-bottom padding-xs justify-center">
       <view class="padding-xs margin-xs radius" bindtap="addStar" data-gid='{{id}}' data-lovecount='{{loveCount}}'><text class="cuIcon-appreciate"></text></view>
-      <view class="padding-xs margin-xs radius"><text class="cuIcon-share"></text></view>
+      <view class="padding-xs margin-xs radius" bindtap="share" data-gid='{{id}}'><text class="cuIcon-share"></text></view>
     </view>
 </view>
 

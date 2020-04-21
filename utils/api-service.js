@@ -151,7 +151,7 @@ function getArticleDetails(id,params) {
  */
 function doPraise(postId,params) {
   return new Promise((resolve, reject) => {
-    apiRequest.Post(api.getArticleDetails(postId), params)
+    apiRequest.Post(api.doPraise(postId), params)
       .then(r => {
         resolve(r)
       }, e => {
