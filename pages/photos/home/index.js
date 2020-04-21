@@ -1,6 +1,7 @@
 const app = getApp();
 import apiService from '../../../utils/api-service';
 import utils from '../../../utils/utils';
+import config from '../../../config/api';
 Page({
   data: {
     logo: "",
@@ -52,7 +53,7 @@ Page({
     try {
       const param = {
         page: that.data.pageNo,
-        size: 10,
+        size: config.PageSize.photoSize,
         sort: 'takeTime,desc'
       };
       const result = await apiService.getPhotos(param);

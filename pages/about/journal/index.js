@@ -1,5 +1,6 @@
 const app = getApp();
 import apiService from '../../../utils/api-service';
+import config from '../../../config/api';
 Page({
   data: {
     topImage: app.globalData.topImage,
@@ -58,7 +59,7 @@ Page({
     try {
       const param = {
         page: that.data.pageNo,
-        size: 5,
+        size: config.PageSize.journalSize,
         sort: 'createTime,desc'
       };
       const result = await apiService.getJournals(param);

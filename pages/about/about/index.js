@@ -4,7 +4,15 @@ Page({
   data: {
     title: "关于",
     topImage: app.globalData.topImage,
-    statistics: {}
+    statistics: {},
+    contact: {
+      blog: "https://ztool.cloud",
+      qq: "229999223",
+      wx: "15555542203",
+      mail: "i@geekera.cn",
+      github: "https://github.com/fuzui",
+      gitee: "https://gitee.com/fuzui"
+    }
   },
   onLoad: function () { },
   async onShow() {
@@ -24,5 +32,20 @@ Page({
     } catch (error) {
       return await Promise.reject(error)
     }
+  },
+  /**
+   * 复制
+   * @param {*} e 
+   */
+  copyLink(e) {
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.link,
+      success: res => {
+        wx.showToast({
+          title: '已复制',
+          duration: 1000,
+        })
+      }
+    })
   },
 });

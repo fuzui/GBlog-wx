@@ -54,39 +54,39 @@
 </view>
 <view class="cu-list menu">
 <view class="cu-item">
-  <view class="content">
+  <view class="content" bindtap="copyLink" data-link="{{contact.blog}}">
     <image src="/images/about/blog.png" class="png" mode="aspectFit"></image>
-    <text class="text-grey">https://ztool.cloud</text>
+    <text class="text-grey">{{contact.blog}}</text>
   </view>
 </view>
 <view class="cu-item">
-  <view class="content">
+  <view class="content" bindtap="copyLink" data-link="{{contact.qq}}">
     <image src="/images/about/qq.png" class="png" mode="aspectFit"></image>
-    <text class="text-grey">229999223</text>
+    <text class="text-grey">{{contact.qq}}</text>
   </view>
 </view>
-<view class="cu-item">
+<view class="cu-item" bindtap="copyLink" data-link="{{contact.wx}}">
   <view class="content">
     <image src="/images/about/wx.png" class="png" mode="aspectFit"></image>
-    <text class="text-grey">15555542203</text>
+    <text class="text-grey">{{contact.wx}}</text>
   </view>
 </view>
 <view class="cu-item">
-  <view class="content">
+  <view class="content" bindtap="copyLink" data-link="{{contact.mail}}">
     <image src="/images/about/mail.png" class="png" mode="aspectFit"></image>
-    <text class="text-grey">zzzl@163.COM</text>
+    <text class="text-grey">{{contact.mail}}</text>
   </view>
 </view>
 <view class="cu-item">
-  <view class="content">
+  <view class="content" bindtap="copyLink" data-link="{{contact.github}}">
     <image src="/images/about/github.png" class="png" mode="aspectFit"></image>
-    <text class="text-grey">https://github.com/fuzui</text>
+    <text class="text-grey">{{contact.github}}</text>
   </view>
 </view>
 <view class="cu-item">
-  <view class="content">
+  <view class="content" bindtap="copyLink" data-link="{{contact.gitee}}">
     <image src="/images/about/gitee.png" class="png" mode="aspectFit"></image>
-    <text class="text-grey">https://gitee.com/fuzui</text>
+    <text class="text-grey">{{contact.gitee}}</text>
   </view>
 </view>
 </view>
@@ -105,23 +105,23 @@
   <view class="text-gray text-sm">
     <text class="cuIcon-infofill margin-right-xs"></text> 一个优秀的开源博客发布应用
   </view>
-  <view class="text-gray text-sm">
+  <view class="text-gray text-sm" bindtap="copyLink" data-link="https://halo.run">
     <text class="cuIcon-link margin-right-xs"></text> https://halo.run
   </view>
-  <view class="text-gray text-sm">
+  <view class="text-gray text-sm" bindtap="copyLink" data-link="https://github.com/halo-dev/halo">
     <text class="cuIcon-github margin-right-xs"></text> https://github.com/halo-dev/halo
   </view>
 </view>
-<view class="cu-item margin-left">
+<view class="cu-item margin-left margin-bottom">
   <view class="content padding-tb-sm"></view>
   <text class="cuIcon-likefill text-blue margin-right-xs"></text> 小程序使用ColorUI组件库
   <view class="text-gray text-sm">
     <text class="cuIcon-infofill margin-right-xs"></text> 鲜亮的高饱和色彩，专注视觉的小程序组件库
   </view>
-  <view class="text-gray text-sm">
+  <view class="text-gray text-sm"  bindtap="copyLink" data-link="https://www.color-ui.com">
     <text class="cuIcon-link margin-right-xs"></text> https://www.color-ui.com
   </view>
-  <view class="text-gray text-sm">
+  <view class="text-gray text-sm"  bindtap="copyLink" data-link="https://github.com/weilanwl/ColorUI">
     <text class="cuIcon-github margin-right-xs"></text> https://github.com/weilanwl/ColorUI
   </view>
 </view>

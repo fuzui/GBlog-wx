@@ -7,7 +7,7 @@
     <view class="margin-top-sm">
       <text>{{themeSettings.index_slogn}}</text>
     </view>
-    <image src="https://raw.githubusercontent.com/weilanwl/ColorUI/master/demo/images/wave.gif" mode="scaleToFill" class="gif-wave"></image>
+    <image src="https://cdn.fuzui.net/tmp/wave.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
   <!-- 宫格 -->
   <view class="cu-list grid col-4 no-border shadow-warp">

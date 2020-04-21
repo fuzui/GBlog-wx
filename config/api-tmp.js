@@ -6,11 +6,13 @@ const ApiBaseUrl = 'https://ztool.cloud';//生产上
 const AccessKey = '';  //接口key 必填
 
 const PageSize = {
-  indexSize: 6,
-  searchSize: 6,
-  swiperPage: 0,
-  swiperSize: 5,
-  categorySize: 6,
+  indexSize: 6, //每页文章数
+  searchSize: 6,  //每页搜索结果数
+  swiperPage: 0,  //轮播起始页
+  swiperSize: 5,  //轮播数
+  categorySize: 6,  //每页分类文章数
+  photoSize: 10,  //每页光影数
+  journal: 10 //每页日记数
 }
 
 //全局字段url
