@@ -24,7 +24,7 @@
     <block wx:for="{{year.posts}}" wx:for-item="article" wx:key="articleIndex">
       <view class="cu-item">
         <view class="content text-cut">
-          <navigator url="/pages/details/details?id={{article.id}}">
+          <navigator url="/pages/details/index?id={{article.id}}">
             {{article.title}}
           </navigator>
         </view>

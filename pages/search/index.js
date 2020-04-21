@@ -27,7 +27,7 @@ Page({
 
   details(e) {
     wx.navigateTo({
-      url: '../details/details?id=' + e.currentTarget.id
+      url: '../details/index?id=' + e.currentTarget.id
     });
   },
 
@@ -67,7 +67,7 @@ Page({
     var that = this;
     return {
       title: app.globalData.blogTitle,
-      path: '/pages/search/search'
+      path: '/pages/search/index?keyword='+that.data.keyword
     }
   },
   /**

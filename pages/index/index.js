@@ -23,7 +23,7 @@ Page({
    */
   swaper: function (event) {
     wx.navigateTo({
-      url: '../details/details?id=' + event.target.dataset.id
+      url: '../details/index?id=' + event.target.dataset.id
     });
   },
   /**
@@ -31,7 +31,7 @@ Page({
    */
   onSearch: function(event) {
     wx.navigateTo({
-      url: '../search/search?keyword=' + event.detail.value
+      url: '../search/index?keyword=' + event.detail.value
     });
   },
 
@@ -110,7 +110,7 @@ Page({
    */
   details(e) {
     wx.navigateTo({
-      url: '../details/details?id=' + e.currentTarget.id
+      url: '../details/index?id=' + e.currentTarget.id
     })
   },
   /**

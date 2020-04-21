@@ -1,9 +1,9 @@
 {
 	"pages": [
 		"pages/index/index",
-		"pages/details/details",
+		"pages/details/index",
 		"pages/photos/home/index",
-		"pages/search/search",
+		"pages/search/index",
     "pages/type/index",
 		"pages/about/home/index",
     "component/article-list/index"

@@ -26,7 +26,7 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: this.data.title,
-      path: '/pages/details/details?id='+this.data.id
+      path: '/pages/details/index?id='+this.data.id
     }
   },
   async onLoad(options) {

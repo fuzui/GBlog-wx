@@ -15,7 +15,7 @@ Component({
     details(e) {
       //详情页跳转
       wx.navigateTo({
-        url: '/pages/details/details?id=' + e.currentTarget.id
+        url: '/pages/details/index?id=' + e.currentTarget.id
       })
     },
   }

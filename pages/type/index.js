@@ -105,7 +105,7 @@ Page({
   details(e) {
     //详情页跳转
     wx.navigateTo({
-      url: '../details/details?id=' + e.currentTarget.id
+      url: '../details/index?id=' + e.currentTarget.id
     })
   },
   /**
