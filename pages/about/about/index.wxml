@@ -4,6 +4,7 @@
 <!-- 顶图 -->
 <!-- <view class="UCenter-bg">
 </view> -->
+<official-account></official-account>
 <!-- 统计信息 -->
 <view class="padding flex text-center text-grey bg-white shadow-warp">
   <view class="flex flex-sub flex-direction solid-right">

@@ -3,6 +3,7 @@ const app = getApp();
 import apiService from '../../utils/api-service';
 Page({
   data: {
+    modalShare: false,
     topImage: app.globalData.topImage,
     logo: "",
     floorstatus: false, //是否显示回到顶端图标
@@ -20,12 +21,22 @@ Page({
 		checkStatus: true //评论开关
   },
   /**
-   * 点赞结果
+   * 分享
    */
   async share(event) {
     var that = this;
-    const postId = event.currentTarget.dataset.gid;
-    console.log(postId)
+    that.setData({
+      modalShare: true
+    })
+  },
+  /**
+   * 取消分享
+   */
+  async hideModalshare(event) {
+    var that = this;
+    that.setData({
+      modalShare: false
+    })
   },
   /**
    * 分享
@@ -34,6 +45,7 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: this.data.title,
+      imageUrl: this.data.thumbnail?this.data.thumbnail:"",
       path: '/pages/details/index?id='+this.data.id
     }
   },
@@ -78,7 +90,8 @@ Page({
       lookCount: articleDetails.visits,
       loveCount: articleDetails.likes,
       commentCount: articleDetails.commentCount,
-      tags: articleDetails.tags
+      tags: articleDetails.tags,
+      thumbnail: articleDetails.thumbnail
     });
     this.setData({
       loadModal:false

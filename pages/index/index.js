@@ -42,6 +42,7 @@ Page({
       loadModal:true
     })
     /* 加载全局globalData */
+    
     if(app.globalData.logo==""){
       app.globalData.logo = await apiService.getOptionByKey("blog_logo");
     }
@@ -101,7 +102,7 @@ Page({
    */
   onShareAppMessage: function(res) {
     return {
-      title: 'Ztool博客',
+      title: 'Geek Era',
       path: '/pages/index/index'
     }
   },

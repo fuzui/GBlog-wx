@@ -110,4 +110,19 @@
   <image src="{{logo}}" class='png' mode='aspectFit'></image>
   <view class='gray-text'>加载中...</view>
 </view>
-
+<!-- 分享 -->
+<view class="cu-modal bottom-modal {{modalShare?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white">
+      
+      <view class="action text-blue" bindtap="hideModalshare">取消</view>
+    </view>
+    <view class="padding-xl">
+      <button class="cu-btn line-orange margin-left-sm lg" open-type="share">
+        <text class="cuIcon-weixin text-green"></text> 朋友</button>
+      <button class="cu-btn line-orange margin-right-sm lg">
+        <text class="cuIcon-pic text-blue"></text> 海报</button>
+     
+    </view>
+  </view>
+</view>

@@ -1,5 +1,3 @@
-// const Towxml = require('/towxml/main');
-
 App({
   onLaunch: function() {
     wx.getSystemInfo({
@@ -11,7 +9,6 @@ App({
       }
     })
   },
-	// towxml: new Towxml(),
   globalData: {
     logo: "",
     themeSettings: {},

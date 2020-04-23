@@ -1,5 +1,5 @@
 <!-- 顶图 -->
-<view class="UCenter-bg" style="background-image: url(/images/bg/swiper.png);">
+<view class="UCenter-bg" style="background-image: url('https://cdn.fuzui.net/blog/swiper_1587661045157.png');">
   <!--轮播图 -->
   <swiper class="card-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
     <swiper-item wx:for="{{swiper}}" wx:key="index" class="{{cardCur==index?'cur':''}}">
