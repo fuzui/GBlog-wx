@@ -225,6 +225,21 @@ function getStatistics() {
       })
   })
 }
+/**
+ * 获取文章评论
+ * @param {文章id} id 
+ * @param {*} params 
+ */
+function getComments(id,params) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.getComments(id), params)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
 module.exports = {
   getCategories,
   getTags,
@@ -241,5 +256,6 @@ module.exports = {
   getOptionByKey,
   getThemeSettings,
   getPhotos,
-  getStatistics
+  getStatistics,
+  getComments
 }

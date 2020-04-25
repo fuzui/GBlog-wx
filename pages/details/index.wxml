@@ -126,3 +126,95 @@
     </view>
   </view>
 </view>
+
+<!-- 评论 -->
+<view class="cu-bar bg-white">
+  <view class="action">
+    <text class="cuIcon-titles text-green"></text>
+    <text class="text-xl text-bold">评论</text>
+  </view>
+</view>
+<view class="cu-card dynamic no-card">
+  <view class="cu-bar search bg-white">
+    <view class="search-form round">
+      <text class="cuIcon-write"></text>
+      <input type="text" placeholder="写下您的意见与看法~" bindtap="addComment" data-target="commentModal" data-pid="0" data-prompt="评论博文"></input>
+    </view>
+  </view>
+  <view class="cu-item shadow">
+    <view class="cu-list menu-avatar comment solids-top">
+      <view class="cu-item" wx:for="{{comments.content}}" wx:for-item="comment" wx:key="index">
+        <view class="cu-avatar round" 
+              style="background-image:url(https://cdn.v2ex.com/gravatar/{{comment.gravatarMd5}}?s=64&d=monsterid);">
+        </view>
+        <view class="content">
+          <view class="text-grey flex">
+          <view class="cu-tag bg-red light ssm round" wx:if="{{comment.isAdmin}}">博主</view>
+          {{comment.author}}:
+          </view>
+          <view class="text-content text-df">
+            {{comment.content}}
+          </view>
+          <view class="margin-top-sm flex justify-between">
+            <view class="text-gray text-df">{{tools.tsFormatTime(comment.createTime)}}</view>
+            <view>
+              <text class="cuIcon-messagefill text-gray margin-left-sm" bindtap="addComment" data-target="commentModal" data-pid="0" data-prompt="回复 {{comment.author}}:"></text>
+            </view>
+          </view>
+          <!-- 子评论 -->
+          <view class="content-children "  wx:for="{{comment.children}}" wx:for-item="children" wx:key="childrenIndex">
+            <view class="radius text-sm">
+              <view class="flex">
+                <view class="cu-avatar ssm round flex margin-right-xs"
+                      style="background-image:url(https://cdn.v2ex.com/gravatar/{{children.gravatarMd5}}?s=32&d=monsterid);"></view>
+                <view class="text-grey flex">
+                <view class="cu-tag bg-red light sssm round" wx:if="{{children.isAdmin}}">博主</view>
+                {{children.author}}:
+                </view>
+                
+              </view>
+              <view class="flex-sub-children margin-left-lg">{{children.content}}</view>
+              <view class="flex justify-between">
+                <view class="text-gray text-xs margin-left-lg">{{tools.tsFormatTime(children.createTime)}}</view>
+                <view>
+                  <text class="cuIcon-messagefill text-gray margin-left-sm" bindtap="addComment" data-target="commentModal" data-pid="0" data-prompt="回复 {{children.author}}:"></text>
+                </view>
+              </view>
+            </view>
+          </view>
+          
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 评论框 -->
+<view class="cu-modal {{modalName=='commentModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">{{commentPrompt}}</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      <textarea maxlength="-1" bindinput="textareaAInput" placeholder="点击录入"></textarea>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">邮箱地址</view>
+      <input placeholder="必填" bindinput="mailInput"></input>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">回复是否通知邮箱</view>
+      <switch class="orange radius sm" bindchange="isAllowNotification" checked></switch>
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="hideModal">发表</button>
+
+      </view>
+    </view>
+  </view>
+</view>
