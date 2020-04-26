@@ -240,6 +240,17 @@ function getComments(id,params) {
       })
   })
 }
+
+function writeComment(params) {
+  return new Promise((resolve, reject) => {
+    apiRequest.PostBody(api.writeComment, params)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
 module.exports = {
   getCategories,
   getTags,
@@ -257,5 +268,6 @@ module.exports = {
   getThemeSettings,
   getPhotos,
   getStatistics,
-  getComments
+  getComments,
+  writeComment
 }

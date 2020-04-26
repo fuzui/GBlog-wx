@@ -1,8 +1,11 @@
 //获取应用实例
 const app = getApp();
 import apiService from '../../utils/api-service'; 
+import apiResult from '../../utils/api-result';
+import { Config } from './../../config/api';
 Page({
   data: {
+    commmentPid: 0,
     commentMail: "",
     allowNotification: true,
     commentPrompt: "发表您的观点",
@@ -187,13 +190,31 @@ Page({
    * 评论
    */
   addComment(e) {
+    const userInfo = wx.getStorageSync(Config.User);
+    if(!userInfo.nickName){
+      this.setData({
+        modalName: "loginModal",
+      })
+    }else{
+      this.setData({
+        commentContent: "",
+        modalName: e.currentTarget.dataset.target,
+        commentPrompt: e.currentTarget.dataset.prompt,
+        commmentPid: e.currentTarget.dataset.pid,
+        userInfo: userInfo,
+      })
+    }
+  },
+  /**
+   * 获取用户信息
+   * @param {*} e 
+   */
+  getUser(e){
+    wx.setStorageSync(Config.User, e.detail.userInfo);
     this.setData({
-      modalName: e.currentTarget.dataset.target,
-      commentPrompt: e.currentTarget.dataset.prompt,
+      modalName: null,
     })
-    
-    const parentId = e.currentTarget.dataset.pid;
-    console.log(parentId)
+    apiResult.success("登录成功");
   },
   /**
    * 评论者输入邮箱
@@ -204,6 +225,15 @@ Page({
     });
   },
   /**
+   * 评论内容输入
+   * @param {*} e 
+   */
+  commentInput(e){
+    this.setData({
+      commentContent: e.detail.value
+    });
+  },
+  /**
    * 是否回复邮箱通知
    * @param {*} e 
    */
@@ -211,6 +241,36 @@ Page({
     this.setData({
       allowNotification: e.detail.value
     });
+  },
+  /**
+   * 发表评论
+   */
+  async writeComment(){
+    if(!this.data.commentContent){
+      apiResult.warn("内容不能为空");
+      return ;
+    }
+    if(!this.data.commentMail){
+      apiResult.warn("邮箱不能为空");
+      return ;
+    }
+    const param = {
+      allowNotification: this.data.allowNotification,
+      author: this.data.userInfo.nickName,
+      content: this.data.commentContent,
+      email: this.data.commentMail,
+      parentId: this.data.commmentPid,
+      postId: this.data.id
+    }
+    try {
+      await apiService.writeComment(param);
+      this.setData({
+        modalName: null
+      })
+      apiResult.success("发表成功");
+    } catch (error) {
+      return error.message;
+    }
   },
   /**
    * 获取文章评论
@@ -226,7 +286,6 @@ Page({
           result.content[i].children = children;
         }
       }
-      console.log(result)
       return result;
     } catch (error) {
       return error.message;

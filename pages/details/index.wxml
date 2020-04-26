@@ -141,7 +141,7 @@
       <input type="text" placeholder="写下您的意见与看法~" bindtap="addComment" data-target="commentModal" data-pid="0" data-prompt="评论博文"></input>
     </view>
   </view>
-  <view class="cu-item shadow">
+  <view class="cu-item shadow  margin-bottom">
     <view class="cu-list menu-avatar comment solids-top">
       <view class="cu-item" wx:for="{{comments.content}}" wx:for-item="comment" wx:key="index">
         <view class="cu-avatar round" 
@@ -199,7 +199,7 @@
       </view>
     </view>
     <view class="padding-xl">
-      <textarea maxlength="-1" bindinput="textareaAInput" placeholder="点击录入"></textarea>
+      <textarea maxlength="-1" bindinput="commentInput" placeholder="点击录入" value="{{commentContent}}"></textarea>
     </view>
     <view class="cu-form-group">
       <view class="title">邮箱地址</view>
@@ -212,8 +212,26 @@
     <view class="cu-bar bg-white justify-end">
       <view class="action">
         <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
-        <button class="cu-btn bg-green margin-left" bindtap="hideModal">发表</button>
+        <button class="cu-btn bg-green margin-left" bindtap="writeComment">发表</button>
 
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 微信登录 -->
+<view class="cu-modal {{modalName=='loginModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">评论需登录</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <button class="cu-btn block bg-blue margin-tb-sm lg" open-type='getUserInfo' bindgetuserinfo="getUser">登录</button>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-red" bindtap="hideModal">取消</button>
       </view>
     </view>
   </view>

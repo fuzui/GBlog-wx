@@ -15,8 +15,8 @@ App({
     blogTitle: "",
     topImage: "https://fuzui.oss-cn-shenzhen.aliyuncs.com/img/nav01.png",
     userInfo: {
-      nickName: '请先登录',
-      avatarUrl: '/images/defule.png'
+      nickName: "",
+      avatarUrl: ""
     },
   },
   // 更新小程序
