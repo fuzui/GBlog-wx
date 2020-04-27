@@ -141,3 +141,15 @@
 	padding: 0rpx 12rpx;
 	height: 28rpx;
 }
+/* 暂无评论图 */
+.nocomment{
+	display:flex;
+	justify-content: center;
+}
+.nocomment image{
+	width:240rpx;
+	height: 240rpx;
+}
+.hide{
+	display: none;
+}

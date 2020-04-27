@@ -5,6 +5,8 @@ import apiResult from '../../utils/api-result';
 import { Config } from './../../config/api';
 Page({
   data: {
+    isLoadComment: false,
+    commentPage: 0,
     commmentPid: 0,
     commentMail: "",
     allowNotification: true,
@@ -66,7 +68,13 @@ Page({
     var that = this;
     const id = options.id;
     const articleDetails = await this.getArticleDetails(id);
-    const comments = await this.getComments(id);
+    const comments = await this.getComments(id,0);
+    if(comments.pages > comments.page+1){
+      that.setData({
+        isLoadComment: true
+      })
+    }
+
     // const articlePath = "/pages/details/details?id=";
     // var upUrl = that.data.upUrl;
     // var upTitle = that.data.upTitle;
@@ -102,7 +110,7 @@ Page({
       commentCount: articleDetails.commentCount,
       tags: articleDetails.tags,
       thumbnail: articleDetails.thumbnail,
-      comments: comments,
+      comments: comments.content,
     });
     this.setData({
       loadModal:false
@@ -275,10 +283,13 @@ Page({
   /**
    * 获取文章评论
    */
-  async getComments(postId) {
+  async getComments(postId,commentPage) {
     var that = this;
     try {
-      const param = {};
+      const param = {
+        page: commentPage,
+        sort: 'createTime,desc'
+      };
       const result = await apiService.getComments(postId,param);
       for(var i = 0;i<result.content.length;i++){
         if(result.content[i].children){
@@ -392,4 +403,21 @@ Page({
       modalName: null
     })
   },
+  /**
+   * 加载更多评论
+   */
+  async loadComment(){
+    var that = this;
+    let currentPage = that.data.commentPage;
+    const comments = await this.getComments(that.data.id,currentPage+1);
+    if(comments.pages <= comments.page+1){
+      that.setData({
+        isLoadComment: false
+      })
+    }
+    that.setData({
+      commentPage: currentPage+1,
+      comments: this.data.comments.concat(comments.content)
+    })
+  }
 });

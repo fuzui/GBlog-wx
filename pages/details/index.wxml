@@ -142,8 +142,18 @@
     </view>
   </view>
   <view class="cu-item shadow  margin-bottom">
-    <view class="cu-list menu-avatar comment solids-top">
-      <view class="cu-item" wx:for="{{comments.content}}" wx:for-item="comment" wx:key="index">
+    <view class="cu-list menu-avatar comment solids-top padding-bottom-xl">
+      <!-- 暂无评论 -->
+      <view wx:if="{{!comments.length}}">
+        <view class="nocomment">
+          <image src="/images/bg/nocommnet.png"></image>
+          
+        </view>
+        <view class="text-df text-center text-grey">暂无评论</view>
+      </view>
+
+      <!-- 评论树 -->
+      <view class="cu-item" wx:for="{{comments}}" wx:for-item="comment" wx:key="index">
         <view class="cu-avatar round" 
               style="background-image:url(https://cdn.v2ex.com/gravatar/{{comment.gravatarMd5}}?s=64&d=monsterid);">
         </view>
@@ -182,9 +192,10 @@
               </view>
             </view>
           </view>
-          
         </view>
       </view>
+      <!-- 下一页 -->
+      <view class="text-df text-center text-grey {{isLoadComment==true?'':'hide'}}" bindtap="loadComment">加载更多</view>
     </view>
   </view>
 </view>
