@@ -5,6 +5,7 @@ import apiResult from '../../utils/api-result';
 import { Config } from './../../config/api';
 Page({
   data: {
+    disallowComment: false,
     isLoadComment: false,
     commentPage: 0,
     commmentPid: 0,
@@ -108,6 +109,7 @@ Page({
       lookCount: articleDetails.visits,
       loveCount: articleDetails.likes,
       commentCount: articleDetails.commentCount,
+      disallowComment: articleDetails.disallowComment,
       tags: articleDetails.tags,
       thumbnail: articleDetails.thumbnail,
       comments: comments.content,
@@ -140,11 +142,9 @@ Page({
   async getArticleDetails(id){
     var that = this;
     try {
-      const param = {
-        
+      const param = {   
       };
       const result = await apiService.getArticleDetails(id,param);
-      console.log(result)
       return result;
     } catch (error) {
       return await Promise.reject(error)
@@ -200,6 +200,11 @@ Page({
    * 评论
    */
   addComment(e) {
+    // 判断该文章评论功能是否关闭
+    if(this.data.disallowComment){
+      apiResult.warn("评论已关闭");
+      return ;
+    }
     const userInfo = wx.getStorageSync(Config.User);
     if(!userInfo.nickName){
       this.setData({

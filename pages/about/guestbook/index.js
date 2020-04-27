@@ -5,9 +5,10 @@ import apiResult from '../../../utils/api-result';
 import { Config } from './../../../config/api';
 Page({
   data: {
-    id: 2,  //留言页postId
+    id: 0,  //留言页postId
     topImage: app.globalData.topImage,
     logo: "",
+    disallowComment: false,
     isLoadComment: false,
     commentPage: 0,
     commmentPid: 0,
@@ -25,13 +26,13 @@ Page({
   async onLoad() { 
     var that = this;
     that.setData({
-      logo: app.globalData.logo
+      logo: app.globalData.logo,
+      id: Config.guestbookSheetId
     })
     that.setData({
       loadModal:true
     })
     const comments = await this.getComments(that.data.id,0);
-    console.log(comments)
     if(comments.pages > comments.page+1){
       that.setData({
         isLoadComment: true
@@ -51,6 +52,11 @@ Page({
    * 评论
    */
   addComment(e) {
+    // 判断该文章评论功能是否关闭
+    if(this.data.disallowComment){
+      apiResult.warn("留言已关闭");
+      return ;
+    }
     const userInfo = wx.getStorageSync(Config.User);
     if(!userInfo.nickName){
       this.setData({
