@@ -11,8 +11,11 @@
 <view style="margin-top:400rpx;"></view>
 <!--  文章列表展示  -->
 <article-list content="{{content}}"></article-list>
+<view class="noimage" wx:if="{{!content.length}}">
+  <image src="/images/bg/notype.png"></image>    
+</view>
 <!-- 下拉加载 -->
-<view class="cu-load {{loading==true?'loading':'over'}}"></view>
+<view class="cu-load {{loading==true?'loading':'over'}}" wx:if="{{content.length}}"></view>
 <!-- 弹框加载 -->
 <view class='cu-load load-modal' wx:if="{{loadModal}}">
   <image src='{{logo}}' class='png' mode='aspectFit'></image>

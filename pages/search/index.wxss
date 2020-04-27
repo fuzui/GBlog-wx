@@ -1,0 +1,9 @@
+/* 无结果图 */
+.noimage{
+	display:flex;
+	justify-content: center;
+}
+.noimage image{
+	width:400rpx;
+	height: 400rpx;
+}
