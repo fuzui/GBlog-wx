@@ -1,54 +1,125 @@
-<cu-custom bgImage="{{topImage}}" isCustom="{{true}}">
-  <view slot="content">留言</view>
+<wxs src="../../../utils/tools.wxs" module="tools" />
+<cu-custom isCustom="{{true}}">
 </cu-custom>
+<!-- 顶图 -->
+<view class="UCenter-bg" style="background-image: url('/images/bg/guestbook.png');">
+</view>
 
+<!-- 留言 -->
+<view class="cu-bar bg-white">
+  <view class="action">
+    <text class="cuIcon-titles text-green"></text>
+    <text class="text-xl text-bold">共计{{commentTotalCount}}条留言</text>
+  </view>
+</view>
 <view class="cu-card dynamic no-card">
-  <view class="cu-item shadow">
+  <view class="cu-bar search bg-white">
+    <view class="search-form round">
+      <text class="cuIcon-write"></text>
+      <input type="text" placeholder="写下您的意见与看法~" bindtap="addComment" data-target="commentModal" data-pid="0" data-prompt="留言"></input>
+    </view>
+  </view>
+  <view class="cu-item shadow  margin-bottom">
+    <view class="cu-list menu-avatar comment solids-top padding-bottom-xxl">
+      <!-- 暂无留言 -->
+      <view wx:if="{{!comments.length}}">
+        <view class="nocomment">
+          <image src="/images/bg/nocommnet.png"></image>
+        </view>
+        <view class="text-df text-center text-grey">暂无留言</view>
+      </view>
 
-    <view class="cu-list menu-avatar comment solids-top">
-      <view class="cu-item">
-        <view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png);"></view>
+      <!-- 评论树 -->
+      <view class="cu-item" wx:for="{{comments}}" wx:for-item="comment" wx:key="index">
+        <view class="cu-avatar round" 
+              style="background-image:url(https://cdn.v2ex.com/gravatar/{{comment.gravatarMd5}}?s=64&d=monsterid);">
+        </view>
         <view class="content">
-          <view class="text-grey">评论者1</view>
-          <view class="text-gray text-content text-df">
-            凯尔，你被自己的光芒变的盲目。
+          <view class="text-grey flex">
+          <view class="cu-tag bg-red light ssm round" wx:if="{{comment.isAdmin}}">博主</view>
+          {{comment.author}}:
           </view>
-          <view class="bg-grey padding-sm radius margin-top-sm  text-sm">
-            <view class="flex">
-              <view>凯尔：</view>
-              <view class="flex-sub">妹妹，你在帮他们给黑暗找借口吗?</view>
-            </view>
+          <view class="text-content text-df">
+            {{comment.content}}
           </view>
           <view class="margin-top-sm flex justify-between">
-            <view class="text-gray text-df">2018年12月4日</view>
+            <view class="text-gray text-df">{{tools.tsFormatTime(comment.createTime)}}</view>
             <view>
-              <text class="cuIcon-appreciatefill text-red"></text>
-              <text class="cuIcon-messagefill text-gray margin-left-sm"></text>
+              <text class="cuIcon-messagefill text-gray margin-left-sm" bindtap="addComment" data-target="commentModal" data-pid="0" data-prompt="回复 {{comment.author}}:"></text>
+            </view>
+          </view>
+          <!-- 子评论 -->
+          <view class="content-children "  wx:for="{{comment.children}}" wx:for-item="children" wx:key="childrenIndex">
+            <view class="radius text-sm">
+              <view class="flex">
+                <view class="cu-avatar ssm round flex margin-right-xs"
+                      style="background-image:url(https://cdn.v2ex.com/gravatar/{{children.gravatarMd5}}?s=32&d=monsterid);"></view>
+                <view class="text-grey flex">
+                <view class="cu-tag bg-red light sssm round" wx:if="{{children.isAdmin}}">博主</view>
+                {{children.author}}:
+                </view>
+                
+              </view>
+              <view class="flex-sub-children margin-left-lg">{{children.content}}</view>
+              <view class="flex justify-between">
+                <view class="text-gray text-xs margin-left-lg">{{tools.tsFormatTime(children.createTime)}}</view>
+                <view>
+                  <text class="cuIcon-messagefill text-gray margin-left-sm" bindtap="addComment" data-target="commentModal" data-pid="0" data-prompt="回复 {{children.author}}:"></text>
+                </view>
+              </view>
             </view>
           </view>
         </view>
       </view>
-      <view class="cu-item">
-        <view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg);"></view>
-        <view class="content">
-          <view class="text-grey">凯尔</view>
-          <view class="text-gray text-content text-df">
-            妹妹，如果不是为了飞翔，我们要这翅膀有什么用?
-          </view>
-          <view class="bg-grey padding-sm radius margin-top-sm  text-sm">
-            <view class="flex">
-              <view>莫甘娜：</view>
-              <view class="flex-sub">如果不能立足于大地，要这双脚又有何用?</view>
-            </view>
-          </view>
-          <view class="margin-top-sm flex justify-between">
-            <view class="text-gray text-df">2018年12月4日</view>
-            <view>
-              <text class="cuIcon-appreciate text-gray"></text>
-              <text class="cuIcon-messagefill text-gray margin-left-sm"></text>
-            </view>
-          </view>
-        </view>
+      <!-- 下一页 -->
+      <view class="text-df text-center text-grey {{isLoadComment==true?'':'hide'}}" bindtap="loadComment">加载更多</view>
+    </view>
+  </view>
+</view>
+
+<!-- 评论框 -->
+<view class="cu-modal {{modalName=='commentModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">{{commentPrompt}}</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      <textarea maxlength="-1" bindinput="commentInput" placeholder="点击录入" value="{{commentContent}}"></textarea>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">邮箱地址</view>
+      <input placeholder="必填" bindinput="mailInput"></input>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">回复是否通知邮箱</view>
+      <switch class="orange radius sm" bindchange="isAllowNotification" checked></switch>
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="writeComment">发表</button>
+
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 微信登录 -->
+<view class="cu-modal {{modalName=='loginModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">留言需登录</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <button class="cu-btn block bg-blue margin-tb-sm lg" open-type='getUserInfo' bindgetuserinfo="getUser">登录</button>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-red" bindtap="hideModal">取消</button>
       </view>
     </view>
   </view>

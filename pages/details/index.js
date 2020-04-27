@@ -141,8 +141,10 @@ Page({
     var that = this;
     try {
       const param = {
+        
       };
       const result = await apiService.getArticleDetails(id,param);
+      console.log(result)
       return result;
     } catch (error) {
       return await Promise.reject(error)

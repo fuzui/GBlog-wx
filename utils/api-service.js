@@ -240,6 +240,21 @@ function getComments(id,params) {
       })
   })
 }
+/**
+ * 获取sheet评论
+ * @param {sheet id} id 
+ * @param {*} params 
+ */
+function getCommentsBySheetId(id,params) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.getCommentsBySheetId(id), params)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
 
 function writeComment(params) {
   return new Promise((resolve, reject) => {
@@ -269,5 +284,6 @@ module.exports = {
   getPhotos,
   getStatistics,
   getComments,
+  getCommentsBySheetId,
   writeComment
 }
