@@ -1,11 +1,11 @@
 <scroll-view scroll-y class="scrollPage">
   <!-- 顶图 -->
-  <view class="UCenter-bg" style="background-image: url({{themeSettings.index_cover}});">
+  <view class="UCenter-bg" style="background-image: url('/images/bg/home.jpg');">
     <view class="text-xl">
       {{blogTitle}}
     </view>
     <view class="margin-top-sm">
-      <text>{{themeSettings.index_slogn}}</text>
+      <text>心之所向，即所向披靡</text>
     </view>
     <image src="https://cdn.fuzui.net/tmp/wave.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
