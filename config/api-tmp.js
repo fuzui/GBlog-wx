@@ -3,8 +3,11 @@ const ApiBaseUrl = 'https://ztool.cloud';//生产上
 // const ApiBaseUrl = 'http://127.0.0.1:8090';//本地
 // const ApiBaseUrl = 'https://xxx.xxx.xxx';//测试
 
-const AccessKey = '';  //接口key 必填
-
+const Config = {
+  AccessKey: '',  //接口key，必填
+  User: 'geUserInfo',
+  guestbookSheetId: 2,
+}
 const PageSize = {
   indexSize: 6, //每页文章数
   searchSize: 6,  //每页搜索结果数
@@ -32,6 +35,14 @@ function getArticleDetails(id){
 function doPraise(postId){
   return ApiBaseUrl + '/api/content/posts/'+postId+'/likes';
 };
+//获取评论
+function getComments(postId){
+  return ApiBaseUrl + '/api/content/posts/'+postId+'/comments/tree_view';
+};
+//获取sheet评论
+function getCommentsBySheetId(postId){
+  return ApiBaseUrl + '/api/content/sheets/'+postId+'/comments/tree_view';
+};
 
 
 module.exports = {
@@ -51,7 +62,10 @@ module.exports = {
   getPhotos: ApiBaseUrl + '/api/content/photos',
   getGuestbook: ApiBaseUrl + '/wxApi/getGuestbook',
   getStatistics: ApiBaseUrl + '/api/content/statistics/user',
+  writeComment: ApiBaseUrl + '/api/content/posts/comments',
+  getComments,
+  getCommentsBySheetId,
   ApiBaseUrl,
   PageSize,
-  AccessKey
+  Config
 }
