@@ -9,7 +9,7 @@ Page({
   async onShow() {
     var that = this;
     that.setData({
-      notice: app.globalData.themeSettings.notice,
+      notice: "",
       blogTitle: app.globalData.blogTitle
     });
   },

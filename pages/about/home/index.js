@@ -10,7 +10,6 @@ Page({
   async onShow() {
     var that = this;
     that.setData({
-      themeSettings: app.globalData.themeSettings,
       blogTitle: app.globalData.blogTitle
     });
   },

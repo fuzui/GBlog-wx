@@ -2,19 +2,6 @@ import api from '../config/api';
 import apiRequest from './api-request';
 
 /**
- * 获取主题配置
- */
-function getThemeSettings() {
-  return new Promise((resolve, reject) => {
-    apiRequest.Get(api.getThemeSettings, {})
-      .then(r => {
-        resolve(r)
-      }, e => {
-        reject(e)
-      })
-  })
-}
-/**
  * option
  * @param {*} key 
  * @param {*} params 
@@ -280,7 +267,6 @@ module.exports = {
   getGuestbook,
   getLinks,
   getOptionByKey,
-  getThemeSettings,
   getPhotos,
   getStatistics,
   getComments,

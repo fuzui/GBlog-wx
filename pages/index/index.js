@@ -46,9 +46,6 @@ Page({
     if(app.globalData.logo==""){
       app.globalData.logo = await apiService.getOptionByKey("blog_logo");
     }
-    // if(app.globalData.themeSettings.index_cover){
-      app.globalData.themeSettings = await apiService.getThemeSettings();
-    // }
     if(app.globalData.blogTitle==""){
       app.globalData.blogTitle = await apiService.getOptionByKey("blog_title");
     }

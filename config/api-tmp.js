@@ -46,7 +46,6 @@ function getCommentsBySheetId(postId){
 
 
 module.exports = {
-  getThemeSettings: ApiBaseUrl + '/api/content/themes/activation/settings',
   getOptionByKey: getOptionByKey,
   getCategories: ApiBaseUrl + '/api/content/categories',
   getTags: ApiBaseUrl + '/api/content/tags',

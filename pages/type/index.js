@@ -52,7 +52,6 @@ Page({
     var that = this;
     that.setData({
       logo: app.globalData.logo,
-      themeSettings: app.globalData.themeSettings,
     })
   },
   async onShow() {
