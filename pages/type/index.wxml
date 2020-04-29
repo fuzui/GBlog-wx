@@ -1,5 +1,5 @@
 <!-- 顶图 -->
-<view class="UCenter-bg fixed-bg" style="background-image: url({{themeSettings.tags_cover}});">
+<view class="UCenter-bg fixed-bg" style="background-image: url('/images/bg/type.jpg');">
 </view>
 <!--  分类导航  -->
 <scroll-view scroll-x class="bg-black nav text-center fixed-nav">

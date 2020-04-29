@@ -1,7 +1,7 @@
 /* 顶图样式 */
 .UCenter-bg {
   background-size: cover;
-  height: 321rpx;
+  height: 351rpx;
   display: flex;
   justify-content: center;
   padding-top: 40rpx;
