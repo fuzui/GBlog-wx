@@ -3,14 +3,14 @@
 </cu-custom>
 <view class="cu-chat-i">
   <view class="cu-item" wx:for="{{links}}" wx:for-item="item" wx:key="index">
-    <view class="cu-avatar radius" style="background-image:url({{item.logo?item.logo:'https://ossweb-img.qq.com/images/lol/web201310/skin/big143004.jpg'}});"></view>
-    <view class="main">
+    <view class="cu-avatar radius" bindtap="copyLink" data-link="{{item.url}}" style="background-image:url({{item.logo?item.logo:'https://ossweb-img.qq.com/images/lol/web201310/skin/big143004.jpg'}});"></view>
+    <view class="main" bindtap="copyLink" data-link="{{item.url}}">
       <view class="content bg-{{bgColor[index%6]}} shadow">
         <view >{{item.name}}</view>
         <view class="text-sm">{{item.description}}</view>
       </view>
     </view>
-    <view class="date">{{item.url}}</view>
+    <view class="date" bindtap="copyLink" data-link="{{item.url}}">{{item.url}}</view>
   </view>
 </view>
 <!-- 加载框 -->

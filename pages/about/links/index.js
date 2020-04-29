@@ -45,4 +45,19 @@ Page({
       return await Promise.reject(error)
     }
   },
+  /**
+   * 复制
+   * @param {*} e 
+   */
+  copyLink(e) {
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.link,
+      success: res => {
+        wx.showToast({
+          title: '已复制',
+          duration: 1000,
+        })
+      }
+    })
+  }
 })
