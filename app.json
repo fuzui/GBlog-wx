@@ -53,15 +53,8 @@
 		"request": 60000,
 		"downloadFile": 60000
 	},
-  "plugins": {
-    "htmltowxml": {
-      "version": "1.4.0",
-      "provider": "wxa51b9c855ae38f3c"
-    }
-  },
 	"debug": true,
 	"navigateToMiniProgramAppIdList": [
-		"wxe5f52902cf4de896"
 	],
 	"sitemapLocation": "sitemap.json"
 }

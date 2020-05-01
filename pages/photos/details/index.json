@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "htmltowxml": "plugin://htmltowxml/view"
+    "htmltowxml": "./../../../component/html2wxml-component/html2wxml"
   }
 }
