@@ -1,5 +1,5 @@
 var html2wxml = require('html2wxml-main.js');
-
+import {Config} from '../../config/api';
 Component({
     data: {},
     options: {
@@ -25,7 +25,7 @@ Component({
                     }
 
                     wx.request({
-                        url: 'https://html2wxml.qwqoffice.com/api/',
+                        url: Config.html2wxmlUrl,
                         data: data,
                         method: 'POST',
                         header: {

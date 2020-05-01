@@ -7,6 +7,7 @@ const Config = {
   AccessKey: '',  //接口key，必填
   User: 'geUserInfo',
   guestbookSheetId: 2,
+  html2wxmlUrl: 'https://html2wxml.qwqoffice.com/api/',
 }
 const PageSize = {
   indexSize: 6, //每页文章数
