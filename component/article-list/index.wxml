@@ -10,7 +10,7 @@
       </view>
       <view class="content">
 
-      <image src="{{item.thumbnail}}" mode="aspectFill"></image>
+      <image src="{{item.thumbnail?item.thumbnail:'/images/bg/blog.png'}}" mode="aspectFill"></image>
 
       <view class="desc">
           <view class="text-content"> {{item.summary}} </view>
