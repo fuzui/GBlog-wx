@@ -66,23 +66,9 @@ Page({
     });
   },
 
-  async onPullDownRefresh(){
-    var that = this;
-    // 显示顶部刷新图标
-    wx.showNavigationBarLoading();
-    const typeId = that.data.navlist[this.data.selected].name;
-    const content = await this.getArticleList(true, typeId);
-    that.setData({
-      content: content
-    });
-    setTimeout(function() {
-      // 隐藏导航栏加载框
-      wx.hideNavigationBarLoading();
-      //停止当前页面下拉刷新。
-      wx.stopPullDownRefresh();
-    }, 1500);
-  },
-	
+  /**
+   * 下拉分页
+   */
   async onReachBottom() {
     var that = this;
     var pageNo = ++that.data.pageNo;
@@ -101,8 +87,11 @@ Page({
       path: '/pages/index/index'
     }
   },
+  /**
+   * 详情跳转
+   * @param {*} e 
+   */
   details(e) {
-    //详情页跳转
     wx.navigateTo({
       url: '../details/index?id=' + e.currentTarget.id
     })
