@@ -2,7 +2,7 @@
 <cu-custom isCustom="{{true}}">
 </cu-custom>
 <!-- 顶图 -->
-<view class="UCenter-bg" style="background-image: url('/images/bg/guestbook.png');">
+<view class="UCenter-bg" style="background-image: url(https://cdn.fuzui.net/blog/guestbook_1588604516117.png);">
 </view>
 
 <!-- 留言 -->

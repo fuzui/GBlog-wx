@@ -1,5 +1,5 @@
 <!-- 顶图 -->
-<view class="UCenter-bg fixed-bg" style="background-image: url('/images/bg/type.jpg');">
+<view class="UCenter-bg fixed-bg" style="background-image: url(https://cdn.fuzui.net/blog/type_1588605033866.png);">
 </view>
 <!--  分类导航  -->
 <scroll-view scroll-x class="bg-black nav text-center fixed-nav">

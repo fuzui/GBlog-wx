@@ -45,49 +45,6 @@
     </view>
 </view>
 
-<!-- 上篇下篇 -->
-<!-- <view class="cu-list menu sm-border margin-top ">
-  <view class="cu-item arrow" bindtap="clickUp">
-    <view class="content">
-      <text class="cuIcon-pullup text-grey"></text>
-      <text class="text-grey text-cut">{{upTitle}}</text>
-    </view>
-  </view>
-  <view class="cu-item arrow" bindtap="clickDown">
-    <view class="content">
-      <text class="cuIcon-pulldown text-grey"></text>
-      <text class="text-grey text-cut">{{downTitle}}</text>
-    </view>
-  </view>
-</view>
-<view class="cu-modal {{modalMsg?'show':''}}">
-  <view class="cu-dialog">
-    <view class="bg-img" style="background-image: url('https://ossweb-img.qq.com/images/lol/web201310/skin/big91012.jpg');height:200px;">
-      <view class="cu-bar justify-end text-white">
-        <view class="action" bindtap="hideMsg">
-          <text class="cuIcon-close "></text>
-        </view>
-      </view>
-    </view>
-    <view class="cu-bar bg-white">
-      <view class="action margin-0 flex-sub  solid-left" bindtap="hideMsg">{{modalMsg}}</view>
-    </view>
-  </view>
-</view> -->
-<!-- 相关文章 -->
-<!-- <view class="cu-bar bg-white solid-bottom margin-top">
-  <view class="action">
-    <text class="cuIcon-title text-orange"></text> 相关文章
-  </view>  
-</view>
-<view class="bg-white padding-lr-lg padding-tb-xs">
-  <view class="relatedActicle" wx:for="{{relatedActicleList}}" wx:for-item="item" wx:key="index">
-      <navigator url="/pages/details/details?id={{item.id}}" open-type="redirect">
-        <view class="text-sm text-cut padding-tb-xs"><text class="cuIcon-copy"></text>{{item.title}}</view>
-      </navigator>
-  </view>
-</view> -->
-
 <!-- 返回顶端 -->
 <image class="returnTop" src='/images/returntop.png' bindtap="returnTop" hidden='{{!floorstatus}}'></image>
 

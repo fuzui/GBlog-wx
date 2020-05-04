@@ -115,9 +115,6 @@ Page({
   async getArticleList(init,slug) {
     try {
       const that = this;
-      if (init) {
-        this.initParams();
-      }
       var pageNo = that.data.pageNo;
       if(pageNo != 0){
         that.setData({
