@@ -6,7 +6,7 @@ Page({
     topImage: app.globalData.topImage,
     statistics: {},
     contact: {
-      blog: "https://ztool.cloud",
+      blog: "https://www.geekera.cn",
       qq: "229999223",
       wx: "15555542203",
       mail: "i@geekera.cn",

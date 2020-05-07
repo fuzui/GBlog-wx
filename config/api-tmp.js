@@ -1,5 +1,5 @@
 
-const ApiBaseUrl = 'https://ztool.cloud';//生产上
+const ApiBaseUrl = 'https://www.geekera.cn';//生产上
 // const ApiBaseUrl = 'http://127.0.0.1:8090';//本地
 // const ApiBaseUrl = 'https://xxx.xxx.xxx';//测试
 
