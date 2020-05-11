@@ -95,7 +95,7 @@
   <view class="cu-bar search bg-white">
     <view class="search-form round">
       <text class="cuIcon-write"></text>
-      <input type="text" placeholder="写下您的意见与看法~" bindtap="addComment" data-target="commentModal" data-pid="0" data-prompt="评论博文"></input>
+      <input type="text" placeholder="写下您的意见与看法~" bindtap="addComment" data-target="commentModal" data-pid="0" data-prompt="评论博文" disabled="true"></input>
     </view>
   </view>
   <view class="cu-item shadow  margin-bottom">
@@ -167,7 +167,7 @@
       </view>
     </view>
     <view class="padding-xl">
-      <textarea maxlength="-1" bindinput="commentInput" placeholder="点击录入" value="{{commentContent}}"></textarea>
+      <textarea maxlength="-1" bindinput="commentInput" placeholder="" value="{{commentContent}}"></textarea>
     </view>
     <view class="cu-form-group">
       <view class="title">邮箱地址</view>

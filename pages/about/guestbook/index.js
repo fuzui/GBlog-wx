@@ -198,6 +198,7 @@ Page({
   },
   hideModal(e) {
     this.setData({
+      commentContent: "",
       modalName: null
     })
   },
