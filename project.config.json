@@ -28,7 +28,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.10.4",
 	"appid": "wx0345c0b270baa60f",
-	"projectname": "wxblog",
+	"projectname": "GBlog-wx",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
