@@ -140,7 +140,6 @@ Page({
    * 获取文章详情
    */
   async getArticleDetails(id){
-    var that = this;
     try {
       const param = {   
       };

@@ -128,12 +128,6 @@ Page({
       return await Promise.reject(error)
     }
   },
-    // cardSwiper
-    cardSwiper(e) {
-      this.setData({
-        cardCur: e.detail.current
-      })
-    },
   /**
    * 获取文章列表
    */

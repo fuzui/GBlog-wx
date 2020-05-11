@@ -25,38 +25,11 @@ Page({
       archives: archives,
       loadModal:false
     });
-    //累加效果
-    for(var i = 0;i < 30;i++){
-      setTimeout(function () {
-        let cNum = that.data.categoryNum;
-        let tNum = that.data.tagNum;
-        let aNum = that.data.articleNum;
-        if(cNum<statistics.categoryCount){
-          that.setData({
-            categoryNum: cNum+1
-          });
-        }
-        if(aNum<statistics.postCount){
-          that.setData({
-            articleNum: aNum+1
-          });
-        }
-        if(tNum<statistics.tagCount){
-          that.setData({
-            tagNum: tNum+1
-          });
-        }
-        if(i == 30){
-          that.setData({
-            categoryNum: statistics.categoryCount,
-            tagNum: statistics.tagCount,
-            articleNum: statistics.postCount
-          });
-        }
-      }, 100)
-    };
-    
-    
+    that.setData({
+      categoryNum: statistics.categoryCount,
+      tagNum: statistics.tagCount,
+      articleNum: statistics.postCount
+    });
   },
   /**
    * 获取归档

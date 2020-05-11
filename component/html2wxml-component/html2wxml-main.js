@@ -82,12 +82,12 @@ function calMoreImageInfo(e, idx, that) {
 function wxAutoImageCal(originalWidth, originalHeight, that) {
 
 	// 获取图片的原始长宽
-	var windowWidth = 0, windowHeight = 0;
-	var autoWidth = 0, autoHeight = 0;
+	var windowWidth = 0;
+	var autoWidth = 0;
+	var autoHeight = 0;
 	var results = {};
 	var padding = that.data.view.imagePadding;
 	windowWidth = realWindowWidth - 2 * padding;
-	windowHeight = realWindowHeight;
 
 	// 判断按照那种方式进行缩放
 	// 在图片width大于手机屏幕width时候

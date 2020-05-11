@@ -6,7 +6,7 @@ const ApiBaseUrl = 'https://www.geekera.cn';//生产上
 const Config = {
   AccessKey: '',  //接口key，必填
   User: 'geUserInfo',
-  guestbookSheetId: 2,
+  guestbookSheetId: 2,  //留言页sheet的id
   html2wxmlUrl: 'https://html2wxml.qwqoffice.com/api/',
 }
 const PageSize = {
@@ -22,29 +22,28 @@ const PageSize = {
 //全局字段url
 function getOptionByKey(key){
   return ApiBaseUrl + '/api/content/options/keys/'+key;
-};
+}
 
 //根据分类名获取分类文章url
 function getCategoriesArticle(slug){
   return ApiBaseUrl + '/api/content/categories/'+slug+'/posts';
-};
+}
 //获取文章详情url
 function getArticleDetails(id){
   return ApiBaseUrl + '/api/content/posts/'+id;
-};
+}
 //点赞url
 function doPraise(postId){
   return ApiBaseUrl + '/api/content/posts/'+postId+'/likes';
-};
+}
 //获取评论
 function getComments(postId){
   return ApiBaseUrl + '/api/content/posts/'+postId+'/comments/tree_view';
-};
+}
 //获取sheet评论
 function getCommentsBySheetId(postId){
   return ApiBaseUrl + '/api/content/sheets/'+postId+'/comments/tree_view';
-};
-
+}
 
 module.exports = {
   getOptionByKey: getOptionByKey,
