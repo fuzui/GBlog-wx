@@ -7,7 +7,7 @@ Page({
   data: {
     title: "分类",
     logo: "",
-    typeId: "",
+    typeSlug: "",
     pageNo: 0,
     selected: 0, //当前选中
     showType: false,
@@ -31,12 +31,12 @@ Page({
       loadModal:true
     })
     const selected = event.currentTarget.dataset.id;
-    const typeId = that.data.navlist[selected].name;
+    const typeSlug = that.data.navlist[selected].slug;
     that.setData({
-      typeId: typeId
+      typeSlug: typeSlug
     });
     that.initParams();
-    const content = await this.getArticleList(true, typeId);
+    const content = await this.getArticleList(true, typeSlug);
     app.globalData.articleTypeTabIndex = selected;
     that.setData({
       content: content,
@@ -58,7 +58,7 @@ Page({
     var that = this;
     const navlist = await this.getCategories();
     const index = app.globalData.articleTypeTabIndex ? app.globalData.articleTypeTabIndex : 0;
-    const content = await this.getArticleList(true, navlist[index].name);
+    const content = await this.getArticleList(true, navlist[index].slug);
     that.setData({
       navlist: navlist,
       content: content,
@@ -75,8 +75,8 @@ Page({
     that.setData({
       pageNo: pageNo,
     });
-    const typeId = that.data.navlist[this.data.selected].name;
-    const content = await this.getArticleList(false, typeId);
+    const typeSlug = that.data.navlist[this.data.selected].slug;
+    const content = await this.getArticleList(false, typeSlug);
     that.setData({
       content: content
     });
