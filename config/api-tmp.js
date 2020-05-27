@@ -4,7 +4,7 @@
 const ApiBaseUrl = 'https://www.ufec.cn';//测试
 
 const Config = {
-  AccessKey: 'hvdsjkmlsadhsakmnbhgvh',  //接口key，必填
+  AccessKey: '',  //接口key，必填
   User: 'geUserInfo',
   guestbookSheetId: 2,  //留言页sheet的id
   html2wxmlUrl: 'https://html2wxml.qwqoffice.com/api/',

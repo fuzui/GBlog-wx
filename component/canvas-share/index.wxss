@@ -1,0 +1,78 @@
+.share {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  width: 100%;
+  background: rgba(61, 61, 61, 0.5);
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 99999;
+}
+
+.share.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.share .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translate3d(0, 100%, 0);
+  transition: transform 0.2s ease-in-out;
+  transform-origin: 50% 0;
+}
+
+.share.show .content {
+  transform: translate3d(0, 0, 0);
+}
+
+.share .content .footer {
+  width: 562rpx;
+  height: 100rpx;
+  background: #fff;
+  border-top: 2rpx solid #e9e9e9;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.share .content .footer .close {
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  flex-grow: 0;
+  flex-shrink: 0;
+  text-align: center;
+  border-left: 2rpx solid #e9e9e9;
+}
+
+.share .content .footer .save {
+  height: 100rpx;
+  line-height: 100rpx;
+  flex-grow: 1;
+  flex-shrink: 1;
+  text-align: center;
+}
+
+.share.show .content .canvas {
+  display: inline-block;
+}
+
+.share .canvas-hide {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.share .content .canvas {
+  display: inline-block;
+  background: #fff;
+  margin: 60rpx 0 0 0;
+}

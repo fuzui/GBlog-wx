@@ -1,0 +1,10 @@
+<view class="share {{ visible ? 'show' : '' }}">
+  <canvas class="canvas-hide" canvas-id="share" style="width:{{canvasWidth*2}}rpx;height:{{canvasHeight*2}}rpx" />
+  <view class="content" style="transform:scale({{responsiveScale}});-webkit-transform:scale({{responsiveScale}}); margin-top: {{marginTop}}px;">
+    <image class="canvas" src="{{imageFile}}" style="width:{{canvasWidth/3*2}}rpx;height:{{canvasHeight/3*2}}rpx" />
+    <view class="footer" style="width:{{canvasWidth/3*2}}rpx">
+      <view class="save" bindtap="handleSave">保存到相册</view>
+      <view class="close" bindtap="handleClose">关闭</view>
+    </view>
+  </view>
+</view>
