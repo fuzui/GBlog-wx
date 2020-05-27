@@ -31,6 +31,10 @@ Page({
     comments: [],
     childrenComments: [],
 
+    //海报相关
+    visible: false,
+    imgsInfo: {},
+    scene: "",
   },
   /**
    * 分享
@@ -62,12 +66,26 @@ Page({
     }
   },
   async onLoad(options) {
+    var id = 0;
+    // 扫码打开
+    if (options.scene && !options.id) {
+      const scene = decodeURIComponent(options.scene);
+      var param = this.parseQuery(scene);
+      id = param.id;
+    } else {
+      id = options.id;
+    }
     this.setData({
       logo: app.globalData.logo,
-      loadModal:true
+      loadModal: true,
+      scene: "id=" + id,
     })
+    // this.setData({
+    //   logo: app.globalData.logo,
+    //   loadModal:true
+    // })
     var that = this;
-    const id = options.id;
+    // const id = options.id;
     const articleDetails = await this.getArticleDetails(id);
     const comments = await this.getComments(id,0);
     if(comments.pages > comments.page+1){
@@ -119,6 +137,12 @@ Page({
     })
   },
   async onShow() {
+    var that = this;
+    var pages = getCurrentPages();
+    var currentPage = pages[pages.length - 1];
+    that.setData({
+      currentPage: currentPage
+    })
   },
   wxmlTagATap(e) {
   },
@@ -149,6 +173,144 @@ Page({
       return await Promise.reject(error)
     }
   },
+
+  shareFrends() {
+    var that = this;
+    that.setData({
+      modalShare: false
+    })
+    // 需要用户登陆
+    var userInfo = wx.getStorageSync(Config.User);
+    if (!userInfo.nickName) {
+      that.setData({
+        modalName: "loginModal",
+      })
+      return false;
+    }
+    // 检查必须权限，防止漏掉必要权限
+    wx.getSetting({
+      success(res) {
+        // 保存相册授权
+        if (!res.authSetting['scope.writePhotosAlbum']) {
+          wx.authorize({
+            scope: 'scope.writePhotosAlbum',
+            success(res) {
+              that.createPoster();
+            },
+            fail(err) {
+              if (err.errMsg.indexOf('-12006') > -1){
+                that.setData({
+                  modalName: "settingModal"
+                })
+              }else{
+                return apiResult.error("保存相册授权失败"); 
+              }
+            }
+          })
+        }else{
+          that.createPoster();
+        }
+      }
+    })
+  },
+
+  // 海报按钮
+  shareFrends() {
+    var that = this;
+    that.setData({
+      modalShare: false
+    })
+    // 需要用户登陆
+    var userInfo = wx.getStorageSync(Config.User);
+    if (!userInfo.nickName) {
+      that.setData({
+        modalName: "loginModal",
+      })
+      return false;
+    }
+    // 检查必须权限，防止漏掉必要权限
+    wx.getSetting({
+      success(res) {
+        // 保存相册授权
+        if (!res.authSetting['scope.writePhotosAlbum']) {
+          wx.authorize({
+            scope: 'scope.writePhotosAlbum',
+            success(res) {
+              that.createPoster();
+            },
+            fail(err) {
+              if (err.errMsg.indexOf('-12006') > -1) {
+                that.setData({
+                  modalName: "settingModal"
+                })
+              } else {
+                return apiResult.error("保存相册授权失败");
+              }
+            }
+          })
+        } else {
+          that.createPoster();
+        }
+      }
+    })
+  },
+
+  // 生成海报
+  createPoster() {
+    const that = this;
+    var userInfo = wx.getStorageSync(Config.User);
+    wx.showLoading({
+      title: '准备数据',
+    })
+    wx.cloud.callFunction({
+      name: "get_qrcode",
+      data: {
+        scene: that.data.scene,
+        path: that.data.currentPage.route
+      },
+      success(res) {
+        let filePath = wx.env.USER_DATA_PATH + '/' + Date.parse(Date.now) + '_buffer2file.jpg';
+        let fileManager = wx.getFileSystemManager();
+        fileManager.writeFile({
+          filePath: filePath,
+          encoding: 'binary',
+          data: res.result.buffer,
+          success(res) {
+            console.log(res);
+            var imgsInfo = {
+              title: that.data.title,
+              thumbnail: that.data.thumbnail ? that.data.thumbnail : "",
+              qrcode: filePath,
+              describe: "长按识别识别二维码，坐下来，与" + app.globalData.blogTitle + "一起聊技术",
+              bgWhite: "/images/background-white.jpeg",
+              detail: "邀你一起来看",
+            }
+            that.setData({
+              imgsInfo: imgsInfo,
+              userInfo: userInfo,
+            }, () => {
+              wx.hideLoading();
+              // 使用回调确保生成海报所需数据均已装载完成才开始生成海报
+              that.setData({
+                visible: true,
+              })
+            })
+          },
+          fail(err) {
+            console.log(err);
+          }
+        })
+      }
+    })
+  },
+
+  //关闭海报展示
+  close() {
+    this.setData({
+      visible: false,
+    })
+  },
+
   /**
    * 点赞执行
    */
@@ -224,12 +386,34 @@ Page({
    * @param {*} e 
    */
   getUser(e){
-    wx.setStorageSync(Config.User, e.detail.userInfo);
-    this.setData({
-      modalName: null,
-    })
-    apiResult.success("登录成功");
+    // wx.setStorageSync(Config.User, e.detail.userInfo);
+    // this.setData({
+    //   modalName: null,
+    // })
+    // apiResult.success("登录成功");
+    if (!e.detail.userInfo) {
+      return apiResult.error("登录失败");
+    } else {
+      wx.setStorageSync(Config.User, e.detail.userInfo);
+      this.setData({
+        modalName: null,
+      })
+      return apiResult.success("登录成功");
+    }
   },
+
+  /**
+   * 查询字符串转对象
+   */
+  parseQuery(query) {
+    var reg = /([^=&\s]+)[=\s]*([^&\s]*)/g;
+    var obj = {};
+    while (reg.exec(query)) {
+      obj[RegExp.$1] = RegExp.$2;
+    }
+    return obj;
+  },
+  
   /**
    * 评论者输入邮箱
    */

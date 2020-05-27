@@ -16,6 +16,13 @@ GBlog-wx：微信小程序博客
 
 本项目采用[halo](https://halu.run)作为后台，调用halo接口。小程序样式使用[color-ui组件](https://www.color-ui.com/)组件。markdown转换使用[html2wxml](https://github.com/qwqoffice/html2wxml)组件服务。
 
+#### 海报功能
+* miniprogram作为小程序目录
+* miniprogram\app.js 中填入自己的云函数环境ID以及博客名字(虽然不填也可以获取，但我建议还是自己手动填上)
+* 小程序后台配置download合法域名，加入自己缩略图的域名
+#### 预览
+![poster](https://ae01.alicdn.com/kf/Hb84abd2bec884beba0eca0aa3cdd8deam.jpg)
+
 ### 四、使用
 
 #### 1.后台搭建

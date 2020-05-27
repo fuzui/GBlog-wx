@@ -7,6 +7,7 @@
   <view class="cu-tag bg-red light sm round" wx:if="{{topPriority==true}}">置顶</view>
   {{title}}
 </view>
+
 <!-- 阅读、点赞、发表时间 -->
 <view class="padding flex text-center text-grey bg-white shadow-warp">
   <view class="flex flex-sub flex-direction solid-right">
@@ -25,6 +26,10 @@
       <text class="cuIcon-fork"></text> 发表时间</view>
   </view>
 </view>
+
+<!-- 生成海报 -->
+<canvas-share bindclose="close" userInfo="{{userInfo}}" visible="{{visible}}" imgsInfo="{{imgsInfo}}" style="margin-top:100px;"/>
+
 <!-- 文章 -->
 <view class='margin-xs bg-white padding-xs radius shadow-lg'>
   <htmltowxml text="{{content}}" type="md" bindWxmlTagATap="wxmlTagATap" highlightLanguages="{{['html','js','java','css','nginx','shell']}}"></htmltowxml>
@@ -77,7 +82,7 @@
     <view class="padding-xl">
       <button class="cu-btn line-orange margin-left-sm lg" open-type="share">
         <text class="cuIcon-weixin text-green"></text> 朋友</button>
-      <button class="cu-btn line-orange margin-right-sm lg">
+      <button class="cu-btn line-orange margin-right-sm lg" bindtap="shareFrends">
         <text class="cuIcon-pic text-blue"></text> 海报</button>
      
     </view>
@@ -191,12 +196,30 @@
 <view class="cu-modal {{modalName=='loginModal'?'show':''}}">
   <view class="cu-dialog">
     <view class="cu-bar bg-white justify-end">
-      <view class="content">评论需登录</view>
+      <view class="content">需登录后继续操作</view>
       <view class="action" bindtap="hideModal">
         <text class="cuIcon-close text-red"></text>
       </view>
     </view>
     <button class="cu-btn block bg-blue margin-tb-sm lg" open-type='getUserInfo' bindgetuserinfo="getUser">登录</button>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-red" bindtap="hideModal">取消</button>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 打开设置页面 -->
+<view class="cu-modal {{modalName=='settingModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">需要您开启对应权限</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <button class="cu-btn block bg-blue margin-tb-sm lg" bindtap="openSetting">打开设置页面</button>
     <view class="cu-bar bg-white justify-end">
       <view class="action">
         <button class="cu-btn line-green text-red" bindtap="hideModal">取消</button>

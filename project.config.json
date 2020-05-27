@@ -1,5 +1,6 @@
 {
 	"description": "项目配置文件",
+	"cloudfunctionRoot": "cloudfunctions/",
 	"packOptions": {
 		"ignore": []
 	},
@@ -27,7 +28,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.4",
-	"appid": "wx0345c0b270baa60f",
+	"appid": "",
 	"projectname": "GBlog-wx",
 	"debugOptions": {
 		"hidedInDevtools": []
