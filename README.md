@@ -8,6 +8,8 @@ GBlog-wx：微信小程序博客
 
 ![展示图](https://cdn.fuzui.net/blog/view.png)
 
+![](https://oss.fuzui.net/img/20200529022512.png)
+
 ### 二、在线体验
 
 ![qrcode](https://cdn.fuzui.net/blog/qrcode_1588864925914.png)
@@ -15,13 +17,6 @@ GBlog-wx：微信小程序博客
 ### 三、说明
 
 本项目采用[halo](https://halu.run)作为后台，调用halo接口。小程序样式使用[color-ui组件](https://www.color-ui.com/)组件。markdown转换使用[html2wxml](https://github.com/qwqoffice/html2wxml)组件服务。
-
-#### 海报功能
-* miniprogram作为小程序目录
-* miniprogram\app.js 中填入自己的云函数环境ID以及博客名字(虽然不填也可以获取，但我建议还是自己手动填上)
-* 小程序后台配置download合法域名，加入自己缩略图的域名
-#### 预览
-![poster](https://ae01.alicdn.com/kf/Hb84abd2bec884beba0eca0aa3cdd8deam.jpg)
 
 ### 四、使用
 
@@ -70,17 +65,59 @@ GBlog-wx：微信小程序博客
 
   4.`guestbookSheetId`该值是留言板页面id，默认为关于页的评论，可自行前往表结构中查看。（默认2）
 
+* 配置小程序云服务
+
+  1.如未配置在控制台会出现如下提示：
+
+  ![](https://oss.fuzui.net/img/20200529012653.png)
+
+  2.点击开发者工具左上方“云开发”，进入开通，填写环境名称和环境ID创建；
+
+  ![](https://oss.fuzui.net/img/20200529013043.png)
+
+  3.右击cloudfunctions，点击更多设置，选择刚刚创建的环境；
+
+  ![](https://oss.fuzui.net/img/20200529013322.png)
+
+  4.在app.js中修改刚刚设置云服务的环境ID
+
+  ![](https://oss.fuzui.net/img/20200529013453.png)
+
+  5.打包上传云函数，首先安装npm、node环境（步骤略，推荐安装nvm：[Windows下安装及使用NVM](https://blog.csdn.net/qq_32682137/article/details/82684898)）,可通过`npm -v`检测是否安装。
+
+  6.右击cloudfunctions下get_qrcode文件夹，点击终端中打开，出现get_qrcode目录的cmd命令行，输入命令`npm i`等待完成，会发现多出如下`node_moudles`文件夹和`package-lock.json`文件。
+
+  ![](https://oss.fuzui.net/img/20200529015001.png)
+
+  ![](https://oss.fuzui.net/img/20200529015104.png)
+
+  ![](https://oss.fuzui.net/img/20200529015303.png)
+
+  7.右击cloudfunctions下get_qrcode文件夹，点击“创建并部署：云端安装依赖(不上传node_moudles)”，等待完成。
+
+  ![](https://oss.fuzui.net/img/20200529015414.png)
+
+  8.右击cloudfunctions，同步云函数列表。
+
+  ![](https://oss.fuzui.net/img/20200529015532.png)
+
 * 配置合法域名
 
-  在[微信公众平台](https://mp.weixin.qq.com/)中，`开发——开发设置——服务器域名`中添加request合法域名，将上述`ApiBaseUrl`与`html2wxmlUrl`域名添加进去，例如`www.geekera.com`与`html2wxml.qwqoffice.com`。（在开发者工具中可勾选不校验合法域名运行）
+  在[微信公众平台](https://mp.weixin.qq.com/)中，`开发——开发设置——服务器域名`中添加request合法域名和downloadFile合法域名。将上述`ApiBaseUrl`与`html2wxmlUrl`域名添加到request合法域名，例如`www.geekera.com`与`html2wxml.qwqoffice.com`。将博客图片地址域名（halo附件地址）和微信头像域名添加到downloadFile合法域名，例如例如`cdn.fuzui.net`与`wx.qlogo.cn`。（在开发者工具中可勾选不校验合法域名运行）
+  
+  ![](https://oss.fuzui.net/img/20200529020312.png)
+  
+  ![](https://oss.fuzui.net/img/20200529020242.png)
 
 ### 五、结构
 
 ```
 GBLOG-WX     
-├── colorui            // color-ui组件库 
+├── cloudfunctions		// 云服务
+├── colorui            	// color-ui组件库 
 ├── component           // 自定义组件
 │       └── article-list                  // 文章列表
+│       └── canvas-share                  // 海报生成
 │       └── html2wxml-component           // html2wxml组件
 ├── config 				// 配置文件
 ├── images      		// 图片
@@ -102,6 +139,7 @@ GBLOG-WX
 * 留言
 * 友情链接
 * 站点统计
+* 文章分享海报
 
 ### 
 
