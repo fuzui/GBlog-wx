@@ -40,7 +40,7 @@
           {{comment.author}}:
           </view>
           <view class="text-content text-df">
-            {{comment.content}}
+            <htmltowxml text="{{comment.content}}" type="md" bindWxmlTagATap="wxmlTagATap" highlightLanguages="{{['html','js','java','css','nginx','shell']}}"></htmltowxml>
           </view>
           <view class="margin-top-sm flex justify-between">
             <view class="text-gray text-df">{{tools.tsFormatTime(comment.createTime)}}</view>
@@ -58,10 +58,11 @@
                 <view class="cu-tag bg-red light sssm round" wx:if="{{children.isAdmin}}">博主</view>
                 {{children.author}}:
                 </view>
-                
               </view>
-              <view class="flex-sub-children margin-left-lg">{{children.content}}</view>
+              
+              <view class="flex-sub-children  margin-left-lg"><htmltowxml text="{{children.content}}" type="md" bindWxmlTagATap="wxmlTagATap" highlightLanguages="{{['html','js','java','css','nginx','shell']}}"></htmltowxml></view>
               <view class="flex justify-between">
+                
                 <view class="text-gray text-xs margin-left-lg">{{tools.tsFormatTime(children.createTime)}}</view>
                 <view>
                   <text class="cuIcon-messagefill text-gray margin-left-sm" bindtap="addComment" data-target="commentModal" data-pid="0" data-prompt="回复 {{children.author}}:"></text>
