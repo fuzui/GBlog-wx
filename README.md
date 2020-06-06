@@ -2,7 +2,7 @@
 
 GBlog-wx：微信小程序博客
 
-[![star](https://gitee.com/GeekEra/GBlog-wx/badge/star.svg?theme=dark)](https://gitee.com/GeekEra/GBlog-wx/stargazers)[![star](https://img.shields.io/github/stars/GeekEra/GBlog-wx.svg?style=social)](https://gitee.com/GeekEra/GBlog-wx/stargazers)
+[![star](https://gitee.com/GeekEra/GBlog-wx/badge/star.svg?theme=dark)](https://gitee.com/GeekEra/GBlog-wx/stargazers)[![star](https://img.shields.io/github/stars/GeekEra/GBlog-wx.svg?style=social)](https://github.com/GeekEra/GBlog-wx)
 
 [halo](https://halu.run)作为后台，小程序样式采用[color-ui组件](https://www.color-ui.com/)。
 
