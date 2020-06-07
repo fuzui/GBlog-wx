@@ -96,7 +96,6 @@ Component({
       }
     },
     draw() {
-      const that = this;
       wx.showLoading({
         title: '生成海报',
       })
@@ -137,7 +136,6 @@ Component({
           ctx.closePath();
           ctx.restore();
         
-
           // 绘制头像
           ctx.save();
           ctx.beginPath();
@@ -170,7 +168,6 @@ Component({
             width / 2,
             shareHigh,
           )
-
 
           // 绘制文章标题
           ctx.setFontSize(55)
@@ -222,13 +219,11 @@ Component({
             4
           );
           ctx.closePath();
-
           ctx.draw(false, () => {
             canvasToTempFilePath({
               canvasId: 'share',
             }, this).then(({ tempFilePath }) => this.setData({ imageFile: tempFilePath }))
           })
-
           wx.hideLoading()
           this.setData({ isDraw: true })
         })

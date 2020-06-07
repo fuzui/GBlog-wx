@@ -174,46 +174,6 @@ Page({
     }
   },
 
-  shareFrends() {
-    var that = this;
-    that.setData({
-      modalShare: false
-    })
-    // 需要用户登陆
-    var userInfo = wx.getStorageSync(Config.User);
-    if (!userInfo.nickName) {
-      that.setData({
-        modalName: "loginModal",
-      })
-      return false;
-    }
-    // 检查必须权限，防止漏掉必要权限
-    wx.getSetting({
-      success(res) {
-        // 保存相册授权
-        if (!res.authSetting['scope.writePhotosAlbum']) {
-          wx.authorize({
-            scope: 'scope.writePhotosAlbum',
-            success(res) {
-              that.createPoster();
-            },
-            fail(err) {
-              if (err.errMsg.indexOf('-12006') > -1){
-                that.setData({
-                  modalName: "settingModal"
-                })
-              }else{
-                return apiResult.error("保存相册授权失败"); 
-              }
-            }
-          })
-        }else{
-          that.createPoster();
-        }
-      }
-    })
-  },
-
   // 海报按钮
   shareFrends() {
     var that = this;
