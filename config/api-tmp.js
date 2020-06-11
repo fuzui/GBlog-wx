@@ -1,13 +1,20 @@
 
 // const ApiBaseUrl = 'https://www.geekera.cn';//生产上
 // const ApiBaseUrl = 'http://127.0.0.1:8090';//本地
-const ApiBaseUrl = 'https://www.ufec.cn';//测试
+const ApiBaseUrl = 'https://www.geekera.cn';//测试
 
 const Config = {
   AccessKey: '',  //接口key，必填
   User: 'geUserInfo',
   guestbookSheetId: 2,  //留言页sheet的id
-  html2wxmlUrl: 'https://html2wxml.qwqoffice.com/api/',
+}
+//文章、日记自定义样式
+const ParserStyle = {
+  table: 'border-collapse:collapse;border-top:1px solid gray;border-left:1px solid gray;margin: 28rpx 0;',
+  th: 'border-right:1px solid gray;border-bottom:1px solid gray;background: #ccc;',
+  td: 'border-right:1px solid gray;border-bottom:1px solid gray;',
+  pre: 'display: block;background: hsl(30, 20%, 25%);color: white;text-shadow: 0 -.1em .2em black;font-family: monospace;font-size: 1em;text-align: left;white-space: pre;word-spacing: normal;word-break: normal;word-wrap: normal;line-height: 1.5;tab-size: 4;hyphens: none;margin: 28rpx 0;',
+  blockquote: 'background-color:#e7f6ed;border-left:6px solid #4caf50;color:rgb(136, 136, 136);padding: 20rpx 40rpx 20rpx 30rpx;margin: 28rpx 0;'
 }
 const PageSize = {
   indexSize: 6, //每页文章数
@@ -66,5 +73,6 @@ module.exports = {
   getCommentsBySheetId,
   ApiBaseUrl,
   PageSize,
+  ParserStyle,
   Config
 }

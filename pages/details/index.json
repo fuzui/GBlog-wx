@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "htmltowxml": "./../../component/html2wxml-component/html2wxml",
-    "canvas-share": "../../component/canvas-share/index"
+    "canvas-share": "../../component/canvas-share/index",
+    "parser":"../../../component/parser/parser"
   }
 }

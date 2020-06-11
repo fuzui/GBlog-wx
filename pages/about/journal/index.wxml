@@ -14,8 +14,17 @@
     <view class="cu-time">{{tools.getDateDiff(item.createTime)}}</view>
       <view class="cu-item text-{{bgColor[index%6]}} cuIcon-edit ">
         <view class="content bg-{{bgColor[index%6]}} shadow-blur">
-          <htmltowxml text="{{item.sourceContent}}" type="md" bindWxmlTagATap="wxmlTagATap" highlightLanguages="{{['html','js','java','css','nginx','shell']}}"></htmltowxml>
-          
+          <parser html="{{item.content}}"
+            gesture-zoom
+            lazy-load
+            selectable
+            show-with-animation
+            use-anchor
+            use-cache
+            tag-style="{{parserStyle}}"
+            binderror="error"
+            bindlinkpress="linkpress">
+          </parser>
         </view>
       </view> 
   </block>

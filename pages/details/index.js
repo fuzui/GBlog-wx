@@ -2,9 +2,11 @@
 const app = getApp();
 import apiService from '../../utils/api-service'; 
 import apiResult from '../../utils/api-result';
-import { Config } from './../../config/api';
+import { Config,ParserStyle } from './../../config/api';
+
 Page({
   data: {
+    parserStyle:ParserStyle,
     disallowComment: false,
     isLoadComment: false,
     commentPage: 0,
@@ -16,12 +18,6 @@ Page({
     topImage: app.globalData.topImage,
     logo: "",
     floorstatus: false, //是否显示回到顶端图标
-    activeName: [], //相关文章展开标识
-    relatedActicleList: [], //相关文章
-    upUrl: "",  //上一篇url
-    upTitle: "已经是第一篇了",  //上一篇名字
-    downUrl: "",  //下一篇url
-    downTitle: "已经最后一篇了",  //下一篇名字
 		star_img: '/images/star.png',
     tags: [], //文章标签
     loveCount:0,  //点赞数
@@ -80,10 +76,6 @@ Page({
       loadModal: true,
       scene: "id=" + id,
     })
-    // this.setData({
-    //   logo: app.globalData.logo,
-    //   loadModal:true
-    // })
     var that = this;
     // const id = options.id;
     const articleDetails = await this.getArticleDetails(id);
@@ -93,37 +85,14 @@ Page({
         isLoadComment: true
       })
     }
-
-    // const articlePath = "/pages/details/details?id=";
-    // var upUrl = that.data.upUrl;
-    // var upTitle = that.data.upTitle;
-    // var downUrl = that.data.downUrl;
-    // var downTitle = that.data.downTitle;
-    // //判断是否有上篇及名字超长处理
-    // if (articleDetails.other.prev){
-    //   upUrl = articlePath + articleDetails.other.prev.id;
-    //   let title = articleDetails.other.prev.title;
-    //   if (title.length > 19){
-    //     title = title.substring(0, 16)+"···";
-    //   }
-    //   upTitle = title;
-    // }
-    // //判断是否有下篇及名字超长处理
-    // if (articleDetails.other.next) {
-    //   downUrl = articlePath + articleDetails.other.next.id;
-    //   let title = articleDetails.other.next.title;
-    //   if (title.length > 19) {
-    //     title = title.substring(0, 16) + "···";
-    //   }
-    //   downTitle = title;
-    // }
+    const html = articleDetails.formatContent;
     that.setData({
       id: articleDetails.id,
       title: articleDetails.title,
       labels: articleDetails.commentCount,
       topPriority: articleDetails.topPriority,
       createTime: articleDetails.createTime,
-      content: articleDetails.originalContent,
+      content: html,
       lookCount: articleDetails.visits,
       loveCount: articleDetails.likes,
       commentCount: articleDetails.commentCount,
@@ -166,6 +135,7 @@ Page({
   async getArticleDetails(id){
     try {
       const param = {   
+        formatDisabled: false
       };
       const result = await apiService.getArticleDetails(id,param);
       return result;
@@ -236,7 +206,6 @@ Page({
           encoding: 'binary',
           data: res.result.buffer,
           success(res) {
-            console.log(res);
             var imgsInfo = {
               title: that.data.title,
               thumbnail: that.data.thumbnail ? that.data.thumbnail : "",
@@ -505,14 +474,7 @@ Page({
       modalMsg:""
     })
   },
-  /**
-   * 相关文章展开事件
-   */
-  onChangeRelated(event) {
-    this.setData({
-      activeName: event.detail
-    });
-  },
+
   /**
    * 滚动条位置判断，从而隐藏/显示回到顶端图标
    * @param {*} e 

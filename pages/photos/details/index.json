@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "htmltowxml": "./../../../component/html2wxml-component/html2wxml"
+    "parser": "./../../../component/parser/parser"
   }
 }

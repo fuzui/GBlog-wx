@@ -31,8 +31,19 @@
 <canvas-share bindclose="close" userInfo="{{userInfo}}" visible="{{visible}}" imgsInfo="{{imgsInfo}}" style="margin-top:100px;"/>
 
 <!-- 文章 -->
+
 <view class='margin-xs bg-white padding-xs radius shadow-lg'>
-  <htmltowxml text="{{content}}" type="md" bindWxmlTagATap="wxmlTagATap" highlightLanguages="{{['html','js','java','css','nginx','shell']}}"></htmltowxml>
+  <parser html="{{content}}"
+    gesture-zoom
+    lazy-load
+    selectable
+    show-with-animation
+    use-anchor
+    use-cache
+    tag-style="{{parserStyle}}"
+    binderror="error"
+    bindlinkpress="linkpress">
+    </parser>
   <!-- 正文结束分割线 -->
   <view class="line">
     <span>正文结束</span>
@@ -125,7 +136,17 @@
           {{comment.author}}:
           </view>
           <view class="text-content text-df">
-            <htmltowxml text="{{comment.content}}" type="md" bindWxmlTagATap="wxmlTagATap" highlightLanguages="{{['html','js','java','css','nginx','shell']}}"></htmltowxml>
+            <parser html="{{comment.content}}"
+              gesture-zoom
+              lazy-load
+              selectable
+              show-with-animation
+              use-anchor
+              use-cache
+              tag-style="{{parserStyle}}"
+              binderror="error"
+              bindlinkpress="linkpress">
+            </parser> 
           </view>
           <view class="margin-top-sm flex justify-between">
             <view class="text-gray text-df">{{tools.tsFormatTime(comment.createTime)}}</view>
@@ -146,7 +167,17 @@
                 
               </view>
               <view class="flex-sub-children margin-left-lg">
-                <htmltowxml text="{{children.content}}" type="md" bindWxmlTagATap="wxmlTagATap" highlightLanguages="{{['html','js','java','css','nginx','shell']}}"></htmltowxml>
+                <parser html="{{children.content}}"
+                  gesture-zoom
+                  lazy-load
+                  selectable
+                  show-with-animation
+                  use-anchor
+                  use-cache
+                  tag-style="{{parserStyle}}"
+                  binderror="error"
+                  bindlinkpress="linkpress">
+                </parser>
               </view>
               <view class="flex justify-between">
                 <view class="text-gray text-xs margin-left-lg">{{tools.tsFormatTime(children.createTime)}}</view>

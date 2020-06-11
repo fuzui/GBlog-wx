@@ -36,7 +36,18 @@
 </view>
 <!-- 文章 -->
 <view class='margin-xs bg-white padding-xs radius shadow-lg'>
-  <htmltowxml text="{{item.description}}" type="md" bindWxmlTagATap="wxmlTagATap" highlightLanguages="{{['html','js','java','css','nginx','shell']}}"></htmltowxml>
+  <parser html="{{item.description}}"
+    gesture-zoom
+    lazy-load
+    selectable
+    show-with-animation
+    use-anchor
+    use-cache
+    tag-style="{{tagStyle}}"
+    binderror="error"
+    bindlinkpress="linkpress"
+    bindready="ready">
+    </parser>
   <image src="{{item.url}}" mode="widthFix" bindtap="showImage" data-url="{{item.url}}"></image>
 </view>
 <!-- 返回顶端 -->
