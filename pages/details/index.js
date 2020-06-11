@@ -10,7 +10,6 @@ Page({
     commentPage: 0,
     commmentPid: 0,
     commentMail: "",
-    allowNotification: true,
     commentPrompt: "发表您的观点",
     modalShare: false,
     topImage: app.globalData.topImage,
@@ -36,8 +35,9 @@ Page({
     imgsInfo: {},
     scene: "",
 
-    //订阅提醒
+    //订阅服务
     notifiStatus: false,
+    SubscribeServer: false,
   },
   /**
    * 分享
@@ -83,12 +83,8 @@ Page({
       loadModal: true,
       scene: "id=" + id,
     })
-    // this.setData({
-    //   logo: app.globalData.logo,
-    //   loadModal:true
-    // })
+
     var that = this;
-    // const id = options.id;
     const articleDetails = await this.getArticleDetails(id);
     const comments = await this.getComments(id,0);
     if(comments.pages > comments.page+1){
@@ -97,29 +93,6 @@ Page({
       })
     }
 
-    // const articlePath = "/pages/details/details?id=";
-    // var upUrl = that.data.upUrl;
-    // var upTitle = that.data.upTitle;
-    // var downUrl = that.data.downUrl;
-    // var downTitle = that.data.downTitle;
-    // //判断是否有上篇及名字超长处理
-    // if (articleDetails.other.prev){
-    //   upUrl = articlePath + articleDetails.other.prev.id;
-    //   let title = articleDetails.other.prev.title;
-    //   if (title.length > 19){
-    //     title = title.substring(0, 16)+"···";
-    //   }
-    //   upTitle = title;
-    // }
-    // //判断是否有下篇及名字超长处理
-    // if (articleDetails.other.next) {
-    //   downUrl = articlePath + articleDetails.other.next.id;
-    //   let title = articleDetails.other.next.title;
-    //   if (title.length > 19) {
-    //     title = title.substring(0, 16) + "···";
-    //   }
-    //   downTitle = title;
-    // }
     that.setData({
       id: articleDetails.id,
       title: articleDetails.title,
@@ -141,6 +114,11 @@ Page({
   },
   async onShow() {
     var that = this;
+    if(app.globalData.SubscribeUrl && app.globalData.updateKey && app.globalData.messageKey){
+      that.setData({
+        SubscribeServer: true,
+      })
+    }
     var pages = getCurrentPages();
     var currentPage = pages[pages.length - 1];
     that.setData({
@@ -219,7 +197,7 @@ Page({
     })
   },
 
-  // 非云函数获取小程序码
+  // 非云函数生成海报
   createPosterByMySever(){
     var that = this;
     var scene = that.data.scene;
@@ -272,7 +250,7 @@ Page({
     })
   },
 
-  // 生成海报
+  // 云函数生成海报
   createPoster() {
     const that = this;
     var userInfo = wx.getStorageSync(Config.User);
@@ -403,11 +381,6 @@ Page({
    * @param {*} e 
    */
   getUser(e){
-    // wx.setStorageSync(Config.User, e.detail.userInfo);
-    // this.setData({
-    //   modalName: null,
-    // })
-    // apiResult.success("登录成功");
     if (!e.detail.userInfo) {
       return apiResult.error("登录失败");
     } else {
@@ -455,36 +428,42 @@ Page({
   isAllowNotification(e){
     var that = this;
     if (e.detail.value){
-      wx.requestSubscribeMessage({
-        tmplIds: [
-          app.globalData.messageKey
-        ],
-        success(res) {
-          if (res[app.globalData.messageKey] == 'accept'){
-            that.setData({
-              notifiStatus: true,
-            })
-            wx.showToast({
-              title: '本次订阅成功，发布评论后有回复会第一时间通知',
-              icon: "none",
-              mask: true,
-              duration: 2500
-            })
+      if (that.data.SubscribeServer) {
+        wx.requestSubscribeMessage({
+          tmplIds: [
+            app.globalData.messageKey
+          ],
+          success(res) {
+            if (res[app.globalData.messageKey] == 'accept'){
+              that.setData({
+                notifiStatus: true,
+              })
+              wx.showToast({
+                title: '本次订阅成功，发布评论后有回复会第一时间通知',
+                icon: "none",
+                mask: true,
+                duration: 2500
+              })
+            }
+            // 拒绝授权
+            if (res[app.globalData.messageKey] == 'reject'){
+              that.setData({
+                notifiStatus: false,
+              })
+              wx.showToast({
+                title: '订阅失败，需要订阅通知可以重新打开并发布评论即可',
+                icon: "none",
+                mask: true,
+                duration: 2500
+              })
+            }
           }
-          // 拒绝授权
-          if (res[app.globalData.messageKey] == 'reject'){
-            that.setData({
-              notifiStatus: false,
-            })
-            wx.showToast({
-              title: '订阅失败，需要订阅通知可以重新打开并发布评论即可',
-              icon: "none",
-              mask: true,
-              duration: 2500
-            })
-          }
-        }
-      })
+        })
+      }else{
+        that.setData({
+          notifiStatus: true,
+        })
+      }
     }
   },
   /**
@@ -505,7 +484,7 @@ Page({
       mask: true,
     })
     const param = {
-      allowNotification: this.data.allowNotification,
+      allowNotification: this.data.notifiStatus,
       author: this.data.userInfo.nickName,
       content: this.data.commentContent,
       email: this.data.commentMail,
@@ -513,58 +492,72 @@ Page({
       postId: this.data.id
     }
     apiService.writeComment(param).then(ress => {
-      wx.login({
-        success(res) {
-          console.log(res);
-          wx.request({
-            url: Config.SubscribeUrl + "/getOpenId",
-            method: 'POST',
-            data: {
-              code: res.code
-            },
-            success(res) {
-              console.log(res);
-              if ('openid' in res.data && res.data.openid) {
-                wx.request({
-                  url: Config.SubscribeUrl + "/comment",
-                  method: "POST",
-                  data: {
-                    openId: res.data.openid,
-                    articleId: that.data.id,
-                    subscribeTimes: 1,
-                    author: that.data.userInfo.nickName,
-                    commentId: ress.id,
-                    title: that.data.title,
-                    content: param.content,
-                  },
-                  success(res) {
-                    console.log(res);
-                  },
-                  fail(err) {
-
-                  },
-                  complete() {
-                    wx.hideLoading().then(()=>{
-                      that.setData({
-                        modalName: null
+      if (that.data.SubscribeServer) {
+        wx.login({
+          success(res) {
+            console.log(res);
+            wx.request({
+              url: app.globalData.SubscribeUrl + "/getOpenId",
+              method: 'POST',
+              data: {
+                code: res.code
+              },
+              success(res) {
+                console.log(res);
+                if ('openid' in res.data && res.data.openid) {
+                  wx.request({
+                    url: app.globalData.SubscribeUrl + "/comment",
+                    method: "POST",
+                    data: {
+                      openId: res.data.openid,
+                      articleId: that.data.id,
+                      subscribeTimes: 1,
+                      author: that.data.userInfo.nickName,
+                      commentId: ress.id,
+                      title: that.data.title,
+                      content: param.content,
+                    },
+                    success(res) {
+                      console.log(res);
+                    },
+                    fail(err) {
+                      console.log(err);
+                    },
+                    complete(){
+                      wx.hideLoading().then(()=>{
+                        that.setData({
+                          modalName: null
+                        })
+                        apiResult.success("发表成功");
                       })
-                      apiResult.success("发表成功");
-                    })
-                  }
-                })
+                    }
+                  })
+                }
+              },
+              fail(err) {
+                console.log(err);
               }
-            },
-            fail(err) {
-              console.log(err);
-            }
+            })
+          },
+          fail(err) {
+  
+          }
+        })
+      }else{
+        wx.hideLoading().then(()=>{
+          that.setData({
+            modalName: null
           })
-        },
-        fail(err) {
-
-        }
-      })
+          apiResult.success("发表成功");
+        })
+      }
     }, err => {
-      apiResult.success("发表失败");
+      wx.hideLoading().then(()=>{
+        that.setData({
+          modalName: null
+        })
+        apiResult.success("发表失败");
+      })
     }).catch(error=>{
         return error.message;
     })

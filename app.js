@@ -21,8 +21,12 @@ App({
     logo: "",
     blogTitle: "",
     topImage: "https://fuzui.oss-cn-shenzhen.aliyuncs.com/img/nav01.png",
+
+    // 以下三者均填写则开启微信订阅服务
     updateKey: "",//更新推送模板id
     messageKey: "",//留言审核推送模板id，
+    SubscribeUrl: "",//订阅服务地址
+
     userInfo: {
       nickName: "",
       avatarUrl: ""

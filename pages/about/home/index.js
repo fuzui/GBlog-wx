@@ -1,16 +1,23 @@
 const app = getApp();
 import apiResult from '../../../utils/api-result';
-import { Config } from '.././../../config/api';
 Page({
   data: {
     starCount: 0,
     forksCount: 0,
     visitTotal: 0,
     blogTitle: "",
+    SubscribeServer: false,
   },
-  onLoad: function () { },
+  onLoad: function () { 
+    
+  },
   async onShow() {
     var that = this;
+    if(app.globalData.SubscribeUrl && app.globalData.updateKey && app.globalData.messageKey){
+      that.setData({
+        SubscribeServer: true,
+      })
+    }
     that.setData({
       blogTitle: app.globalData.blogTitle
     });

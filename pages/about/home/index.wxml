@@ -67,7 +67,7 @@
         <text class="text-grey">意见反馈</text>
       </button>
     </view>
-    <view class="cu-item arrow">
+    <view class="cu-item arrow" wx:if="{{SubscribeServer}}">
       <button class="cu-btn content" bindtap="subscribeUpdate" >
         <text class="cuIcon-writefill text-cyan"></text>
         <text class="text-grey">订阅更新推送</text>
