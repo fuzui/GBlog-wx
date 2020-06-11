@@ -2,11 +2,12 @@
 const app = getApp();
 import apiService from '../../utils/api-service'; 
 import apiResult from '../../utils/api-result';
-import { Config,PushConfig,ParserStyle } from './../../config/api';
+import { Config,PushConfig,ShareConfig,ParserStyle } from './../../config/api';
 
 Page({
   data: {
-    parserStyle:ParserStyle,
+    shareIsOpen: ShareConfig.isOpen,
+    parserStyle: ParserStyle,
     disallowComment: false,
     isLoadComment: false,
     commentPage: 0,

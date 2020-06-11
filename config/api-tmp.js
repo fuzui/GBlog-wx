@@ -15,6 +15,11 @@ const PushConfig = {
   messageKey: "",//留言审核推送模板id，
   SubscribeUrl: "",//订阅服务地址
 }
+//海报分享配置
+const ShareConfig = {
+  isOpen: false,
+  env: ''
+}
 //文章、日记自定义样式
 const ParserStyle = {
   table: 'border-collapse:collapse;border-top:1px solid gray;border-left:1px solid gray;margin: 28rpx 0;',
@@ -82,5 +87,6 @@ module.exports = {
   PageSize,
   ParserStyle,
   Config,
-  PushConfig
+  PushConfig,
+  ShareConfig
 }
