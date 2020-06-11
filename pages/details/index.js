@@ -2,7 +2,7 @@
 const app = getApp();
 import apiService from '../../utils/api-service'; 
 import apiResult from '../../utils/api-result';
-import { Config,ParserStyle } from './../../config/api';
+import { Config,PushConfig,ParserStyle } from './../../config/api';
 
 Page({
   data: {
@@ -12,7 +12,6 @@ Page({
     commentPage: 0,
     commmentPid: 0,
     commentMail: "",
-    allowNotification: true,
     commentPrompt: "发表您的观点",
     modalShare: false,
     topImage: app.globalData.topImage,
@@ -31,6 +30,10 @@ Page({
     visible: false,
     imgsInfo: {},
     scene: "",
+
+    //订阅服务
+    notifiStatus: false,
+    SubscribeServer: false,
   },
   /**
    * 分享
@@ -76,8 +79,8 @@ Page({
       loadModal: true,
       scene: "id=" + id,
     })
+
     var that = this;
-    // const id = options.id;
     const articleDetails = await this.getArticleDetails(id);
     const comments = await this.getComments(id,0);
     if(comments.pages > comments.page+1){
@@ -85,7 +88,9 @@ Page({
         isLoadComment: true
       })
     }
+
     const html = articleDetails.formatContent;
+
     that.setData({
       id: articleDetails.id,
       title: articleDetails.title,
@@ -107,6 +112,11 @@ Page({
   },
   async onShow() {
     var that = this;
+    if(PushConfig.isOpen){
+      that.setData({
+        SubscribeServer: true,
+      })
+    }
     var pages = getCurrentPages();
     var currentPage = pages[pages.length - 1];
     that.setData({
@@ -179,13 +189,67 @@ Page({
             }
           })
         } else {
-          that.createPoster();
+          that.createPosterByMySever();//非云函数
+          // that.createPoster(); //云函数版本
         }
       }
     })
   },
 
-  // 生成海报
+  // 非云函数生成海报
+  createPosterByMySever(){
+    var that = this;
+    var scene = that.data.scene;
+    var path = that.data.currentPage.route;
+    var userInfo = wx.getStorageSync(Config.User);
+    wx.showLoading({
+      title: '准备数据',
+    })
+    wx.request({
+      url: PushConfig.SubscribeUrl + `/getQRCode?scene=${scene}&page=${path}`,
+      success(res){
+        if(res.data.code == 0){
+          const [, format, bodyData] = /data:image\/(\w+);base64,(.*)/.exec(res.data.base) || [];
+          if (!format) {
+            return (new Error('ERROR_BASE64SRC_PARSE'));
+          }
+          const buffer = wx.base64ToArrayBuffer(bodyData);
+          let filePath = wx.env.USER_DATA_PATH + '/' + Date.parse(new Date) + '_buffer2file.' + format;
+          let fileManager = wx.getFileSystemManager();
+          fileManager.writeFile({
+            filePath: filePath,
+            encoding: 'binary',
+            data: buffer,
+            success(res) {
+              var imgsInfo = {
+                title: that.data.title,
+                thumbnail: that.data.thumbnail ? that.data.thumbnail : "",
+                qrcode: filePath,
+                describe: "长按识别识别二维码，坐下来，与" + app.globalData.blogTitle + "一起聊技术",
+                bgWhite: "/images/background-white.jpeg",
+                detail: "邀你一起来看",
+              }
+              that.setData({
+                imgsInfo: imgsInfo,
+                userInfo: userInfo,
+              }, () => {
+                wx.hideLoading();
+                // 使用回调确保生成海报所需数据均已装载完成才开始生成海报
+                that.setData({
+                  visible: true,
+                })
+              })
+            },
+            fail(err){
+              console.log(err);
+            }
+          })
+        }
+      }
+    })
+  },
+
+  // 云函数生成海报
   createPoster() {
     const that = this;
     var userInfo = wx.getStorageSync(Config.User);
@@ -315,11 +379,6 @@ Page({
    * @param {*} e 
    */
   getUser(e){
-    // wx.setStorageSync(Config.User, e.detail.userInfo);
-    // this.setData({
-    //   modalName: null,
-    // })
-    // apiResult.success("登录成功");
     if (!e.detail.userInfo) {
       return apiResult.error("登录失败");
     } else {
@@ -365,14 +424,51 @@ Page({
    * @param {*} e 
    */
   isAllowNotification(e){
-    this.setData({
-      allowNotification: e.detail.value
-    });
+    var that = this;
+    if (e.detail.value){
+      if (that.data.SubscribeServer) {
+        wx.requestSubscribeMessage({
+          tmplIds: [
+            PushConfig.messageKey
+          ],
+          success(res) {
+            if (res[PushConfig.messageKey] == 'accept'){
+              that.setData({
+                notifiStatus: true,
+              })
+              wx.showToast({
+                title: '本次订阅成功，发布评论后有回复会第一时间通知',
+                icon: "none",
+                mask: true,
+                duration: 2500
+              })
+            }
+            // 拒绝授权
+            if (res[PushConfig.messageKey] == 'reject'){
+              that.setData({
+                notifiStatus: false,
+              })
+              wx.showToast({
+                title: '订阅失败，需要订阅通知可以重新打开并发布评论即可',
+                icon: "none",
+                mask: true,
+                duration: 2500
+              })
+            }
+          }
+        })
+      }else{
+        that.setData({
+          notifiStatus: true,
+        })
+      }
+    }
   },
   /**
    * 发表评论
    */
   async writeComment(){
+    var that = this;
     if(!this.data.commentContent){
       apiResult.warn("内容不能为空");
       return ;
@@ -381,23 +477,88 @@ Page({
       apiResult.warn("邮箱不能为空");
       return ;
     }
+    wx.showLoading({
+      title: '发布中',
+      mask: true,
+    })
     const param = {
-      allowNotification: this.data.allowNotification,
+      allowNotification: this.data.notifiStatus,
       author: this.data.userInfo.nickName,
       content: this.data.commentContent,
       email: this.data.commentMail,
       parentId: this.data.commmentPid,
       postId: this.data.id
     }
-    try {
-      await apiService.writeComment(param);
-      this.setData({
-        modalName: null
+    apiService.writeComment(param).then(ress => {
+      if (that.data.SubscribeServer) {
+        wx.login({
+          success(res) {
+            console.log(res);
+            wx.request({
+              url: PushConfig.SubscribeUrl + "/getOpenId",
+              method: 'POST',
+              data: {
+                code: res.code
+              },
+              success(res) {
+                console.log(res);
+                if ('openid' in res.data && res.data.openid) {
+                  wx.request({
+                    url: PushConfig.SubscribeUrl + "/comment",
+                    method: "POST",
+                    data: {
+                      openId: res.data.openid,
+                      articleId: that.data.id,
+                      subscribeTimes: 1,
+                      author: that.data.userInfo.nickName,
+                      commentId: ress.id,
+                      title: that.data.title,
+                      content: param.content,
+                    },
+                    success(res) {
+                      console.log(res);
+                    },
+                    fail(err) {
+                      console.log(err);
+                    },
+                    complete(){
+                      wx.hideLoading().then(()=>{
+                        that.setData({
+                          modalName: null
+                        })
+                        apiResult.success("发表成功");
+                      })
+                    }
+                  })
+                }
+              },
+              fail(err) {
+                console.log(err);
+              }
+            })
+          },
+          fail(err) {
+  
+          }
+        })
+      }else{
+        wx.hideLoading().then(()=>{
+          that.setData({
+            modalName: null
+          })
+          apiResult.success("发表成功");
+        })
+      }
+    }, err => {
+      wx.hideLoading().then(()=>{
+        that.setData({
+          modalName: null
+        })
+        apiResult.success("发表失败");
       })
-      apiResult.success("发表成功");
-    } catch (error) {
-      return error.message;
-    }
+    }).catch(error=>{
+        return error.message;
+    })
   },
   /**
    * 获取文章评论

@@ -7,7 +7,6 @@
   <view class="cu-tag bg-red light sm round" wx:if="{{topPriority==true}}">置顶</view>
   {{title}}
 </view>
-
 <!-- 阅读、点赞、发表时间 -->
 <view class="padding flex text-center text-grey bg-white shadow-warp">
   <view class="flex flex-sub flex-direction solid-right">
@@ -26,10 +25,6 @@
       <text class="cuIcon-fork"></text> 发表时间</view>
   </view>
 </view>
-
-<!-- 生成海报 -->
-<canvas-share bindclose="close" userInfo="{{userInfo}}" visible="{{visible}}" imgsInfo="{{imgsInfo}}" style="margin-top:100px;"/>
-
 <!-- 文章 -->
 
 <view class='margin-xs bg-white padding-xs radius shadow-lg'>
@@ -78,6 +73,8 @@
     </view>
   </view>
 </view>
+<!-- 生成海报 -->
+<canvas-share bindclose="close" userInfo="{{userInfo}}" visible="{{visible}}" imgsInfo="{{imgsInfo}}" style="margin-top:100px;"/>
 <!-- 加载框 -->
 <view class='cu-load load-modal' wx:if="{{loadModal}}">
   <image src="{{logo}}" class='png' mode='aspectFit'></image>
@@ -94,8 +91,7 @@
       <button class="cu-btn line-orange margin-left-sm lg" open-type="share">
         <text class="cuIcon-weixin text-green"></text> 朋友</button>
       <button class="cu-btn line-orange margin-right-sm lg" bindtap="shareFrends">
-        <text class="cuIcon-pic text-blue"></text> 海报</button>
-     
+        <text class="cuIcon-pic text-blue"></text>海报</button>
     </view>
   </view>
 </view>
@@ -136,6 +132,7 @@
           {{comment.author}}:
           </view>
           <view class="text-content text-df">
+
             <parser html="{{comment.content}}"
               gesture-zoom
               lazy-load
@@ -151,7 +148,7 @@
           <view class="margin-top-sm flex justify-between">
             <view class="text-gray text-df">{{tools.tsFormatTime(comment.createTime)}}</view>
             <view>
-              <text class="cuIcon-messagefill text-gray margin-left-sm" bindtap="addComment" data-target="commentModal" data-pid="0" data-prompt="回复 {{comment.author}}:"></text>
+              <text class="cuIcon-messagefill text-gray margin-left-sm" bindtap="addComment" data-target="commentModal" data-pid="{{comment.id}}" data-prompt="回复 {{comment.author}}:"></text>
             </view>
           </view>
           <!-- 子评论 -->
@@ -179,10 +176,11 @@
                   bindlinkpress="linkpress">
                 </parser>
               </view>
+
               <view class="flex justify-between">
                 <view class="text-gray text-xs margin-left-lg">{{tools.tsFormatTime(children.createTime)}}</view>
                 <view>
-                  <text class="cuIcon-messagefill text-gray margin-left-sm" bindtap="addComment" data-target="commentModal" data-pid="0" data-prompt="回复 {{children.author}}:"></text>
+                  <text class="cuIcon-messagefill text-gray margin-left-sm" bindtap="addComment" data-target="commentModal" data-pid="{{children.id}}" data-prompt="回复 {{children.author}}:"></text>
                 </view>
               </view>
             </view>
@@ -212,8 +210,8 @@
       <input placeholder="必填" bindinput="mailInput"></input>
     </view>
     <view class="cu-form-group">
-      <view class="title">回复是否通知邮箱</view>
-      <switch class="orange radius sm" bindchange="isAllowNotification" checked></switch>
+      <view class="title">回复是否接受推送</view>
+      <switch class="orange radius sm" bindchange="isAllowNotification" checked="{{notifiStatus}}"></switch>
     </view>
     <view class="cu-bar bg-white justify-end">
       <view class="action">
@@ -242,7 +240,6 @@
     </view>
   </view>
 </view>
-
 <!-- 打开设置页面 -->
 <view class="cu-modal {{modalName=='settingModal'?'show':''}}">
   <view class="cu-dialog">

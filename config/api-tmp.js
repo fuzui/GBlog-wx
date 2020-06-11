@@ -8,6 +8,13 @@ const Config = {
   User: 'geUserInfo',
   guestbookSheetId: 2,  //留言页sheet的id
 }
+//订阅配置
+const PushConfig = {
+  isOpen: false,
+  updateKey: "",//更新推送模板id
+  messageKey: "",//留言审核推送模板id，
+  SubscribeUrl: "",//订阅服务地址
+}
 //文章、日记自定义样式
 const ParserStyle = {
   table: 'border-collapse:collapse;border-top:1px solid gray;border-left:1px solid gray;margin: 28rpx 0;',
@@ -74,5 +81,6 @@ module.exports = {
   ApiBaseUrl,
   PageSize,
   ParserStyle,
-  Config
+  Config,
+  PushConfig
 }

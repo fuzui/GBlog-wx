@@ -67,6 +67,30 @@
         <text class="text-grey">意见反馈</text>
       </button>
     </view>
+    <view class="cu-item arrow" wx:if="{{SubscribeServer}}">
+      <button class="cu-btn content" bindtap="subscribeUpdate" >
+        <text class="cuIcon-writefill text-cyan"></text>
+        <text class="text-grey">订阅更新推送</text>
+      </button>
+    </view>
   </view>
   <view class="cu-tabbar-height"></view>
+
+  <!-- 微信登录 -->
+  <view class="cu-modal {{modalName=='loginModal'?'show':''}}">
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white justify-end">
+        <view class="content">需登录后继续操作</view>
+        <view class="action" bindtap="hideModal">
+          <text class="cuIcon-close text-red"></text>
+        </view>
+      </view>
+      <button class="cu-btn block bg-blue margin-tb-sm lg" open-type='getUserInfo' bindgetuserinfo="getUser">登录</button>
+      <view class="cu-bar bg-white justify-end">
+        <view class="action">
+          <button class="cu-btn line-green text-red" bindtap="hideModal">取消</button>
+        </view>
+      </view>
+    </view>
+  </view>
 </scroll-view>
