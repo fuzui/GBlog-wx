@@ -56,49 +56,16 @@ GBlog-wx：微信小程序博客
   }
   ```
   
+
 1.`ApiBaseUrl`为halo后台地址，上线必须为域名，在开发者工具中可点击`右上角详情——本地设置`，将不校验合法域名打勾。
-  
+
 2.`AccessKey`为halo api的AccessKey。进入halo后台管理系统，在`系统——博客设置——高级选项——API设置`中，将API 服务开启，并设置Access key。将此Access key填入上述js文件中对应位置。
-  
+
 ![123](https://cdn.fuzui.net/blog/123_1588867938268.png)
-  
+
 3.`guestbookSheetId`该值是留言板页面id，默认为关于页的评论，可自行前往表结构中查看。（默认2）
-  
-* 配置小程序云服务（若不使用海报分享功能可跳过）
 
-  1.如未配置在控制台会出现如下提示：
 
-  ![](https://oss.fuzui.net/img/20200529012653.png)
-
-  2.点击开发者工具左上方“云开发”，进入开通，填写环境名称和环境ID创建；
-
-  ![](https://oss.fuzui.net/img/20200529013043.png)
-
-  3.右击cloudfunctions，点击更多设置，选择刚刚创建的环境；
-
-  ![](https://oss.fuzui.net/img/20200529013322.png)
-
-  4.在app.js中修改刚刚设置云服务的环境ID
-
-  ![](https://oss.fuzui.net/img/20200529013453.png)
-
-  5.打包上传云函数，首先安装npm、node环境（步骤略，推荐安装nvm：[Windows下安装及使用NVM](https://blog.csdn.net/qq_32682137/article/details/82684898)）,可通过`npm -v`检测是否安装。
-
-  6.右击cloudfunctions下get_qrcode文件夹，点击终端中打开，出现get_qrcode目录的cmd命令行，输入命令`npm i`等待完成，会发现多出如下`node_moudles`文件夹和`package-lock.json`文件。
-
-  ![](https://oss.fuzui.net/img/20200529015001.png)
-
-  ![](https://oss.fuzui.net/img/20200529015104.png)
-
-  ![](https://oss.fuzui.net/img/20200529015303.png)
-
-  7.右击cloudfunctions下get_qrcode文件夹，点击“创建并部署：云端安装依赖(不上传node_moudles)”，等待完成。
-
-  ![](https://oss.fuzui.net/img/20200529015414.png)
-
-  8.右击cloudfunctions，同步云函数列表。
-
-  ![](https://oss.fuzui.net/img/20200529015532.png)
 
 * 配置合法域名
 
@@ -107,6 +74,20 @@ GBlog-wx：微信小程序博客
   ![](https://oss.fuzui.net/img/20200529020312.png)
   
   ![](https://oss.fuzui.net/img/20200529020242.png)
+
+#### 3.高级功能配置(非必须)
+
+* 海报分享
+
+  [开启文章分享海报功能](https://gitee.com/GeekEra/GBlog-wx/wikis/[高级功能]开启海报分享?sort_id=2322392)
+
+* 文章订阅、评论通知
+
+  [开启新文章订阅、评论回复通知](https://gitee.com/GeekEra/GBlog-wx/wikis/[高级功能]开启文章订阅、评论通知?sort_id=2322404)
+
+* 自定义文章内容样式
+
+  [修改文章、日记、评论解析样式](https://gitee.com/GeekEra/GBlog-wx/wikis/[高级功能]自定义文章内容样式?sort_id=2322419)
 
 ### 五、结构
 
@@ -139,6 +120,8 @@ GBLOG-WX
 * 友情链接
 * 站点统计
 * 文章分享海报
+* 新文章订阅
+* 评论回复通知
 
 ### 七、致谢
 
