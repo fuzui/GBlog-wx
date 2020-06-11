@@ -69,7 +69,7 @@
     </view>
     <view class="cu-item arrow" wx:if="{{SubscribeServer}}">
       <button class="cu-btn content" bindtap="subscribeUpdate" >
-        <text class="cuIcon-writefill text-cyan"></text>
+        <image src="/images/about/subscribe.png" class="png" mode="aspectFit"></image>
         <text class="text-grey">订阅更新推送</text>
       </button>
     </view>
