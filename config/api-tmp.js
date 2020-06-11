@@ -8,6 +8,7 @@ const Config = {
   User: 'geUserInfo',
   guestbookSheetId: 2,  //留言页sheet的id
   html2wxmlUrl: 'https://html2wxml.qwqoffice.com/api/',
+  SubscribeUrl: 'http://localhost:5000',  //测试环境
 }
 const PageSize = {
   indexSize: 6, //每页文章数

@@ -21,6 +21,8 @@ App({
     logo: "",
     blogTitle: "",
     topImage: "https://fuzui.oss-cn-shenzhen.aliyuncs.com/img/nav01.png",
+    updateKey: "",//更新推送模板id
+    messageKey: "",//留言审核推送模板id，
     userInfo: {
       nickName: "",
       avatarUrl: ""
