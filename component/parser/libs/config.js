@@ -12,9 +12,14 @@ module.exports = {
   // 代码高亮函数
   highlight(content, attrs) {
     var info = content.match(/<code.*?language-([a-z-]+).*?>([\s\S]+)<\/code.*?>/m);
-    if (!info) return content;
-    var lan = info[1];
-    content = info[2].replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+    var lan = 'js';
+    if (info) { //有语言定义，重新赋值lan并处理特殊字符
+      lan = info[1];
+      content = info[2].replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+    }else{  //无语言时去除code并处理特殊字符
+      content = content.replace('<code>','').replace('</code>','')
+      content = content.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+    }
     attrs['data-content'] = content; // 记录原始内容，长按复制时使用
     content = content.replace(/&quot;/g,'"'); //高亮引号转换问题解决
     switch (lan) {
