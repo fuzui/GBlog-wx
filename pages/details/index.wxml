@@ -203,7 +203,7 @@
       </view>
     </view>
     <view class="padding-xl">
-      <textarea maxlength="-1" bindinput="commentInput" placeholder="" value="{{commentContent}}"></textarea>
+      <textarea maxlength="-1" bindinput="commentInput" placeholder="" value="{{commentContent}}" disabled="{{modalName!='commentModal'}}"></textarea>
     </view>
     <view class="cu-form-group">
       <view class="title">邮箱地址</view>
