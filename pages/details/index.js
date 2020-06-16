@@ -694,5 +694,11 @@ Page({
       commentPage: currentPage+1,
       comments: this.data.comments.concat(comments.content)
     })
+  },
+
+  toTagPage(event) {
+    wx.navigateTo({
+      url: '../tag/index?id=' + event.currentTarget.dataset.id
+    });
   }
 });

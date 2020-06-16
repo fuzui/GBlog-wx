@@ -253,6 +253,22 @@ function writeComment(params) {
       })
   })
 }
+
+/**
+ * 获取标签下的文章
+ * @param {标签别名} slug 
+ * @param {*} params 
+ */
+function getTagsArticle(slug,params) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.getTagsArticle(slug), params)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
 module.exports = {
   getCategories,
   getTags,
@@ -271,5 +287,6 @@ module.exports = {
   getStatistics,
   getComments,
   getCommentsBySheetId,
-  writeComment
+  writeComment,
+  getTagsArticle
 }

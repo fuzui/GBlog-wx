@@ -53,4 +53,14 @@ Page({
       return await Promise.reject(error)
     }
   },
+  toCategoryPage() {
+    wx.switchTab({
+      url: '/pages/type/index'
+    });
+  },
+  toTagPage() {
+    wx.navigateTo({
+      url: '/pages/tag/index'
+    });
+  }
 });

@@ -86,8 +86,12 @@ function tsFormatTime(string) {
       }
       return result;
     };
+    function getRandomImage(arr) {
+      return arr[Math.floor((Math.random()*arr.length))];
+    }
 module.exports = {
   formatTime:formatTime,
   tsFormatTime: tsFormatTime,
   getDateDiff:getDateDiff,
+  getRandomImage: getRandomImage
 }

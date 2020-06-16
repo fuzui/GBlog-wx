@@ -34,9 +34,16 @@ const PageSize = {
   swiperPage: 0,  //轮播起始页
   swiperSize: 5,  //轮播数
   categorySize: 6,  //每页分类文章数
+  tagSize: 7, //标签每页文章数
   photoSize: 10,  //每页光影数
   journal: 10 //每页日记数
 }
+
+//随机默认图，可加减数组
+const RandomImage = [
+  "https://cdn.fuzui.net/blog/bg2_1592326421605.jpg",
+  "https://cdn.fuzui.net/blog/bg1_1592326421605.jpg"
+]
 
 //全局字段url
 function getOptionByKey(key){
@@ -63,6 +70,10 @@ function getComments(postId){
 function getCommentsBySheetId(postId){
   return ApiBaseUrl + '/api/content/sheets/'+postId+'/comments/tree_view';
 }
+//根据标签别名获取文章
+function getTagsArticle(slug){
+  return ApiBaseUrl + '/api/content/tags/'+slug+'/posts';
+}
 
 module.exports = {
   getOptionByKey: getOptionByKey,
@@ -83,10 +94,12 @@ module.exports = {
   writeComment: ApiBaseUrl + '/api/content/posts/comments',
   getComments,
   getCommentsBySheetId,
+  getTagsArticle: getTagsArticle,
   ApiBaseUrl,
   PageSize,
   ParserStyle,
   Config,
   PushConfig,
-  ShareConfig
+  ShareConfig,
+  RandomImage
 }

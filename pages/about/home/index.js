@@ -148,11 +148,11 @@ Page({
     })
   },
   /**
-   * 跳转到公告页面
+   * 跳转到标签页面
    */
-  toNoticePage() {
+  toTagPage() {
     wx.navigateTo({
-      url:"/pages/about/notice/index"
+      url:"/pages/tag/index"
     })
   },
   /**

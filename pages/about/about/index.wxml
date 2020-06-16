@@ -6,20 +6,20 @@
 </view> -->
 <official-account></official-account>
 <!-- 统计信息 -->
-<view class="padding flex text-center text-grey bg-white shadow-warp">
+<view class="padding flex text-center text-grey bg-white shadow-warp" bindtap="toArchivesPage">
   <view class="flex flex-sub flex-direction solid-right">
     <view class="text-xxl text-orange">{{statistics.postCount}}</view>
     <view class="margin-top-sm">
       <text class="cuIcon-read"></text> 文章总数
     </view>
   </view>
-  <view class="flex flex-sub flex-direction solid-right">
+  <view class="flex flex-sub flex-direction solid-right" bindtap="toCategoryPage">
     <view class="text-xxl text-blue">{{statistics.categoryCount}}</view>
     <view class="margin-top-sm">
       <text class="cuIcon-cascades"></text> 分类总数
     </view>
   </view>
-  <view class="flex flex-sub flex-direction">
+  <view class="flex flex-sub flex-direction" bindtap="toTagPage">
     <view class="text-xxl text-green">{{statistics.tagCount}}</view>
     <view class="margin-top-sm">
       <text class="cuIcon-tag"></text> 标签总数

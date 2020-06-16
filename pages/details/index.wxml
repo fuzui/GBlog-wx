@@ -45,7 +45,7 @@
   </view>
   <!-- 文章标签 -->
   <view class="padding-sm flex flex-wrap">
-    <view class="padding-xs" wx:for="{{tags}}" wx:for-item="item" wx:key="index">
+    <view class="padding-xs" wx:for="{{tags}}" wx:for-item="item" wx:key="index" data-id='{{item.id}}' bindtap='toTagPage'>
       <view class="cu-tag line-orange">{{item.name}}</view>
     </view>
   </view>

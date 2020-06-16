@@ -48,4 +48,19 @@ Page({
       }
     })
   },
+  toArchivesPage(){
+    wx.navigateTo({
+      url: '/pages/about/archives/index'
+    });
+  },
+  toCategoryPage() {
+    wx.switchTab({
+      url: '/pages/type/index'
+    });
+  },
+  toTagPage() {
+    wx.navigateTo({
+      url: '/pages/tag/index'
+    });
+  }
 });

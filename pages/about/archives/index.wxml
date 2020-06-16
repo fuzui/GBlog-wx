@@ -7,12 +7,12 @@
       <view class="margin-top-sm">
         <text class="cuIcon-read"></text> 文章总数</view>
     </view>
-    <view class="flex flex-sub flex-direction solid-right">
+    <view class="flex flex-sub flex-direction solid-right" bindtap="toCategoryPage">
       <view class="text-xxl text-blue">{{categoryNum}}</view>
       <view class="margin-top-sm">
         <text class="cuIcon-cascades"></text> 分类总数</view>
     </view>
-    <view class="flex flex-sub flex-direction">
+    <view class="flex flex-sub flex-direction" bindtap="toTagPage">
       <view class="text-xxl text-green">{{tagNum}}</view>
       <view class="margin-top-sm">
         <text class="cuIcon-tag"></text> 标签总数</view>
