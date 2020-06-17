@@ -1,10 +1,10 @@
 const app = getApp();
 import apiService from '../../../utils/api-service';
-import  {PersonalInfo} from '../../../config/api'
+import  {PersonalInfo,CustomStyle} from '../../../config/api'
 Page({
   data: {
     title: "关于",
-    topImage: app.globalData.topImage,
+    topImage: CustomStyle.topImage,
     statistics: {},
     contact: PersonalInfo
   },

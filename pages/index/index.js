@@ -1,12 +1,12 @@
 //获取应用实例
 const app = getApp();
 import apiService from '../../utils/api-service';
-import {PageSize,RandomImage} from '../../config/api';
+import {PageSize,RandomImage,CustomStyle} from '../../config/api';
 
 Page({
   data: {
     RandomImage: RandomImage,
-    topImage: app.globalData.topImage,
+    topImage: CustomStyle.topImage,
     logo: "",
     cardCur: 0,
     pageNo: 0,  //起始页

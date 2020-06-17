@@ -2,12 +2,12 @@
 const app = getApp();
 import apiService from '../../../utils/api-service'; 
 import apiResult from '../../../utils/api-result';
-import { Config,ParserStyle } from './../../../config/api';
+import { Config,ParserStyle,CustomStyle } from './../../../config/api';
 Page({
   data: {
     parserStyle:ParserStyle,
     id: 0,  //留言页postId
-    topImage: app.globalData.topImage,
+    topImage: CustomStyle.topImage,
     logo: "",
     disallowComment: false,
     isLoadComment: false,

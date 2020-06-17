@@ -1,9 +1,10 @@
 //获取应用实例
 const app = getApp();
 import utils from '../../../utils/utils';
+import {CustomStyle} from '../../../config/api'
 Page({
   data: {
-    topImage: app.globalData.topImage,
+    topImage: CustomStyle.topImage,
     logo: "",
     floorstatus: false, //是否显示回到顶端图标
     title: "光影",

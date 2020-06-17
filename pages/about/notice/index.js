@@ -1,7 +1,8 @@
 const app = getApp();
+import {CustomStyle} from '../../../config/api'
 Page({
   data: {
-    topImage: app.globalData.topImage,
+    topImage: CustomStyle.topImage,
     notice: "",
     blogTitle: "",
   },

@@ -1,9 +1,9 @@
 const app = getApp();
 import apiService from '../../utils/api-service';
-import config from '../../config/api';
+import {PageSize,CustomStyle} from '../../config/api';
 Page({
   data: {
-    topImage: app.globalData.topImage,
+    topImage: CustomStyle.topImage,
     title: "文章搜索",
     keyword: "",
     pageNo: 0,
@@ -92,7 +92,7 @@ Page({
       const param = {
         keyword: keyword,
         page: pageNo,
-        size: config.PageSize.searchSize,
+        size: PageSize.searchSize,
         sort: 'createTime,desc'
       };
       const result = await apiService.searchArticle(param);

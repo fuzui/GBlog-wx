@@ -1,8 +1,9 @@
 const app = getApp();
 import apiService from '../../../utils/api-service';
+import {CustomStyle} from '../../../config/api';
 Page({
   data: {
-    topImage: app.globalData.topImage,
+    topImage: CustomStyle.topImage,
     archives: [],
     categoryNum: 0,
     tagNum: 0,

@@ -23,7 +23,6 @@ App({
   globalData: {
     logo: "",
     blogTitle: "",
-    topImage: "https://fuzui.oss-cn-shenzhen.aliyuncs.com/img/nav01.png",
     userInfo: {
       nickName: "",
       avatarUrl: ""

@@ -2,7 +2,7 @@
 const app = getApp();
 import apiService from '../../utils/api-service'; 
 import apiResult from '../../utils/api-result';
-import { Config,PushConfig,ShareConfig,ParserStyle } from './../../config/api';
+import { Config,PushConfig,ShareConfig,ParserStyle,CustomStyle } from './../../config/api';
 
 Page({
   data: {
@@ -15,7 +15,7 @@ Page({
     commentMail: "",
     commentPrompt: "发表您的观点",
     modalShare: false,
-    topImage: app.globalData.topImage,
+    topImage: CustomStyle.topImage,
     logo: "",
     floorstatus: false, //是否显示回到顶端图标
 		star_img: '/images/star.png',
