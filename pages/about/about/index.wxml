@@ -36,7 +36,7 @@
   <view class="flex flex-sub flex-direction solid-right">
     <view class="text-xxl text-blue">{{statistics.likeCount}}</view>
     <view class="margin-top-sm">
-      <text class="cuIcon-group"></text> 点赞数量
+      <text class="cuIcon-appreciate"></text> 获赞数量
     </view>
   </view>
   <view class="flex flex-sub flex-direction">
