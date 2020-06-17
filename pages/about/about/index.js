@@ -1,18 +1,12 @@
 const app = getApp();
 import apiService from '../../../utils/api-service';
+import  {PersonalInfo} from '../../../config/api'
 Page({
   data: {
     title: "关于",
     topImage: app.globalData.topImage,
     statistics: {},
-    contact: {
-      blog: "https://www.geekera.cn",
-      qq: "229999223",
-      wx: "15555542203",
-      mail: "i@geekera.cn",
-      github: "https://github.com/fuzui",
-      gitee: "https://gitee.com/fuzui"
-    }
+    contact: PersonalInfo
   },
   onLoad: function () { },
   async onShow() {

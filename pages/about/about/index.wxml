@@ -54,37 +54,37 @@
   </view>
 </view>
 <view class="cu-list menu">
-<view class="cu-item">
+<view class="cu-item" wx:if="{{contact.blog}}">
   <view class="content" bindtap="copyLink" data-link="{{contact.blog}}">
     <image src="/images/about/blog.png" class="png" mode="aspectFit"></image>
     <text class="text-grey">{{contact.blog}}</text>
   </view>
 </view>
-<view class="cu-item">
+<view class="cu-item" wx:if="{{contact.qq}}">
   <view class="content" bindtap="copyLink" data-link="{{contact.qq}}">
     <image src="/images/about/qq.png" class="png" mode="aspectFit"></image>
     <text class="text-grey">{{contact.qq}}</text>
   </view>
 </view>
-<view class="cu-item" bindtap="copyLink" data-link="{{contact.wx}}">
-  <view class="content">
+<view class="cu-item" wx:if="{{contact.wx}}">
+  <view class="content" bindtap="copyLink" data-link="{{contact.wx}}">
     <image src="/images/about/wx.png" class="png" mode="aspectFit"></image>
     <text class="text-grey">{{contact.wx}}</text>
   </view>
 </view>
-<view class="cu-item">
+<view class="cu-item" wx:if="{{contact.mail}}">
   <view class="content" bindtap="copyLink" data-link="{{contact.mail}}">
     <image src="/images/about/mail.png" class="png" mode="aspectFit"></image>
     <text class="text-grey">{{contact.mail}}</text>
   </view>
 </view>
-<view class="cu-item">
+<view class="cu-item" wx:if="{{contact.github}}">
   <view class="content" bindtap="copyLink" data-link="{{contact.github}}">
     <image src="/images/about/github.png" class="png" mode="aspectFit"></image>
     <text class="text-grey">{{contact.github}}</text>
   </view>
 </view>
-<view class="cu-item">
+<view class="cu-item" wx:if="{{contact.gitee}}">
   <view class="content" bindtap="copyLink" data-link="{{contact.gitee}}">
     <image src="/images/about/gitee.png" class="png" mode="aspectFit"></image>
     <text class="text-grey">{{contact.gitee}}</text>

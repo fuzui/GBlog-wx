@@ -45,6 +45,16 @@ const RandomImage = [
   "https://cdn.fuzui.net/blog/bg1_1592326421605.jpg"
 ]
 
+//关于页面中个人信息，置空不显示
+const PersonalInfo = {
+  blog: "https://www.geekera.cn",
+  qq: "229999223",
+  wx: "15555542203",
+  mail: "i@geekera.cn",
+  github: "https://github.com/fuzui",
+  gitee: "https://gitee.com/fuzui"
+}
+
 //全局字段url
 function getOptionByKey(key){
   return ApiBaseUrl + '/api/content/options/keys/'+key;
@@ -101,5 +111,6 @@ module.exports = {
   Config,
   PushConfig,
   ShareConfig,
-  RandomImage
+  RandomImage,
+  PersonalInfo
 }
