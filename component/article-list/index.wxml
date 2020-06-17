@@ -16,7 +16,7 @@
           <view class="text-content"> {{item.summary}} </view>
           <view class="text-gray text-sm">
           
-            <view class="cu-tag bg-blue light sm round" wx:if="{{item.categories}}"> {{item.categories[0].name}} </view>
+            <view class="cu-tag bg-blue light sm round" wx:if="{{item.categories.length}}"> {{item.categories[0].name}} </view>
             <text class="cuIcon-timefill margin-lr-xs"></text> {{tools.tsFormatTime(item.createTime)}}
           </view>
           <view class="text-gray text-sm">
