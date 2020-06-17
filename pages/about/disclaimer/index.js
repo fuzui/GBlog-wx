@@ -1,4 +1,3 @@
-const app = getApp();
 import {CustomStyle,PersonalInfo} from '../../../config/api';
 Page({
   data: {

@@ -1,4 +1,3 @@
-const app = getApp();
 import apiService from '../../../utils/api-service';
 import  {PersonalInfo,CustomStyle} from '../../../config/api'
 Page({

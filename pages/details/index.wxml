@@ -90,7 +90,7 @@
     <view class="padding-xl">
       <button class="cu-btn line-orange margin-left-sm lg" open-type="share">
         <text class="cuIcon-weixin text-green"></text> 朋友</button>
-      <button class="cu-btn line-orange margin-right-sm lg" bindtap="shareFrends" wx:if="{{shareIsOpen}}">
+      <button class="cu-btn line-orange margin-right-sm lg" bindtap="shareFriends" wx:if="{{shareIsOpen}}">
         <text class="cuIcon-pic text-blue"></text>海报</button>
     </view>
   </view>

@@ -156,7 +156,7 @@ Page({
   },
 
   // 海报按钮
-  shareFrends() {
+  shareFriends() {
     var that = this;
     that.setData({
       modalShare: false
