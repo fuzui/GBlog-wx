@@ -7,6 +7,7 @@ Page({
   data: {
     RandomImage: RandomImage,
     topImage: CustomStyle.topImage,
+    swiperImage: CustomStyle.swiperImage,
     logo: "",
     cardCur: 0,
     pageNo: 0,  //起始页

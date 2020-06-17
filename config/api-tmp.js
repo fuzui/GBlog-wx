@@ -47,7 +47,8 @@ const RandomImage = [
 
 //自定义部分样式
 const CustomStyle = {
-  topImage: "https://fuzui.oss-cn-shenzhen.aliyuncs.com/img/nav01.png"
+  topImage: "https://fuzui.oss-cn-shenzhen.aliyuncs.com/img/nav01.png",//多数nav背景图
+  swiperImage: "https://cdn.fuzui.net/blog/swiper_1587661045157.png"  //轮播图背景
 }
 
 //关于页面中个人信息，置空不显示
