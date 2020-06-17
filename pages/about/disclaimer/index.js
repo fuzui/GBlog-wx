@@ -1,8 +1,9 @@
 const app = getApp();
-import {CustomStyle} from '../../../config/api';
+import {CustomStyle,PersonalInfo} from '../../../config/api';
 Page({
   data: {
-    topImage: CustomStyle.topImage
+    topImage: CustomStyle.topImage,
+    mail: PersonalInfo.mail
   },
   onLoad: function () { },
   CopyLink(e) {
