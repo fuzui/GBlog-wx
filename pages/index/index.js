@@ -1,10 +1,11 @@
 //获取应用实例
 const app = getApp();
 import apiService from '../../utils/api-service';
-import config from '../../config/api';
+import {PageSize,RandomImage} from '../../config/api';
 
 Page({
   data: {
+    RandomImage: RandomImage,
     topImage: app.globalData.topImage,
     logo: "",
     cardCur: 0,
@@ -118,8 +119,8 @@ Page({
   async getSwiper(){
     try {
       const param = {
-        page: config.PageSize.swiperPage,
-        size: config.PageSize.swiperSize,
+        page: PageSize.swiperPage,
+        size: PageSize.swiperSize,
         sort: 'visits,desc'
       };
       const result = await apiService.getSwiper(param);
@@ -149,7 +150,7 @@ Page({
       }
       const param = {
         page: pageNo,
-        size: config.PageSize.indexSize,
+        size: PageSize.indexSize,
         sort: 'createTime,desc'
       };
       const result = await apiService.getArticleList(param);

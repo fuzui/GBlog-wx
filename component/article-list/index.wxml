@@ -10,7 +10,7 @@
       </view>
       <view class="content">
 
-      <image src="{{item.thumbnail?item.thumbnail:'https://cdn.fuzui.net/blog/blog_1588605217708.png'}}" mode="aspectFill"></image>
+      <image src="{{item.thumbnail?item.thumbnail:tools.getRandomImage(RandomImage)}}" mode="aspectFill"></image>
 
       <view class="desc">
           <view class="text-content"> {{item.summary}} </view>

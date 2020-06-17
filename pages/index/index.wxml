@@ -1,10 +1,11 @@
+<wxs src="../../utils/tools.wxs" module="tools" />
 <!-- 顶图 -->
 <view class="UCenter-bg" style="background-image: url('https://cdn.fuzui.net/blog/swiper_1587661045157.png');">
   <!--轮播图 -->
   <swiper class="card-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
     <swiper-item wx:for="{{swiper}}" wx:key="index" class="{{cardCur==index?'cur':''}}">
       <view class="swiper-item" bindtap="swaper" data-id="{{item.id}}">
-        <image src="{{item.thumbnail?item.thumbnail:'https://cdn.fuzui.net/blog/blog_1588605217708.png'}}" mode="aspectFill" ></image>
+        <image src="{{item.thumbnail?item.thumbnail:tools.getRandomImage(RandomImage)}}" mode="aspectFill" ></image>
       </view>
     </swiper-item>
   </swiper>
