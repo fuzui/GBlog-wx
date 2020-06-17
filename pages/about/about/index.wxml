@@ -6,8 +6,8 @@
 </view> -->
 <official-account></official-account>
 <!-- 统计信息 -->
-<view class="padding flex text-center text-grey bg-white shadow-warp" bindtap="toArchivesPage">
-  <view class="flex flex-sub flex-direction solid-right">
+<view class="padding flex text-center text-grey bg-white shadow-warp">
+  <view class="flex flex-sub flex-direction solid-right" bindtap="toArchivesPage">
     <view class="text-xxl text-orange">{{statistics.postCount}}</view>
     <view class="margin-top-sm">
       <text class="cuIcon-read"></text> 文章总数
