@@ -1,7 +1,0 @@
-// var marked = require('./marked.min.js');
-// function toMarked(content) {
-//   return marked(content)
-// }
-// module.exports = {
-//   toMarked:toMarked,
-// }
