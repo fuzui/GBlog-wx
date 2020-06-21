@@ -123,7 +123,7 @@
     <view class="cu-bar bg-white justify-end">
       <view class="action">
         <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
-        <button class="cu-btn bg-green margin-left" bindtap="writeComment">发表</button>
+        <button class="cu-btn bg-green margin-left" bindtap="writeSheetComment">发表</button>
 
       </view>
     </view>

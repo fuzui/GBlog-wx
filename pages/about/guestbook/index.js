@@ -113,7 +113,7 @@ Page({
   /**
    * 发表评论
    */
-  async writeComment(){
+  async writeSheetComment(){
     if(!this.data.commentContent){
       apiResult.warn("内容不能为空");
       return ;
@@ -131,7 +131,7 @@ Page({
       postId: this.data.id
     }
     try {
-      await apiService.writeComment(param);
+      await apiService.writeSheetComment(param);
       this.setData({
         modalName: null
       })

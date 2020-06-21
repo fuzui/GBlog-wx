@@ -253,6 +253,16 @@ function writeComment(params) {
       })
   })
 }
+function writeSheetComment(params) {
+  return new Promise((resolve, reject) => {
+    apiRequest.PostBody(api.writeSheetComment, params)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
 
 /**
  * 获取标签下的文章
@@ -444,6 +454,7 @@ module.exports = {
   getComments,
   getCommentsBySheetId,
   writeComment,
+  writeSheetComment,
   getTagsArticle,
   adminLogin,
   adminGetEnvironments,
