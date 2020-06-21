@@ -2,6 +2,8 @@
 
 GBlog-wx：微信小程序博客
 
+> 我们只是搬运工，将color-ui样式与halo接口结合了一下。
+
 [![star](https://gitee.com/GeekEra/GBlog-wx/badge/star.svg?theme=dark)](https://gitee.com/GeekEra/GBlog-wx/stargazers)[![star](https://img.shields.io/github/stars/GeekEra/GBlog-wx.svg?style=social)](https://github.com/GeekEra/GBlog-wx)
 
 [halo](https://halu.run)作为后台，小程序样式采用[color-ui组件](https://www.color-ui.com/)。
@@ -107,8 +109,11 @@ GBLOG-WX
 
 ### 六、功能
 
+**浏览页面功能：**
+
 * 文章浏览
 * 文章分类
+* 文章标签
 * 文章评论
 * 文章点赞
 * 文章搜索
@@ -122,10 +127,22 @@ GBLOG-WX
 * 新文章订阅
 * 评论回复通知
 
+**管理页面功能：**
+
+> 目前管理页面部分功能不可用，还在持续编写中！
+
+* 后台登录
+* 站点信息
+* 个人信息查看
+* 服务器信息查看
+* 博客设置留言
+* 友链管理
+* 日记管理
+
 ### 七、致谢
 
 * [halo](https://github.com/halo-dev/halo) 一个优秀的开源博客发布应用
 * [ColorUI](https://github.com/weilanwl/ColorUI) 鲜亮的高饱和色彩，专注视觉的小程序组件库
-
 * [Parser](https://github.com/jin-yufeng/Parser) 小程序富文本插件（html 渲染）
 * [Hux Blog](https://huangxuan.me/)的背景图
+
