@@ -126,6 +126,7 @@ module.exports = {
   getGuestbook: ApiBaseUrl + '/wxApi/getGuestbook',
   getStatistics: ApiBaseUrl + '/api/content/statistics/user',
   writeComment: ApiBaseUrl + '/api/content/posts/comments',
+  writeSheetComment: ApiBaseUrl + '/api/content/sheets/comments',
   getComments,
   getCommentsBySheetId,
   getTagsArticle: getTagsArticle,
