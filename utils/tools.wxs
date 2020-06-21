@@ -89,9 +89,20 @@ function tsFormatTime(string) {
     function getRandomImage(arr) {
       return arr[Math.floor((Math.random()*arr.length))];
     }
+
+    function coutNum(e) {
+      if (e > 1000 && e < 10000) {
+        e = (e / 1000).toFixed(1) + 'k'
+      }
+      if (e > 10000) {
+        e = (e / 10000).toFixed(1) + 'W'
+      }
+      return e
+    }
 module.exports = {
   formatTime:formatTime,
   tsFormatTime: tsFormatTime,
   getDateDiff:getDateDiff,
-  getRandomImage: getRandomImage
+  getRandomImage: getRandomImage,
+  coutNum: coutNum
 }

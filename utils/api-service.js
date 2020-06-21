@@ -269,6 +269,162 @@ function getTagsArticle(slug,params) {
       })
   })
 }
+
+/**
+ * 登录
+ * @param {*} params 
+ */
+function adminLogin(params) {
+  return new Promise((resolve, reject) => {
+    apiRequest.PostBody(api.adminLogin, params)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ *  获取服务器配置
+ */
+function adminGetEnvironments() {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.adminGetEnvironments+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 获取站点及博主信息
+ */
+function adminGetStatistics() {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.adminGetStatistics+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 新建日记
+ */
+function adminAddJournal(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.PostBody(api.adminAddJournal+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 获取日记列表
+ */
+function adminGetJournal(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.adminGetJournal+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据id删除日记
+ */
+function adminDeleteJournal(journalId) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Delete(api.adminDeleteJournal(journalId)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 新建友链
+ */
+function adminAddLink(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.PostBody(api.adminAddLink+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 获取友链列表
+ */
+function adminGetLink(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.adminGetLink+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据id删除友链
+ */
+function adminDeleteLink(linkId) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Delete(api.adminDeleteLink(linkId)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据友链id修改友链
+ */
+function adminEditLink(linkId,param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Put(api.adminEditLink(linkId)+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 获取设置信息
+ */
+function adminGetOption() {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.adminGetOption+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
 module.exports = {
   getCategories,
   getTags,
@@ -288,5 +444,16 @@ module.exports = {
   getComments,
   getCommentsBySheetId,
   writeComment,
-  getTagsArticle
+  getTagsArticle,
+  adminLogin,
+  adminGetEnvironments,
+  adminGetStatistics,
+  adminAddJournal,
+  adminGetJournal,
+  adminDeleteJournal,
+  adminAddLink,
+  adminGetLink,
+  adminDeleteLink,
+  adminEditLink,
+  adminGetOption
 }

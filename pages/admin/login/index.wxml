@@ -1,0 +1,25 @@
+<cu-custom isCustom="{{true}}">
+</cu-custom>
+<view class="bg-white padding radius shadow-blur shadow-lg margin-xl" style="top:300rpx;"> 
+  <view class="text-blue text-center text-xxl padding">
+    Halo
+  </view>
+  <view class="cu-card dynamic no-card">
+   <view class="cu-form-group">
+      <text class="cuIcon-people"></text>
+      <input class="padding-left" placeholder="用户名/邮箱" bindinput="usernameInput"></input>
+    </view>
+    <view class="cu-form-group">
+      <text class="cuIcon-lock"></text>
+      <input password="{{true}}" class="padding-left" placeholder="密码" bindinput="passwordInput"></input>
+    </view>
+    <view class="cu-bar btn-group">
+      <button class="cu-btn bg-blue shadow-blur" bindtap="login">登录</button>
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <text class="cuIcon-settings text-blue"></text>
+      </view>
+    </view>
+  </view>
+</view>

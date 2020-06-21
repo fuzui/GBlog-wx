@@ -1,0 +1,29 @@
+<wxs src="../../../utils/tools.wxs" module="tools" />
+<cu-custom bgImage="{{topImage}}" isCustom="{{true}}">
+  <view slot="content">环境信息</view>
+</cu-custom>
+<view class="bg-white padding radius shadow-blur shadow-lg"> 
+  <view class="cu-card">
+    <view class="cu-item bg-img shadow-blur" style="background-image:url(https://oss.fuzui.net/img/12.png)">
+      <view class="cardTitle">
+        {{environments.version}}
+      </view>
+    </view>
+    <view class="cu-item bg-img shadow-blur" style="background-image:url(https://oss.fuzui.net/img/14.png)">
+      <view class="cardTitle">
+        {{environments.database}}
+      </view>
+    </view>
+    <view class="cu-item bg-img shadow-blur" style="background-image:url(https://oss.fuzui.net/img/15.png)">
+      <view class="cardTitle">
+        {{environments.mode}}
+      </view>
+    </view>
+    <view class="cu-item bg-img shadow-blur" style="background-image:url(https://oss.fuzui.net/img/13.png)">
+      <view class="cardTitle">
+        {{tools.formatTime(environments.startTime)}}
+      </view>
+    </view>
+  </view>
+</view>
+

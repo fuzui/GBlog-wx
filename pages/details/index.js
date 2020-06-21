@@ -190,8 +190,8 @@ Page({
             }
           })
         } else {
-          that.createPosterByMySever();//非云函数
-          // that.createPoster(); //云函数版本
+          // that.createPosterByMySever();//非云函数
+          that.createPoster(); //云函数版本
         }
       }
     })

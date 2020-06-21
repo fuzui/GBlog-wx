@@ -1,24 +1,25 @@
 
-// const ApiBaseUrl = 'https://www.geekera.cn';//生产上
+const ApiBaseUrl = 'https://www.geekera.cn';//生产上
 // const ApiBaseUrl = 'http://127.0.0.1:8090';//本地
-const ApiBaseUrl = 'https://www.geekera.cn';//测试
+// const ApiBaseUrl = 'https://test.geekera.cn';//测试
 
 const Config = {
-  AccessKey: '',  //接口key，必填
+  AccessKey: '', //接口key，必填
   User: 'geUserInfo',
+  Token: 'adminToken',
   guestbookSheetId: 2,  //留言页sheet的id
 }
 //订阅配置
 const PushConfig = {
   isOpen: false,
-  updateKey: "",//更新推送模板id
-  messageKey: "",//留言审核推送模板id，
-  SubscribeUrl: "",//订阅服务地址
+  updateKey: "vhOJ1····",//更新推送模板id
+  messageKey: "W56K····",//留言审核推送模板id，
+  SubscribeUrl: "http://127.0.0.1:5000",//订阅服务地址
 }
 //海报分享配置
 const ShareConfig = {
   isOpen: false,
-  env: ''
+  env: 'fuzui'  //云环境ID
 }
 //文章、日记自定义样式
 const ParserStyle = {
@@ -91,7 +92,24 @@ function getTagsArticle(slug){
   return ApiBaseUrl + '/api/content/tags/'+slug+'/posts';
 }
 
+//根据日记id删除日记
+function adminDeleteJournal(journalId){
+  return ApiBaseUrl + '/api/admin/journals/'+journalId+'?admin_token=';
+}
+//根据友链id删除友链
+function adminDeleteLink(linkId){
+  return ApiBaseUrl + '/api/admin/links/'+linkId+'?admin_token=';
+}
+//根据友链id修改友链
+function adminEditLink(linkId){
+  return ApiBaseUrl + '/api/admin/links/'+linkId+'?admin_token=';
+}
+/**
+ * 管理员接口
+ */
+
 module.exports = {
+  getThemeSettings: ApiBaseUrl + '/api/content/themes/activation/settings',
   getOptionByKey: getOptionByKey,
   getCategories: ApiBaseUrl + '/api/content/categories',
   getTags: ApiBaseUrl + '/api/content/tags',
@@ -111,6 +129,18 @@ module.exports = {
   getComments,
   getCommentsBySheetId,
   getTagsArticle: getTagsArticle,
+  adminLogin: ApiBaseUrl + '/api/admin/login',
+  adminGetEnvironments: ApiBaseUrl + '/api/admin/environments?admin_token=',
+  adminGetStatistics: ApiBaseUrl + '/api/admin/statistics/user?admin_token=',
+  adminAddJournal: ApiBaseUrl + '/api/admin/journals?admin_token=',
+  adminGetJournal: ApiBaseUrl + '/api/admin/journals?admin_token=',
+  adminEditJournal: ApiBaseUrl + '/api/admin/journals?admin_token=',
+  adminDeleteJournal: adminDeleteJournal,
+  adminAddLink: ApiBaseUrl + '/api/admin/links?admin_token=',
+  adminGetLink: ApiBaseUrl + '/api/admin/links?admin_token=',
+  adminEditLink: adminEditLink,
+  adminDeleteLink: adminDeleteLink,
+  adminGetOption: ApiBaseUrl + '/api/admin/options/map_view?admin_token=',
   ApiBaseUrl,
   PageSize,
   ParserStyle,

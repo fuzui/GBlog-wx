@@ -1,0 +1,50 @@
+<wxs src="../../../../utils/tools.wxs" module="tools" />
+<cu-custom bgImage="{{topImage}}" isCustom="{{true}}">
+  <view slot="content">速记</view>
+</cu-custom>
+<view class="bg-white padding radius shadow-blur shadow-lg"> 
+  <view class="text-blue text-center text-xxl padding">
+    
+  </view>
+  <view class="cu-card dynamic no-card">
+   <view class="cu-form-group ">
+      <textarea class="content" maxlength="-1" bindinput="journalInput" placeholder="写点什么吧..." value="{{commentContent}}"></textarea>
+    </view>
+    <view class="cu-bar btn-group">
+      <button class="cu-btn bg-blue shadow-blur" bindtap="addJournal">保存</button>
+    </view>
+  </view>
+</view>
+
+<view class="cu-timeline margin-top">
+  <block wx:for="{{journalList}}" wx:for-item="item" wx:key="index">
+    <view class="cu-bar bg-white">
+      <view class="action">
+        <text class="cuIcon-timefill text-gray"></text> {{tools.getDateDiff(item.createTime)}}
+      </view>
+      <view class="action">
+        <text class="cuIcon-edit text-blue" bindtap="openEditModel" data-id="{{item.id}}" data-index="{{index}}"></text>
+        <text class="cuIcon-delete text-red" bindtap="deleteJournal" data-id="{{item.id}}" data-index="{{index}}"></text>
+      </view>
+    </view>
+      <view class="cu-item text-{{bgColor[index%6]}} cuIcon-edit ">
+        <view class="content bg-grey shadow-blur">
+          <parser html="{{item.content}}"
+            gesture-zoom
+            lazy-load
+            selectable
+            show-with-animation
+            use-anchor
+            use-cache
+            tag-style="{{parserStyle}}"
+            binderror="error"
+            bindlinkpress="linkpress">
+          </parser>
+        </view>
+      </view> 
+  </block>
+  <!-- 底部分割线 -->
+  <view class="line" wx-if="{{bottomFlag}}">
+    <span>这天开始写日记的~</span>
+  </view>
+</view>
