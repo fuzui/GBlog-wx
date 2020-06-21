@@ -78,11 +78,15 @@ Page({
    * @param {*} e 
    */
   getUser(e){
-    wx.setStorageSync(Config.User, e.detail.userInfo);
-    this.setData({
-      modalName: null,
-    })
-    apiResult.success("登录成功");
+    if (!e.detail.userInfo) {
+      return apiResult.error("登录失败");
+    } else {
+      wx.setStorageSync(Config.User, e.detail.userInfo);
+      this.setData({
+        modalName: null,
+      })
+      return apiResult.success("登录成功");
+    }
   },
   /**
    * 评论者输入邮箱
