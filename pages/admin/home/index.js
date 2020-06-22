@@ -238,10 +238,9 @@ Page({
     this.setData({
       modalName: null
     })
-    apiResult.warn("功能开发中");
-    // wx.navigateTo({
-    //   url:"/pages/admin/attachment/index"
-    // })
+    wx.navigateTo({
+      url:"/pages/admin/attachment/home/index"
+    })
   },
   toSettingPage() {
     this.setData({

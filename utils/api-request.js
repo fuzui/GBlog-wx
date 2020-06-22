@@ -82,6 +82,31 @@ function PostBody(url, data = {}) {
   
 }
 
+function Upload(url, data = {}) {
+  return new Promise((resolve, reject) => {
+    wx.uploadFile({
+      url: url, 
+      filePath: data.path,
+      name: 'file',
+      formData: {
+      },
+      success(res) {
+        if (JSON.parse(res.data).status == apiResult.StateCode.success) {
+          resolve(JSON.parse(res.data).data)
+        } else {
+          apiResult.requestError(JSON.parse(res.data));
+          reject(JSON.parse(res.data))
+        }
+      },
+      fail(err) {
+        apiResult.error('网络连接失败');
+        reject(err)
+      }
+    })
+  });
+  
+}
+
 function Delete(url, data = {}) {
   return new Promise((resolve, reject) => {
     wx.request({
@@ -140,5 +165,6 @@ module.exports = {
   Post,
   PostBody,
   Delete,
-  Put
+  Put,
+  Upload
 }

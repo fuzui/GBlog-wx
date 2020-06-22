@@ -1,0 +1,64 @@
+<wxs src="../../../../utils/tools.wxs" module="tools" />
+<cu-custom bgImage="{{topImage}}" isCustom="{{true}}">
+  <view slot="content">附件</view>
+</cu-custom>
+<view class="cu-bar bg-white fixed" style="top:{{CustomBar}}px;">
+  <view class="margin-tb-sm text-center padding">
+    <button class="cu-btn bg-blue shadow" bindtap="showModal" data-target="uploadModal">
+      <text class="cuIcon-upload"></text>上传
+    </button>
+    <button class="cu-btn line-grey shadow" bindtap="showBatchView" wx:if="{{!batchView}}">
+      <text class="cuIcon-sort"></text>批量操作
+    </button>
+    <button class="cu-btn bg-red shadow" bindtap="deleteBatchAttachment" wx:if="{{batchView}}">
+      <text class="cuIcon-delete"></text>删除
+    </button>
+    <button class="cu-btn line-grey shadow" bindtap="cancelBatchView" wx:if="{{batchView}}">
+      <text class="cuIcon-close"></text>取消
+    </button>
+  </view>
+</view>
+
+<!-- 附件 -->
+<view class="grid col-2 padding-sm" style="margin-top:200rpx;">
+  <view class="padding-xs" wx:for="{{content}}" wx:for-item="item" wx:key="index">
+    <view class="bg-img padding-top-xl flex align-end shadow-blur {{tools.isContain(indexs,item.id)?'solids-blue':''}}" bindtap="{{batchView?'selectAtachment':'toDetailsPage'}}" data-id="{{item.id}}" data-index="{{index}}" style="background-image: url({{item.thumbPath}});height: 207rpx;">
+      <radio class="round" checked="{{tools.isContain(indexs,index)}}" wx:if="{{batchView}}"></radio>
+      <view class="bg-shadeBottom padding padding-top-xl flex-sub text-cut">
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 弹框加载 -->
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <image src='{{logo}}' class='png' mode='aspectFit'></image>
+  <view class='gray-text'>加载中...</view>
+</view>
+<!-- 弹框上传加载 -->
+<view class='cu-load load-modal' wx:if="{{uploadModal}}">
+  <image src='{{logo}}' class='png' mode='aspectFit'></image>
+  <view class='gray-text'>上传中...</view>
+</view>
+
+<view class="cu-modal bottom-modal {{modalName=='uploadModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white">
+      <view class="action text-blue"></view>
+      <view class="action text-blue" bindtap="hideModal"><text class="cuIcon-unfold text-blue"></text></view>
+    </view>
+    <view class="cu-list menu text-left">
+      <view class="cu-item arrow" bindtap="chooseImage" data-type="camera">
+        <view class="content">
+          <view>拍照</view>
+        </view>
+      </view>
+      <view class="cu-item arrow" bindtap="chooseImage" data-type="album">
+        <view class="content">
+          <view>手机相册选择</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

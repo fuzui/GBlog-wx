@@ -12,8 +12,8 @@ const Config = {
 //订阅配置
 const PushConfig = {
   isOpen: false,
-  updateKey: "vhOJ1····",//更新推送模板id
-  messageKey: "W56K····",//留言审核推送模板id，
+  updateKey: "vhOJ1·····································",//更新推送模板id
+  messageKey: "W56K5·····································",//留言审核推送模板id，
   SubscribeUrl: "http://127.0.0.1:5000",//订阅服务地址
 }
 //海报分享配置
@@ -37,7 +37,8 @@ const PageSize = {
   categorySize: 6,  //每页分类文章数
   tagSize: 7, //标签每页文章数
   photoSize: 10,  //每页光影数
-  journal: 10 //每页日记数
+  journal: 10 ,//每页日记数
+  attachmentSize: 12 //每页附件数
 }
 
 //随机默认图，可加减数组
@@ -104,9 +105,18 @@ function adminDeleteLink(linkId){
 function adminEditLink(linkId){
   return ApiBaseUrl + '/api/admin/links/'+linkId+'?admin_token=';
 }
-/**
- * 管理员接口
- */
+//获取附件详情
+function adminGetAttachmentDetails(id){
+  return ApiBaseUrl + '/api/admin/attachments/'+id+'?admin_token=';
+}
+//编辑附件名
+function adminEditAttachmentDetails(attachmentId){
+  return ApiBaseUrl + '/api/admin/attachments/'+attachmentId+'?admin_token=';
+}
+//根据日记id删除日记
+function adminDeleteAttachment(attachmentId){
+  return ApiBaseUrl + '/api/admin/attachments/'+attachmentId+'?admin_token=';
+}
 
 module.exports = {
   getThemeSettings: ApiBaseUrl + '/api/content/themes/activation/settings',
@@ -142,6 +152,12 @@ module.exports = {
   adminEditLink: adminEditLink,
   adminDeleteLink: adminDeleteLink,
   adminGetOption: ApiBaseUrl + '/api/admin/options/map_view?admin_token=',
+  adminGetAttachment: ApiBaseUrl + '/api/admin/attachments?admin_token=',
+  adminAddAttachment: ApiBaseUrl + '/api/admin/attachments/upload?admin_token=',
+  adminGetAttachmentDetails: adminGetAttachmentDetails,
+  adminEditAttachmentDetails: adminEditAttachmentDetails,
+  adminDeleteAttachment: adminDeleteAttachment,
+  adminBatchDeleteAttachment: ApiBaseUrl + '/api/admin/attachments?admin_token=',
   ApiBaseUrl,
   PageSize,
   ParserStyle,

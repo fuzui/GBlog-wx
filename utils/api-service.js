@@ -435,6 +435,91 @@ function adminGetOption() {
   })
 }
 
+/**
+ * 获取附件列表
+ */
+function adminGetAttachment(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.adminGetAttachment+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 上传附件
+ */
+function adminAddAttachment(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Upload(api.adminAddAttachment+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 获取附件详情
+ */
+function adminGetAttachmentDetails(id) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.adminGetAttachmentDetails(id)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据id编辑附件名
+ */
+function adminEditAttachmentDetails(attachmentId,param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Put(api.adminEditAttachmentDetails(attachmentId)+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据id删除附件
+ */
+function adminDeleteAttachment(attachmentId) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Delete(api.adminDeleteAttachment(attachmentId)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 批量删除附件
+ */
+function adminBatchDeleteAttachment(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Delete(api.adminBatchDeleteAttachment+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+
 module.exports = {
   getCategories,
   getTags,
@@ -466,5 +551,11 @@ module.exports = {
   adminGetLink,
   adminDeleteLink,
   adminEditLink,
-  adminGetOption
+  adminGetOption,
+  adminGetAttachment,
+  adminAddAttachment,
+  adminGetAttachmentDetails,
+  adminEditAttachmentDetails,
+  adminDeleteAttachment,
+  adminBatchDeleteAttachment
 }

@@ -99,10 +99,17 @@ function tsFormatTime(string) {
       }
       return e
     }
+    function isContain(arr,id) {
+      if(arr.indexOf(id) > -1){
+        return true
+      }
+      return false
+    }
 module.exports = {
   formatTime:formatTime,
   tsFormatTime: tsFormatTime,
   getDateDiff:getDateDiff,
   getRandomImage: getRandomImage,
-  coutNum: coutNum
+  coutNum: coutNum,
+  isContain: isContain
 }
