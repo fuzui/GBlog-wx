@@ -99,7 +99,6 @@ Page({
   async deleteJournal(e) {
     var that = this;
     const index = e.currentTarget.dataset.index;
-    console.log(index)
     const id = e.currentTarget.dataset.id;
      wx.showModal({
       title: 'Creator',
@@ -118,7 +117,6 @@ Page({
             });
             apiResult.success("已删除");
           } catch (error) {
-            console.log(error)
             apiResult.error("网络异常");
             return error.message;
           }

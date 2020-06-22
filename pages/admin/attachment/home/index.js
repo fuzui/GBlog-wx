@@ -105,7 +105,6 @@ Page({
     var that = this;
     const type = event.currentTarget.dataset.type;
     const sourceType = [type];
-    console.log(sourceType)
     that.setData({
       uploadModal: true,
       modalName: null
@@ -116,9 +115,7 @@ Page({
       sourceType: sourceType, //从相册选择
       success: async(res) => {
         const result = await that.adminAddAttachment(res.tempFilePaths[0]);
-        console.log(result)
         that.data.content.unshift(result);
-        console.log(that.data.content)
         that.setData({
           content: that.data.content
         })
@@ -134,7 +131,6 @@ Page({
           uploadModal: false
         })
         apiResult.warn("取消上传")
-        console.log(err)
       }
     });
     
@@ -181,7 +177,6 @@ Page({
             })
 
           } catch (error) {
-            console.log(error)
             apiResult.error("网络异常");
             return error.message;
           }

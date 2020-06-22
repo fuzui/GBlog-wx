@@ -25,7 +25,6 @@ Page({
       loadModal:true
     })
     const options = await this.adminGetOption();
-    console.log(options)
     that.setData({
       options: options,
       loadModal:false

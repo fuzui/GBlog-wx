@@ -41,7 +41,6 @@ Page({
       loadModal:true
     })
     const links = await this.adminGetLink();
-    console.log(links)
     that.setData({
       links: links,
       loadModal:false
@@ -127,8 +126,6 @@ Page({
     var that = this;
     const linkId = that.data.currentId;
     const index = that.data.currentIndex;
-    console.log(that.data.currentId)
-    console.log(that.data.currentIndex)
     if(!this.data.name){
       apiResult.warn("网站名为空");
       return ;
@@ -189,7 +186,6 @@ Page({
   async deleteLink(e) {
     var that = this;
     const index = e.currentTarget.dataset.index;
-    console.log(index)
     const id = e.currentTarget.dataset.id;
      wx.showModal({
       title: 'Creator',
@@ -207,7 +203,6 @@ Page({
             });
             apiResult.success("已删除");
           } catch (error) {
-            console.log(error)
             apiResult.error("网络异常");
             return error.message;
           }

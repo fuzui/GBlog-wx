@@ -33,7 +33,6 @@ Page({
       loadModal:true
     })
     const journalList = await this.adminGetJournal();
-    console.log(journalList)
     that.setData({
       journalList: journalList,
       loadModal:false

@@ -5,7 +5,6 @@ function requestError(data) {
     mask:true,
     image:'/images/prompt/fail.png'  
   });
-  console.log(data)
   if (data.status == 401) {
     let pages = getCurrentPages();
     let current_page = pages[pages.length - 1].route

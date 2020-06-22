@@ -108,7 +108,6 @@ Page({
               delta: 1,
             })
           } catch (error) {
-            console.log(error)
             apiResult.error("网络异常");
             return error.message;
           }
