@@ -97,6 +97,10 @@ function getTagsArticle(slug){
 function adminDeleteJournal(journalId){
   return ApiBaseUrl + '/api/admin/journals/'+journalId+'?admin_token=';
 }
+//根据日记id修改日记
+function adminEditJournal(journalId){
+  return ApiBaseUrl + '/api/admin/journals/'+journalId+'?admin_token=';
+}
 //根据友链id删除友链
 function adminDeleteLink(linkId){
   return ApiBaseUrl + '/api/admin/links/'+linkId+'?admin_token=';
@@ -145,7 +149,7 @@ module.exports = {
   adminGetStatistics: ApiBaseUrl + '/api/admin/statistics/user?admin_token=',
   adminAddJournal: ApiBaseUrl + '/api/admin/journals?admin_token=',
   adminGetJournal: ApiBaseUrl + '/api/admin/journals?admin_token=',
-  adminEditJournal: ApiBaseUrl + '/api/admin/journals?admin_token=',
+  adminEditJournal: adminEditJournal,
   adminDeleteJournal: adminDeleteJournal,
   adminAddLink: ApiBaseUrl + '/api/admin/links?admin_token=',
   adminGetLink: ApiBaseUrl + '/api/admin/links?admin_token=',

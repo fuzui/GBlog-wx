@@ -9,6 +9,10 @@ Page({
     topImage: CustomStyle.topImage,
     logo: "",
     journalContent: "",
+    currentContent: "",
+    currentIndex: 0,
+    currentId: 0,
+    currentType: 'PUBLIC',
     journalList: [],
     pageNo: 0,
     bottomFlag: false,
@@ -47,20 +51,30 @@ Page({
       journalContent: e.detail.value
     });
   },
+  journalEditInput(e){
+    this.setData({
+      currentContent: e.detail.value
+    });
+  },
   /**
    * 新建日记
    */
   async addJournal(){
+    var that = this;
     if(!this.data.journalContent){
       apiResult.warn("日志不能为空");
       return ;
     }
     const param = {
       sourceContent: this.data.journalContent,
-      type: "PUBLIC"
+      type: this.data.currentType
     }
     try {
-      await apiService.adminAddJournal(param);
+      const result = await apiService.adminAddJournal(param);
+      that.data.journalList.unshift(result);
+      that.setData({
+        journalList:that.data.journalList
+      })
       apiResult.success("发表成功");
        
     } catch (error) {
@@ -124,9 +138,36 @@ Page({
       }
     })
   },
-  openEditModel(){
-    apiResult.warn("编辑功能开发中···");
+  /**
+   * 修改日记
+   */
+  async editJournal(){
+    var that = this;
+    const journalId = that.data.currentId;
+    const index = that.data.currentIndex;
+    if(!this.data.currentContent){
+      apiResult.warn("内容为空");
+      return ;
+    }
+    const param = {
+      sourceContent: this.data.currentContent,
+      type: this.data.currentType
+    }
+    console.log(this.data.currentType)
+    try {
+      const result = await apiService.adminEditJournal(journalId,param);
+      // //视图修改，而非重新调用接口刷新
+      that.data.journalList.splice(index,1,result);
+      that.setData({
+        journalList:that.data.journalList
+      })
+      apiResult.success("修改成功");
+      this.hideModal();
+    } catch (error) {
+      return error.message;
+    }
   },
+
   /**
    * 向下滑动拉去下一页
    */
@@ -144,4 +185,44 @@ Page({
     }
     
   },
+
+  showModal(e) {
+    
+    var that = this;
+    const index = e.currentTarget.dataset.index
+    const journalList = that.data.journalList;
+    that.setData({
+      modalName: e.currentTarget.dataset.target,
+      currentId: journalList[index].id,
+      currentType: journalList[index].type,
+      currentContent: journalList[index].sourceContent,
+      currentIndex: index
+    })
+    
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null,
+      currentId: 0,
+      currentType: "PUBLIC",
+      currentContent: "",
+      currentIndex: 0
+    })
+  },
+  isPublic(){
+    var that = this;
+    var currentType = this.data.currentType;
+    if(currentType == 'PUBLIC'){
+      currentType = 'INTIMATE';
+    }else{
+      currentType = 'PUBLIC';
+    }
+    that.setData({
+      currentType: currentType
+    })
+
+  }
 })

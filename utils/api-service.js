@@ -366,6 +366,20 @@ function adminDeleteJournal(journalId) {
 }
 
 /**
+ * 根据友链id修改友链
+ */
+function adminEditJournal(journalId,param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Put(api.adminEditJournal(journalId)+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
  * 新建友链
  */
 function adminAddLink(param) {
@@ -547,6 +561,7 @@ module.exports = {
   adminAddJournal,
   adminGetJournal,
   adminDeleteJournal,
+  adminEditJournal,
   adminAddLink,
   adminGetLink,
   adminDeleteLink,

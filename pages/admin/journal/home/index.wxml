@@ -7,8 +7,12 @@
     
   </view>
   <view class="cu-card dynamic no-card">
-   <view class="cu-form-group ">
-      <textarea class="content" maxlength="-1" bindinput="journalInput" placeholder="写点什么吧..." value="{{commentContent}}"></textarea>
+    <view class="cu-form-group ">
+      <textarea class="content" maxlength="-1" bindinput="journalInput" placeholder="写点什么吧..."></textarea>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">是否公开</view>
+      <switch class="orange radius sm" bindchange="isPublic" checked="{{currentType =='PUBLIC'}}"></switch>
     </view>
     <view class="cu-bar btn-group">
       <button class="cu-btn bg-blue shadow-blur" bindtap="addJournal">保存</button>
@@ -23,11 +27,11 @@
         <text class="cuIcon-timefill text-gray"></text> {{tools.getDateDiff(item.createTime)}}
       </view>
       <view class="action">
-        <text class="cuIcon-edit text-blue" bindtap="openEditModel" data-id="{{item.id}}" data-index="{{index}}"></text>
+        <text class="cuIcon-edit text-blue" bindtap="showModal" data-target="editModal" data-index="{{index}}"></text>
         <text class="cuIcon-delete text-red" bindtap="deleteJournal" data-id="{{item.id}}" data-index="{{index}}"></text>
       </view>
     </view>
-      <view class="cu-item text-{{bgColor[index%6]}} cuIcon-edit ">
+      <view class="cu-item text-{{item.type=='PUBLIC'?'blue':'grey'}} cuIcon-edit ">
         <view class="content bg-grey shadow-blur">
           <parser html="{{item.content}}"
             gesture-zoom
@@ -46,5 +50,31 @@
   <!-- 底部分割线 -->
   <view class="line" wx-if="{{bottomFlag}}">
     <span>这天开始写日记的~</span>
+  </view>
+</view>
+
+<!-- 修改框 -->
+<view class="cu-modal {{modalName=='editModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">编辑日记</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="cu-form-group">
+      <textarea class="content" maxlength="-1" bindinput="journalEditInput" value="{{currentContent}}" disabled="{{modalName!='editModal'}}"></textarea>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">是否公开</view>
+      <switch class="orange radius sm" bindchange="isPublic" checked="{{currentType =='PUBLIC'}}"></switch>
+    </view>
+    
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="editJournal">确认修改</button>
+      </view>
+    </view>
   </view>
 </view>
