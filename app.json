@@ -79,7 +79,5 @@
 		"downloadFile": 60000
 	},
 	"debug": true,
-	"navigateToMiniProgramAppIdList": [
-	],
 	"sitemapLocation": "sitemap.json"
 }
