@@ -31,7 +31,7 @@
         <text class="cuIcon-delete text-red" bindtap="deleteJournal" data-id="{{item.id}}" data-index="{{index}}"></text>
       </view>
     </view>
-      <view class="cu-item text-{{item.type=='PUBLIC'?'blue':'grey'}} cuIcon-edit ">
+      <view class="cu-item {{item.type=='PUBLIC'?'text-blue cuIcon-unlock':'text-grey cuIcon-lock'}}">
         <view class="content bg-grey shadow-blur">
           <parser html="{{item.content}}"
             gesture-zoom
