@@ -8,7 +8,8 @@ Page({
     statistics: {},
     isLogin: false,
     username: "",
-    password: ""
+    password: "",
+    loginMessage: false
   },
   onLoad: function () { 
     var that = this;
@@ -19,7 +20,8 @@ Page({
   async onShow() {
     var that = this;
     that.setData({
-      loadModal:true
+      loadModal:true,
+      loginMessage: false
     })
     var token = wx.getStorageSync(Config.Token)
     console.log(token)
@@ -262,4 +264,18 @@ Page({
       return error.message;
     }
   },
+
+  getMessage() {
+    var that = this;
+    const loginMessage = that.data.loginMessage;
+    if(loginMessage){
+      that.setData({
+        loginMessage: false
+      })
+    }else{
+      that.setData({
+        loginMessage: true
+      })
+    }
+  }
 })

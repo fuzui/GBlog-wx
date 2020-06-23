@@ -103,20 +103,41 @@
     Halo
   </view>
   <view class="cu-card dynamic no-card">
-   <view class="cu-form-group">
-      <text class="cuIcon-people"></text>
-      <input class="padding-left" placeholder="用户名/邮箱" bindinput="usernameInput"></input>
-    </view>
-    <view class="cu-form-group">
-      <text class="cuIcon-lock"></text>
-      <input password="{{true}}" class="padding-left" placeholder="密码" bindinput="passwordInput"></input>
-    </view>
-    <view class="cu-bar btn-group">
-      <button class="cu-btn bg-blue shadow-blur" bindtap="login">登录</button>
-    </view>
+    <block wx:if="{{loginMessage}}">
+      
+      <view class="solid-bottom text-sm padding">
+        <text class="text-grey">该小程序管理端仅供博主使用；</text>
+      </view>
+      <view class="solid-bottom text-sm padding">
+        <text class="text-grey">欢迎搭建配置一个专属自己的小程序！</text>
+      </view>
+      <view class="solid-bottom text-sm padding">
+        <text class="text-grey">开源地址：</text><text class="text-blue" bindtap="CopyLink" 
+        data-link="https://github.com/fuzui">https://github.com/fuzui</text>
+      </view>
+      <view class="padding">
+        <view class="cu-avatar round" style="background-image:url('/images/about/github.png');" 
+        bindtap="CopyLink" data-link="https://github.com/fuzui"></view>
+        <view class="cu-avatar round margin-left" style="background-image:url('/images/about/gitee.png');"
+         bindtap="CopyLink" data-link="https://gitee.com/fuzui"></view>
+      </view>
+    </block>
+    <block wx:if="{{!loginMessage}}">
+      <view class="cu-form-group">
+        <text class="cuIcon-people"></text>
+        <input class="padding-left" placeholder="用户名/邮箱" bindinput="usernameInput"></input>
+      </view>
+      <view class="cu-form-group">
+        <text class="cuIcon-lock"></text>
+        <input password="{{true}}" class="padding-left" placeholder="密码" bindinput="passwordInput"></input>
+      </view>
+      <view class="cu-bar btn-group">
+        <button class="cu-btn bg-blue shadow-blur" bindtap="login">登录</button>
+      </view>
+    </block>
     <view class="cu-bar bg-white justify-end">
       <view class="action">
-        <text class="cuIcon-settings text-blue"></text>
+        <text class="{{loginMessage?'cuIcon-repeal':'cuIcon-settings'}} text-blue" bindtap="getMessage"></text>
       </view>
     </view>
   </view>

@@ -9,7 +9,8 @@ Page({
     topImage: CustomStyle.topImage,
     logo: "",
     username: "",
-    password: ""
+    password: "",
+    loginMessage: false
   },
   async onLoad() { 
     var that = this;
@@ -18,6 +19,10 @@ Page({
     })
   },
   async onShow() {
+    var that = this;
+    that.setData({
+      loginMessage: false
+    })
   },
   
   /**
@@ -62,6 +67,34 @@ Page({
       });  
     } catch (error) {
       return error.message;
+    }
+  },
+  /**
+   * 复制
+   * @param {*} e 
+   */
+  CopyLink(e) {
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.link,
+      success: res => {
+        wx.showToast({
+          title: '已复制',
+          duration: 1000,
+        })
+      }
+    })
+  },
+  getMessage() {
+    var that = this;
+    const loginMessage = that.data.loginMessage;
+    if(loginMessage){
+      that.setData({
+        loginMessage: false
+      })
+    }else{
+      that.setData({
+        loginMessage: true
+      })
     }
   }
   
