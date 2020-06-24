@@ -533,6 +533,75 @@ function adminBatchDeleteAttachment(param) {
   })
 }
 
+/**
+ * 获取主题列表
+ */
+function adminGetTheme() {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.adminGetTheme+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 启用主题
+ */
+function adminActivatesTheme(thmemId) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Post(api.adminActivatesTheme(thmemId)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据id删除主题
+ */
+function adminDeleteTheme(thmemId) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Delete(api.adminDeleteTheme(thmemId)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据id在线更新主题
+ */
+function adminFetchingTheme(thmemId) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Put(api.adminFetchingTheme(thmemId)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 拉取新主题
+ */
+function adminFetchingNewTheme(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Post(api.adminFetchingNewTheme+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
 
 module.exports = {
   getCategories,
@@ -572,5 +641,10 @@ module.exports = {
   adminGetAttachmentDetails,
   adminEditAttachmentDetails,
   adminDeleteAttachment,
-  adminBatchDeleteAttachment
+  adminBatchDeleteAttachment,
+  adminGetTheme,
+  adminActivatesTheme,
+  adminDeleteTheme,
+  adminFetchingTheme,
+  adminFetchingNewTheme
 }

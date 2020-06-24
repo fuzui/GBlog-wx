@@ -122,6 +122,18 @@ function adminDeleteAttachment(attachmentId){
   return ApiBaseUrl + '/api/admin/attachments/'+attachmentId+'?admin_token=';
 }
 
+function adminActivatesTheme(thmemId) {
+  return ApiBaseUrl + '/api/admin/themes/'+thmemId+'/activation?admin_token=';
+}
+
+function adminDeleteTheme(thmemId) {
+  return ApiBaseUrl + '/api/admin/themes/'+thmemId+'?admin_token=';
+}
+
+function adminFetchingTheme(thmemId) {
+  return ApiBaseUrl + '/api/admin/themes/fetching/'+thmemId+'?admin_token=';
+}
+
 module.exports = {
   getThemeSettings: ApiBaseUrl + '/api/content/themes/activation/settings',
   getOptionByKey: getOptionByKey,
@@ -162,6 +174,11 @@ module.exports = {
   adminEditAttachmentDetails: adminEditAttachmentDetails,
   adminDeleteAttachment: adminDeleteAttachment,
   adminBatchDeleteAttachment: ApiBaseUrl + '/api/admin/attachments?admin_token=',
+  adminGetTheme: ApiBaseUrl + '/api/admin/themes?admin_token=',
+  adminActivatesTheme: adminActivatesTheme,
+  adminDeleteTheme: adminDeleteTheme,
+  adminFetchingTheme: adminFetchingTheme,
+  adminFetchingNewTheme: ApiBaseUrl + '/api/admin/themes/fetching?admin_token=',
   ApiBaseUrl,
   PageSize,
   ParserStyle,

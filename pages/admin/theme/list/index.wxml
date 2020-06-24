@@ -1,0 +1,105 @@
+<wxs src="../../../../utils/tools.wxs" module="tools" />
+<cu-custom bgImage="{{topImage}}" isCustom="{{true}}">
+  <view slot="content">主题</view>
+</cu-custom>
+
+
+<view class="cu-card case" wx:for="{{themeList}}" wx:key="index">
+  <view class="cu-item shadow">
+    <view class="cu-bar bg-white">
+      <view class="action text-lg">
+        <text class="text-black text-bold">{{item.name}}</text>
+      </view>
+    </view>
+    <view class="image">
+      <image src="{{item.screenshots}}" mode="widthFix"></image>
+      <view class="cu-tag bg-blue" wx:if="{{item.version}}">{{item.version}}</view>
+      <view class="cu-bar bg-shadeBottom">
+        <text class="text-cut" wx:if="{{item.description}}">{{item.description}}</text>
+      </view>
+    </view>
+    
+    <view class="bg-white text-center" style="background-color:#fafafa;">
+      
+        <view class="flex">
+          <view class="flex-sub bg-white padding-sm margin-xs radius solids-right" 
+            bindtap="activatesTheme" data-id="{{item.id}}" data-index="{{index}}">
+            <text class="{{item.activated?'cuIcon-unlock text-blue':'cuIcon-lock text-grey'}} padding-right-sm">
+            </text>
+            {{item.activated?'已启用':'启用'}}
+          </view>
+          <view class="flex-sub bg-white padding-sm margin-xs radius solids-right" bindtap="setTheme">
+            <text class="cuIcon-settings text-grey padding-right-sm"></text>设置
+          </view>
+          <view class="flex-sub bg-white padding-sm margin-xs radius" bindtap="showModal" 
+            data-target="moreModal" data-id="{{item.id}}" data-index="{{index}}">
+            <text class="cuIcon-more text-grey padding-right-sm"></text>更多
+          </view>
+        </view>
+    </view>
+  </view>
+
+</view>
+
+<!-- 更多 -->
+<view class="cu-modal bottom-modal {{modalName=='moreModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white">
+      <view class="action text-blue"></view>
+      <view class="action text-blue" bindtap="hideModal"><text class="cuIcon-unfold text-blue"></text></view>
+    </view>
+    <view class="cu-list menu text-center">
+      <view class="cu-item" bindtap="deleteTheme" wx:if="{{!themeList[currentIndex].activated}}">
+        <view class="content">
+          <view><text class="cuIcon-delete text-grey padding-right-sm"></text>删除</view>
+        </view>
+      </view>
+      <view class="cu-item" bindtap="fetchingTheme">
+        <view class="content">
+          <view><text class="cuIcon-upload text-grey padding-right-sm"></text>在线更新</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 添加按钮 -->
+<button class="cu-btn icon bg-blue add-theme" bindtap="showModal" data-target="addModal">
+  <text class="cuIcon-add"></text>
+</button>
+
+<!-- 加载框 -->
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <image src="{{logo}}" class='png' mode='aspectFit'></image>
+  <view class='gray-text'>{{message}}</view>
+</view>
+
+<!-- 添加、修改框 -->
+<view class="cu-modal {{modalName=='addModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">安装主题</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="cu-bar bg-white">
+      <view class="action text-lg">
+        <text class="text-black text-bold">远程地址:</text>
+      </view>
+    </view>
+    <view class="cu-form-group text-left solid solid-bottom">
+      <input bindinput="urlInput"></input>
+    </view>
+    
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn bg-blue margin-left" bindtap="fetchingNewTheme">下载</button>
+      </view>
+    </view>
+    <view class="text-sm text-grey padding-bottom-sm">
+      远程地址即主题仓库地址，使用这种方式安装的一般为开发版本，请谨慎使用。
+      更多主题请访问： https://halo.run/p/themes
+    </view>
+  </view>
+</view>
