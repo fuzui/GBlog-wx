@@ -165,7 +165,7 @@ Page({
   },
 
   /**
-   * 获取日记列表
+   * 获取友链
    */
   async adminGetLink() {
     try {

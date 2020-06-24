@@ -34,7 +34,7 @@ Page({
     });
   },
   /**
-   * 获取日记
+   * 获取友链
    */
   async getLinks() {
     try {
