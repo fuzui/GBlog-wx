@@ -117,7 +117,7 @@ function adminGetAttachmentDetails(id){
 function adminEditAttachmentDetails(attachmentId){
   return ApiBaseUrl + '/api/admin/attachments/'+attachmentId+'?admin_token=';
 }
-//根据日记id删除日记
+//根据附件id删除附件
 function adminDeleteAttachment(attachmentId){
   return ApiBaseUrl + '/api/admin/attachments/'+attachmentId+'?admin_token=';
 }
@@ -132,6 +132,19 @@ function adminDeleteTheme(thmemId) {
 
 function adminFetchingTheme(thmemId) {
   return ApiBaseUrl + '/api/admin/themes/fetching/'+thmemId+'?admin_token=';
+}
+
+//获取图库详情
+function adminGetPhotoDetails(photoId){
+  return ApiBaseUrl + '/api/admin/photos/'+photoId+'?admin_token=';
+}
+//编辑图库
+function adminEditPhotoDetails(photoId){
+  return ApiBaseUrl + '/api/admin/photos/'+photoId+'?admin_token=';
+}
+//根据图库id删除图库
+function adminDeletePhoto(photoId){
+  return ApiBaseUrl + '/api/admin/photos/'+photoId+'?admin_token=';
 }
 
 module.exports = {
@@ -179,6 +192,11 @@ module.exports = {
   adminDeleteTheme: adminDeleteTheme,
   adminFetchingTheme: adminFetchingTheme,
   adminFetchingNewTheme: ApiBaseUrl + '/api/admin/themes/fetching?admin_token=',
+  adminGetPhoto: ApiBaseUrl + '/api/admin/photos?admin_token=',
+  adminAddPhoto: ApiBaseUrl + '/api/admin/photos?admin_token=',
+  adminGetPhotoDetails: adminGetPhotoDetails,
+  adminEditPhotoDetails: adminEditPhotoDetails,
+  adminDeletePhoto: adminDeletePhoto,
   ApiBaseUrl,
   PageSize,
   ParserStyle,

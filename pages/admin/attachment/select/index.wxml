@@ -1,0 +1,29 @@
+<wxs src="../../../../utils/tools.wxs" module="tools" />
+<cu-custom bgImage="{{topImage}}" isCustom="{{true}}">
+  <view slot="content">附件选择</view>
+</cu-custom>
+<view class="cu-bar bg-white fixed" style="top:{{CustomBar}}px;">
+  <view class="margin-tb-sm text-center padding">
+    <button class="cu-btn line-grey shadow" bindtap="returnPage">
+      <text class="cuIcon-back"></text>返回
+    </button>
+    <button class="cu-btn bg-blue shadow margin-left-xl" bindtap="submitSelect">
+      <text class="cuIcon-check"></text>确定
+    </button>
+  </view>
+</view>
+
+<!-- 附件 -->
+<view class="grid col-2 padding-sm" style="margin-top:200rpx;">
+  <view class="padding-xs" wx:for="{{content}}" wx:for-item="item" wx:key="index">
+    <view class="bg-img padding-top-xl flex align-end shadow-blur {{selectId==item.id?'solids-blue':''}}" bindtap="selectAttachment" data-id="{{item.id}}" data-index="{{index}}" style="background-image: url({{item.thumbPath}});height: 207rpx;">
+      <radio class="round" checked="{{selectId==item.id}}"></radio>
+    </view>
+  </view>
+</view>
+
+<!-- 弹框加载 -->
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <image src='{{logo}}' class='png' mode='aspectFit'></image>
+  <view class='gray-text'>加载中...</view>
+</view>

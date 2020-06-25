@@ -603,6 +603,76 @@ function adminFetchingNewTheme(param) {
   })
 }
 
+/**
+ * 获取图库列表
+ */
+function adminGetPhoto(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.adminGetPhoto+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 添加图库
+ */
+function adminAddPhoto(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.PostBody(api.adminAddPhoto+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 获取图库详情
+ */
+function adminGetPhotoDetails(photoId) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.adminGetPhotoDetails(photoId)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据id编辑图库
+ */
+function adminEditPhotoDetails(photoId,param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Put(api.adminEditPhotoDetails(photoId)+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据id删除图库
+ */
+function adminDeletePhoto(photoId) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Delete(api.adminDeletePhoto(photoId)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
 module.exports = {
   getCategories,
   getTags,
@@ -646,5 +716,10 @@ module.exports = {
   adminActivatesTheme,
   adminDeleteTheme,
   adminFetchingTheme,
-  adminFetchingNewTheme
+  adminFetchingNewTheme,
+  adminGetPhoto,
+  adminAddPhoto,
+  adminGetPhotoDetails,
+  adminEditPhotoDetails,
+  adminDeletePhoto
 }
