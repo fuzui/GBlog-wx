@@ -22,7 +22,7 @@
 <!-- 附件 -->
 <view class="grid col-2 padding-sm" style="margin-top:200rpx;">
   <view class="padding-xs" wx:for="{{content}}" wx:for-item="item" wx:key="index">
-    <view class="bg-img padding-top-xl flex align-end shadow-blur {{tools.isContain(indexs,item.id)?'solids-blue':''}}" bindtap="{{batchView?'selectAtachment':'toDetailsPage'}}" data-id="{{item.id}}" data-index="{{index}}" style="background-image: url({{item.thumbPath}});height: 207rpx;">
+    <view class="bg-img padding-top-xl flex align-end shadow-blur {{tools.isContain(indexs,item.id)?'solids-blue':''}}" bindtap="{{batchView?'selectAttachment':'toDetailsPage'}}" data-id="{{item.id}}" data-index="{{index}}" style="background-image: url({{item.thumbPath}});height: 207rpx;">
       <radio class="round" checked="{{tools.isContain(indexs,index)}}" wx:if="{{batchView}}"></radio>
       <view class="bg-shadeBottom padding padding-top-xl flex-sub text-cut">
         {{item.name}}

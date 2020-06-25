@@ -220,7 +220,7 @@ Page({
       indexs: []
     })
   },
-  selectAtachment(event){
+  selectAttachment(event){
     var that = this;
     const id = event.currentTarget.dataset.index; //这里id存附件数组的index
     const indexs = that.data.indexs;
