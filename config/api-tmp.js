@@ -208,6 +208,8 @@ module.exports = {
   adminAddMenu: ApiBaseUrl + '/api/admin/menus?admin_token=',
   adminEditMenu: adminEditMenu,
   adminDeleteMenu: adminDeleteMenu,
+  adminEditUser: ApiBaseUrl + '/api/admin/users/profiles?admin_token=',
+  adminEditPassword: ApiBaseUrl + '/api/admin/users/profiles/password?admin_token=',
   ApiBaseUrl,
   PageSize,
   ParserStyle,

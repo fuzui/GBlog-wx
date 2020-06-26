@@ -5,7 +5,9 @@
 
 <view class="cu-list menu-avatar">
     <view class="cu-item">
-      <view class="cu-avatar round lg" style="background-image:url({{statistics.user.avatar}});"></view>
+      <view class="cu-avatar round lg" style="background-image:url({{statistics.user.avatar}});" bindtap="toSettingPage" bindtap="showModal" data-target="selectAvatarModal">
+        <view class="cu-tag badge bg-cyan"><text class="cuIcon-post text-white"></text></view>
+      </view>
       <view class="content">
         <view class="text-grey">{{statistics.user.nickname}}</view>
         <view class="text-gray text-sm flex">
@@ -14,7 +16,7 @@
           </text>
         </view>
       </view>
-      <view class="action">
+      <view class="action" bindtap="showModal" data-target="selectModal">
         <view class="text-grey text-xs"></view>
         <view class="cu-tag cuIcon-more bg-grey sm"></view>
       </view>
@@ -69,4 +71,133 @@
         <text class="text-grey">文章总阅读 {{statistics.visitCount}} 次。</text>
       </view>
     </view>
+</view>
+
+<view class="cu-modal bottom-modal {{modalName=='selectModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white">
+      <view class="action text-blue"></view>
+      <view class="action text-blue" bindtap="hideModal"><text class="cuIcon-unfold text-blue"></text></view>
+    </view>
+    <view class="cu-list menu text-left">
+      <view class="cu-item arrow" bindtap="toSettingPage" bindtap="showModal" data-target="selectAvatarModal">
+        <view class="content">
+          <view>更换头像</view>
+        </view>
+      </view>
+      <view class="cu-item arrow" bindtap="showModal" data-target="editUserModal" data-type="editUser">
+        <view class="content">
+          <view>修改信息</view>
+        </view>
+      </view>
+      <view class="cu-item arrow" bindtap="showModal" data-target="editPasswordModal">
+        <view class="content">
+          <view>修改密码</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 修改信息框 -->
+<view class="cu-modal {{modalName=='editUserModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">修改个人信息</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="cu-form-group text-left">
+      <view class="title">用户名</view>
+      <input value="{{username}}" bindinput="usernameInput"></input>
+    </view>
+    <view class="cu-form-group text-left">
+      <view class="title">昵称</view>
+      <input value="{{nickname}}" bindinput="nicknameInput"></input>
+    </view>
+    <view class="cu-form-group text-left">
+      <view class="title">邮箱</view>
+      <input value="{{email}}" bindinput="emailInput"></input>
+    </view>
+    <view class="cu-form-group text-left">
+      <view class="title">个人说明</view>
+      <input value="{{description}}" bindinput="descriptionInput"></input>
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="editUser">确认修改</button>  
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 修改密码框 -->
+<view class="cu-modal {{modalName=='editPasswordModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">修改密码</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="cu-form-group text-left">
+      <view class="title">原密码</view>
+      <input password="{{isOldPassword}}" bindinput="oldPasswordInput"></input>
+      <text class="{{isOldPassword?'cuIcon-attentionforbid text-grey':'cuIcon-attention text-blue'}}" bindtap="viewPassword" data-type="isOldPassword"></text>
+    </view>
+    <view class="cu-form-group text-left">
+      <view class="title">新密码</view>
+      <input password="{{isNewPassword}}" bindinput="newPasswordInput"></input>
+      <text class="{{isNewPassword?'cuIcon-attentionforbid text-grey':'cuIcon-attention text-blue'}}" bindtap="viewPassword" data-type="isNewPassword"></text>
+    </view>
+    <view class="cu-form-group text-left">
+      <view class="title">确认密码</view>
+      <input password="{{isConfirmPassword}}" bindinput="confirmPasswordInput"></input>
+      <text class="{{isConfirmPassword?'cuIcon-attentionforbid text-grey':'cuIcon-attention text-blue'}}" bindtap="viewPassword" data-type="isConfirmPassword"></text>
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
+        <button class="cu-btn bg-green margin-left" bindtap="editPassword">确认修改</button>  
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 上传头像 -->
+<view class="cu-modal {{modalName=='selectAvatarModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">选择上传方式</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="cu-bar tabbar bg-white">
+      <view class="action text-gray add-action">
+        <button class="cu-btn cuIcon-pick bg-gradual-orange shadow" bindtap="chooseImage" data-type="camera"></button>
+        手机传
+      </view>
+      <view class="action text-gray add-action">
+        <button class="cu-btn cuIcon-camera bg-gradual-blue shadow" bindtap="chooseImage" data-type="album"></button>
+        即时拍
+      </view>
+      <view class="action text-gray add-action">
+        <button class="cu-btn cuIcon-pic bg-gradual-pink shadow" bindtap="toChooseAttachment" data-type="album"></button>
+        附件选
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 弹框加载 -->
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <image src='{{logo}}' class='png' mode='aspectFit'></image>
+  <view class='gray-text'>加载中...</view>
+</view>
+<!-- 弹框上传加载 -->
+<view class='cu-load load-modal' wx:if="{{uploadModal}}">
+  <image src='{{logo}}' class='png' mode='aspectFit'></image>
+  <view class='gray-text'>上传中...</view>
 </view>

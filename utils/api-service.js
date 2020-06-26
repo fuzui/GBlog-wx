@@ -729,6 +729,34 @@ function adminDeleteMenu(menuId) {
   })
 }
 
+/**
+ * 修改用户信息
+ */
+function adminEditUser(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Put(api.adminEditUser+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 修改密码
+ */
+function adminEditPassword(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Put(api.adminEditPassword+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
 module.exports = {
   getCategories,
   getTags,
@@ -781,5 +809,7 @@ module.exports = {
   adminGetMenu,
   adminAddMenu,
   adminEditMenu,
-  adminDeleteMenu
+  adminDeleteMenu,
+  adminEditUser,
+  adminEditPassword
 }
