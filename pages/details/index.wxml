@@ -115,7 +115,7 @@
       <!-- 暂无评论 -->
       <view wx:if="{{!comments.length}}">
         <view class="nocomment">
-          <image src="/images/bg/nocommnet.png"></image>
+          <image src="/images/bg/nocomment.png"></image>
           
         </view>
         <view class="text-df text-center text-grey">暂无评论</view>

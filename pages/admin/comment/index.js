@@ -30,7 +30,7 @@ Page({
     that.setData({
       loadModal:true
     })
-    const commentList = await this.getCommnet();
+    const commentList = await this.getComment();
     that.setData({
       commentList: commentList,
       loadModal:false
@@ -92,7 +92,7 @@ Page({
   /**
    * 获取评论列表
    */
-  async getCommnet() {
+  async getComment() {
     var that = this;
     try {
       const type = that.data.type;
@@ -133,7 +133,7 @@ Page({
       confirmText: '回收',
       success: async(res) => {
         if (res.confirm) {
-          await that.editCommnet(id,'RECYCLE',index); 
+          await that.editComment(id,'RECYCLE',index); 
         }
       }
     })
@@ -146,7 +146,7 @@ Page({
     var that = this;
     const index = e.currentTarget.dataset.index;
     const id = e.currentTarget.dataset.id;
-    await that.editCommnet(id,'PUBLISHED',index); 
+    await that.editComment(id,'PUBLISHED',index); 
   },
 
   /**
@@ -188,7 +188,7 @@ Page({
   /**
    * 修改日记
    */
-  async editCommnet(id,status,index){
+  async editComment(id,status,index){
     var that = this;
     const type = that.data.type;
     var result = {}
@@ -218,7 +218,7 @@ Page({
     that.setData({
       pageNo: pageNo,
     });
-    const content = await this.getCommnet();
+    const content = await this.getComment();
     if(content){
       that.setData({
         commentList: content

@@ -105,23 +105,12 @@ function tsFormatTime(string) {
       }
       return false
     }
-    function getCommnetStatus(status){
-      if(status == "PUBLISHED"){
-        return "已发布";
-      }
-      if(status == "AUDITING"){
-        return "待审核";
-      }
-      if(status == "RECYCLE"){
-        return "回收站";
-      }
-    }
+  
 module.exports = {
   formatTime:formatTime,
   tsFormatTime: tsFormatTime,
   getDateDiff:getDateDiff,
   getRandomImage: getRandomImage,
   coutNum: coutNum,
-  isContain: isContain,
-  getCommnetStatus: getCommnetStatus
+  isContain: isContain
 }
