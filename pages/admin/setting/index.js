@@ -80,34 +80,34 @@ Page({
     var that = this;
     const passwordType = e.currentTarget.dataset.type;
     if(passwordType == 'isEmailPassword'){
-      let falg = true;
+      let flag = true;
       if(that.data.isEmailPassword){
-        falg = false;
+        flag = false;
       }
       this.setData({
-        isEmailPassword: falg,
+        isEmailPassword: flag,
       })
     }
     if(passwordType == 'isAccessKeyPassword'){
-      let falg = true;
+      let flag = true;
       if(that.data.isAccessKeyPassword){
-        falg = false;
+        flag = false;
       }
       this.setData({
-        isAccessKeyPassword: falg,
+        isAccessKeyPassword: flag,
       })
     }
   },
   selectSettingType(){
     var that = this;
-    let falg = 0;
+    let flag = 0;
     if(that.data.settingType == 0){
-      falg = 1;
+      flag = 1;
     }
     that.setData({
       TabCur: 0,
       HighTabCur: 0,
-      settingType: falg
+      settingType: flag
     })
   },
   saveSettings(){
