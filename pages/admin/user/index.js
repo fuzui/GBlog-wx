@@ -5,6 +5,7 @@ import {ApiBaseUrl,CustomStyle} from '../../../config/api.js';
 Page({
   data: {
     url: ApiBaseUrl,
+    logo: "",
     CustomBar: app.globalData.CustomBar,
     topImage: CustomStyle.topImage,
     statistics: {},
@@ -22,7 +23,10 @@ Page({
     uploadModal: false
   },
   onLoad: function () { 
-    
+    var that = this;
+    that.setData({
+      logo: app.globalData.logo
+    })
   },
   async onShow() {
     var that = this;
