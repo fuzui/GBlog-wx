@@ -46,8 +46,9 @@
         <text class="cuIcon-notice text-blue"></text>
         <text class="text-grey">消息</text>
       </view>
-      <view class="action">
-        <text class="text-grey text-sm">暂无未读消息</text>
+      <view class="action"  bindtap="{{noticeCount == 0?'':'toCommentPage'}}">
+        <text class="text-grey text-sm" wx:if="{{noticeCount == 0}}">暂无未读消息</text>
+        <text class="text-red text-sm" wx:if="{{noticeCount != 0}}">有 {{noticeCount}} 条消息待处理</text>
       </view>
     </view>
     <view class="cu-item arrow">

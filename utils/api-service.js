@@ -757,6 +757,129 @@ function adminEditPassword(param) {
   })
 }
 
+/**
+ * 获取文章评论列表
+ */
+function adminGetPostComment(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.adminGetPostComment+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 回复评论
+ */
+function adminAddPostComment(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.PostBody(api.adminAddPostComment+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据id修改文章评论状态
+ */
+function adminEditPostCommentStatus(commentId,status) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Put(api.adminEditPostCommentStatus(commentId,status)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据id删除sheet评论
+ */
+function adminDeletePostComment(commentId) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Delete(api.adminDeletePostComment(commentId)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 获取sheet评论列表
+ */
+function adminGetSheetComment(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.adminGetSheetComment+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 回复sheet评论
+ */
+function adminAddSheetComment(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.PostBody(api.adminAddSheetComment+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据id修改sheet评论状态
+ */
+function adminEditSheetCommentStatus(commentId,status) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Put(api.adminEditSheetCommentStatus(commentId,status)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据id删除sheet评论
+ */
+function adminDeleteSheetComment(commentId) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Delete(api.adminDeleteSheetComment(commentId)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+function adminGetUserProfile() {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.adminGetUserProfile+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
 module.exports = {
   getCategories,
   getTags,
@@ -811,5 +934,14 @@ module.exports = {
   adminEditMenu,
   adminDeleteMenu,
   adminEditUser,
-  adminEditPassword
+  adminEditPassword,
+  adminGetPostComment,
+  adminAddPostComment,
+  adminEditPostCommentStatus,
+  adminDeletePostComment,
+  adminGetSheetComment,
+  adminAddSheetComment,
+  adminEditSheetCommentStatus,
+  adminDeleteSheetComment,
+  adminGetUserProfile
 }

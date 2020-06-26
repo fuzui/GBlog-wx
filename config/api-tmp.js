@@ -154,6 +154,24 @@ function adminDeleteMenu(menuId){
   return ApiBaseUrl + '/api/admin/menus/'+menuId+'?admin_token=';
 }
 
+//修改文章评论状态
+function adminEditPostCommentStatus(commentId,status){
+  return ApiBaseUrl + '/api/admin/posts/comments/'+commentId+'/status/'+status+'?admin_token=';
+}
+//删除文章评论
+function adminDeletePostComment(commentId){
+  return ApiBaseUrl + '/api/admin/posts/comments/'+commentId+'?admin_token=';
+}
+
+//修改sheet评论状态
+function adminEditSheetCommentStatus(commentId,status){
+  return ApiBaseUrl + '/api/admin/sheets/comments/'+commentId+'/status/'+status+'?admin_token=';
+}
+//删除sheet评论
+function adminDeleteSheetComment(commentId){
+  return ApiBaseUrl + '/api/admin/sheets/comments/'+commentId+'?admin_token=';
+}
+
 module.exports = {
   getThemeSettings: ApiBaseUrl + '/api/content/themes/activation/settings',
   getOptionByKey: getOptionByKey,
@@ -210,6 +228,15 @@ module.exports = {
   adminDeleteMenu: adminDeleteMenu,
   adminEditUser: ApiBaseUrl + '/api/admin/users/profiles?admin_token=',
   adminEditPassword: ApiBaseUrl + '/api/admin/users/profiles/password?admin_token=',
+  adminGetPostComment: ApiBaseUrl + '/api/admin/posts/comments?admin_token=',
+  adminAddPostComment: ApiBaseUrl + '/api/admin/posts/comments?admin_token=',
+  adminEditPostCommentStatus: adminEditPostCommentStatus,
+  adminDeletePostComment: adminDeletePostComment,
+  adminGetSheetComment: ApiBaseUrl + '/api/admin/sheets/comments?admin_token=',
+  adminAddSheetComment: ApiBaseUrl + '/api/admin/sheets/comments?admin_token=',
+  adminEditSheetCommentStatus: adminEditSheetCommentStatus,
+  adminDeleteSheetComment: adminDeleteSheetComment,
+  adminGetUserProfile: ApiBaseUrl + '/api/admin/users/profiles?admin_token=',
   ApiBaseUrl,
   PageSize,
   ParserStyle,

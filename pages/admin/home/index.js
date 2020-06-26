@@ -9,7 +9,8 @@ Page({
     isLogin: false,
     username: "",
     password: "",
-    loginMessage: false
+    loginMessage: false,
+    noticeCount: 0
   },
   onLoad: function () { 
     var that = this;
@@ -27,9 +28,11 @@ Page({
     console.log(token)
     if(token){
       const statistics = await this.adminGetStatistics();
+      const noticeCount = await this.getNoticeCount();
       that.setData({
         user: statistics.user,
         statistics: statistics,
+        noticeCount: noticeCount,
         isLogin: true
       });
     }
@@ -177,10 +180,9 @@ Page({
     this.setData({
       modalName: null
     })
-    apiResult.warn("功能开发中");
-    // wx.navigateTo({
-    //   url:"/pages/admin/comment/index"
-    // })
+    wx.navigateTo({
+      url:"/pages/admin/comment/index"
+    })
   },
   toCategoryPage() {
     this.setData({
@@ -275,5 +277,18 @@ Page({
         loginMessage: true
       })
     }
+  },
+  /**
+   * 获取消息数量
+   */
+  async getNoticeCount(){
+    const param = {
+      page: 1,
+      size: 0,
+      status: "AUDITING"
+    }
+    const postResult = await apiService.adminGetPostComment(param);
+    const sheetResult = await apiService.adminGetSheetComment(param);
+    return postResult.total+sheetResult.total;
   }
 })
