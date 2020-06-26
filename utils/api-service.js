@@ -673,6 +673,62 @@ function adminDeletePhoto(photoId) {
   })
 }
 
+/**
+ * 获取菜单列表
+ */
+function adminGetMenu(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.adminGetMenu+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 添加菜单
+ */
+function adminAddMenu(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.PostBody(api.adminAddMenu+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据id编辑菜单
+ */
+function adminEditMenu(menuId,param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Put(api.adminEditMenu(menuId)+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据id删除菜单
+ */
+function adminDeleteMenu(menuId) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Delete(api.adminDeleteMenu(menuId)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
 module.exports = {
   getCategories,
   getTags,
@@ -721,5 +777,9 @@ module.exports = {
   adminAddPhoto,
   adminGetPhotoDetails,
   adminEditPhotoDetails,
-  adminDeletePhoto
+  adminDeletePhoto,
+  adminGetMenu,
+  adminAddMenu,
+  adminEditMenu,
+  adminDeleteMenu
 }

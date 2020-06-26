@@ -222,10 +222,9 @@ Page({
     this.setData({
       modalName: null
     })
-    apiResult.warn("功能开发中");
-    // wx.navigateTo({
-    //   url:"/pages/admin/menu/index"
-    // })
+    wx.navigateTo({
+      url:"/pages/admin/menu/list/index"
+    })
   },
   toThemePage() {
     this.setData({

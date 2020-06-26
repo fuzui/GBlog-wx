@@ -147,6 +147,13 @@ function adminDeletePhoto(photoId){
   return ApiBaseUrl + '/api/admin/photos/'+photoId+'?admin_token=';
 }
 
+function adminEditMenu(menuId){
+  return ApiBaseUrl + '/api/admin/menus/'+menuId+'?admin_token=';
+}
+function adminDeleteMenu(menuId){
+  return ApiBaseUrl + '/api/admin/menus/'+menuId+'?admin_token=';
+}
+
 module.exports = {
   getThemeSettings: ApiBaseUrl + '/api/content/themes/activation/settings',
   getOptionByKey: getOptionByKey,
@@ -197,6 +204,10 @@ module.exports = {
   adminGetPhotoDetails: adminGetPhotoDetails,
   adminEditPhotoDetails: adminEditPhotoDetails,
   adminDeletePhoto: adminDeletePhoto,
+  adminGetMenu: ApiBaseUrl + '/api/admin/menus?admin_token=',
+  adminAddMenu: ApiBaseUrl + '/api/admin/menus?admin_token=',
+  adminEditMenu: adminEditMenu,
+  adminDeleteMenu: adminDeleteMenu,
   ApiBaseUrl,
   PageSize,
   ParserStyle,
