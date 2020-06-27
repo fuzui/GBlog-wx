@@ -74,15 +74,15 @@
     </view>
     <view class="cu-bar tabbar bg-white">
       <view class="action text-gray add-action">
-        <button class="cu-btn cuIcon-pick bg-gradual-orange shadow" bindtap="chooseImage" data-type="camera"></button>
+        <button class="cu-btn cuIcon-pick bg-gradual-orange shadow" bindtap="chooseImage" data-type="album"></button>
         手机传
       </view>
       <view class="action text-gray add-action">
-        <button class="cu-btn cuIcon-camera bg-gradual-blue shadow" bindtap="chooseImage" data-type="album"></button>
+        <button class="cu-btn cuIcon-camera bg-gradual-blue shadow" bindtap="chooseImage" data-type="camera"></button>
         即时拍
       </view>
       <view class="action text-gray add-action">
-        <button class="cu-btn cuIcon-pic bg-gradual-pink shadow" bindtap="toChooseAttachment" data-type="album"></button>
+        <button class="cu-btn cuIcon-pic bg-gradual-pink shadow" bindtap="toChooseAttachment"></button>
         附件选
       </view>
     </view>
