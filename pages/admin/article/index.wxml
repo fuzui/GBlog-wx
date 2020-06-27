@@ -1,0 +1,65 @@
+<wxs src="../../../utils/tools.wxs" module="tools" />
+<cu-custom bgImage="{{topImage}}" isCustom="{{true}}">
+  <view slot="content">文章管理</view>
+</cu-custom>
+
+<scroll-view scroll-x class="bg-gray nav text-left">
+  <view class="cu-item {{1==type?'text-blue bg-white':''}}" bindtap="tabSelect" data-type="1">
+    文章列表
+  </view>
+  <view class="cu-item {{2==type?'text-blue bg-white':''}}" bindtap="tabSelect" data-type="2">
+    自定义页面
+  </view>
+</scroll-view>
+<block wx:for="{{articleList}}" wx:for-item="item" wx:key="index">
+  <view class="cu-bar bg-white">
+    <view class='action'>
+      <text class='cuIcon-title text-blue'></text>
+      <text class='text-cut' style="width:450rpx;">{{item.title}}</text>
+    </view>
+    <view class="action">
+      <view class="cu-tag round bg-green light" wx:if="{{item.status=='INTIMATE' || item.status=='DRAFT'}}" bindtap="auditArticle" data-id="{{item.id}}" data-index="{{index}}">发布</view>
+      <view class="cu-tag round bg-orange light" wx:if="{{item.status!='RECYCLE'}}" bindtap="recyclingArticle" data-id="{{item.id}}" data-index="{{index}}">回收站</view>
+      <view class="cu-tag round bg-blue light" wx:if="{{item.status=='RECYCLE'}}" bindtap="auditArticle" data-id="{{item.id}}" data-index="{{index}}">还原</view>
+      <view class="cu-tag round bg-red light" wx:if="{{item.status=='RECYCLE'}}" bindtap="deleteArticle" data-id="{{item.id}}" data-index="{{index}}">删除</view>
+    </view>
+  </view>
+  <view class="cu-card article no-card solids-bottom">
+    <view class="cu-item shadow">
+      <view class="content">
+        <view class="desc">
+          <view class="text-content"> {{item.content}}</view>
+          <view>
+            <view class="cu-tag bg-green light sm round" wx:if="{{item.status=='PUBLISHED'}}">已发布</view>
+            <view class="cu-tag bg-orange light sm round" wx:if="{{item.status=='DRAFT'}}">草  稿</view>
+            <view class="cu-tag bg-green light sm round" wx:if="{{item.status=='INTIMATE'}}">私  密</view>
+            <view class="cu-tag bg-black light sm round" wx:if="{{item.status=='RECYCLE'}}">回收站</view>
+            <view class="cu-tag bg-grey light sm round">{{tools.formatTime(item.createTime)}}</view>
+            <view class="cu-capsule radius margin-left">
+              <view class="cu-tag bg-cyan sm">
+                <text>访问</text>
+              </view>
+              <view class="cu-tag line-brown sm">
+                {{item.visits}}
+              </view>
+            </view>
+            <view class="cu-capsule radius margin-left">
+              <view class="cu-tag bg-red sm">
+                <text>评论</text>
+              </view>
+              <view class="cu-tag line-brown sm">
+                {{item.commentCount}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+
+<!-- 弹框加载 -->
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <image src='{{logo}}' class='png' mode='aspectFit'></image>
+  <view class='gray-text'>加载中...</view>
+</view>

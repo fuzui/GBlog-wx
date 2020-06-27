@@ -800,7 +800,7 @@ function adminEditPostCommentStatus(commentId,status) {
 }
 
 /**
- * 根据id删除sheet评论
+ * 根据id删除文章评论
  */
 function adminDeletePostComment(commentId) {
   return new Promise((resolve, reject) => {
@@ -992,6 +992,90 @@ function adminDeleteCategory(categoryId) {
   })
 }
 
+/**
+ * 获取文章列表
+ */
+function adminGetPost(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.adminGetPost+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据id修改文章状态
+ */
+function adminEditPostStatus(postId,status) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Put(api.adminEditPostStatus(postId,status)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据id删除文章
+ */
+function adminDeletePost(postId) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Delete(api.adminDeletePost(postId)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 获取sheet列表
+ */
+function adminGetSheet(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.adminGetSheet+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据id修改sheet状态
+ */
+function adminEditSheetStatus(sheetId,status) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Put(api.adminEditSheetStatus(sheetId,status)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 根据id删除sheet
+ */
+function adminDeleteSheet(sheetId) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Delete(api.adminDeleteSheet(sheetId)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
 module.exports = {
   getCategories,
   getTags,
@@ -1063,5 +1147,11 @@ module.exports = {
   adminGetCategory,
   adminAddCategory,
   adminEditCategory,
-  adminDeleteCategory
+  adminDeleteCategory,
+  adminGetPost,
+  adminEditPostStatus,
+  adminDeletePost,
+  adminGetSheet,
+  adminEditSheetStatus,
+  adminDeleteSheet
 }

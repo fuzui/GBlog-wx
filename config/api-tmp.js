@@ -188,6 +188,23 @@ function adminDeleteCategory(categoryId){
   return ApiBaseUrl + '/api/admin/categories/'+categoryId+'?admin_token=';
 }
 
+//修改文章状态
+function adminEditPostStatus(postId,status){
+  return ApiBaseUrl + '/api/admin/posts/'+postId+'/status/'+status+'?admin_token=';
+}
+//删除文章
+function adminDeletePost(postId){
+  return ApiBaseUrl + '/api/admin/posts/'+postId+'?admin_token=';
+}
+//修改sheet状态
+function adminEditSheetStatus(sheetId,status){
+  return ApiBaseUrl + '/api/admin/sheets/'+sheetId+'/'+status+'?admin_token=';
+}
+//删除sheet
+function adminDeleteSheet(sheetId){
+  return ApiBaseUrl + '/api/admin/sheets/'+sheetId+'?admin_token=';
+}
+
 module.exports = {
   getThemeSettings: ApiBaseUrl + '/api/content/themes/activation/settings',
   getOptionByKey: getOptionByKey,
@@ -261,6 +278,12 @@ module.exports = {
   adminAddCategory: ApiBaseUrl + '/api/admin/categories?admin_token=',
   adminEditCategory: adminEditCategory,
   adminDeleteCategory: adminDeleteCategory,
+  adminGetPost: ApiBaseUrl + '/api/admin/posts?admin_token=',
+  adminEditPostStatus: adminEditPostStatus,
+  adminDeletePost: adminDeletePost,
+  adminGetSheet: ApiBaseUrl + '/api/admin/sheets?admin_token=',
+  adminEditSheetStatus: adminEditSheetStatus,
+  adminDeleteSheet: adminDeleteSheet,
   ApiBaseUrl,
   PageSize,
   ParserStyle,

@@ -204,16 +204,15 @@ Page({
     this.setData({
       modalName: null
     })
-    apiResult.warn("功能开发中");
-    // wx.navigateTo({
-    //   url:"/pages/admin/article/index"
-    // })
+    wx.navigateTo({
+      url:"/pages/admin/article/index"
+    })
   },
   toAddArticlePage() {
     this.setData({
       modalName: null
     })
-    apiResult.warn("功能开发中");
+    apiResult.warn("请前往PC端");
     // wx.navigateTo({
     //   url:"/pages/admin/article/add/index"
     // })
