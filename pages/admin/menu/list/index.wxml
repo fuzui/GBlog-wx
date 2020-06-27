@@ -52,6 +52,14 @@
       <view class="title">url</view>
       <input value="{{url}}" bindinput="urlInput"></input>
     </view>
+    <view class="cu-form-group padding-top">
+      <view class="title">上级目录</view>
+      <picker bindchange="parentIdInput" value="{{index}}" range="{{menuList}}" range-key="name">
+        <view class="picker">
+          {{parentId}}
+        </view>
+      </picker>
+    </view>
     <view class="cu-form-group text-left">
       <view class="title">图标</view>
       <input value="{{icon}}" bindinput="iconInput"></input>
@@ -65,7 +73,7 @@
       <input value="{{priority}}" bindinput="priorityInput"></input>
     </view>
     <view class="cu-form-group text-left">
-      <view class="title" style="width:220rpx;">描述</view>
+      <view class="title" style="width:220rpx;">打开方式</view>
       <picker bindchange="targetInput" value="{{target}}" range="{{targetPicker}}">
         <view class="picker">
           {{target=='_blank'?targetPicker[1]:targetPicker[0]}}

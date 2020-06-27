@@ -22,6 +22,7 @@ Page({
     priority: "",
     team: "",
     url: "",
+    parentId: 0,
     operationFlag: "add",
     operationPrompt: "新增菜单",
     loadModal: false
@@ -98,21 +99,22 @@ Page({
    */
   async addMenu(){
     var that = this;
-    if(!this.data.name){
+    if(!that.data.name){
       apiResult.warn("名称为空");
       return ;
     }
-    if(!this.data.url){
+    if(!that.data.url){
       apiResult.warn("url为空");
       return ;
     }
     const param = {
-      target: this.data.target,
-      icon: this.data.icon,
-      name: this.data.name,
-      priority: this.data.priority,
-      team: this.data.team,
-      url: this.data.url
+      target: that.data.target,
+      icon: that.data.icon,
+      name: that.data.name,
+      priority: that.data.priority,
+      team: that.data.team,
+      url: that.data.url,
+      parentId: that.data.parentId
     }
     try {
       const result = await apiService.adminAddMenu(param);
@@ -122,7 +124,7 @@ Page({
         menuList:that.data.menuList
       })
       apiResult.success("添加成功");
-      this.hideModal();
+      that.hideModal();
     } catch (error) {
       return error.message;
     }
@@ -135,11 +137,11 @@ Page({
     var that = this;
     const menuId = that.data.currentId;
     const index = that.data.currentIndex;
-    if(!this.data.name){
+    if(!that.data.name){
       apiResult.warn("名称为空");
       return ;
     }
-    if(!this.data.url){
+    if(!that.data.url){
       apiResult.warn("url为空");
       return ;
     }
@@ -148,12 +150,13 @@ Page({
       return ;
     }
     const param = {
-      target: this.data.target,
-      icon: this.data.icon,
-      name: this.data.name,
-      priority: this.data.priority,
-      team: this.data.team,
-      url: this.data.url
+      target: that.data.target,
+      icon: that.data.icon,
+      name: that.data.name,
+      priority: that.data.priority,
+      team: that.data.team,
+      url: that.data.url,
+      parentId: that.data.parentId
     }
     try {
       const result = await apiService.adminEditMenu(menuId,param);
@@ -206,6 +209,18 @@ Page({
       team: e.detail.value
     });
   },
+  parentIdInput(e){
+    var that = this;
+    let parentId = 0;
+    if(that.data.currentIndex == e.detail.value){
+      apiResult.warn("不可选自己");
+      return ;
+    }
+    parentId = that.data.menuList[e.detail.value].id;
+    this.setData({
+      parentId: parentId
+    });
+  },
 
   showModal(e) {
     var that = this;
@@ -226,7 +241,7 @@ Page({
         currentIndex: index
       })
     }
-    this.setData({
+    that.setData({
       modalName: e.currentTarget.dataset.target
     })
   },
@@ -241,6 +256,7 @@ Page({
       priority: "",
       team: "",
       url: "",
+      parentId: 0,
       operationFlag: "add",
       operationPrompt: "新增菜单"
     })
