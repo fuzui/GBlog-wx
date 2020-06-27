@@ -12,8 +12,13 @@ Page({
     content: [],
     selectId: null,
   },
-  async onLoad() { 
+  async onLoad(options) { 
     var that = this;
+    if(options.type == 3){
+      that.setData({
+        tagCur: options.tagCur
+      })
+    }
     that.setData({
       logo: app.globalData.logo
     })
@@ -102,10 +107,14 @@ Page({
     var selectAttachment = that.data.selectAttachment;
     let pages= getCurrentPages();
     let prevPage = null; 
-
     if (pages.length >= 2) {
       prevPage = pages[pages.length - 2]; 
       if (prevPage) {
+        if(that.data.tagCur){
+          prevPage.setData({
+            tagCur: that.data.tagCur
+          });
+        }
         prevPage.setData({
           selectAttachment: selectAttachment
         });
@@ -116,6 +125,19 @@ Page({
     })
   },
   returnPage() {
+    var that = this;
+    if(that.data.tagCur){
+      let pages= getCurrentPages();
+      let prevPage = null; 
+      if (pages.length >= 2) {
+        prevPage = pages[pages.length - 2]; 
+        if (prevPage) {
+          prevPage.setData({
+            tagCur: that.data.tagCur
+          });
+        }
+      }
+    }
     wx.navigateBack({
       delta : 1
     })

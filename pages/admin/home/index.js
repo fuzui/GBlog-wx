@@ -188,19 +188,17 @@ Page({
     this.setData({
       modalName: null
     })
-    apiResult.warn("功能开发中");
-    // wx.navigateTo({
-    //   url:"/pages/admin/category/index"
-    // })
+    wx.navigateTo({
+      url:"/pages/admin/category/index"
+    })
   },
   toTagPage() {
     this.setData({
       modalName: null
     })
-    apiResult.warn("功能开发中");
-    // wx.navigateTo({
-    //   url:"/pages/admin/tag/index"
-    // })
+    wx.navigateTo({
+      url:"/pages/admin/tag/index"
+    })
   },
   toArticlePage() {
     this.setData({

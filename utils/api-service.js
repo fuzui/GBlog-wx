@@ -880,6 +880,118 @@ function adminGetUserProfile() {
   })
 }
 
+/**
+ * 获取标签列表
+ */
+function adminGetTag(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.adminGetTag+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 添加标签
+ */
+function adminAddTag(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.PostBody(api.adminAddTag+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 编辑标签
+ */
+function adminEditTag(tagId,param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Put(api.adminEditTag(tagId)+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 删除标签
+ */
+function adminDeleteTag(tagId) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Delete(api.adminDeleteTag(tagId)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 获取分类列表
+ */
+function adminGetCategory(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(api.adminGetCategory+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 添加分类
+ */
+function adminAddCategory(param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.PostBody(api.adminAddCategory+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 编辑分类
+ */
+function adminEditCategory(categoryId,param) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Put(api.adminEditCategory(categoryId)+wx.getStorageSync(api.Config.Token), param)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
+ * 删除分类
+ */
+function adminDeleteCategory(categoryId) {
+  return new Promise((resolve, reject) => {
+    apiRequest.Delete(api.adminDeleteCategory(categoryId)+wx.getStorageSync(api.Config.Token), {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
 module.exports = {
   getCategories,
   getTags,
@@ -943,5 +1055,13 @@ module.exports = {
   adminAddSheetComment,
   adminEditSheetCommentStatus,
   adminDeleteSheetComment,
-  adminGetUserProfile
+  adminGetUserProfile,
+  adminGetTag,
+  adminAddTag,
+  adminEditTag,
+  adminDeleteTag,
+  adminGetCategory,
+  adminAddCategory,
+  adminEditCategory,
+  adminDeleteCategory
 }

@@ -171,6 +171,22 @@ function adminEditSheetCommentStatus(commentId,status){
 function adminDeleteSheetComment(commentId){
   return ApiBaseUrl + '/api/admin/sheets/comments/'+commentId+'?admin_token=';
 }
+//修改标签
+function adminEditTag(tagId){
+  return ApiBaseUrl + '/api/admin/tags/'+tagId+'?admin_token=';
+}
+//删除标签
+function adminDeleteTag(tagId){
+  return ApiBaseUrl + '/api/admin/tags/'+tagId+'?admin_token=';
+}
+//修改标签
+function adminEditCategory(categoryId){
+  return ApiBaseUrl + '/api/admin/categories/'+categoryId+'?admin_token=';
+}
+//删除标签
+function adminDeleteCategory(categoryId){
+  return ApiBaseUrl + '/api/admin/categories/'+categoryId+'?admin_token=';
+}
 
 module.exports = {
   getThemeSettings: ApiBaseUrl + '/api/content/themes/activation/settings',
@@ -237,6 +253,14 @@ module.exports = {
   adminEditSheetCommentStatus: adminEditSheetCommentStatus,
   adminDeleteSheetComment: adminDeleteSheetComment,
   adminGetUserProfile: ApiBaseUrl + '/api/admin/users/profiles?admin_token=',
+  adminGetTag: ApiBaseUrl + '/api/admin/tags?admin_token=',
+  adminAddTag: ApiBaseUrl + '/api/admin/tags?admin_token=',
+  adminEditTag: adminEditTag,
+  adminDeleteTag: adminDeleteTag,
+  adminGetCategory: ApiBaseUrl + '/api/admin/categories?admin_token=',
+  adminAddCategory: ApiBaseUrl + '/api/admin/categories?admin_token=',
+  adminEditCategory: adminEditCategory,
+  adminDeleteCategory: adminDeleteCategory,
   ApiBaseUrl,
   PageSize,
   ParserStyle,
