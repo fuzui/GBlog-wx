@@ -14,6 +14,8 @@ GBlog-wx：微信小程序博客
 
 ![](https://oss.fuzui.net/img/20200529022512.png)
 
+![](https://oss.fuzui.net/img/gblogadmin.png)
+
 ### 二、在线体验
 
 ![qrcode](https://cdn.fuzui.net/blog/qrcode_1588864925914.png)
@@ -70,11 +72,11 @@ GBlog-wx：微信小程序博客
 
 * 配置合法域名
 
-  在[微信公众平台](https://mp.weixin.qq.com/)中，`开发——开发设置——服务器域名`中添加request合法域名。将上述`ApiBaseUrl`域名添加到request合法域名，例如`www.geekera.com`。
+  在[微信公众平台](https://mp.weixin.qq.com/)中，`开发——开发设置——服务器域名`中添加request、uploadFile、downloadFile合法域名。将上述`ApiBaseUrl`域名添加到request合法域名，例如`www.geekera.com`。
   
   ![](https://oss.fuzui.net/img/20200529020312.png)
   
-  ![](https://oss.fuzui.net/img/20200612011258.png)
+  ![](https://oss.fuzui.net/img/20200628014304.png)
 
 #### 3.高级功能配置(非必须)
 
@@ -111,15 +113,10 @@ GBLOG-WX
 
 **浏览页面功能：**
 
-* 文章浏览
-* 文章分类
-* 文章标签
-* 文章评论
-* 文章点赞
-* 文章搜索
+* 文章浏览、评论、点赞、搜索
+* 文章分类、标签、归档
 * 光影照片
 * 日记
-* 文章归档
 * 留言
 * 友情链接
 * 站点统计
@@ -129,15 +126,19 @@ GBLOG-WX
 
 **管理页面功能：**
 
-> 目前管理页面部分功能不可用，还在持续编写中！
+> 目前管理页面不支持开启**二步验证**登录！
 
 * 后台登录
 * 站点信息
-* 个人信息查看
+* 个人信息修改
 * 服务器信息查看
-* 博客设置留言
+* 博客设置浏览
 * 友链管理
 * 日记管理
+* 文章/分类/标签管理
+* 附件上传、图库管理
+* 评论审核、回复
+* 主题切换、菜单编辑
 
 ### 七、致谢
 
@@ -146,3 +147,8 @@ GBLOG-WX
 * [Parser](https://github.com/jin-yufeng/Parser) 小程序富文本插件（html 渲染）
 * [Hux Blog](https://huangxuan.me/)的背景图
 
+### 八、联系
+
+如果您发现了什么bug，或者有什么界面建议或意见，
+
+欢迎 [issue](https://github.com/GeekEra/GBlog-wx/issues)，当然也可以直接点小程序关于栏中的“联系我”或“意见反馈”或“留言”。
