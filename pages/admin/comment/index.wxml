@@ -49,31 +49,6 @@
   </view>
 </block>
 
-<!-- 修改框 -->
-<view class="cu-modal {{modalName=='editModal'?'show':''}}">
-  <view class="cu-dialog">
-    <view class="cu-bar bg-white justify-end">
-      <view class="content">编辑日记</view>
-      <view class="action" bindtap="hideModal">
-        <text class="cuIcon-close text-red"></text>
-      </view>
-    </view>
-    <view class="cu-form-group">
-      <textarea class="content" maxlength="-1" bindinput="journalEditInput" value="{{currentContent}}" disabled="{{modalName!='editModal'}}"></textarea>
-    </view>
-    <view class="cu-form-group">
-      <view class="title">是否公开</view>
-      <switch class="orange radius sm" bindchange="isPublic" checked="{{currentType =='PUBLIC'}}"></switch>
-    </view>
-    
-    <view class="cu-bar bg-white justify-end">
-      <view class="action">
-        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
-        <button class="cu-btn bg-green margin-left" bindtap="editJournal">确认修改</button>
-      </view>
-    </view>
-  </view>
-</view>
 <!-- 弹框加载 -->
 <view class='cu-load load-modal' wx:if="{{loadModal}}">
   <image src='{{logo}}' class='png' mode='aspectFit'></image>

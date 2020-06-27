@@ -186,7 +186,7 @@ Page({
     })
   },
   /**
-   * 修改日记
+   * 修改评论状态
    */
   async editComment(id,status,index){
     var that = this;
