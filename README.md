@@ -6,7 +6,7 @@ GBlog-wx：微信小程序博客
 
 [![star](https://gitee.com/GeekEra/GBlog-wx/badge/star.svg?theme=dark)](https://gitee.com/GeekEra/GBlog-wx/stargazers)[![star](https://img.shields.io/github/stars/GeekEra/GBlog-wx.svg?style=social)](https://github.com/GeekEra/GBlog-wx)
 
-[halo](https://halu.run)作为后台，小程序样式采用[color-ui组件](https://www.color-ui.com/)。
+[halo](https://halo.run)作为后台，小程序样式采用[color-ui组件](https://www.color-ui.com/)。
 
 ### 一、展示
 
@@ -82,15 +82,15 @@ GBlog-wx：微信小程序博客
 
 * 海报分享
 
-  [开启文章分享海报功能](https://gitee.com/GeekEra/GBlog-wx/wikis/[高级功能]开启海报分享?sort_id=2322392)
+  [开启文章分享海报功能](https://docs.geekera.cn/gblog-wx/posters-share.html)
 
 * 文章订阅、评论通知
 
-  [开启新文章订阅、评论回复通知](https://gitee.com/GeekEra/GBlog-wx/wikis/[高级功能]开启文章订阅、评论通知?sort_id=2322404)
+  [开启新文章订阅、评论回复通知](https://docs.geekera.cn/gblog-wx/subscribe.html)
 
-* 自定义文章内容样式
+* 自定义样式
 
-  [修改文章、日记、评论解析样式](https://gitee.com/GeekEra/GBlog-wx/wikis/[高级功能]自定义文章内容样式?sort_id=2322419)
+  [自定义文章、顶图、随机图等样式](https://docs.geekera.cn/gblog-wx/custom-style.html)
 
 ### 五、结构
 
