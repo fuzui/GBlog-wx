@@ -1,7 +1,6 @@
 <wxs src="../../utils/tools.wxs" module="tools" />
 <view class="cu-card article">
   <view class="cu-item shadow-blur" id="{{item.id}}" bindtap='details' wx:for="{{content}}" wx:key="key">
-    <navigator url="/pages/details/index?id={{item.id}}">
       <view class="title">
         <view class="text-cut">
           <view class="cu-tag bg-red light sm round" wx:if="{{item.topPriority==true}}">置顶</view>
@@ -26,6 +25,5 @@
           </view>
         </view>
       </view>
-    </navigator>
   </view>
 </view>
