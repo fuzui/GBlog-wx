@@ -1,14 +1,14 @@
 function requestError(data) {
   wx.showToast({
     title: data.message,
-    duration:1500,
+    duration:1200,
     mask:true,
     image:'/images/prompt/fail.png'  
   });
   if (data.status == 401) {
     let pages = getCurrentPages();
     let current_page = pages[pages.length - 1].route
-    if (current_page !== '/pages/admin/login/index') {
+    if (current_page !== 'pages/admin/login/index') {
       wx.navigateTo({
         url: "/pages/admin/login/index"
       })
