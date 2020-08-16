@@ -1,3 +1,5 @@
+//获取应用实例
+const app = getApp();
 import apiService from '../../../utils/api-service';
 import  {PersonalInfo,CustomStyle} from '../../../config/api'
 Page({
@@ -55,5 +57,17 @@ Page({
     wx.navigateTo({
       url: '/pages/tag/index'
     });
-  }
+  },
+  onShareAppMessage: function(res) {
+    return {
+      title: '关于'+app.globalData.blogTitle,
+      path: '/pages/about/about/index'
+    }
+  },
+  onShareTimeline: function (res) {
+    return {
+      title: '关于'+app.globalData.blogTitle,
+      imageUrl: app.globalData.logo
+    }
+  },
 });

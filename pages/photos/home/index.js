@@ -1,14 +1,15 @@
 const app = getApp();
 import apiService from '../../../utils/api-service';
 import utils from '../../../utils/utils';
-import config from '../../../config/api';
+import {PageSize,CustomStyle} from '../../../config/api';
 Page({
   data: {
     logo: "",
     pageNo: 0,
     bottomFlag: false,
     content: [],
-    ColorList: app.globalData.ColorList    
+    ColorList: app.globalData.ColorList,
+    photoImage: CustomStyle.photoImage
   },
   async onLoad() { 
     var that = this;
@@ -53,7 +54,7 @@ Page({
     try {
       const param = {
         page: that.data.pageNo,
-        size: config.PageSize.photoSize,
+        size: PageSize.photoSize,
         sort: 'takeTime,desc'
       };
       const result = await apiService.getPhotos(param);
@@ -83,5 +84,22 @@ Page({
     wx.navigateTo({
       url:url
     })
-  }
+  },
+  /**
+   * 分享
+   * @param {*} res 
+   */
+  onShareAppMessage: function (res) {
+    return {
+      title: app.globalData.blogTitle+"光影",
+      imageUrl: CustomStyle.photoImage,
+      path: '/pages/photos/home/index'
+    }
+  },
+  onShareTimeline: function (res) {
+    return {
+      title: app.globalData.blogTitle+"光影",
+      imageUrl: CustomStyle.photoImage
+    }
+  },
 })

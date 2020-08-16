@@ -8,6 +8,7 @@ Page({
     parserStyle:ParserStyle,
     id: 0,  //留言页postId
     topImage: CustomStyle.topImage,
+    guestbookImage: CustomStyle.guestbookImage,
     logo: "",
     disallowComment: false,
     isLoadComment: false,
@@ -223,5 +224,18 @@ Page({
       commentPage: currentPage+1,
       comments: this.data.comments.concat(comments.content)
     })
-  }
+  },
+  onShareAppMessage: function(res) {
+    return {
+      title: app.globalData.blogTitle+'的留言板',
+      imageUrl: CustomStyle.guestbookImage,
+      path: '/pages/about/guestbook/index'
+    }
+  },
+  onShareTimeline: function (res) {
+    return {
+      title: app.globalData.blogTitle+'的留言板',
+      imageUrl: CustomStyle.guestbookImage
+    }
+  },
 })

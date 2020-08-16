@@ -63,5 +63,17 @@ Page({
     wx.navigateTo({
       url: '/pages/tag/index'
     });
-  }
+  },
+  onShareAppMessage: function(res) {
+    return {
+      title: app.globalData.blogTitle+'的归档文章',
+      path: '/pages/about/archives/index'
+    }
+  },
+  onShareTimeline: function (res) {
+    return {
+      title: app.globalData.blogTitle+'的归档文章',
+      imageUrl: app.globalData.logo
+    }
+  },
 });

@@ -12,7 +12,6 @@ Page({
     tagCur: 0,
     mainCur: 0,
     tagNavTop: 0,
-    logo: "",
     typeSlug: "",
     pageNo: 0,
     tagList: [],
@@ -126,5 +125,23 @@ Page({
     wx.navigateTo({
       url: '../details/index?id=' + event.currentTarget.dataset.id
     });
-  }
+  },
+  onShareAppMessage: function(res) {
+    var that = this;
+    var currentTag = that.data.tagList[that.data.tagCur];
+    return {
+      title: app.globalData.blogTitle+'标签：'+currentTag.name,
+      imageUrl: app.globalData.logo,
+      path: '/pages/tag/index?id='+currentTag.id
+    }
+  },
+  onShareTimeline: function (res) {
+    var that = this;
+    var currentTag = that.data.tagList[that.data.tagCur];
+    return {
+      title: app.globalData.blogTitle+'标签：'+currentTag.name,
+      imageUrl: currentTag.thumbnail?app.globalData.logo:currentTag.thumbnail,
+      query: 'id='+currentTag.id
+    }
+  },
 })

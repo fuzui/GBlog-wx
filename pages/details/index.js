@@ -61,8 +61,15 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: this.data.title,
-      imageUrl: this.data.thumbnail?this.data.thumbnail:"",
+      imageUrl: this.data.thumbnail?this.data.thumbnail:app.globalData.logo,
       path: '/pages/details/index?id='+this.data.id
+    }
+  },
+  onShareTimeline: function (res) {
+    return {
+      title: this.data.title,
+      imageUrl: this.data.thumbnail?this.data.thumbnail:app.globalData.logo,
+      query: 'id='+this.data.id
     }
   },
   async onLoad(options) {

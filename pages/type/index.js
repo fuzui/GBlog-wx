@@ -83,8 +83,14 @@ Page({
   },
   onShareAppMessage: function(res) {
     return {
-      title: app.globalData.blogTitle,
-      path: '/pages/index/index'
+      title: app.globalData.blogTitle+'之'+this.data.navlist[this.data.selected].name,
+      path: '/pages/type/index'
+    }
+  },
+  onShareTimeline: function (res) {
+    return {
+      title: app.globalData.blogTitle+'之'+this.data.navlist[this.data.selected].name,
+      imageUrl: app.globalData.logo
     }
   },
   /**

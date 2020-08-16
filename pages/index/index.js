@@ -98,11 +98,19 @@ Page({
   },
   /**
    * 分享
+   * @param {*} res 
    */
-  onShareAppMessage: function(res) {
+  onShareAppMessage: function (res) {
     return {
-      title: 'Geek Era',
+      title: app.globalData.blogTitle,
+      imageUrl: app.globalData.logo,
       path: '/pages/index/index'
+    }
+  },
+  onShareTimeline: function (res) {
+    return {
+      title: app.globalData.blogTitle,
+      imageUrl: app.globalData.logo
     }
   },
   /**

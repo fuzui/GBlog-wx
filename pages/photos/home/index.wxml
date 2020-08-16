@@ -1,5 +1,5 @@
 <!-- 顶图 -->
-<view class="UCenter-bg fixed-bg" style="background-image: url('https://cdn.fuzui.net/blog/photo_1587292902110.jpg?x-oss-process=style/sm');">
+<view class="UCenter-bg fixed-bg" style="background-image: url({{photoImage}});">
 </view>
 <!-- 避免遮挡，可能有更多的处理方法 -->
 <view style="margin-top:390rpx;"></view>

@@ -75,4 +75,16 @@ Page({
       return await Promise.reject(error)
     }
   },
+  onShareAppMessage: function(res) {
+    return {
+      title: app.globalData.blogTitle+'的日记本',
+      path: '/pages/about/journal/index'
+    }
+  },
+  onShareTimeline: function (res) {
+    return {
+      title: app.globalData.blogTitle+'的日记本',
+      imageUrl: app.globalData.logo
+    }
+  },
 });

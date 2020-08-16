@@ -1,3 +1,5 @@
+//获取应用实例
+const app = getApp();
 import {CustomStyle,PersonalInfo} from '../../../config/api';
 Page({
   data: {
@@ -15,5 +17,17 @@ Page({
         })
       }
     })
+  },
+  onShareAppMessage: function(res) {
+    return {
+      title: app.globalData.blogTitle+'免责声明',
+      path: '/pages/about/disclaimer/index'
+    }
+  },
+  onShareTimeline: function (res) {
+    return {
+      title: app.globalData.blogTitle+'免责声明',
+      imageUrl: app.globalData.logo
+    }
   },
 });
