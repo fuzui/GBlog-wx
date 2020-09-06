@@ -1,10 +1,14 @@
 # 介绍
 
+<p align="center">
+ <img src="https://gitee.com/GeekEra/GBlog-wx/badge/star.svg?theme=dark" alt="Build Status">
+ <img src="https://img.shields.io/github/stars/GeekEra/GBlog-wx.svg?style=social" alt="Build Status">
+ <img src="https://img.shields.io/badge/halo-1.4.0--beta.2-brightgreen" alt="Build Status">
+</p>
+
 GBlog-wx：微信小程序博客
 
 > 我们只是搬运工，将color-ui样式与halo接口结合了一下。
-
-[![star](https://gitee.com/GeekEra/GBlog-wx/badge/star.svg?theme=dark)](https://gitee.com/GeekEra/GBlog-wx/stargazers)[![star](https://img.shields.io/github/stars/GeekEra/GBlog-wx.svg?style=social)](https://github.com/GeekEra/GBlog-wx)
 
 [halo](https://halo.run)作为后台，小程序样式采用[color-ui组件](https://www.color-ui.com/)。
 
