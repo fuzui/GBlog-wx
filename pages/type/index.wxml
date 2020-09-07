@@ -11,8 +11,9 @@
 <view style="margin-top:400rpx;"></view>
 <!--  文章列表展示  -->
 <article-list content="{{content}}"></article-list>
-<view class="noimage" wx:if="{{!content.length}}">
-  <image src="/images/bg/notype.png"></image>    
+<view class="no-content" wx:if="{{!content.length}}">
+  <image src="{{noContentImage}}"></image>
+  <view class="text-xl padding">暂无文章</view>  
 </view>
 <!-- 下拉加载 -->
 <view class="cu-load {{loading==true?'loading':'over'}}" wx:if="{{content.length}}"></view>

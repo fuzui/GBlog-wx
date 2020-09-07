@@ -43,3 +43,17 @@ page{
   line-height: 170%;
   text-align: left;
 }
+
+/* 无结果图 */
+.no-content{
+	display:flex;
+	justify-content: center;
+	display: block;
+	text-align: center;
+	align-items: center;
+}
+.no-content image{
+	margin-top: 70rpx;
+	width:400rpx;
+	height: 400rpx;
+}

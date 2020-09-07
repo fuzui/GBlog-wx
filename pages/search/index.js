@@ -4,6 +4,7 @@ import {PageSize,CustomStyle} from '../../config/api';
 Page({
   data: {
     topImage: CustomStyle.topImage,
+    noContentImage: CustomStyle.noContentImage,
     title: "文章搜索",
     keyword: "",
     pageNo: 0,
@@ -116,5 +117,15 @@ Page({
       content: [],
       pageNo: 0,
     });
+  },
+  toHome(){
+    wx.switchTab({
+      url: '../index/index'
+    });
+  },
+  backPage(){
+    wx.navigateBack({
+      delta: 1
+    })
   }
 });

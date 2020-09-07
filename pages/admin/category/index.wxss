@@ -105,10 +105,6 @@
 	margin-top: 10rpx
 }
 
-.noimage{
-	display:flex;
-	justify-content: center;
-}
 .cu-form-group .title {
   min-width: calc(4em + 30rpx);
 }

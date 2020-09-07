@@ -7,11 +7,22 @@
     <view class='content' style='top:{{StatusBar}}px;'>标签</view>
   </view>
 </view>
+
 <!-- 顶图 -->
-<view class="UCenter-bg" style="background-image: url({{tagList[tagCur].thumbnail?tagList[tagCur].thumbnail:tools.getRandomImage(RandomImage)}});">
+<view class="UCenter-bg" wx:if="{{tagList.length!=0}}" style="background-image: url({{tagList[tagCur].thumbnail?tagList[tagCur].thumbnail:tools.getRandomImage(RandomImage)}});">
+</view>
+<view class="no-content" wx:if="{{tagList.length==0}}">
+  <image src="{{noContentImage}}"></image>
+  <view class="text-xl padding">暂无搜索内容</view>
+  <button class="cu-btn block line-cyan margin-xl lg" bindtap="backPage">
+    <text class="cuIcon-back"></text> 返回上页
+  </button>   
+  <button class="cu-btn block bg-blue margin-xl lg" bindtap="toHome">
+    <text class="cuIcon-homefill"></text> 返回首页
+  </button>    
 </view>
 <!-- 标签主页 -->
-<view class="tag-box">
+<view class="tag-box" wx:if="{{tagList.length!=0}}">
   <!-- 标签 -->
   <scroll-view class="tag-nav nav" scroll-y scroll-with-animation scroll-top="{{tagNavTop}}" style="height:calc(100vh - 270rpx)">
     <view class="cu-item {{index==tagCur?'text-green cur':''}} " wx:for="{{tagList}}" wx:key="index" bindtap='tagSelect' data-slug="{{item.slug}}" data-index="{{index}}">

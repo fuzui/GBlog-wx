@@ -28,12 +28,3 @@
 	z-index: 1024;
 	box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0.1);
 }
-/* 无结果图 */
-.noimage{
-	display:flex;
-	justify-content: center;
-}
-.noimage image{
-	width:400rpx;
-	height: 400rpx;
-}

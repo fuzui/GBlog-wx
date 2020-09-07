@@ -104,8 +104,3 @@
 .cu-list.tag-page>.cu-item .action view+view {
 	margin-top: 10rpx
 }
-
-.noimage{
-	display:flex;
-	justify-content: center;
-}

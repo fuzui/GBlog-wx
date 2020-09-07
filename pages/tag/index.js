@@ -1,9 +1,10 @@
 const app = getApp()
 import apiService from '../../utils/api-service';
-import {PageSize,RandomImage} from '../../config/api';
+import {PageSize,RandomImage,CustomStyle} from '../../config/api';
 Page({
   data: {
     RandomImage: RandomImage,
+    noContentImage: CustomStyle.noContentImage,
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
@@ -36,6 +37,13 @@ Page({
     that.setData({
       tagCur:selected
     });
+    if(tagList.length == 0) {
+      that.setData({
+        tagList: tagList,
+        loadModal:false
+      });
+      return;
+    }
     let tagSlug = tagList[selected].slug;
     const content = await this.getArticleList(true, tagSlug);
     that.setData({
@@ -125,6 +133,16 @@ Page({
     wx.navigateTo({
       url: '../details/index?id=' + event.currentTarget.dataset.id
     });
+  },
+  toHome(){
+    wx.switchTab({
+      url: '../index/index'
+    });
+  },
+  backPage(){
+    wx.navigateBack({
+      delta: 1
+    })
   },
   onShareAppMessage: function(res) {
     var that = this;

@@ -1,10 +1,11 @@
 //获取应用实例
 const app = getApp();
 import apiService from '../../utils/api-service';
-import config from '../../config/api';
+import {PageSize,CustomStyle} from '../../config/api';
 
 Page({
   data: {
+    noContentImage: CustomStyle.noContentImage,
     title: "分类",
     logo: "",
     typeSlug: "",
@@ -136,7 +137,7 @@ Page({
       }
       const param={
         page: pageNo,
-        size: config.PageSize.categorySize,
+        size: PageSize.categorySize,
       };
       const result = await apiService.getCategoriesArticle(slug,param);
       if (result.page < result.pages ) {
