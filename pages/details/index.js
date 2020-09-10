@@ -6,6 +6,7 @@ import { Config,PushConfig,ShareConfig,ParserStyle,CustomStyle } from './../../c
 
 Page({
   data: {
+    noContentImage: CustomStyle.noContentImage,
     shareIsOpen: ShareConfig.isOpen,
     parserStyle: ParserStyle,
     disallowComment: false,

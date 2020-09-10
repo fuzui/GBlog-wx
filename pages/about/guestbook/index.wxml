@@ -22,11 +22,9 @@
   <view class="cu-item shadow  margin-bottom">
     <view class="cu-list menu-avatar comment solids-top padding-bottom-xxl">
       <!-- 暂无留言 -->
-      <view wx:if="{{!comments.length}}">
-        <view class="nocomment">
-          <image src="/images/bg/nocomment.png"></image>
-        </view>
-        <view class="text-df text-center text-grey">暂无留言</view>
+      <view class="no-content" wx:if="{{!comments.length}}">
+        <image src="{{noContentImage}}"></image>
+        <view class="text-xl padding">暂无留言</view>  
       </view>
 
       <!-- 评论树 -->

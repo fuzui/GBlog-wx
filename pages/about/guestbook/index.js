@@ -5,6 +5,7 @@ import apiResult from '../../../utils/api-result';
 import { Config,ParserStyle,CustomStyle } from './../../../config/api';
 Page({
   data: {
+    noContentImage: CustomStyle.noContentImage,
     parserStyle:ParserStyle,
     id: 0,  //留言页postId
     topImage: CustomStyle.topImage,
