@@ -57,6 +57,11 @@ Page({
   },
   async onShow() {
     var that = this;
+    if (typeof that.getTabBar === 'function' && that.getTabBar()) {
+      that.getTabBar().setData({
+        selected: 1
+      })
+    }
     const navlist = await this.getCategories();
     const index = app.globalData.articleTypeTabIndex ? app.globalData.articleTypeTabIndex : 0;
     const content = await this.getArticleList(true, navlist[index].slug);

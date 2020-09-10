@@ -63,7 +63,14 @@ Page({
       loadModal:false
     });
   },
-  async onShow() {},
+  async onShow() {
+    var that = this;
+    if (typeof that.getTabBar === 'function' && that.getTabBar()) {
+      that.getTabBar().setData({
+        selected: 0
+      })
+    }
+  },
   /**
    * 顶部刷新
    */

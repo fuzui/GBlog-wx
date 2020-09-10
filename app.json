@@ -45,6 +45,7 @@
 		"cu-custom": "/colorui/components/cu-custom"
 	},
 	"tabBar": {
+		"custom": true,
 		"color": "#7A7E83",
 		"selectedColor": "#000000",
 		"borderStyle": "black",

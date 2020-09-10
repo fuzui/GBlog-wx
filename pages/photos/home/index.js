@@ -26,8 +26,11 @@ Page({
     });
   },
   async onShow() {
-    
-    
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 2
+      })
+    }
   },
   /**
    * 向下滑动拉去下一页

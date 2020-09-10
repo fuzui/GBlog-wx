@@ -14,6 +14,11 @@ Page({
   },
   async onShow() {
     var that = this;
+    if (typeof that.getTabBar === 'function' && that.getTabBar()) {
+      that.getTabBar().setData({
+        selected: 3
+      })
+    }
     if(PushConfig.isOpen){
       that.setData({
         SubscribeServer: true,
