@@ -150,3 +150,39 @@
 	width:300rpx;
 	height: 300rpx;
 }
+
+.cu-bar.tabbar .action {
+	font-size: 22rpx;
+	position: relative;
+	flex: 1;
+	text-align: left;
+	padding: 0;
+	display: block;
+	height: auto;
+	line-height: 1;
+	margin: 0;
+	overflow: initial;
+}
+.cu-bar.tabbar .comment {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	position: relative;
+	flex: 2;
+}
+
+.cu-tag.badge {
+	border-radius: 200rpx;
+	position: absolute;
+	top: -10rpx;
+	right: -10rpx;
+	font-size: 20rpx;
+	padding: 0rpx 10rpx;
+	height: 28rpx;
+	color: var(--grey);
+}
+
+.cu-tag.badge:not([class*="bg-"]) {
+	background-color: #dd514c;
+}

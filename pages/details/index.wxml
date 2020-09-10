@@ -49,11 +49,6 @@
       <view class="cu-tag line-orange">{{item.name}}</view>
     </view>
   </view>
-  <!-- 点赞、分线 -->
-  <view class="flex solid-bottom padding-xs justify-center">
-      <view class="padding-xs margin-xs radius" bindtap="addStar" data-gid='{{id}}' data-lovecount='{{loveCount}}'><text class="cuIcon-appreciate"></text></view>
-      <view class="padding-xs margin-xs radius" bindtap="share" data-gid='{{id}}'><text class="cuIcon-share"></text></view>
-    </view>
 </view>
 
 <!-- 返回顶端 -->
@@ -103,19 +98,13 @@
     <text class="text-xl text-bold">评论</text>
   </view>
 </view>
-<view class="cu-card dynamic no-card">
-  <view class="cu-bar search bg-white">
-    <view class="search-form round">
-      <text class="cuIcon-write"></text>
-      <input type="text" placeholder="写下您的意见与看法~" bindtap="addComment" data-target="commentModal" data-pid="0" data-prompt="评论博文" disabled="true"></input>
-    </view>
-  </view>
+<view class="cu-card dynamic no-card margin-bottom-xl">
   <view class="cu-item shadow  margin-bottom">
-    <view class="cu-list menu-avatar comment solids-top padding-bottom-xl">
+    <view class="cu-list menu-avatar comment padding-bottom-xl">
       <!-- 暂无评论 -->
       <view class="no-content" wx:if="{{!comments.length}}">
         <image src="{{noContentImage}}"></image>
-        <view class="text-xl padding">暂无留言</view>  
+        <view class="text-xl padding">暂无评论</view>  
       </view>
 
       <!-- 评论树 -->
@@ -251,6 +240,31 @@
       <view class="action">
         <button class="cu-btn line-green text-red" bindtap="hideModal">取消</button>
       </view>
+    </view>
+  </view>
+</view>
+
+<!-- 发表评论、点赞、转发 -->
+<view class="cu-bar tabbar shadow foot" style="background: white;">
+  <view class="search-form round comment" style="width:400rpx;">
+    <text class="cuIcon-write"></text>
+    <input type="text" placeholder="我来评论..." bindtap="addComment" data-target="commentModal" data-pid="0" data-prompt="评论博文" disabled="true"></input>
+  </view>
+  <view class="action">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/icon/comment.png"></image>
+      <view class="cu-tag badge bg-white" wx:if="{{commentCount}}">{{commentCount}}</view>
+    </view>
+  </view>
+  <view class="action">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/icon/love.png" bindtap="addStar" data-gid='{{id}}' data-lovecount='{{loveCount}}'></image>
+      <view class="cu-tag badge bg-white" wx:if="{{loveCount}}">{{loveCount}}</view>
+    </view>
+  </view>
+  <view class="action">
+    <view class='cuIcon-cu-image'>
+      <image src="/images/icon/share.png" bindtap="share" data-gid='{{id}}'></image>
     </view>
   </view>
 </view>

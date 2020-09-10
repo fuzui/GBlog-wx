@@ -91,6 +91,7 @@ Page({
 
     var that = this;
     const articleDetails = await this.getArticleDetails(id);
+    console.log(articleDetails)
     const comments = await this.getComments(id,0);
     if(comments.pages > comments.page+1){
       that.setData({
