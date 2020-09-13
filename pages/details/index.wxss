@@ -186,3 +186,23 @@
 .cu-tag.badge:not([class*="bg-"]) {
 	background-color: #dd514c;
 }
+
+/* 分享按钮 */
+.article-share {
+	display:inline-block;
+	margin-left: 30rpx;
+}
+.article-share button {
+	width:120rpx;
+	height:120rpx;
+}
+.article-share button image {
+	width:70rpx;
+	height:70rpx;
+}
+.article-share text {
+	font-size: 24rpx;
+	color: gray;
+	display:block;
+	margin-top: 10rpx;
+}

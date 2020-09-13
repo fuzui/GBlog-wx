@@ -78,15 +78,23 @@
 <!-- 分享 -->
 <view class="cu-modal bottom-modal {{modalShare?'show':''}}">
   <view class="cu-dialog">
-    <view class="cu-bar bg-white">
-      
-      <view class="action text-blue" bindtap="hideModalshare">取消</view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">分享文章</view>
+      <text class="cuIcon-close text-red margin-right" bindtap="hideModalshare"></text>
     </view>
     <view class="padding-xl">
-      <button class="cu-btn line-orange margin-left-sm lg" open-type="share">
-        <text class="cuIcon-weixin text-green"></text> 朋友</button>
-      <button class="cu-btn line-orange margin-right-sm lg" bindtap="shareFriends" wx:if="{{shareIsOpen}}">
-        <text class="cuIcon-pic text-blue"></text>海报</button>
+      <view class="article-share">
+        <button class="cu-btn bg-white xl" open-type="share">
+          <image src="/images/icon/weixin.png" ></image>
+        </button>
+        <text>微信好友</text>
+      </view>
+      <view class="article-share">
+        <button class="cu-btn bg-white xl" bindtap="shareFriends" wx:if="{{shareIsOpen}}">
+          <image src="/images/icon/poster.png"></image>
+        </button>
+        <text>生成海报</text>
+      </view>
     </view>
   </view>
 </view>
