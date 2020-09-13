@@ -2,8 +2,8 @@
 <view class="UCenter-bg fixed-bg" style="background-image: url(https://cdn.fuzui.net/blog/type_1588605033866.png);">
 </view>
 <!--  分类导航  -->
-<scroll-view scroll-x class="bg-black nav text-center fixed-nav">
-  <view class="cu-item {{index==selected?'text-orange cur':''}}" wx:for="{{navlist}}" bindtap="handleChangeTab" wx:for-item="tab" data-id='{{index}}' wx:key="index">
+<scroll-view scroll-x class=" scroll-view bg-white nav text-center fixed-nav" scroll-with-animation scroll-left="{{scrollLeft}}">
+  <view class="scroll-view-item cu-item {{index==selected?'text-black text-lg text-bold':'text-df text-gray'}}" wx:for="{{navlist}}" bindtap="handleChangeTab" wx:for-item="tab" data-id='{{index}}' wx:key="index">
     {{tab.name}}
   </view>
 </scroll-view>

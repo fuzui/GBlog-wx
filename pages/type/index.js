@@ -21,13 +21,21 @@ Page({
     interval: 5000, //自动切换时间间隔
     duration: 1000, //滑动动画时长
     tip: "",
-    loading: false
+    loading: false,
+    scrollLeft: 0
   },
 
 
   //切换TAB
   async handleChangeTab(event) {
     var that = this;
+    let offsetLeft = event.currentTarget.offsetLeft
+    wx.createSelectorQuery().select('.scroll-view-item').boundingClientRect((rect)=>{
+      that.setData({
+        scrollLeft: offsetLeft - that.data.scrollViewWidth/2 + rect.width/2
+      })
+    }).exec()
+
     that.setData({
       loadModal:true
     })
@@ -71,7 +79,11 @@ Page({
       selected: index
     });
   },
-
+  onReady() {
+    wx.createSelectorQuery().select('.scroll-view').boundingClientRect((rect)=>{
+      this.data.scrollViewWidth = rect.width
+    }).exec()
+  },
   /**
    * 下拉分页
    */
