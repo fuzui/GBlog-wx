@@ -12,7 +12,7 @@
       </view>
     </view>
     <view class="image">
-      <image src="{{item.screenshots}}" mode="widthFix"></image>
+      <image src="{{url+item.screenshots}}" mode="widthFix"></image>
       <view class="cu-tag bg-blue" wx:if="{{item.version}}">{{item.version}}</view>
       <view class="cu-bar bg-shadeBottom">
         <text class="text-cut" wx:if="{{item.description}}">{{item.description}}</text>
