@@ -4,7 +4,7 @@
 <!-- 避免遮挡，可能有更多的处理方法 -->
 <view style="margin-top:390rpx;"></view>
 <!-- 相册 -->
-<view class="grid col-2 padding-sm">
+<view class="grid col-2 padding-sm" style="margin-bottom:100rpx;">
   <view class="padding-xs" wx:for="{{content}}" wx:for-item="item" wx:key="index">
     <view class="bg-img padding-top-xl flex align-end shadow-blur" bindtap="toDetailsPage" data-index="{{index}}" style="background-image: url({{item.thumbnail}});height: 207rpx;">
       <view class="bg-shadeBottom padding padding-top-xl flex-sub text-cut">
