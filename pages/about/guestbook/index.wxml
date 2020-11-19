@@ -29,9 +29,11 @@
 
       <!-- 评论树 -->
       <view class="cu-item" wx:for="{{comments}}" wx:for-item="comment" wx:key="index">
-        <view class="cu-avatar round" 
-              style="background-image:url(https://cdn.v2ex.com/gravatar/{{comment.gravatarMd5}}?s=64&d=monsterid);">
-        </view>
+        <image class="cu-avatar round" 
+          src="{{comment.authorUrl?comment.authorUrl:'https://cdn.v2ex.com/gravatar/'+comment.gravatarMd5+'?s=64&d=monsterid'}}"
+          binderror="binderrorimg"
+          data-errorimg="{{index}}"
+          data-gravatarmd5 ="{{comment.gravatarMd5}}"></image>
         <view class="content">
           <view class="text-grey flex">
           <view class="cu-tag bg-red light ssm round" wx:if="{{comment.isAdmin}}">博主</view>
@@ -57,11 +59,15 @@
             </view>
           </view>
           <!-- 子评论 -->
-          <view class="content-children "  wx:for="{{comment.children}}" wx:for-item="children" wx:key="childrenIndex">
+          <view class="content-children "  wx:for="{{comment.children}}" wx:for-item="children" wx:key="childrenIndex" wx:for-index="childrenIndex">
             <view class="radius text-sm">
               <view class="flex">
-                <view class="cu-avatar ssm round flex margin-right-xs"
-                      style="background-image:url(https://cdn.v2ex.com/gravatar/{{children.gravatarMd5}}?s=32&d=monsterid);"></view>
+                <image class="cu-avatar ssm round flex margin-right-xs" 
+                  src="{{children.authorUrl?children.authorUrl:'https://cdn.v2ex.com/gravatar/'+children.gravatarMd5+'?s=32&d=monsterid'}}"
+                  binderror="binderrorimg"
+                  data-errorimg="{{index}}"
+                  data-gravatarmd5 ="{{children.gravatarMd5}}"
+                  data-errorchildrenimg ="{{childrenIndex}}"></image>
                 <view class="text-grey flex">
                 <view class="cu-tag bg-red light sssm round" wx:if="{{children.isAdmin}}">博主</view>
                 {{children.author}}:

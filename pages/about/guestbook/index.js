@@ -131,6 +131,7 @@ Page({
     const param = {
       allowNotification: this.data.allowNotification,
       author: this.data.userInfo.nickName,
+      authorUrl: this.data.userInfo.avatarUrl,
       content: this.data.commentContent,
       email: this.data.commentMail,
       parentId: this.data.commmentPid,
@@ -239,4 +240,22 @@ Page({
       imageUrl: CustomStyle.guestbookImage
     }
   },
+  binderrorimg:function(e){  
+    var errorImgIndex= e.target.dataset.errorimg;
+    var errorChildrenImgIndex = e.target.dataset.errorchildrenimg;
+    var comments=this.data.comments;
+    var gravatarMd5 = e.target.dataset.gravatarmd5;
+    var comment = comments[errorImgIndex];
+    if(errorChildrenImgIndex || errorChildrenImgIndex == 0) {
+      var childrenComment = comment.children[errorChildrenImgIndex];
+      childrenComment.authorUrl = "https://cdn.v2ex.com/gravatar/"+gravatarMd5+"?s=32&d=monsterid";
+      comment.children[errorChildrenImgIndex] = childrenComment;
+    }else {
+      comment.authorUrl = "https://cdn.v2ex.com/gravatar/"+gravatarMd5+"?s=64&d=monsterid";
+    }
+    comments[errorImgIndex] = comment;
+    this.setData({
+      comments:comments
+    });
+  }
 })
