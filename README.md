@@ -3,7 +3,7 @@
 <p align="center">
  <img src="https://gitee.com/GeekEra/GBlog-wx/badge/star.svg?theme=dark" alt="Build Status">
  <img src="https://img.shields.io/github/stars/GeekEra/GBlog-wx.svg?style=social" alt="Build Status">
- <img src="https://img.shields.io/badge/halo-1.4.1-brightgreen" alt="Build Status">
+ <img src="https://img.shields.io/badge/halo-1.4.2-brightgreen" alt="Build Status">
 </p>
 
 GBlog-wx：微信小程序博客
@@ -155,4 +155,5 @@ GBLOG-WX
 
 如果您发现了什么bug，或者有什么界面建议或意见，
 
-欢迎 [issue](https://github.com/GeekEra/GBlog-wx/issues)，当然也可以直接点小程序关于栏中的“联系我”或“意见反馈”或“留言”。
+欢迎 [issue](https://github.com/GeekEra/GBlog-wx/issues)，当然也可以直接点小程序关于栏中的“联系我”或“意见反馈”或“留言”,或者
+[![qq群](https://img.shields.io/badge/Q%E7%BE%A4-199399240-red "qq群")](https://qm.qq.com/cgi-bin/qm/qr?k=Pq2leZgYF4FWqveg5jeKzBX8RS6iF2K2&jump_from=webapi)
