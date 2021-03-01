@@ -1,0 +1,8 @@
+<cu-custom bgImage="{{tomImage}}" isCustom="{{true}}">
+  <view slot="content">分享海波</view>
+</cu-custom>
+<image class="share-image" src="{{shareImage}}" mode="widthFix" />
+<view class="button">
+  <button class="cu-btn round line-purple margin-lr-sm padding-lr-xl" bindtap="backPage">返回文章</button>
+  <button class="cu-btn round bg-gradual-purple margin-lr-sm padding-lr-xl" bindtap="saveImage">立即保存</button>
+</view>

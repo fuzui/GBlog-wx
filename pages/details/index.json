@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "canvas-share": "../../component/canvas-share/index",
-    "parser":"../../../component/parser/parser"
+    "parser":"../../../component/parser/parser",
+    "painter":"../../../component/painter/painter"
   }
 }

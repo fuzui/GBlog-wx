@@ -69,7 +69,7 @@
   </view>
 </view>
 <!-- 生成海报 -->
-<canvas-share bindclose="close" userInfo="{{userInfo}}" visible="{{visible}}" imgsInfo="{{imgsInfo}}" style="margin-top:100px;"/>
+<painter style="position:fixed;top:-9999rpx" palette="{{palette}}"  bind:imgOK="toSharePage" />
 <!-- 加载框 -->
 <view class='cu-load load-modal' wx:if="{{loadModal}}">
   <image src="{{logo}}" class='png' mode='aspectFit'></image>

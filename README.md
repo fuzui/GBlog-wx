@@ -89,9 +89,7 @@ GBlog-wx：微信小程序博客
 
   [开启文章分享海报功能](https://docs.geekera.cn/gblog-wx/posters-share.html)
 
-* 文章订阅、评论通知
-
-  [开启新文章订阅、评论回复通知](https://docs.geekera.cn/gblog-wx/subscribe.html)
+* <s>文章订阅、评论通知</s>
 
 * 自定义样式
 
@@ -104,8 +102,8 @@ GBLOG-WX
 ├── cloudfunctions		// 云服务
 ├── colorui            	// color-ui组件库 
 ├── component           // 自定义组件
-│       └── article-list                  // 文章列表
-│       └── canvas-share                  // 海报生成
+│       └── article-list     // 文章列表
+│       └── painter          // painter小程序生成图片组件
 │       └── parser           // parser富文本组件
 ├── config 				// 配置文件
 ├── images      		// 图片
@@ -126,8 +124,6 @@ GBLOG-WX
 * 友情链接
 * 站点统计
 * 文章分享海报
-* 新文章订阅
-* 评论回复通知
 
 **管理页面功能：**
 
@@ -150,7 +146,7 @@ GBLOG-WX
 * [halo](https://github.com/halo-dev/halo) 一个优秀的开源博客发布应用
 * [ColorUI](https://github.com/weilanwl/ColorUI) 鲜亮的高饱和色彩，专注视觉的小程序组件库
 * [Parser](https://github.com/jin-yufeng/Parser) 小程序富文本插件（html 渲染）
-* [Hux Blog](https://huangxuan.me/)的背景图
+* [Painter](https://github.com/Kujiale-Mobile/Painter) 小程序生成图片库，轻松通过 json 方式绘制一张可以发到朋友圈的图片
 
 ### 八、联系
 

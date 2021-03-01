@@ -9,7 +9,7 @@ const Config = {
   Token: 'adminToken',
   guestbookSheetId: 2,  //留言页sheet的id
 }
-//订阅配置
+//订阅配置(已失效，待更新)
 const PushConfig = {
   isOpen: false,
   updateKey: "vhOJ1·····································",//更新推送模板id

@@ -1,0 +1,16 @@
+page {
+  background-color: #7566B4!important;
+  text-align: center;
+}
+.share-image {
+  margin-top: 40rpx;
+  width: 650rpx;
+}
+.button {
+  margin: 1rpx 0rpx 0rpx 50rpx;
+  padding: 50rpx 70rpx;
+  border-radius: 20rpx;
+  width: 650rpx;
+  height: 164rpx;
+  background-color:#ffffff;
+}
