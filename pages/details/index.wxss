@@ -195,10 +195,24 @@
 .article-share button {
 	width:120rpx;
 	height:120rpx;
+	position: relative;
+	border: 0rpx;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	padding: 30rpx;
+	line-height: 1;
+	text-align: center;
+	text-decoration: none;
+	overflow: visible;
+	margin-left: initial;
+	transform: translate(0rpx, 0rpx);
+	margin-right: initial;
 }
 .article-share button image {
-	width:70rpx;
-	height:70rpx;
+	width:60rpx;
+	height:60rpx;
 }
 .article-share text {
 	font-size: 24rpx;

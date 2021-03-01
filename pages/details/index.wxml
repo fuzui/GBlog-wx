@@ -84,13 +84,13 @@
     </view>
     <view class="padding-xl">
       <view class="article-share">
-        <button class="cu-btn bg-white xl" open-type="share">
+        <button class="bg-white xl" open-type="share">
           <image src="/images/icon/weixin.png" ></image>
         </button>
         <text>微信好友</text>
       </view>
       <view class="article-share">
-        <button class="cu-btn bg-white xl" bindtap="shareFriends" wx:if="{{shareIsOpen}}">
+        <button class="bg-white xl" bindtap="shareFriends" wx:if="{{shareIsOpen}}">
           <image src="/images/icon/poster.png"></image>
         </button>
         <text>生成海报</text>
