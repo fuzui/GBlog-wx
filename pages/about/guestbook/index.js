@@ -1,6 +1,6 @@
 //获取应用实例
 const app = getApp();
-import apiService from '../../../utils/api-service'; 
+import apiService from '../../../services/api/api-service'; 
 import apiResult from '../../../utils/api-result';
 import { Config,ParserStyle,CustomStyle } from './../../../config/api';
 Page({

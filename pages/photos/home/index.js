@@ -1,5 +1,5 @@
 const app = getApp();
-import apiService from '../../../utils/api-service';
+import apiService from '../../../services/api/api-service';
 import utils from '../../../utils/utils';
 import {PageSize,CustomStyle} from '../../../config/api';
 Page({

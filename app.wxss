@@ -1,9 +1,9 @@
 /* 
 微信小程序不支持CSS3的CSS变量，但是这里定义样式变量，主要是为了规范诸如颜色、边线、字体大小等
 */
-@import "colorui/main.wxss";
-@import "colorui/icon.wxss";
-@import "colorui/animation.wxss";
+@import "styles/colorui/main.wxss";
+@import "styles/colorui/icon.wxss";
+@import "styles/colorui/animation.wxss";
 page{
   font-family:-apple-system-font,Helvetica Neue,sans-serif;
 }

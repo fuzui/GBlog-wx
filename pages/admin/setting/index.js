@@ -1,6 +1,6 @@
 const app = getApp();
 import apiResult from '../../../utils/api-result';
-import apiService from '../../../utils/api-service'; 
+import apiService from '../../../services/api/api-service'; 
 import {ApiBaseUrl,CustomStyle} from '../../../config/api.js';
 Page({
   data: {

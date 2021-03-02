@@ -1,6 +1,6 @@
 //获取应用实例
 const app = getApp();
-import apiService from '../../../utils/api-service';
+import apiService from '../../../services/api/api-service';
 import  {PersonalInfo,CustomStyle} from '../../../config/api'
 Page({
   data: {

@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "parser":"../../../component/parser/parser",
-    "painter":"../../../component/painter/painter"
+    "parser":"../../../components/parser/parser",
+    "painter":"../../../components/painter/painter"
   }
 }

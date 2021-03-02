@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "article-list": "./../../component/article-list/index"
+    "article-list": "./../../components/article-list/index"
   }
 }

@@ -33,7 +33,7 @@
 		"pages/admin/tag/index",
 		"pages/admin/theme/list/index",
 		"pages/admin/user/index",
-    "component/article-list/index"
+    "components/article-list/index"
 	],
 	"window": {
 		"navigationBarBackgroundColor": "#39b54a",
@@ -42,7 +42,7 @@
     "navigationBarTextStyle": "white"
 	},
 	"usingComponents": {
-		"cu-custom": "/colorui/components/cu-custom"
+		"cu-custom": "/styles/colorui/components/cu-custom"
 	},
 	"tabBar": {
 		"custom": true,
