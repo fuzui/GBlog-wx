@@ -89,7 +89,6 @@ Page({
 
     var that = this;
     const articleDetails = await this.getArticleDetails(id);
-    console.log(articleDetails)
     const comments = await this.getComments(id,0);
     if(comments.pages > comments.page+1){
       that.setData({
@@ -188,8 +187,6 @@ Page({
     wx.showLoading({
       title: '生成中',
     })
-    console.log(Date.now)
-    console.log(Date.parse(Date.now))
     wx.cloud.callFunction({
       name: "get_qrcode",
       data: {
@@ -197,7 +194,6 @@ Page({
         path: that.data.currentPage.route
       },
       success(res) {
-        console.log(res)
         const filePath = wx.env.USER_DATA_PATH + '/' + Date.parse(new Date()) + '_buffer2file.jpg';
         let fileManager = wx.getFileSystemManager();
         fileManager.writeFile({
@@ -205,7 +201,6 @@ Page({
           encoding: 'binary',
           data: res.result.buffer,
           success(res) {
-            console.log(filePath)
             const palette = new LastMayday().palette(
               app.globalData.blogTitle,
               userInfo.nickName,
@@ -224,7 +219,6 @@ Page({
         })
       }
     })
-    console.log("2222")
   },
 
   //关闭海报展示
@@ -290,7 +284,6 @@ Page({
       return ;
     }
     const userInfo = wx.getStorageSync(Config.User);
-    console.log(userInfo)
     if(!userInfo.nickName){
       this.setData({
         modalName: "loginModal",

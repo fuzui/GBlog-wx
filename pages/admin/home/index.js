@@ -30,7 +30,6 @@ Page({
       loginMessage: false
     })
     var token = wx.getStorageSync(Config.Token)
-    console.log(token)
     if(token){
       const statistics = await this.adminGetStatistics();
       const noticeCount = await this.getNoticeCount();

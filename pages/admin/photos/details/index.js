@@ -27,7 +27,6 @@ Page({
       loadModal:true
     })
     var photo = await this.adminGetPhotoDetails(id);
-    console.log(photo)
     that.setData({
       photo: photo,
       id: photo.id,
@@ -91,7 +90,6 @@ Page({
     var dateStr = e.detail.value;
     dateStr = dateStr.replace(/-/g,'/');
     var date = new Date(dateStr);
-    console.log(date.getTime())
     this.setData({
       takeTime: date.getTime()
     });

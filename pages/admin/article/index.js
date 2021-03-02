@@ -25,7 +25,6 @@ Page({
       loadModal:true
     })
     const articleList = await this.getArticle();
-    console.log(articleList)
     that.setData({
       articleList: articleList,
       loadModal:false

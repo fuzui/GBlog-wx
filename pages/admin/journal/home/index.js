@@ -153,7 +153,6 @@ Page({
       sourceContent: this.data.currentContent,
       type: this.data.currentType
     }
-    console.log(this.data.currentType)
     try {
       const result = await apiService.adminEditJournal(journalId,param);
       // //视图修改，而非重新调用接口刷新
