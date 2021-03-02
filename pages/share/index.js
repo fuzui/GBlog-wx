@@ -26,13 +26,13 @@ Page({
   },
   onShareAppMessage: function(res) {
     return {
-      title: app.globalData.blogTitle+'分享海波',
+      title: app.globalData.blogTitle+'分享海报',
       path: '/pages/about/disclaimer/index'
     }
   },
   onShareTimeline: function (res) {
     return {
-      title: app.globalData.blogTitle+'分享海波',
+      title: app.globalData.blogTitle+'分享海报',
       imageUrl: app.globalData.logo
     }
   },

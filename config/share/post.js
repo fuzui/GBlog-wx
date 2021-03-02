@@ -161,7 +161,7 @@ export default class LastMayday {
           },
           {
             "type": "text",
-            "text": "长按扫描二维码，与一起聊技术",
+            "text": "长按扫描二维码，一起聊技术",
             "css": {
               "color": "#CCCCCC",
               "background": "",
