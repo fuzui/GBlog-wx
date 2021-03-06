@@ -165,7 +165,8 @@ Page({
       url: '/pages/share/index',
       success: (res) => {
         res.eventChannel.emit('shareImage', {
-          shareImage: event.detail.path
+          shareImage: event.detail.path,
+          id: this.data.id
         })
       }
     })

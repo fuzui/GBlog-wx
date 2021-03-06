@@ -2,32 +2,23 @@
 const app = getApp();
 Page({
   data: {
-    shareImage: null
+    shareImage: null,
+    path: null
   },
   onLoad: function () {
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('shareImage', data => {
       this.setData({
         shareImage: data.shareImage,
-        productId: data.productId
+        path: '/pages/details/index?id=' + data.id
       })
-    })
-  },
-  CopyLink(e) {
-    wx.setClipboardData({
-      data: e.currentTarget.dataset.link,
-      success: res => {
-        wx.showToast({
-          title: '已复制',
-          duration: 1000,
-        })
-      }
     })
   },
   onShareAppMessage: function(res) {
     return {
       title: app.globalData.blogTitle+'分享海报',
-      path: '/pages/about/disclaimer/index'
+      imageUrl: this.data.shareImage,
+      path: this.data.path
     }
   },
   onShareTimeline: function (res) {
