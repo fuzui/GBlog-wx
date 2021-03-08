@@ -10,7 +10,7 @@ Page({
     noContentImage: CustomStyle.noContentImage,
     shareIsOpen: ShareConfig.isOpen,
     parserStyle: ParserStyle,
-    disallowComment: false,
+    
     isLoadComment: false,
     commentPage: 0,
     commmentPid: 0,
@@ -21,14 +21,24 @@ Page({
     logo: "",
     floorstatus: false, //是否显示回到顶端图标
 		star_img: '/images/star.png',
-    tags: [], //文章标签
-    loveCount:0,  //点赞数
-    commentCount: 0,  //评论树
+    // 点赞数
+    loveCount: 0,
+    articleDetails: {
+      // 评论数
+      commentCount: 0,
+      wordCount: 0,
+      visits: 0,
+      // 文章标签
+      tags: [], 
+      topPriority: false,
+      disallowComment: false,
+      createTime: 0
+    },
+    
     userInfo: {},
     checkStatus: true, //评论开关
     comments: [],
     childrenComments: [],
-
     //海报相关
     visible: false,
     imgsInfo: {},
@@ -59,15 +69,15 @@ Page({
    */
   onShareAppMessage: function (res) {
     return {
-      title: this.data.title,
-      imageUrl: this.data.thumbnail?this.data.thumbnail:app.globalData.logo,
+      title: this.data.articleDetails.title,
+      imageUrl: this.data.articleDetails.thumbnail?this.data.articleDetails.thumbnail:app.globalData.logo,
       path: '/pages/details/index?id='+this.data.id
     }
   },
   onShareTimeline: function (res) {
     return {
-      title: this.data.title,
-      imageUrl: this.data.thumbnail?this.data.thumbnail:app.globalData.logo,
+      title: this.data.articleDetails.title,
+      imageUrl: this.data.articleDetails.thumbnail?this.data.articleDetails.thumbnail:app.globalData.logo,
       query: 'id='+this.data.id
     }
   },
@@ -95,23 +105,13 @@ Page({
         isLoadComment: true
       })
     }
-
     const html = articleDetails.formatContent;
 
     that.setData({
+      articleDetails: articleDetails,
       id: articleDetails.id,
-      title: articleDetails.title,
-      labels: articleDetails.commentCount,
-      topPriority: articleDetails.topPriority,
-      createTime: articleDetails.createTime,
       content: html,
-      lookCount: articleDetails.visits,
       loveCount: articleDetails.likes,
-      commentCount: articleDetails.commentCount,
-      disallowComment: articleDetails.disallowComment,
-      tags: articleDetails.tags,
-      thumbnail: articleDetails.thumbnail,
-      summary: articleDetails.summary,
       comments: comments.content,
     });
     this.setData({
@@ -207,8 +207,8 @@ Page({
               userInfo.nickName,
               userInfo.avatarUrl,
               '/images/bg/background-share.png',
-              that.data.title,
-              that.data.summary,
+              that.data.articleDetails.title,
+              that.data.articleDetails.summary,
               filePath);
             that.setData({
               palette: palette,
@@ -280,7 +280,7 @@ Page({
    */
   addComment(e) {
     // 判断该文章评论功能是否关闭
-    if(this.data.disallowComment){
+    if(this.data.articleDetails.disallowComment){
       apiResult.warn("评论已关闭");
       return ;
     }

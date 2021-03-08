@@ -4,23 +4,23 @@
 </cu-custom>
 <!-- 标题 -->
 <view class="text-cut title bg-white margin-0">
-  <view class="cu-tag bg-red light sm round" wx:if="{{topPriority==true}}">置顶</view>
-  {{title}}
+  <view class="cu-tag bg-red light sm round" wx:if="{{articleDetails.topPriority==true}}">置顶</view>
+  {{articleDetails.title}}
 </view>
 <!-- 阅读、点赞、发表时间 -->
 <view class="padding flex text-center text-grey bg-white shadow-warp">
   <view class="flex flex-sub flex-direction solid-right">
-    <view class="text-xs text-orange">{{lookCount}}</view>
+    <view class="text-xs text-orange">{{articleDetails.visits}}</view>
     <view class="margin-top-sm text-xs">
       <text class="cuIcon-attentionfill"></text> 阅读</view>
   </view>
-  <view class="flex flex-sub flex-direction solid-right" bindtap="addStar" data-gid='{{id}}' data-lovecount='{{loveCount}}'>
-    <view class="text-xs text-blue">{{loveCount}}</view>
+  <view class="flex flex-sub flex-direction solid-right" wx:if="{{articleDetails.wordCount}}">
+    <view class="text-xs text-blue">{{articleDetails.wordCount}}</view>
     <view class="margin-top-sm text-xs">
-      <text class="cuIcon-appreciatefill"></text> 点赞</view>
+      <text class="cuIcon-rank"></text> 总字数</view>
   </view>
   <view class="flex flex-sub flex-direction">
-    <view class="text-xs text-green">{{tools.formatTime(createTime)}}</view>
+    <view class="text-xs text-green">{{tools.formatTime(articleDetails.createTime)}}</view>
     <view class="margin-top-sm text-xs">
       <text class="cuIcon-fork"></text> 发表时间</view>
   </view>
@@ -45,7 +45,7 @@
   </view>
   <!-- 文章标签 -->
   <view class="padding-sm flex flex-wrap">
-    <view class="padding-xs" wx:for="{{tags}}" wx:for-item="item" wx:key="index" data-id='{{item.id}}' bindtap='toTagPage'>
+    <view class="padding-xs" wx:for="{{articleDetails.tags}}" wx:for-item="item" wx:key="index" data-id='{{item.id}}' bindtap='toTagPage'>
       <view class="cu-tag line-orange">{{item.name}}</view>
     </view>
   </view>
@@ -267,7 +267,7 @@
   <view class="action">
     <view class='cuIcon-cu-image'>
       <image src="/images/icon/comment.png"></image>
-      <view class="cu-tag badge bg-white" wx:if="{{commentCount}}">{{commentCount}}</view>
+      <view class="cu-tag badge bg-white" wx:if="{{articleDetails.commentCount}}">{{articleDetails.commentCount}}</view>
     </view>
   </view>
   <view class="action">
