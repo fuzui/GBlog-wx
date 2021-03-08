@@ -3,8 +3,9 @@
 <p align="center">
  <img src="https://gitee.com/fuzui/GBlog-wx/badge/star.svg?theme=dark" alt="Build Status">
  <img src="https://img.shields.io/github/stars/fuzui/GBlog-wx.svg?style=social" alt="Build Status">
- <img src="https://img.shields.io/badge/halo-1.4.2-brightgreen" alt="Build Status">
+ <img src="https://img.shields.io/badge/halo-1.4.5-brightgreen" alt="Build Status">
 </p>
+
 
 
 GBlog-wx：微信小程序博客
