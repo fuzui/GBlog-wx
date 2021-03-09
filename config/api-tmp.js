@@ -26,8 +26,14 @@ const ParserStyle = {
   table: 'border-collapse:collapse;border-top:1px solid gray;border-left:1px solid gray;margin: 28rpx 0;',
   th: 'border-right:1px solid gray;border-bottom:1px solid gray;background: #ccc;',
   td: 'border-right:1px solid gray;border-bottom:1px solid gray;',
-  pre: 'display: block;background: hsl(30, 20%, 25%);color: white;text-shadow: 0 -.1em .2em black;font-family: monospace;font-size: 1em;text-align: left;white-space: pre;word-spacing: normal;word-break: normal;word-wrap: normal;line-height: 1.5;tab-size: 4;hyphens: none;margin: 28rpx 0;',
-  blockquote: 'background-color:#e7f6ed;border-left:6px solid #4caf50;color:rgb(136, 136, 136);padding: 20rpx 40rpx 20rpx 30rpx;margin: 28rpx 0;'
+  blockquote: 'background-color:#e7f6ed;border-left:6px solid #4caf50;color:rgb(136, 136, 136);padding: 20rpx 40rpx 20rpx 30rpx;margin: 28rpx 0;',
+  ul: 'padding-left: 25px;',
+  ol: 'padding-left: 25px;',
+  h1: 'font-size: 1.5em;line-height: 50px;',
+  h2: 'font-size: 1.17em;line-height: 40px;',
+  h3: 'font-size: 0.83em;line-height: 30px;',
+  h4: 'font-size: 0.67em;line-height: 30px;',
+  h5: 'font-size: 0.50em;line-height: 30px;'
 }
 const PageSize = {
   indexSize: 6, //每页文章数
