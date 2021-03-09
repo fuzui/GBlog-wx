@@ -101,18 +101,18 @@ GBlog-wx：微信小程序博客
 ```
 GBLOG-WX     
 ├── cloudfunctions		// 云服务
-├── components        // 自定义组件
+├── components        	// 自定义组件
 │       └── article-list     // 文章列表
 │       └── painter          // painter小程序生成图片组件
-│       └── parser           // parser富文本组件
-├── config 				    // 配置文件
-├── custom-tab-bar    // 自定义tabbar
-├── images      		  // 图片
-├── pages   			    // 页面代码
-├── services        // 封装方法
+│       └── mp-weixin        // mp-html小程序富文本组件
+├── config 				// 配置文件
+├── custom-tab-bar    	// 自定义tabbar
+├── images      		// 图片
+├── pages   			// 页面代码
+├── services        	// 封装方法
 │       └── api              // 接口实现
 │       └── posters          // 海报样式
-├── styles          // 样式
+├── styles          	// 样式
 │       └── colorui          // color-ui组件库 
 ├── utils      			// 公用js
 
@@ -151,7 +151,7 @@ GBLOG-WX
 
 * [halo](https://github.com/halo-dev/halo) 一个优秀的开源博客发布应用
 * [ColorUI](https://github.com/weilanwl/ColorUI) 鲜亮的高饱和色彩，专注视觉的小程序组件库
-* [Parser](https://github.com/jin-yufeng/Parser) 小程序富文本插件（html 渲染）
+* [mp-html](https://github.com/jin-yufeng/mp-html) 小程序富文本组件，支持渲染和编辑 html，支持在微信、QQ、百度、支付宝、头条和 uni-app 平台使用
 * [Painter](https://github.com/Kujiale-Mobile/Painter) 小程序生成图片库，轻松通过 json 方式绘制一张可以发到朋友圈的图片
 
 ### 八、联系

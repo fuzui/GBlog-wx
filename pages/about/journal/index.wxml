@@ -14,17 +14,15 @@
     <view class="cu-time">{{tools.getDateDiff(item.createTime)}}</view>
       <view class="cu-item text-{{bgColor[index%6]}} cuIcon-edit ">
         <view class="content bg-{{bgColor[index%6]}} shadow-blur">
-          <parser html="{{item.content}}"
-            gesture-zoom
+          <mp-html
             lazy-load
+            scroll-table
             selectable
-            show-with-animation
-            use-anchor
-            use-cache
             tag-style="{{parserStyle}}"
-            binderror="error"
-            bindlinkpress="linkpress">
-          </parser>
+            loading-img="/images/bg/image-loading.png"
+            error-img="/images/bg/image-error.png"
+            content="{{item.content}}"
+          />
         </view>
       </view> 
   </block>

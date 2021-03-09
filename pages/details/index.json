@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "parser":"../../../components/parser/parser",
-    "painter":"../../../components/painter/painter"
+    "painter":"../../../components/painter/painter",
+    "mp-html": "../../../components/mp-weixin/index"
   }
 }

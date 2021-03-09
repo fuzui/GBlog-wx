@@ -33,17 +33,15 @@
     </view>
       <view class="cu-item {{item.type=='PUBLIC'?'text-blue cuIcon-unlock':'text-grey cuIcon-lock'}}">
         <view class="content bg-grey shadow-blur">
-          <parser html="{{item.content}}"
-            gesture-zoom
+          <mp-html
             lazy-load
+            scroll-table
             selectable
-            show-with-animation
-            use-anchor
-            use-cache
             tag-style="{{parserStyle}}"
-            binderror="error"
-            bindlinkpress="linkpress">
-          </parser>
+            loading-img="/images/bg/image-loading.png"
+            error-img="/images/bg/image-error.png"
+            content="{{item.content}}"
+          />
         </view>
       </view> 
   </block>

@@ -40,17 +40,15 @@
           {{comment.author}}:
           </view>
           <view class="text-content text-df">
-            <parser html="{{comment.content}}"
-              gesture-zoom
+            <mp-html
               lazy-load
+              scroll-table
               selectable
-              show-with-animation
-              use-anchor
-              use-cache
               tag-style="{{parserStyle}}"
-              binderror="error"
-              bindlinkpress="linkpress">
-            </parser> 
+              loading-img="/images/bg/image-loading.png"
+              error-img="/images/bg/image-error.png"
+              content="{{comment.content}}"
+            />
           </view>
           <view class="margin-top-sm flex justify-between">
             <view class="text-gray text-df">{{tools.tsFormatTime(comment.createTime)}}</view>
@@ -75,17 +73,15 @@
               </view>
               
               <view class="flex-sub-children  margin-left-lg">
-                <parser html="{{children.content}}"
-                  gesture-zoom
+                <mp-html
                   lazy-load
+                  scroll-table
                   selectable
-                  show-with-animation
-                  use-anchor
-                  use-cache
                   tag-style="{{parserStyle}}"
-                  binderror="error"
-                  bindlinkpress="linkpress">
-                </parser>
+                  loading-img="/images/bg/image-loading.png"
+                  error-img="/images/bg/image-error.png"
+                  content="{{children.content}}"
+                />
               </view>
               <view class="flex justify-between">
                 

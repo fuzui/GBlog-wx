@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "parser": "./../../../components/parser/parser"
+    "mp-html": "../../../components/mp-weixin/index"
   }
 }

@@ -106,7 +106,6 @@ Page({
       })
     }
     const html = articleDetails.formatContent;
-
     that.setData({
       articleDetails: articleDetails,
       id: articleDetails.id,

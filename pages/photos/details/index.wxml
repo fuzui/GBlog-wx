@@ -36,18 +36,15 @@
 </view>
 <!-- 文章 -->
 <view class='margin-xs bg-white padding-xs radius shadow-lg'>
-  <parser html="{{item.description}}"
-    gesture-zoom
+  <mp-html
     lazy-load
+    scroll-table
     selectable
-    show-with-animation
-    use-anchor
-    use-cache
-    tag-style="{{tagStyle}}"
-    binderror="error"
-    bindlinkpress="linkpress"
-    bindready="ready">
-    </parser>
+    tag-style="{{parserStyle}}"
+    loading-img="/images/bg/image-loading.png"
+    error-img="/images/bg/image-error.png"
+    content="{{item.description}}"
+  />
   <image src="{{item.url}}" mode="widthFix" bindtap="showImage" data-url="{{item.url}}"></image>
 </view>
 <!-- 返回顶端 -->
