@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "mp-html": "../../../components/mp-weixin/index"
+    "mp-html": "../../../components/mp-weixin/index",
+    "authorize": "../../../components/authorize/index"
   }
 }

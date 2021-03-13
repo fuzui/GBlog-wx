@@ -131,22 +131,7 @@
 </view>
 
 <!-- 微信登录 -->
-<view class="cu-modal {{modalName=='loginModal'?'show':''}}">
-  <view class="cu-dialog">
-    <view class="cu-bar bg-white justify-end">
-      <view class="content">留言需登录</view>
-      <view class="action" bindtap="hideModal">
-        <text class="cuIcon-close text-red"></text>
-      </view>
-    </view>
-    <button class="cu-btn block bg-blue margin-tb-sm lg" open-type='getUserInfo' bindgetuserinfo="getUser">登录</button>
-    <view class="cu-bar bg-white justify-end">
-      <view class="action">
-        <button class="cu-btn line-green text-red" bindtap="hideModal">取消</button>
-      </view>
-    </view>
-  </view>
-</view>
+<authorize modalName="{{modalName}}" />
 
 <!-- 加载框 -->
 <view class='cu-load load-modal' wx:if="{{loadModal}}">

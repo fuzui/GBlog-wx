@@ -1,0 +1,15 @@
+<!-- 微信登录 -->
+<view class="login-modal {{modalName=='loginModal'?'show':''}}">
+  <view class="login-dialog">
+    <view class="padding-top text-lg">
+      <text class="text-black text-bold">您还未登录</text>
+    </view>
+    <view class="bg-img" style="background-image: url('/images/bg/forbid-access.png');height:400rpx;">
+      <view class="margin-top text-grey">请先登录再进行操作</view>
+    </view>
+    <view class="padding-tb">
+      <button class="cu-btn round line-blue shadow margin-lr-sm" bindtap="hideModal">暂不登录</button>
+      <button class="cu-btn round bg-blue shadow margin-lr-sm" open-type='getUserInfo' bindgetuserinfo="getUser">立即登录</button>
+    </view>
+  </view>
+</view>

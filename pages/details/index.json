@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "painter":"../../components/painter/painter",
-    "mp-html": "../../components/mp-weixin/index"
+    "mp-html": "../../components/mp-weixin/index",
+    "authorize": "../../components/authorize/index"
   }
 }
