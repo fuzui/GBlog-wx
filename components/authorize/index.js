@@ -24,7 +24,7 @@ Component({
      * 获取用户信息
      * @param {*} e 
      */
-    getUser(e){
+    getUser(e) {
       if (!e.detail.userInfo) {
         return apiResult.error("登录失败");
       } else {
@@ -35,5 +35,8 @@ Component({
         return apiResult.success("登录成功");
       }
     },
+    // 阻止滑动
+    preventTouchMove() {
+    }
   }
 })
