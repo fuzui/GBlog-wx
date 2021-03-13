@@ -1,6 +1,4 @@
 const app = getApp();
-import apiResult from '../../../utils/api-result';
-import {Config} from '../../../config/api.js';
 Page({
   data: {
     starCount: 0,
