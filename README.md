@@ -103,6 +103,7 @@ GBLOG-WX
 ├── cloudfunctions		// 云服务
 ├── components        	// 自定义组件
 │       └── article-list     // 文章列表
+│       └── authorize        // 微信登录
 │       └── painter          // painter小程序生成图片组件
 │       └── mp-weixin        // mp-html小程序富文本组件
 ├── config 				// 配置文件
