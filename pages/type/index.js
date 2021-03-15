@@ -56,20 +56,12 @@ Page({
     })
   },
   
-  onLoad: function() {
+  async onLoad() {
     //加载  
     var that = this;
     that.setData({
       logo: app.globalData.logo,
     })
-  },
-  async onShow() {
-    var that = this;
-    if (typeof that.getTabBar === 'function' && that.getTabBar()) {
-      that.getTabBar().setData({
-        selected: 1
-      })
-    }
     const navlist = await this.getCategories();
     const index = app.globalData.articleTypeTabIndex ? app.globalData.articleTypeTabIndex : 0;
     const content = await this.getArticleList(true, navlist[index].slug);
@@ -78,6 +70,14 @@ Page({
       content: content,
       selected: index
     });
+  },
+  async onShow() {
+    var that = this;
+    if (typeof that.getTabBar === 'function' && that.getTabBar()) {
+      that.getTabBar().setData({
+        selected: 1
+      })
+    }
   },
   onReady() {
     wx.createSelectorQuery().select('.scroll-view').boundingClientRect((rect)=>{
