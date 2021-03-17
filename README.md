@@ -3,8 +3,9 @@
 <p align="center">
  <img src="https://gitee.com/fuzui/GBlog-wx/badge/star.svg?theme=dark" alt="Build Status">
  <img src="https://img.shields.io/github/stars/fuzui/GBlog-wx.svg?style=social" alt="Build Status">
- <img src="https://img.shields.io/badge/halo-1.4.5-brightgreen" alt="Build Status">
+ <img src="https://img.shields.io/badge/halo-1.4.7-brightgreen" alt="Build Status">
 </p>
+
 
 
 
@@ -91,6 +92,10 @@ GBlog-wx：微信小程序博客
   [开启文章分享海报功能](https://docs.geekera.cn/gblog-wx/posters-share.html)
 
 * <s>文章订阅、评论通知</s>
+
+  [订阅消息（仅h1.4.2版本）](https://docs.geekera.cn/gblog-wx/subscribe.html)
+
+  > 等待改版中···
 
 * 自定义样式
 
