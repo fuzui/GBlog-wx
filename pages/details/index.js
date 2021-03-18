@@ -19,8 +19,8 @@ Page({
     modalShare: false,
     topImage: CustomStyle.topImage,
     logo: "",
-    floorstatus: false, //是否显示回到顶端图标
-		star_img: '/images/star.png',
+    // 是否显示回到顶端图标
+    floorstatus: false, 
     // 点赞数
     loveCount: 0,
     articleDetails: {

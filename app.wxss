@@ -3,6 +3,7 @@
 */
 @import "styles/colorui/main.wxss";
 @import "styles/colorui/icon.wxss";
+@import "styles/custom-icon/icon.wxss";
 @import "styles/colorui/animation.wxss";
 page{
   font-family:-apple-system-font,Helvetica Neue,sans-serif;

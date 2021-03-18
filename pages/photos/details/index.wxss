@@ -2,10 +2,10 @@
 /* 回到顶端按钮 */
 .returnTop{
   position: fixed;
-  z-index: 1024;
-  height: 50rpx;
-  width: 50rpx;
-  bottom: 30rpx;
+  z-index: 1111;
+  height: 70rpx;
+  width: 70rpx;
+  bottom: 130rpx;
 	right: 30rpx;
 }
 

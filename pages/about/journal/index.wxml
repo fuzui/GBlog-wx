@@ -19,8 +19,8 @@
             scroll-table
             selectable
             tag-style="{{parserStyle}}"
-            loading-img="/images/bg/image-loading.png"
-            error-img="/images/bg/image-error.png"
+            loading-img="/images/default/image-loading.svg"
+            error-img="/images/default/image-error.svg"
             content="{{item.content}}"
           />
         </view>

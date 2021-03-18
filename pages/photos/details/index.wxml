@@ -41,14 +41,14 @@
     scroll-table
     selectable
     tag-style="{{parserStyle}}"
-    loading-img="/images/bg/image-loading.png"
-    error-img="/images/bg/image-error.png"
+    loading-img="/images/default/image-loading.svg"
+    error-img="/images/default/image-error.svg"
     content="{{item.description}}"
   />
   <image src="{{item.url}}" mode="widthFix" bindtap="showImage" data-url="{{item.url}}"></image>
 </view>
 <!-- 返回顶端 -->
-<image class="returnTop" src='/images/returntop.png' bindtap="returnTop" hidden='{{!floorstatus}}'></image>
+<image class="returnTop" src='/images/icon/returntop.svg' bindtap="returnTop" hidden='{{!floorstatus}}'></image>
 
 <!-- 加载框 -->
 <view class='cu-load load-modal' wx:if="{{loadModal}}">

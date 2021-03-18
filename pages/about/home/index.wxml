@@ -36,31 +36,31 @@
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/about/links/index" hover-class="none">
-        <text class="cuIcon-friendfavor text-blue"></text>
+        <image src="/images/icon/friendfavor.svg" class="png"></image>
         <text class="text-grey">友情链接</text>
       </navigator>
     </view>
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/about/disclaimer/index" hover-class="none">
-        <image src="/images/about/disclaimer.png" class="png"></image>
+        <image src="/images/icon/disclaimer.svg" class="png"></image>
         <text class="text-grey">免责声明</text>
       </navigator>
     </view>
     <view class="cu-item arrow">
       <navigator class="content" url="/pages/about/about/index" hover-class="none">
-        <image src="/images/about/about.png" class="png" mode="aspectFit"></image>
+        <image src="/images/icon/know.svg" class="png"></image>
         <text class="text-grey">关于我</text>
       </navigator>
     </view>
     <view class="cu-item arrow">
       <button class="cu-btn content" open-type="contact">
-        <image src="/images/about/service.png" class="png" mode="aspectFit"></image>
+        <image src="/images/icon/service.svg" class="png" mode="aspectFit"></image>
         <text class="text-grey">联系我</text>
       </button>
     </view>
     <view class="cu-item arrow">
       <button class="cu-btn content" open-type="feedback">
-        <text class="cuIcon-writefill text-cyan"></text>
+        <image src="/images/icon/write.svg" class="png" mode="aspectFit"></image>
         <text class="text-grey">意见反馈</text>
       </button>
     </view>

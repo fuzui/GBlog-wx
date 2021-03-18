@@ -33,8 +33,8 @@
     scroll-table
     selectable
     tag-style="{{parserStyle}}"
-    loading-img="/images/bg/image-loading.png"
-    error-img="/images/bg/image-error.png"
+    loading-img="/images/default/image-loading.svg"
+    error-img="/images/default/image-error.svg"
     content="{{content}}"
   />
   <!-- 正文结束分割线 -->
@@ -50,7 +50,7 @@
 </view>
 
 <!-- 返回顶端 -->
-<image class="returnTop" src='/images/returntop.png' bindtap="returnTop" hidden='{{!floorstatus}}'></image>
+<image class="returnTop" src='/images/icon/returntop.svg' bindtap="returnTop" hidden='{{!floorstatus}}'></image>
 
 <!-- 提示框 -->
 <view class="cu-modal {{msgFlag==true?'show':''}}">
@@ -83,13 +83,13 @@
     <view class="padding-xl">
       <view class="article-share">
         <button class="bg-white xl" open-type="share">
-          <image src="/images/icon/weixin.png" ></image>
+          <image src="/images/icon/weixin.svg" ></image>
         </button>
         <text>微信好友</text>
       </view>
       <view class="article-share">
         <button class="bg-white xl" bindtap="shareFriends" wx:if="{{shareIsOpen}}">
-          <image src="/images/icon/poster.png"></image>
+          <image src="/images/icon/poster.svg"></image>
         </button>
         <text>生成海报</text>
       </view>
@@ -131,8 +131,8 @@
               scroll-table
               selectable
               tag-style="{{parserStyle}}"
-              loading-img="/images/bg/image-loading.png"
-              error-img="/images/bg/image-error.png"
+              loading-img="/images/default/image-loading.svg"
+              error-img="/images/default/image-error.svg"
               content="{{comment.content}}"
             />
           </view>
@@ -164,8 +164,8 @@
                   scroll-table
                   selectable
                   tag-style="{{parserStyle}}"
-                  loading-img="/images/bg/image-loading.png"
-                  error-img="/images/bg/image-error.png"
+                  loading-img="/images/default/image-loading.svg"
+                  error-img="/images/default/image-error.svg"
                   content="{{children.content}}"
                 />
               </view>
@@ -244,19 +244,19 @@
   </view>
   <view class="action">
     <view class='cuIcon-cu-image'>
-      <image src="/images/icon/comment.png"></image>
+      <image src="/images/icon/comment.svg"></image>
       <view class="cu-tag badge bg-white" wx:if="{{articleDetails.commentCount}}">{{articleDetails.commentCount}}</view>
     </view>
   </view>
   <view class="action">
     <view class='cuIcon-cu-image'>
-      <image src="/images/icon/love.png" bindtap="addStar" data-gid='{{id}}' data-lovecount='{{loveCount}}'></image>
+      <image src="/images/icon/love.svg" bindtap="addStar" data-gid='{{id}}' data-lovecount='{{loveCount}}'></image>
       <view class="cu-tag badge bg-white" wx:if="{{loveCount}}">{{loveCount}}</view>
     </view>
   </view>
   <view class="action">
     <view class='cuIcon-cu-image'>
-      <image src="/images/icon/share.png" bindtap="share" data-gid='{{id}}'></image>
+      <image src="/images/icon/share.svg" bindtap="share" data-gid='{{id}}'></image>
     </view>
   </view>
 </view>

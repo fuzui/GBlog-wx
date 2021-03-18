@@ -34,10 +34,9 @@
 /* 图标 */
 .cu-list.menu>.cu-item .content>image {
   display: inline-block;
-  margin-left: 8rpx;
-	margin-right: 12rpx;
 	width: 1.3em;
 	height: 1.3em;
-	vertical-align: middle
+  vertical-align: middle;
+  margin-right: 30rpx;
 }
 

@@ -9,32 +9,32 @@ Component({
     list: [
 			{
 				pagePath: "/pages/index/index",
-				iconPath: "/images/icon/home.png",
-				selectedIconPath: "/images/icon/home-hover.png",
+				iconPath: "/images/icon/home.svg",
+				selectedIconPath: "/images/icon/home-hover.svg",
 				text: "首页"
 			},
       {
         pagePath: "/pages/type/index",
-        iconPath: "/images/icon/type.png",
-        selectedIconPath: "/images/icon/type-hover.png",
+        iconPath: "/images/icon/type.svg",
+        selectedIconPath: "/images/icon/type-hover.svg",
         text: "分类"
       },
       {
         pagePath: "/pages/photos/home/index",
-        iconPath: "/images/icon/photo.png",
-        selectedIconPath: "/images/icon/photo-hover.png",
+        iconPath: "/images/icon/photo.svg",
+        selectedIconPath: "/images/icon/photo-hover.svg",
         text: "光影"
       },
 			{
 				pagePath: "/pages/about/home/index",
-				iconPath: "/images/icon/about.png",
-				selectedIconPath: "/images/icon/about-hover.png",
+				iconPath: "/images/icon/about.svg",
+				selectedIconPath: "/images/icon/about-hover.svg",
 				text: "关于"
 			},
 			{
 				pagePath: "/pages/admin/home/index",
-				iconPath: "/images/icon/admin.png",
-				selectedIconPath: "/images/icon/admin-hover.png",
+				iconPath: "/images/icon/admin.svg",
+				selectedIconPath: "/images/icon/admin-hover.svg",
 				text: "管理"
 			}
 		],

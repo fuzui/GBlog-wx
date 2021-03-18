@@ -117,9 +117,9 @@
         data-link="https://github.com/fuzui">https://github.com/fuzui</text>
       </view>
       <view class="padding">
-        <view class="cu-avatar round" style="background-image:url('/images/about/github.png');" 
+        <view class="cu-avatar round" style="background-image:url('/images/icon/github.svg');" 
         bindtap="CopyLink" data-link="https://github.com/fuzui"></view>
-        <view class="cu-avatar round margin-left" style="background-image:url('/images/about/gitee.png');"
+        <view class="cu-avatar round margin-left" style="background-image:url('/images/icon/gitee.svg');"
          bindtap="CopyLink" data-link="https://gitee.com/fuzui"></view>
       </view>
     </block>

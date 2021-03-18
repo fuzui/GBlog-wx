@@ -3,7 +3,7 @@ function requestError(data) {
     title: data.message,
     duration:1200,
     mask:true,
-    image:'/images/prompt/fail.png'  
+    image:'/images/prompt/fail.svg'  
   });
   if (data.status == 401) {
     let pages = getCurrentPages();
@@ -21,7 +21,7 @@ function error(msg) {
     title: msg,
     duration:1500,
     mask:true,
-    image:'/images/prompt/fail.png'  
+    image:'/images/prompt/fail.svg'  
   });
 }
 function warn(msg) {
@@ -29,7 +29,7 @@ function warn(msg) {
     title: msg,
     duration:1500,
     mask:true,
-    image:'/images/prompt/warn.png', 
+    image:'/images/prompt/warn.svg', 
   });
 }
 function success(msg) {
@@ -37,7 +37,7 @@ function success(msg) {
     title: msg,
     duration:2000,
     mask:true,
-    image:'/images/prompt/success.png' 
+    image:'/images/prompt/success.svg' 
   });
 }
 
