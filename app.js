@@ -13,6 +13,7 @@ App({
     }
     wx.getSystemInfo({
       success: e => {
+        this.globalData.windowHeight = e.windowHeight * (750/e.windowWidth);
         this.globalData.StatusBar = e.statusBarHeight;
         let custom = wx.getMenuButtonBoundingClientRect();
         this.globalData.Custom = custom;  
@@ -27,6 +28,7 @@ App({
       nickName: "",
       avatarUrl: ""
     },
+    windowHeight: 1334
   },
   // 更新小程序
   updateManager: function () {
