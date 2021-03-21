@@ -14,7 +14,7 @@
 <view class="cu-bar search bg-white">
   <view class="search-form round">
     <text class="cuIcon-search"></text>
-    <input type="text" placeholder="搜索文章" confirm-type="search" bindconfirm="onSearch"></input>
+    <input type="text" placeholder="搜索文章" bindtap="onSearch" disabled></input>
   </view>
 </view>
 

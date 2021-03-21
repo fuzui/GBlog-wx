@@ -33,7 +33,7 @@ Page({
    */
   onSearch: function(event) {
     wx.navigateTo({
-      url: '../search/index?keyword=' + event.detail.value
+      url: '../search/index'
     });
   },
 

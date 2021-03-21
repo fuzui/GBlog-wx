@@ -1,24 +1,71 @@
-<cu-custom bgImage="{{topImage}}" isCustom="{{true}}">
-  <view slot="content">{{title}}</view>
-</cu-custom>
-<!--  文章列表展示  -->
-<article-list content="{{content}}"></article-list>
+<view class="{{!isSearch?'bg-white':''}}" style="min-height: {{windowHeight}}rpx">
+  <view class="cu-custom" style="height:{{CustomBar}}px">
+    <view class="cu-bar fixed bg-white text-blank" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
+      <view class="action" bindtap="backPage">
+        <text class="cuIcon-back"></text>
+      </view>
+      <view class="search-form round">
+        <text class="cuIcon-search"></text>
+        <input type="text" placeholder="搜索icon" value="{{keyword}}" keyword="keyword" confirm-type="search" bindconfirm="search" bindinput="searchInput"></input>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{!isSearch}}">
+    <view class="cu-bar bg-white margin-top" wx:if="{{historyKeyword.length > 0}}">
+      <view class="action">
+        <view>
+          <text class="text-xl text-black">搜索历史</text>
+        </view> 
+        <view bindtap="clearHistoryKeyword">
+          <text class="cuIcon-delete text-grey margin-left text-xl"></text>
+        </view>
+      </view>
+    </view>
+    <view class="padding flex flex-wrap">
+      <view class="padding-xs" wx:for="{{historyKeyword}}" wx:key="key">
+        <view class="cu-tag round" data-keyword="{{item}}" bindtap="clickSearch">{{item}}</view>
+      </view>
+    </view>
+    <view class="cu-bar bg-white margin-top" wx:if="{{recommendKeyword.length}}">
+      <view class="action">
+        <view>
+          <text class="text-xl text-black">搜索推荐</text>
+        </view> 
+        <view bindtap="changeRecommendView">
+          <text class="cuIcon-{{recommendKeywordView?'attentionfavor':'attentionforbid'}} text-grey margin-left text-xl"></text>
+        </view>
+      </view>
+      <view class="action text-sm" bindtap="changeRecommend" wx:if="{{recommendKeyword.length > 1}}">
+        <text class="text-grey">换一批</text>
+      </view>
+    </view>
+    <view class="padding flex flex-wrap" hidden="{{!recommendKeywordView}}">
+      <view class="padding-xs" wx:for="{{recommendKeyword[recommendKeywordIndex]}}" wx:key="key">
+        <view class="cu-tag round" data-keyword="{{item}}" bindtap="clickSearch">{{item}}</view>
+      </view>
+    </view>
+    <view class="padding flex flex-wrap" hidden="{{recommendKeywordView}}">
+      <view class="flex-sub text-center text-xs padding">
+        <text class="text-grey">搜索推荐已隐藏</text>
+      </view>
+    </view>
+  </view>
+  <!--  文章列表展示  -->
+  <article-list content="{{content}}" wx:if="{{isSearch && content.length}}"></article-list>
 
-<view class="no-content" wx:if="{{!content.length}}">
-  <image src="{{noContentImage}}"></image>
-  <view class="text-xl padding">暂无搜索内容</view>
-  <button class="cu-btn block line-cyan margin-xl lg" bindtap="backPage">
-    <text class="cuIcon-back"></text> 返回上页
-  </button>   
-  <button class="cu-btn block bg-blue margin-xl lg" bindtap="toHome">
-    <text class="cuIcon-homefill"></text> 返回首页
-  </button>    
-</view>
+  <view class="no-content" wx:if="{{!content.length && isSearch}}">
+    <image src="{{noContentImage}}"></image>
+    <view class="text-xl padding">暂无搜索内容</view>
+    <button class="cu-btn block bg-blue margin-xl lg" bindtap="toHome">
+      <text class="cuIcon-homefill"></text> 返回首页
+    </button>    
+  </view>
 
-<!-- 下拉加载 -->
-<view class="cu-load {{loading==true?'loading':'over'}}" wx:if="{{content.length}}"></view>
-<!-- 弹框加载 -->
-<view class='cu-load load-modal' wx:if="{{loadModal}}">
-  <image src="{{logo}}" class='png' mode='aspectFit'></image>
-  <view class='gray-text'>加载中...</view>
+  <!-- 下拉加载 -->
+  <view class="cu-load {{loading==true?'loading':'over'}}" wx:if="{{isSearch && content.length}}"></view>
+  <!-- 弹框加载 -->
+  <view class='cu-load load-modal' wx:if="{{loadModal}}">
+    <image src="{{logo}}" class='png' mode='aspectFit'></image>
+    <view class='gray-text'>加载中...</view>
+  </view>
 </view>
