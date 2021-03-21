@@ -2,6 +2,7 @@
 const app = getApp();
 import apiResult from '../../utils/api-result';
 import { Config } from '../../config/api';
+import {STORAGE_KEY} from '../../services/const-data/const-data';
 Component({
   data: {
   },
@@ -28,7 +29,7 @@ Component({
       if (!e.detail.userInfo) {
         return apiResult.error("登录失败");
       } else {
-        wx.setStorageSync(Config.User, e.detail.userInfo);
+        wx.setStorageSync(STORAGE_KEY.user, e.detail.userInfo);
         this.setData({
           modalName: null,
         })

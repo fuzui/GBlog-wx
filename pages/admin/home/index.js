@@ -1,7 +1,7 @@
 const app = getApp();
 import apiResult from '../../../utils/api-result';
 import apiService from '../../../services/api/api-service'; 
-import {Config} from '../../../config/api.js';
+import {STORAGE_KEY} from '../../../services/const-data/const-data';
 Page({
   data: {
     logo: "",
@@ -29,7 +29,7 @@ Page({
       loadModal:true,
       loginMessage: false
     })
-    var token = wx.getStorageSync(Config.Token)
+    var token = wx.getStorageSync(STORAGE_KEY.adminToken)
     if(token){
       const statistics = await this.adminGetStatistics();
       const noticeCount = await this.getNoticeCount();
@@ -80,7 +80,7 @@ Page({
     }
     try {
       const result = await apiService.adminLogin(param);
-      wx.setStorageSync(Config.Token, result.access_token)
+      wx.setStorageSync(STORAGE_KEY.adminToken, result.access_token)
       const statistics = await this.adminGetStatistics();
       apiResult.success("登录成功");
       that.setData({
@@ -91,7 +91,7 @@ Page({
         isLogin: true
       })
     } catch (error) {
-      wx.setStorageSync(Config.Token, "")
+      wx.setStorageSync(STORAGE_KEY.adminToken, "")
       apiResult.error("密码错误");
     }
   },

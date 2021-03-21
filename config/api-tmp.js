@@ -5,16 +5,7 @@ const ApiBaseUrl = 'https://www.geekera.cn';//生产上
 
 const Config = {
   AccessKey: '', //接口key，必填
-  User: 'geUserInfo',
-  Token: 'adminToken',
   guestbookSheetId: 2,  //留言页sheet的id
-}
-//订阅配置(已失效，待更新)
-const PushConfig = {
-  isOpen: false,
-  updateKey: "vhOJ1·····································",//更新推送模板id
-  messageKey: "W56K5·····································",//留言审核推送模板id，
-  SubscribeUrl: "http://127.0.0.1:5000",//订阅服务地址
 }
 //海报分享配置
 const ShareConfig = {
@@ -77,7 +68,6 @@ module.exports = {
   PageSize,
   ParserStyle,
   Config,
-  PushConfig,
   ShareConfig,
   RandomImage,
   CustomStyle,

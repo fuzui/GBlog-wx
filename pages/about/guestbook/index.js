@@ -3,6 +3,7 @@ const app = getApp();
 import apiService from '../../../services/api/api-service'; 
 import apiResult from '../../../utils/api-result';
 import { Config,ParserStyle,CustomStyle } from './../../../config/api';
+import {STORAGE_KEY} from '../../../services/const-data/const-data';
 Page({
   data: {
     noContentImage: CustomStyle.noContentImage,
@@ -60,7 +61,7 @@ Page({
       apiResult.warn("留言已关闭");
       return ;
     }
-    const userInfo = wx.getStorageSync(Config.User);
+    const userInfo = wx.getStorageSync(STORAGE_KEY.user);
     if(!userInfo.nickName){
       this.setData({
         modalName: "loginModal",

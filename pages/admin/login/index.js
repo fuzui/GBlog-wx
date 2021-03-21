@@ -2,7 +2,8 @@
 const app = getApp();
 import apiService from '../../../services/api/api-service'; 
 import apiResult from '../../../utils/api-result';
-import { Config,ParserStyle,CustomStyle } from './../../../config/api';
+import { ParserStyle,CustomStyle } from './../../../config/api';
+import { STORAGE_KEY } from '../../../services/const-data/const-data';
 Page({
   data: {
     parserStyle:ParserStyle,
@@ -60,7 +61,7 @@ Page({
     }
     try {
       const result = await apiService.adminLogin(param);
-      wx.setStorageSync(Config.Token, result.access_token)
+      wx.setStorageSync(STORAGE_KEY.adminToken, result.access_token)
       apiResult.success("登录成功");
       wx.switchTab({
         url:'/pages/admin/home/index'  

@@ -2,8 +2,9 @@
 const app = getApp();
 import apiService from '../../services/api/api-service'; 
 import apiResult from '../../utils/api-result';
-import { Config,ShareConfig,ParserStyle,CustomStyle } from '../../config/api';
+import { ShareConfig,ParserStyle,CustomStyle } from '../../config/api';
 import LastMayday from '../../services/posters/article/base';
+import {STORAGE_KEY} from '../../services/const-data/const-data';
 
 Page({
   data: {
@@ -177,7 +178,7 @@ Page({
       modalShare: false
     })
     // 需要用户登陆
-    var userInfo = wx.getStorageSync(Config.User);
+    var userInfo = wx.getStorageSync(STORAGE_KEY.user);
     if (!userInfo.nickName) {
       that.setData({
         modalName: "loginModal",
@@ -283,7 +284,7 @@ Page({
       apiResult.warn("评论已关闭");
       return ;
     }
-    const userInfo = wx.getStorageSync(Config.User);
+    const userInfo = wx.getStorageSync(STORAGE_KEY.user);
     if(!userInfo.nickName){
       this.setData({
         modalName: "loginModal",
