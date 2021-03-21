@@ -6,7 +6,7 @@
       </view>
       <view class="search-form round">
         <text class="cuIcon-search"></text>
-        <input type="text" placeholder="搜索icon" value="{{keyword}}" keyword="keyword" confirm-type="search" bindconfirm="search" bindinput="searchInput"></input>
+        <input type="text" placeholder="搜索文章" value="{{keyword}}" confirm-type="search" bindconfirm="search" bindinput="searchInput"></input>
       </view>
     </view>
   </view>
