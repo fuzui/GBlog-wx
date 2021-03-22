@@ -16,90 +16,13 @@
   <view class="cu-bar search bg-white">
     <view class="search-form round">
       <text class="cuIcon-write"></text>
-      <input type="text" placeholder="写下您的意见与看法~" bindtap="addComment" data-target="commentModal" data-pid="0" data-prompt="留言" disabled="true"></input>
-    </view>
-  </view>
-  <view class="cu-item shadow  margin-bottom">
-    <view class="cu-list menu-avatar comment solids-top padding-bottom-xxl">
-      <!-- 暂无留言 -->
-      <view class="no-content" wx:if="{{!comments.length}}">
-        <image src="{{noContentImage}}"></image>
-        <view class="text-xl padding">暂无留言</view>  
-      </view>
-
-      <!-- 评论树 -->
-      <view class="cu-item" wx:for="{{comments}}" wx:for-item="comment" wx:key="index">
-        <image class="cu-avatar round" 
-          src="{{comment.authorUrl?comment.authorUrl:'https://cdn.v2ex.com/gravatar/'+comment.gravatarMd5+'?s=64&d=monsterid'}}"
-          binderror="binderrorimg"
-          data-errorimg="{{index}}"
-          data-gravatarmd5 ="{{comment.gravatarMd5}}"></image>
-        <view class="content">
-          <view class="text-grey flex">
-          <view class="cu-tag bg-red light ssm round" wx:if="{{comment.isAdmin}}">博主</view>
-          {{comment.author}}:
-          </view>
-          <view class="text-content text-df">
-            <mp-html
-              lazy-load
-              scroll-table
-              selectable
-              tag-style="{{parserStyle}}"
-              loading-img="/images/default/image-loading.svg"
-              error-img="/images/default/image-error.svg"
-              content="{{comment.content}}"
-            />
-          </view>
-          <view class="margin-top-sm flex justify-between">
-            <view class="text-gray text-df">{{tools.tsFormatTime(comment.createTime)}}</view>
-            <view>
-              <text class="cuIcon-messagefill text-gray margin-left-sm" bindtap="addComment" data-target="commentModal" data-pid="0" data-prompt="回复 {{comment.author}}:"></text>
-            </view>
-          </view>
-          <!-- 子评论 -->
-          <view class="content-children "  wx:for="{{comment.children}}" wx:for-item="children" wx:key="childrenIndex" wx:for-index="childrenIndex">
-            <view class="radius text-sm">
-              <view class="flex">
-                <image class="cu-avatar ssm round flex margin-right-xs" 
-                  src="{{children.authorUrl?children.authorUrl:'https://cdn.v2ex.com/gravatar/'+children.gravatarMd5+'?s=32&d=monsterid'}}"
-                  binderror="binderrorimg"
-                  data-errorimg="{{index}}"
-                  data-gravatarmd5 ="{{children.gravatarMd5}}"
-                  data-errorchildrenimg ="{{childrenIndex}}"></image>
-                <view class="text-grey flex">
-                <view class="cu-tag bg-red light sssm round" wx:if="{{children.isAdmin}}">博主</view>
-                {{children.author}}:
-                </view>
-              </view>
-              
-              <view class="flex-sub-children  margin-left-lg">
-                <mp-html
-                  lazy-load
-                  scroll-table
-                  selectable
-                  tag-style="{{parserStyle}}"
-                  loading-img="/images/default/image-loading.svg"
-                  error-img="/images/default/image-error.svg"
-                  content="{{children.content}}"
-                />
-              </view>
-              <view class="flex justify-between">
-                
-                <view class="text-gray text-xs margin-left-lg">{{tools.tsFormatTime(children.createTime)}}</view>
-                <view>
-                  <text class="cuIcon-messagefill text-gray margin-left-sm" bindtap="addComment" data-target="commentModal" data-pid="0" data-prompt="回复 {{children.author}}:"></text>
-                </view>
-              </view>
-            </view>
-          </view>
-        </view>
-      </view>
-      <!-- 下一页 -->
-      <view class="text-df text-center text-grey {{isLoadComment==true?'':'hide'}}" bindtap="loadComment">加载更多</view>
+      <input type="text" placeholder="写下您的意见与看法~" bindtap="addCommentByComponent" data-target="commentModal" data-pid="0" data-prompt="留言" disabled="true"></input>
     </view>
   </view>
 </view>
-
+<comment id="commentComponent" comments="{{comments}}" bind:addComment="addComment"></comment>
+<!-- 下一页 -->
+<view class="text-df text-center text-grey {{isLoadComment==true?'':'hide'}}" bindtap="loadComment">加载更多</view>
 <!-- 评论框 -->
 <view class="cu-modal {{modalName=='commentModal'?'show':''}}">
   <view class="cu-dialog">

@@ -1,0 +1,105 @@
+@import "/app.wxss";
+/* 评论 */
+.cu-list>.cu-item .move view {
+	display: flex;
+	flex: 1;
+	justify-content: center;
+	align-items: center
+}
+
+.cu-list.menu-avatar {
+	overflow: hidden;
+}
+
+.cu-list.menu-avatar>.cu-item {
+	position: relative;
+	display: flex;
+	padding-right: 10rpx;
+	height: 140rpx;
+	background-color: var(--white);
+	justify-content: flex-end;
+	align-items: center
+}
+
+.cu-list.menu-avatar>.cu-item>.cu-avatar {
+	position: absolute;
+	left: 30rpx
+}
+
+.cu-list.menu-avatar>.cu-item .flex .text-cut {
+	max-width: 510rpx
+}
+
+.cu-list.menu-avatar>.cu-item .content {
+	position: absolute;
+	left: 146rpx;
+	width: calc(100% - 96rpx - 60rpx - 120rpx - 20rpx);
+	line-height: 1.6em;
+}
+
+.cu-list.menu-avatar>.cu-item .content.flex-sub {
+	width: calc(100% - 96rpx - 60rpx - 20rpx);
+}
+
+.cu-list.menu-avatar>.cu-item .content>view:first-child {
+	font-size: 30rpx;
+	display: flex;
+	align-items: center
+}
+
+.cu-list.menu-avatar>.cu-item .content .cu-tag.sm {
+	display: inline-block;
+	margin-left: 10rpx;
+	height: 28rpx;
+	font-size: 16rpx;
+	line-height: 32rpx
+}
+
+.cu-list.menu-avatar>.cu-item .action {
+	width: 100rpx;
+	text-align: center
+}
+
+.cu-list.menu-avatar>.cu-item .action view+view {
+	margin-top: 10rpx
+}
+
+.cu-list.menu-avatar.comment>.cu-item .content {
+	position: relative;
+	left: 0;
+	width: auto;
+	flex: 1;
+}
+
+.cu-list.menu-avatar.comment>.cu-item {
+	padding: 30rpx 30rpx 30rpx 120rpx;
+	height: auto
+}
+
+.cu-list.menu-avatar.comment .cu-avatar {
+	align-self: flex-start
+}
+.content-children{
+	position: relative;
+	left: 0rpx;
+
+	 
+}
+
+.cu-avatar.ssm {
+	width: 36rpx;
+	height: 36rpx;
+	font-size: 1em;
+}
+/* 博主标签 */
+.cu-tag.ssm {
+	font-size: 20rpx;
+	padding: 0rpx 12rpx;
+	height: 32rpx;
+}
+.cu-tag.sssm {
+	font-size: 16rpx;
+	margin-top: 8rpx;
+	padding: 0rpx 12rpx;
+	height: 28rpx;
+}

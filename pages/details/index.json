@@ -2,6 +2,7 @@
   "usingComponents": {
     "painter":"../../components/painter/painter",
     "mp-html": "../../components/mp-weixin/index",
-    "authorize": "../../components/authorize/index"
+    "authorize": "../../components/authorize/index",
+    "comment": "../../components/comment/index"
   }
 }
