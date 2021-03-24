@@ -161,6 +161,7 @@ GBLOG-WX
 * [ColorUI](https://github.com/weilanwl/ColorUI) 鲜亮的高饱和色彩，专注视觉的小程序组件库
 * [mp-html](https://github.com/jin-yufeng/mp-html) 小程序富文本组件，支持渲染和编辑 html，支持在微信、QQ、百度、支付宝、头条和 uni-app 平台使用
 * [Painter](https://github.com/Kujiale-Mobile/Painter) 小程序生成图片库，轻松通过 json 方式绘制一张可以发到朋友圈的图片
+* [qs](https://github.com/ljharb/qs) A querystring parser with nesting support
 
 ### 八、联系
 

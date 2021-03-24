@@ -1,12 +1,12 @@
 import apiResult from './api-result';
+import qs from './qs'
 import { Config } from './../config/api';
 
 
 function Get(url, data = {}) {
   return new Promise((resolve, reject) => {
     wx.request({
-      url: url,
-      data: data,
+      url: url.concat('?', qs.stringify(data, {arrayFormat: 'repeat'})),
       method: 'GET',
       header: {
         'Content-Type': 'application/json',
