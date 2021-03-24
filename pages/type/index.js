@@ -155,6 +155,7 @@ Page({
       const param={
         page: pageNo,
         size: PageSize.categorySize,
+        sort: ['topPriority,desc','createTime,desc']
       };
       const result = await apiService.getCategoriesArticle(slug,param);
       if (result.page < result.pages ) {

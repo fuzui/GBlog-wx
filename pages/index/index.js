@@ -167,7 +167,7 @@ Page({
       const param = {
         page: pageNo,
         size: PageSize.indexSize,
-        sort: 'createTime,desc'
+        sort: ['topPriority,desc','createTime,desc'],
       };
       const result = await apiService.getArticleList(param);
       if (result.page < result.pages) {
