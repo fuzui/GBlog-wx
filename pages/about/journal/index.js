@@ -1,9 +1,9 @@
 const app = getApp();
 import apiService from '../../../services/api/api-service';
-import { PageSize,ParserStyle,CustomStyle } from './../../../config/api';
+import { PageSize,MpHtmlStyle,CustomStyle } from './../../../config/api';
 Page({
   data: {
-    parserStyle:ParserStyle,
+    mpHtmlStyle:MpHtmlStyle,
     topImage: CustomStyle.topImage,
     logo: "",
     pageNo: 0,

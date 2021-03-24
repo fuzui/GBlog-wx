@@ -2,7 +2,7 @@
 const app = getApp();
 import apiService from '../../services/api/api-service'; 
 import apiResult from '../../utils/api-result';
-import { ShareConfig,ParserStyle,CustomStyle } from '../../config/api';
+import { ShareConfig,MpHtmlStyle,CustomStyle } from '../../config/api';
 import LastMayday from '../../services/posters/article/base';
 import {STORAGE_KEY} from '../../services/const-data/const-data';
 
@@ -10,7 +10,7 @@ Page({
   data: {
     noContentImage: CustomStyle.noContentImage,
     shareIsOpen: ShareConfig.isOpen,
-    parserStyle: ParserStyle,
+    mpHtmlStyle: MpHtmlStyle,
     
     isLoadComment: false,
     commentPage: 0,

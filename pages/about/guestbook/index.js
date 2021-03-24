@@ -2,12 +2,11 @@
 const app = getApp();
 import apiService from '../../../services/api/api-service'; 
 import apiResult from '../../../utils/api-result';
-import { Config,ParserStyle,CustomStyle } from './../../../config/api';
+import { Config,CustomStyle } from './../../../config/api';
 import {STORAGE_KEY} from '../../../services/const-data/const-data';
 Page({
   data: {
     noContentImage: CustomStyle.noContentImage,
-    parserStyle:ParserStyle,
     id: 0,  //留言页postId
     topImage: CustomStyle.topImage,
     guestbookImage: CustomStyle.guestbookImage,

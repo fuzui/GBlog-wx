@@ -37,9 +37,10 @@
             lazy-load
             scroll-table
             selectable
-            tag-style="{{parserStyle}}"
-            loading-img="/images/default/image-loading.svg"
-            error-img="/images/default/image-error.svg"
+            tag-style="{{mpHtmlStyle.journalTagStyle}}"
+            container-style="{{mpHtmlStyle.journalContainerStyle}}"
+            loading-img="{{mpHtmlStyle.loadingImage}}"
+            error-img="{{mpHtmlStyle.errorImage}}"
             content="{{item.content}}"
           />
         </view>

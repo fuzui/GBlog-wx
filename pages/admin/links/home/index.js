@@ -2,10 +2,9 @@
 const app = getApp();
 import apiService from '../../../../services/api/api-service'; 
 import apiResult from '../../../../utils/api-result';
-import { PageSize,ParserStyle,CustomStyle } from './../../../../config/api';
+import { CustomStyle } from './../../../../config/api';
 Page({
   data: {
-    parserStyle:ParserStyle,
     topImage: CustomStyle.topImage,
     appLogo: app.globalData.logo,
     logo: "",

@@ -2,10 +2,10 @@
 const app = getApp();
 import apiService from '../../../services/api/api-service'; 
 import apiResult from '../../../utils/api-result';
-import { ApiBaseUrl,PageSize,ParserStyle,CustomStyle } from './../../../config/api';
+import { ApiBaseUrl,PageSize,MpHtmlStyle,CustomStyle } from './../../../config/api';
 Page({
   data: {
-    parserStyle:ParserStyle,
+    mpHtmlStyle:MpHtmlStyle,
     topImage: CustomStyle.topImage,
     logo: "",
     commentContent: "",

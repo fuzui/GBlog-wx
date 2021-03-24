@@ -36,7 +36,19 @@
       <view class="content">
         
         <view class="desc">
-          <view class="text-content"> {{item.content}}</view>
+          <view class="text-content">
+            <mp-html
+              lazy-load
+              scroll-table
+              selectable
+              markdown
+              tag-style="{{mpHtmlStyle.commentTagStyle}}"
+              container-style="{{mpHtmlStyle.commentContainerStyle}}"
+              loading-img="{{mpHtmlStyle.loadingImage}}"
+              error-img="{{mpHtmlStyle.errorImage}}"
+              content="{{item.content}}"
+            />
+          </view>
           <view>
             <view class="cu-tag bg-green light sm round" wx:if="{{item.status=='PUBLISHED'}}">已发布</view>
             <view class="cu-tag bg-orange light sm round" wx:if="{{item.status=='AUDITING'}}">待审核</view>

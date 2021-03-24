@@ -2,11 +2,10 @@
 const app = getApp();
 import apiService from '../../../services/api/api-service'; 
 import apiResult from '../../../utils/api-result';
-import { ParserStyle,CustomStyle } from './../../../config/api';
+import { CustomStyle } from './../../../config/api';
 import { STORAGE_KEY } from '../../../services/const-data/const-data';
 Page({
   data: {
-    parserStyle:ParserStyle,
     topImage: CustomStyle.topImage,
     logo: "",
     username: "",

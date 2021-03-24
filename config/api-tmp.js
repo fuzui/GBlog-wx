@@ -1,4 +1,4 @@
-
+import { mergeJsonObject } from './../utils/utils';
 const ApiBaseUrl = 'https://www.geekera.cn';//生产上
 // const ApiBaseUrl = 'http://127.0.0.1:8090';//本地
 // const ApiBaseUrl = 'https://test.geekera.cn';//测试
@@ -13,7 +13,7 @@ const ShareConfig = {
   env: 'fuzui'  //云环境ID
 }
 //文章、日记自定义样式
-const ParserStyle = {
+const commonTagStyle = {
   table: 'border-collapse:collapse;border-top:1px solid gray;border-left:1px solid gray;margin: 28rpx 0;',
   th: 'border-right:1px solid gray;border-bottom:1px solid gray;background: #ccc;',
   td: 'border-right:1px solid gray;border-bottom:1px solid gray;',
@@ -26,6 +26,20 @@ const ParserStyle = {
   h4: 'font-size: 0.67em;line-height: 30px;',
   h5: 'font-size: 0.50em;line-height: 30px;'
 }
+const commentTagStyle = {
+  p: 'margin: 0 0;'
+}
+const MpHtmlStyle = {
+  tagStyle: commonTagStyle,
+  containerStyle: 'padding: 12px;font-size: 15px;line-height: 25px',
+  commentTagStyle: mergeJsonObject(commonTagStyle, commentTagStyle),
+  commentContainerStyle: '',
+  journalTagStyle: commentTagStyle,
+  journalContainerStyle: '',
+  loadingImage: '/images/default/image-loading.svg',
+  errorImage: '/images/default/image-error.svg'
+}
+
 const PageSize = {
   indexSize: 6, //每页文章数
   searchSize: 6,  //每页搜索结果数
@@ -66,7 +80,7 @@ const PersonalInfo = {
 module.exports = {
   ApiBaseUrl,
   PageSize,
-  ParserStyle,
+  MpHtmlStyle,
   Config,
   ShareConfig,
   RandomImage,

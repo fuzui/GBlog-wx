@@ -18,18 +18,20 @@
           <view class="cu-tag bg-red light ssm round" wx:if="{{comment.isAdmin}}">博主</view>
           {{comment.author}}:
           </view>
-          <view class="text-content text-df">
+          <view class=" text-df">
             <mp-html
               lazy-load
               scroll-table
               selectable
-              tag-style="{{parserStyle}}"
-              loading-img="/images/default/image-loading.svg"
-              error-img="/images/default/image-error.svg"
+              markdown
+              tag-style="{{mpHtmlStyle.commentTagStyle}}"
+              container-style="{{mpHtmlStyle.commentContainerStyle}}"
+              loading-img="{{mpHtmlStyle.loadingImage}}"
+              error-img="{{mpHtmlStyle.errorImage}}"
               content="{{comment.content}}"
             />
           </view>
-          <view class="margin-top-sm flex justify-between">
+          <view class="flex justify-between">
             <view class="text-gray text-df">{{tools.tsFormatTime(comment.createTime)}}</view>
             <view>
               <text class="cuIcon-messagefill text-gray margin-left-sm" bindtap="addComment" data-target="commentModal" data-pid="{{comment.id}}" data-prompt="回复 {{comment.author}}:"></text>
@@ -56,9 +58,11 @@
                   lazy-load
                   scroll-table
                   selectable
-                  tag-style="{{parserStyle}}"
-                  loading-img="/images/default/image-loading.svg"
-                  error-img="/images/default/image-error.svg"
+                  markdown
+                  tag-style="{{mpHtmlStyle.commentTagStyle}}"
+                  container-style="{{mpHtmlStyle.commentContainerStyle}}"
+                  loading-img="{{mpHtmlStyle.loadingImage}}"
+                  error-img="{{mpHtmlStyle.errorImage}}"
                   content="{{children.content}}"
                 />
               </view>

@@ -40,9 +40,10 @@
     lazy-load
     scroll-table
     selectable
-    tag-style="{{parserStyle}}"
-    loading-img="/images/default/image-loading.svg"
-    error-img="/images/default/image-error.svg"
+    tag-style="{{mpHtmlStyle.tagStyle}}"
+    container-style="{{mpHtmlStyle.containerStyle}}"
+    loading-img="{{mpHtmlStyle.loadingImage}}"
+    error-img="{{mpHtmlStyle.errorImage}}"
     content="{{item.description}}"
   />
   <image src="{{item.url}}" mode="widthFix" bindtap="showImage" data-url="{{item.url}}"></image>

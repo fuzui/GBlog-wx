@@ -32,9 +32,11 @@
     lazy-load
     scroll-table
     selectable
-    tag-style="{{parserStyle}}"
-    loading-img="/images/default/image-loading.svg"
-    error-img="/images/default/image-error.svg"
+    tag-style="{{mpHtmlStyle.tagStyle}}"
+    container-style="{{mpHtmlStyle.containerStyle}}"
+    container-style="padding: 12px;font-size: 15px;line-height: 25px"
+    loading-img="{{mpHtmlStyle.loadingImage}}"
+    error-img="{{mpHtmlStyle.errorImage}}"
     content="{{content}}"
   />
   <!-- 正文结束分割线 -->

@@ -1,9 +1,10 @@
 //获取应用实例
 const app = getApp();
-import { CustomStyle } from '../../config/api';
+import { CustomStyle, MpHtmlStyle } from '../../config/api';
 Component({
   data: {
     noContentImage: CustomStyle.noContentImage,
+    mpHtmlStyle: MpHtmlStyle
   },
   properties: {
     comments: {
