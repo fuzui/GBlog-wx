@@ -1,4 +1,5 @@
 import {ShareConfig} from 'config/api.js'
+import { compareVersion } from './utils/utils'
 App({
   onLaunch: function() {
     if(ShareConfig.isOpen){
@@ -11,15 +12,7 @@ App({
         })
       }
     }
-    wx.getSystemInfo({
-      success: e => {
-        this.globalData.windowHeight = e.windowHeight * (750/e.windowWidth);
-        this.globalData.StatusBar = e.statusBarHeight;
-        let custom = wx.getMenuButtonBoundingClientRect();
-        this.globalData.Custom = custom;  
-        this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
-      }
-    })
+    this.updateManager();
   },
   globalData: {
     logo: "",
@@ -30,13 +23,20 @@ App({
     },
     windowHeight: 1334
   },
-  // 更新小程序
+  // 更新小程序以及系统信息获取
   updateManager: function () {
     //获取系统信息 客户端基础库
+    var that = this;
     wx.getSystemInfo({
       success: function (res) {
+        // 全局设置
+        that.globalData.windowHeight = res.windowHeight * (750/res.windowWidth);
+        that.globalData.StatusBar = res.statusBarHeight;
+        let custom = wx.getMenuButtonBoundingClientRect();
+        that.globalData.Custom = custom;  
+        that.globalData.CustomBar = custom.bottom + custom.top - res.statusBarHeight;
         //基础库版本比较，版本更新必须是1.9.90以上
-        const v = util.compareVersion(res.SDKVersion, '1.9.90');
+        const v = compareVersion(res.SDKVersion, '1.9.90');
         if (v > 0) {
           const manager = wx.getUpdateManager();
           manager.onCheckForUpdate(function (res) {
