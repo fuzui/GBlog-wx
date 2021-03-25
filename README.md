@@ -163,6 +163,10 @@ GBLOG-WX
 * 评论审核、回复
 * 主题切换、菜单编辑
 
+> [开发计划](https://docs.geekera.cn/gblog-wx/dev-plan.html)
+>
+> [更新日志](https://docs.geekera.cn/gblog-wx/update-log.html)
+
 ### 七、致谢
 
 * [halo](https://github.com/halo-dev/halo) 一个优秀的开源博客发布应用
