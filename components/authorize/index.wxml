@@ -9,7 +9,7 @@
     </view>
     <view class="padding-tb">
       <button class="cu-btn round line-blue shadow margin-lr-sm" bindtap="hideModal">暂不登录</button>
-      <button class="cu-btn round bg-blue shadow margin-lr-sm" open-type='getUserInfo' bindgetuserinfo="getUser">立即登录</button>
+      <button class="cu-btn round bg-blue shadow margin-lr-sm" bindtap="getUserProfile">立即登录</button>
     </view>
   </view>
 </view>

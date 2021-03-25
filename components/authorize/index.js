@@ -1,8 +1,7 @@
 //获取应用实例
 const app = getApp();
 import apiResult from '../../utils/api-result';
-import { Config } from '../../config/api';
-import {STORAGE_KEY} from '../../services/const-data/const-data';
+import { STORAGE_KEY } from '../../services/const-data/const-data';
 Component({
   data: {
   },
@@ -25,16 +24,18 @@ Component({
      * 获取用户信息
      * @param {*} e 
      */
-    getUser(e) {
-      if (!e.detail.userInfo) {
-        return apiResult.error("登录失败");
-      } else {
-        wx.setStorageSync(STORAGE_KEY.user, e.detail.userInfo);
-        this.setData({
-          modalName: null,
-        })
-        return apiResult.success("登录成功");
-      }
+    getUserProfile(e) {
+      wx.getUserProfile({
+        desc: '用于昵称、头像展示', 
+        lang: 'cn',
+        success: (res) => {
+          wx.setStorageSync(STORAGE_KEY.user, res.userInfo);
+          this.setData({
+            modalName: null,
+          })
+          return apiResult.success("登录成功");
+        }
+      })
     },
     // 阻止滑动
     preventTouchMove() {

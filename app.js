@@ -23,7 +23,7 @@ App({
     },
     windowHeight: 1334
   },
-  // 更新小程序以及系统信息获取
+  // 更新小程序以及系统信息获取校验
   updateManager: function () {
     //获取系统信息 客户端基础库
     var that = this;
@@ -35,9 +35,10 @@ App({
         let custom = wx.getMenuButtonBoundingClientRect();
         that.globalData.Custom = custom;  
         that.globalData.CustomBar = custom.bottom + custom.top - res.statusBarHeight;
-        //基础库版本比较，版本更新必须是1.9.90以上
-        const v = compareVersion(res.SDKVersion, '1.9.90');
-        if (v > 0) {
+        // 基础库版本比较，版本更新必须是1.9.90以上
+        // wx.getUserProfile，版本必须是2.10.4及以上
+        const v = compareVersion(res.SDKVersion, '2.10.4');
+        if (v >= 0) {
           const manager = wx.getUpdateManager();
           manager.onCheckForUpdate(function (res) {
             // 请求完新版本信息的回调
