@@ -80,10 +80,18 @@ GBlog-wx：微信小程序博客
 * 配置合法域名
 
   在[微信公众平台](https://mp.weixin.qq.com/)中，`开发——开发设置——服务器域名`中添加request、uploadFile、downloadFile合法域名。将上述`ApiBaseUrl`域名添加到request合法域名，例如`www.geekera.com`。
-  
+
   ![](https://oss.fuzui.net/img/20200529020312.png)
-  
+
   ![](https://oss.fuzui.net/img/20200628014304.png)
+
+* 设置小程序最低基础库版本要求
+
+  在[微信公众平台](https://mp.weixin.qq.com/)中，`设置 - 基本设置 - 基础库最低版本设置`进行配置，保存为2.10.4版本。
+
+  > 原因：[《小程序登录、用户信息相关接口调整说明》](https://developers.weixin.qq.com/community/develop/doc/000cacfa20ce88df04cb468bc52801)
+
+  ![](https://oss.fuzui.net/img/20210326002230.png)
 
 #### 3.高级功能配置(非必须)
 
