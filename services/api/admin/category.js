@@ -11,7 +11,7 @@ function adminGetCategory(param) {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
   return new Promise((resolve, reject) => {
-    apiRequest.Get(moduleName, Object.assign(param, adminToken))
+    apiRequest.Get(moduleName, Object.assign(adminToken, param))
       .then(r => {
         resolve(r)
       }, e => {
