@@ -90,6 +90,9 @@ function Upload(url, data = {}, param = {}) {
 }
 
 function Delete(url, data = {}) {
+  if(data && data !== {}) {
+    url = url.concat('?', qs.stringify(data, {arrayFormat: 'repeat'}))
+  }
   return new Promise((resolve, reject) => {
     wx.request({
       url: url,
