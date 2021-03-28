@@ -1,6 +1,6 @@
 //获取应用实例
 const app = getApp();
-import apiService from '../../services/api/api-service'; 
+import { getArticleDetails, doPraise, writeComment, getComments } from '../../services/api/content/article';
 import apiResult from '../../utils/api-result';
 import { ShareConfig,MpHtmlStyle,CustomStyle } from '../../config/api';
 import LastMayday from '../../services/posters/article/base';
@@ -150,7 +150,7 @@ Page({
       const param = {   
         formatDisabled: false
       };
-      const result = await apiService.getArticleDetails(id,param);
+      const result = await getArticleDetails(id,param);
       return result;
     } catch (error) {
       return await Promise.reject(error)
@@ -235,7 +235,7 @@ Page({
   async doPraise(postId) {
     try {
       const param = {};
-      const result = await apiService.doPraise(postId,param);
+      const result = await doPraise(postId,param);
       return result;
     } catch (error) {
       return error.message;
@@ -370,7 +370,7 @@ Page({
       parentId: this.data.commmentPid,
       postId: this.data.id
     }
-    apiService.writeComment(param).then(ress => {
+    writeComment(param).then(ress => {
       wx.hideLoading().then(()=>{
         that.setData({
           modalName: null
@@ -398,7 +398,7 @@ Page({
         page: commentPage,
         sort: 'createTime,desc'
       };
-      const result = await apiService.getComments(postId,param);
+      const result = await getComments(postId,param);
       for(var i = 0;i<result.content.length;i++){
         if(result.content[i].children){
           const children = that.getChildren(result.content[i].children);

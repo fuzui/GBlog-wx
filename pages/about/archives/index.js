@@ -1,6 +1,7 @@
 const app = getApp();
-import apiService from '../../../services/api/api-service';
-import {CustomStyle} from '../../../config/api';
+import { getArchives } from '../../../services/api/content/archive';
+import { getStatistics } from '../../../services/api/content/statistic';
+import { CustomStyle } from '../../../config/api';
 Page({
   data: {
     topImage: CustomStyle.topImage,
@@ -37,7 +38,7 @@ Page({
    */
   async getArchives() {
     try {
-      const result = await apiService.getArchives();
+      const result = await getArchives();
       return result;
     } catch (error) {
       return await Promise.reject(error)
@@ -48,7 +49,7 @@ Page({
    */
   async getStatistics() {
     try {
-      const result = await apiService.getStatistics();
+      const result = await getStatistics();
       return result;
     } catch (error) {
       return await Promise.reject(error)

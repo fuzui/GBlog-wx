@@ -1,7 +1,10 @@
 const app = getApp();
 import apiResult from '../../../utils/api-result';
-import apiService from '../../../services/api/api-service'; 
-import {STORAGE_KEY} from '../../../services/const-data/const-data';
+import { adminLogin } from '../../../services/api/admin/login';
+import { adminGetStatistics } from '../../../services/api/admin/statistic';
+import { adminGetPostComment } from '../../../services/api/admin/post';
+import { adminGetSheetComment } from '../../../services/api/admin/sheet';
+import { STORAGE_KEY } from '../../../services/const-data/const-data';
 Page({
   data: {
     logo: "",
@@ -79,13 +82,15 @@ Page({
       password: this.data.password
     }
     try {
-      const result = await apiService.adminLogin(param);
+      const result = await adminLogin(param);
       wx.setStorageSync(STORAGE_KEY.adminToken, result.access_token)
       const statistics = await this.adminGetStatistics();
+      const noticeCount = await this.getNoticeCount();
       apiResult.success("登录成功");
       that.setData({
         user: statistics.user,
-        statistics: statistics
+        statistics: statistics,
+        noticeCount: noticeCount
       });
       that.setData({
         isLogin: true
@@ -259,7 +264,7 @@ Page({
    */
   async adminGetStatistics(){
     try {
-      const result = await apiService.adminGetStatistics();
+      const result = await adminGetStatistics();
       return result;
     } catch (error) {
       return error.message;
@@ -288,8 +293,8 @@ Page({
       size: 0,
       status: "AUDITING"
     }
-    const postResult = await apiService.adminGetPostComment(param);
-    const sheetResult = await apiService.adminGetSheetComment(param);
+    const postResult = await adminGetPostComment(param);
+    const sheetResult = await adminGetSheetComment(param);
     return postResult.total+sheetResult.total;
   }
 })

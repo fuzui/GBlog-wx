@@ -1,7 +1,7 @@
 //获取应用实例
 const app = getApp();
-import apiService from '../../services/api/api-service';
-import {PageSize,CustomStyle} from '../../config/api';
+import { getCategories, getCategoriesArticle } from '../../services/api/content/category';
+import { PageSize, CustomStyle } from '../../config/api';
 
 Page({
   data: {
@@ -126,7 +126,7 @@ Page({
   async getCategories() {
     try {
       const param={};
-      const result = await apiService.getCategories(param);
+      const result = await getCategories(param);
       return result;
     } catch (error) {
       return await Promise.reject(error)
@@ -157,7 +157,7 @@ Page({
         size: PageSize.categorySize,
         sort: ['topPriority,desc','createTime,desc']
       };
-      const result = await apiService.getCategoriesArticle(slug,param);
+      const result = await getCategoriesArticle(slug,param);
       if (result.page < result.pages ) {
         return that.data.content.concat(result.content);
       } else {
@@ -168,30 +168,6 @@ Page({
     } catch (error) {
       return await Promise.reject(error)
     } 
-  },
-  //初始化导航栏
-  initDomForNavBar(dom) {
-    this.initDomForNavBar1(dom, res => {
-      const { screenHeight, navBarHeight, tabbarHeight } = res;
-      this.setData({
-        screenHeight: screenHeight,
-        navBarHeight: navBarHeight,
-        tabbarHeight: tabbarHeight,
-      })
-    })
-  },
-  initDomForNavBar1(dom, callback) {
-    const systemInfo = apiService.wxGetSystemInfo();
-    var query = wx.createSelectorQuery();
-    query.select(dom).boundingClientRect();
-    query.exec(res => {
-
-      callback({
-        screenHeight: systemInfo.screenHeight,
-        navBarHeight: res[0].height,
-        tabbarHeight: systemInfo.screenHeight - systemInfo.windowHeight,
-      })
-    });
   },
   //初始化文章数与页数
   initParams() {

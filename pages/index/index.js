@@ -1,6 +1,7 @@
 //获取应用实例
 const app = getApp();
-import apiService from '../../services/api/api-service';
+import { getArticleList } from '../../services/api/content/article';
+import { getOptionByKey } from '../../services/api/content/option';
 import {PageSize,RandomImage,CustomStyle} from '../../config/api';
 
 Page({
@@ -46,10 +47,10 @@ Page({
     /* 加载全局globalData */
     
     if(app.globalData.logo==""){
-      app.globalData.logo = await apiService.getOptionByKey("blog_logo");
+      app.globalData.logo = await getOptionByKey("blog_logo");
     }
     if(app.globalData.blogTitle==""){
-      app.globalData.blogTitle = await apiService.getOptionByKey("blog_title");
+      app.globalData.blogTitle = await getOptionByKey("blog_title");
     }
     this.setData({
       logo: app.globalData.logo,
@@ -139,7 +140,7 @@ Page({
         size: PageSize.swiperSize,
         sort: 'visits,desc'
       };
-      const result = await apiService.getSwiper(param);
+      const result = await getArticleList(param);
       return result.content;
     } catch (error) {
       return await Promise.reject(error)
@@ -169,7 +170,7 @@ Page({
         size: PageSize.indexSize,
         sort: ['topPriority,desc','createTime,desc'],
       };
-      const result = await apiService.getArticleList(param);
+      const result = await getArticleList(param);
       if (result.page < result.pages) {
         if(result.total<=result.rpp){
           that.setData({

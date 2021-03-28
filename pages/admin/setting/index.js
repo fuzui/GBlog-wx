@@ -1,7 +1,7 @@
 const app = getApp();
 import apiResult from '../../../utils/api-result';
-import apiService from '../../../services/api/api-service'; 
-import {ApiBaseUrl,CustomStyle} from '../../../config/api.js';
+import { adminGetOption } from '../../../services/api/admin/option';
+import { ApiBaseUrl, CustomStyle } from '../../../config/api.js';
 Page({
   data: {
     url: ApiBaseUrl,
@@ -51,7 +51,7 @@ Page({
    */
   async adminGetOption(){
     try {
-      const result = await apiService.adminGetOption();
+      const result = await adminGetOption();
       return result;
     } catch (error) {
       return error.message;

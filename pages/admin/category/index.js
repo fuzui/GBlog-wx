@@ -1,5 +1,6 @@
 const app = getApp()
-import apiService from '../../../services/api/api-service';
+import { adminGetCategory, adminAddCategory, adminEditCategory, adminDeleteCategory  } from '../../../services/api/admin/category';
+import { adminAddAttachment  } from '../../../services/api/admin/attachment';
 import apiResult from '../../../utils/api-result';
 import {CustomStyle} from '../../../config/api';
 Page({
@@ -77,7 +78,7 @@ Page({
   async getCategorys() {
     try {
       const param={};
-      const result = await apiService.adminGetCategory(param);
+      const result = await adminGetCategory(param);
       return result;
     } catch (error) {
       return await Promise.reject(error)
@@ -143,7 +144,7 @@ Page({
       description: that.data.description
     }
     try {
-      const result = await apiService.adminAddCategory(param);
+      const result = await adminAddCategory(param);
       let categoryList = that.data.categoryList;
       categoryList.unshift(result);
       that.setData({
@@ -173,7 +174,7 @@ Page({
       description: that.data.description
     }
     try {
-      const result = await apiService.adminEditCategory(id,param);
+      const result = await adminEditCategory(id,param);
       let categoryList = that.data.categoryList;
       categoryList.splice(that.data.tagCur,1,result);
       that.setData({
@@ -199,7 +200,7 @@ Page({
       success: async(res) => {
         if (res.confirm) {
           try {
-            await apiService.adminDeleteCategory(id);
+            await adminDeleteCategory(id);
             //视图删除，不刷新调用接口
             let categoryList = that.data.categoryList;
             categoryList.splice(that.data.tagCur,1)
@@ -255,7 +256,7 @@ Page({
       const param = {
         path: imgPath
       }
-      const result = await apiService.adminAddAttachment(param);
+      const result = await adminAddAttachment(param);
       return result
     } catch (error) {
       this.setData({

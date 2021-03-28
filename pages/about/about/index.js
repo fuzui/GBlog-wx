@@ -1,7 +1,7 @@
 //获取应用实例
 const app = getApp();
-import apiService from '../../../services/api/api-service';
-import  {PersonalInfo,CustomStyle} from '../../../config/api'
+import { getStatistics } from '../../../services/api/content/statistic';
+import  { PersonalInfo,CustomStyle } from '../../../config/api';
 Page({
   data: {
     title: "关于",
@@ -22,7 +22,7 @@ Page({
    */
   async getStatistics() {
     try {
-      const result = await apiService.getStatistics();
+      const result = await getStatistics();
       return result;
     } catch (error) {
       return await Promise.reject(error)

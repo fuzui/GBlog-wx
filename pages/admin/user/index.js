@@ -1,7 +1,9 @@
 const app = getApp();
-import apiService from '../../../services/api/api-service'; 
 import apiResult from '../../../utils/api-result';
-import {ApiBaseUrl,CustomStyle} from '../../../config/api.js';
+import { adminEditUser, adminEditPassword } from '../../../services/api/admin/user';
+import { adminGetStatistics } from '../../../services/api/admin/statistic';
+import { adminAddAttachment } from '../../../services/api/admin/attachment';
+import { ApiBaseUrl, CustomStyle } from '../../../config/api.js';
 Page({
   data: {
     url: ApiBaseUrl,
@@ -71,7 +73,7 @@ Page({
    */
   async adminGetStatistics(){
     try {
-      const result = await apiService.adminGetStatistics();
+      const result = await adminGetStatistics();
       return result;
     } catch (error) {
       return error.message;
@@ -165,7 +167,7 @@ Page({
       description: that.data.description
     }
     try {
-      const result = await apiService.adminEditUser(param);
+      const result = await adminEditUser(param);
       // //视图修改，而非重新调用接口刷新
       that.data.statistics.user = result;
       that.setData({
@@ -203,7 +205,7 @@ Page({
       newPassword: that.data.newPassword,
     }
     try {
-      await apiService.adminEditPassword(param);
+      await adminEditPassword(param);
       apiResult.success("修改成功");
       that.hideModal();
     } catch (error) {
@@ -281,7 +283,7 @@ Page({
       const param = {
         path: imgPath
       }
-      const result = await apiService.adminAddAttachment(param);
+      const result = await adminAddAttachment(param);
       return result
     } catch (error) {
       this.setData({
@@ -304,7 +306,7 @@ Page({
       description: user.description,
     }
     try {
-      const result = await apiService.adminEditUser(param);
+      const result = await adminEditUser(param);
       //视图修改，而非重新调用接口刷新
       that.data.statistics.user = result;
       that.setData({

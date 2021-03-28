@@ -1,6 +1,6 @@
 const app = getApp()
-import apiService from '../../services/api/api-service';
-import {PageSize,RandomImage,CustomStyle} from '../../config/api';
+import { getTags, getTagsArticle } from '../../services/api/content/tag';
+import { PageSize, RandomImage, CustomStyle } from '../../config/api';
 Page({
   data: {
     RandomImage: RandomImage,
@@ -71,7 +71,7 @@ Page({
   async getTags() {
     try {
       const param={};
-      const result = await apiService.getTags(param);
+      const result = await getTags(param);
       return result;
     } catch (error) {
       return await Promise.reject(error)
@@ -97,7 +97,7 @@ Page({
         page: pageNo,
         size: PageSize.tagSize,
       };
-      const result = await apiService.getTagsArticle(slug,param);
+      const result = await getTagsArticle(slug,param);
       if (result.page < result.pages ) {
         return that.data.content.concat(result.content);
       } else {

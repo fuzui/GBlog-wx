@@ -1,5 +1,5 @@
 const app = getApp();
-import apiService from '../../../../services/api/api-service';
+import { adminGetAttachment } from '../../../../services/api/admin/attachment';
 import config from '../../../../config/api';
 Page({
   data: {
@@ -65,7 +65,7 @@ Page({
         size: config.PageSize.attachmentSize,
         sort: 'createTime,desc'
       };
-      const result = await apiService.adminGetAttachment(param);
+      const result = await adminGetAttachment(param);
       if(result.page < result.pages){
         return that.data.content.concat(result.content);
       }else{

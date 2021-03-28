@@ -1,8 +1,8 @@
 //获取应用实例
 const app = getApp();
-import apiService from '../../../../services/api/api-service'; 
 import apiResult from '../../../../utils/api-result';
-import { PageSize,MpHtmlStyle,CustomStyle } from './../../../../config/api';
+import { adminAddJournal, adminGetJournal, adminDeleteJournal, adminEditJournal } from '../../../../services/api/admin/journal';
+import { PageSize, MpHtmlStyle, CustomStyle } from './../../../../config/api';
 Page({
   data: {
     mpHtmlStyle:MpHtmlStyle,
@@ -70,7 +70,7 @@ Page({
       type: this.data.currentType
     }
     try {
-      const result = await apiService.adminAddJournal(param);
+      const result = await adminAddJournal(param);
       that.data.journalList.unshift(result);
       that.setData({
         journalList:that.data.journalList
@@ -93,7 +93,7 @@ Page({
         size: PageSize.journalSize,
         sort: 'createTime,desc'
       };
-      const result = await apiService.adminGetJournal(param);
+      const result = await adminGetJournal(param);
       if(result.page < result.pages){
         return that.data.journalList.concat(result.content);
       }else{
@@ -122,7 +122,7 @@ Page({
       success: async(res) => {
         if (res.confirm) {
           try {
-            await apiService.adminDeleteJournal(id);
+            await adminDeleteJournal(id);
             
             //视图删除，不刷新调用接口
             that.data.journalList.splice(index,1)
@@ -154,7 +154,7 @@ Page({
       type: this.data.currentType
     }
     try {
-      const result = await apiService.adminEditJournal(journalId,param);
+      const result = await adminEditJournal(journalId,param);
       // //视图修改，而非重新调用接口刷新
       that.data.journalList.splice(index,1,result);
       that.setData({

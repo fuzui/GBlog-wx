@@ -1,6 +1,10 @@
 const app = getApp();
 import apiResult from '../../../../utils/api-result';
-import apiService from '../../../../services/api/api-service';
+import {
+  adminGetPhotoDetails,
+  adminEditPhotoDetails,
+  adminDeletePhoto
+} from '../../../../services/api/admin/photo';
 import config from '../../../../config/api';
 Page({
   data: {
@@ -49,7 +53,7 @@ Page({
    */
   async adminGetPhotoDetails(id) {
     try {
-      const result = await apiService.adminGetPhotoDetails(id);
+      const result = await adminGetPhotoDetails(id);
       return result;
     } catch (error) {
       return await Promise.reject(error)
@@ -134,7 +138,7 @@ Page({
       url: that.data.url
     }
     try {
-      const result = await apiService.adminEditPhotoDetails(id,param);
+      const result = await adminEditPhotoDetails(id,param);
       that.setData({
         photo: result,
         modalName: null
@@ -158,7 +162,7 @@ Page({
       success: async(res) => {
         if (res.confirm) {
           try {
-            await apiService.adminDeletePhoto(id);
+            await adminDeletePhoto(id);
             apiResult.success("已删除");
             //无需刷新，直接返回图库列表
             let pages = getCurrentPages();

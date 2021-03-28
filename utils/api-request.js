@@ -5,8 +5,11 @@ import { Config } from './../config/api';
 
 function Get(url, data = {}) {
   return new Promise((resolve, reject) => {
+    if(data && data !== {}) {
+      url = url.concat('?', qs.stringify(data, {arrayFormat: 'repeat'}))
+    }
     wx.request({
-      url: url.concat('?', qs.stringify(data, {arrayFormat: 'repeat'})),
+      url: url,
       method: 'GET',
       header: {
         'Content-Type': 'application/json',
@@ -28,34 +31,10 @@ function Get(url, data = {}) {
   });
 }
 
-function Post(url, data = {}) {
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: url,
-      data: data,
-      method: 'POST',
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'API-Authorization': Config.AccessKey
-      },
-      success(res) {
-        if (res.data.status == apiResult.StateCode.success) {
-          resolve(res.data.data)
-        } else {
-          apiResult.requestError(res.data);
-          reject(res.data)
-        }
-      },
-      fail(err) {
-        apiResult.error('网络连接失败');
-        reject(err)
-      }
-    })
-  });
-  
-}
-
-function PostBody(url, data = {}) {
+function Post(url, data = {}, param = {}) {
+  if(param && param !== {}) {
+    url = url.concat('?', qs.stringify(param, {arrayFormat: 'repeat'}))
+  }
   return new Promise((resolve, reject) => {
     wx.request({
       url: url,
@@ -82,7 +61,10 @@ function PostBody(url, data = {}) {
   
 }
 
-function Upload(url, data = {}) {
+function Upload(url, data = {}, param = {}) {
+  if(param && param !== {}) {
+    url = url.concat('?', qs.stringify(param, {arrayFormat: 'repeat'}))
+  }
   return new Promise((resolve, reject) => {
     wx.uploadFile({
       url: url, 
@@ -133,7 +115,10 @@ function Delete(url, data = {}) {
   });
 }
 
-function Put(url, data = {}) {
+function Put(url, data = {}, param = {}) {
+  if(param && param !== {}) {
+    url = url.concat('?', qs.stringify(param, {arrayFormat: 'repeat'}))
+  }
   return new Promise((resolve, reject) => {
     wx.request({
       url: url,
@@ -163,7 +148,6 @@ function Put(url, data = {}) {
 module.exports = {
   Get,
   Post,
-  PostBody,
   Delete,
   Put,
   Upload

@@ -1,6 +1,8 @@
 //获取应用实例
 const app = getApp();
-import apiService from '../../../services/api/api-service'; 
+import { adminAddPostComment, adminGetPostComment, adminDeletePostComment, adminEditPostCommentStatus } from '../../../services/api/admin/post';
+import { adminAddSheetComment, adminGetSheetComment, adminDeleteSheetComment, adminEditSheetCommentStatus } from '../../../services/api/admin/sheet';
+import { adminGetUserProfile } from '../../../services/api/admin/user';
 import apiResult from '../../../utils/api-result';
 import { ApiBaseUrl,PageSize,MpHtmlStyle,CustomStyle } from './../../../config/api';
 Page({
@@ -60,7 +62,7 @@ Page({
     })
     const type = that.data.type;
     try {
-      const user = await apiService.adminGetUserProfile();
+      const user = await adminGetUserProfile();
       const param = {
         allowNotification: true,
         author: user.nickname,
@@ -72,9 +74,9 @@ Page({
       };
       var result = {};
       if(type == 1){
-        result = await apiService.adminAddPostComment(param);
+        result = await adminAddPostComment(param);
       }else{
-        result = await apiService.adminAddSheetComment(param);
+        result = await adminAddSheetComment(param);
       }
       that.data.commentList.unshift(result);
       that.setData({
@@ -103,9 +105,9 @@ Page({
       };
       var result = [];
       if(type == 1){
-        result = await apiService.adminGetPostComment(param);
+        result = await adminGetPostComment(param);
       }else{
-        result = await apiService.adminGetSheetComment(param);
+        result = await adminGetSheetComment(param);
       }
       if(result.page < result.pages){
         return that.data.commentList.concat(result.content);
@@ -167,9 +169,9 @@ Page({
         if (res.confirm) {
           try {
             if(type == 1){
-              await apiService.adminDeletePostComment(id);
+              await adminDeletePostComment(id);
             }else{
-              await apiService.adminDeleteSheetComment(id);
+              await adminDeleteSheetComment(id);
             }
             //视图删除，不刷新调用接口
             that.data.commentList.splice(index,1)
@@ -194,9 +196,9 @@ Page({
     var result = {}
     try {
       if(type == 1){
-        result = await apiService.adminEditPostCommentStatus(id,status);
+        result = await adminEditPostCommentStatus(id,status);
       }else{
-        result = await apiService.adminEditSheetCommentStatus(id,status);
+        result = await adminEditSheetCommentStatus(id,status);
       }
       // //视图修改，而非重新调用接口刷新
       that.data.commentList.splice(index,1,result);

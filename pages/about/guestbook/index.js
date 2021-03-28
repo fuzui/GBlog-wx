@@ -1,13 +1,14 @@
 //获取应用实例
 const app = getApp();
-import apiService from '../../../services/api/api-service'; 
+import { getCommentsBySheetId, writeSheetComment } from '../../../services/api/content/sheet';
 import apiResult from '../../../utils/api-result';
-import { Config,CustomStyle } from './../../../config/api';
-import {STORAGE_KEY} from '../../../services/const-data/const-data';
+import { Config, CustomStyle } from './../../../config/api';
+import { STORAGE_KEY } from '../../../services/const-data/const-data';
 Page({
   data: {
     noContentImage: CustomStyle.noContentImage,
-    id: 0,  //留言页postId
+    // 留言页postId
+    id: 0,  
     topImage: CustomStyle.topImage,
     guestbookImage: CustomStyle.guestbookImage,
     logo: "",
@@ -126,7 +127,7 @@ Page({
       postId: this.data.id
     }
     try {
-      await apiService.writeSheetComment(param);
+      await writeSheetComment(param);
       this.setData({
         modalName: null
       })
@@ -145,7 +146,7 @@ Page({
         page: commentPage,
         sort: 'createTime,desc'
       };
-      const result = await apiService.getCommentsBySheetId(postId,param);
+      const result = await getCommentsBySheetId(postId,param);
       for(var i = 0;i<result.content.length;i++){
         if(result.content[i].children){
           const children = that.getChildren(result.content[i].children);

@@ -1,6 +1,6 @@
 const app = getApp();
-import apiService from '../../../services/api/api-service';
-import {CustomStyle} from '../../../config/api'
+import { getLinks } from '../../../services/api/content/link';
+import { CustomStyle } from '../../../config/api'
 Page({
   data: {
     topImage: CustomStyle.topImage,
@@ -40,7 +40,7 @@ Page({
     try {
       const param = {
       };
-      const result = await apiService.getLinks(param);
+      const result = await getLinks(param);
       return result;
     } catch (error) {
       return await Promise.reject(error)

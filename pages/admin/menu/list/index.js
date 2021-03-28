@@ -1,6 +1,11 @@
 const app = getApp();
-import apiService from '../../../../services/api/api-service';
 import apiResult from '../../../../utils/api-result';
+import {
+  adminGetMenu,
+  adminDeleteMenu,
+  adminAddMenu,
+  adminEditMenu
+} from '../../../../services/api/admin/menu';
 import {
   ApiBaseUrl,
   CustomStyle
@@ -51,7 +56,7 @@ Page({
   async adminGetMenu() {
     try {
       const param = {};
-      const result = await apiService.adminGetMenu(param);
+      const result = await adminGetMenu(param);
       return result;
     } catch (error) {
       return error.message;
@@ -73,7 +78,7 @@ Page({
       success: async (res) => {
         if (res.confirm) {
           try {
-            await apiService.adminDeleteMenu(id);
+            await adminDeleteMenu(id);
             //视图删除，不刷新调用接口
             that.data.menuList.splice(index, 1)
             that.setData({
@@ -117,7 +122,7 @@ Page({
       parentId: that.data.parentId
     }
     try {
-      const result = await apiService.adminAddMenu(param);
+      const result = await adminAddMenu(param);
       //视图添加，而非重新调用接口刷新
       that.data.menuList.unshift(result);
       that.setData({
@@ -159,7 +164,7 @@ Page({
       parentId: that.data.parentId
     }
     try {
-      const result = await apiService.adminEditMenu(menuId,param);
+      const result = await adminEditMenu(menuId,param);
       // //视图修改，而非重新调用接口刷新
       that.data.menuList.splice(index,1,result);
       that.setData({

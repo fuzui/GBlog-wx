@@ -1,8 +1,9 @@
 //获取应用实例
 const app = getApp();
-import apiService from '../../../services/api/api-service'; 
+import { adminGetPost, adminDeletePost, adminEditPostStatus } from '../../../services/api/admin/post';
+import { adminGetSheet, adminDeleteSheet, adminEditSheetStatus } from '../../../services/api/admin/sheet';
 import apiResult from '../../../utils/api-result';
-import { PageSize,CustomStyle } from './../../../config/api';
+import { PageSize, CustomStyle } from './../../../config/api';
 Page({
   data: {
     topImage: CustomStyle.topImage,
@@ -44,9 +45,9 @@ Page({
       };
       var result = [];
       if(type == 1){
-        result = await apiService.adminGetPost(param);
+        result = await adminGetPost(param);
       }else{
-        result = await apiService.adminGetSheet(param);
+        result = await adminGetSheet(param);
       }
       if(result.page < result.pages){
         return that.data.articleList.concat(result.content);
@@ -108,9 +109,9 @@ Page({
         if (res.confirm) {
           try {
             if(type == 1){
-              await apiService.adminDeletePost(id);
+              await adminDeletePost(id);
             }else{
-              await apiService.adminDeleteSheet(id);
+              await adminDeleteSheet(id);
             }
             //视图删除，不刷新调用接口
             that.data.articleList.splice(index,1)
@@ -135,9 +136,9 @@ Page({
     var result = {}
     try {
       if(type == 1){
-        result = await apiService.adminEditPostStatus(id,status);
+        result = await adminEditPostStatus(id,status);
       }else{
-        result = await apiService.adminEditSheetStatus(id,status);
+        result = await adminEditSheetStatus(id,status);
       }
       // //视图修改，而非重新调用接口刷新
       that.data.articleList.splice(index,1,result);

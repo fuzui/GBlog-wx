@@ -1,6 +1,6 @@
 const app = getApp();
-import apiService from '../../../../services/api/api-service';
 import apiResult from '../../../../utils/api-result';
+import { adminGetTheme, adminActivatesTheme, adminDeleteTheme, adminFetchingTheme, adminFetchingNewTheme } from '../../../../services/api/admin/theme';
 import {
   ApiBaseUrl,
   CustomStyle
@@ -54,7 +54,7 @@ Page({
    */
   async adminGetTheme() {
     try {
-      const result = await apiService.adminGetTheme();
+      const result = await adminGetTheme();
       return result;
     } catch (error) {
       return error.message;
@@ -88,7 +88,7 @@ Page({
       success: async (res) => {
         if (res.confirm) {
           try {
-            await apiService.adminActivatesTheme(id);
+            await adminActivatesTheme(id);
             themeList.forEach(theme => {
               if (theme.id == id) {
                 theme.activated = true;
@@ -125,7 +125,7 @@ Page({
       success: async (res) => {
         if (res.confirm) {
           try {
-            await apiService.adminDeleteTheme(id);
+            await adminDeleteTheme(id);
             //视图删除，不刷新调用接口
             that.data.themeList.splice(index, 1)
             that.setData({
@@ -166,7 +166,7 @@ Page({
               loadModal: true,
               message: "更新中···"
             })
-            const result = await apiService.adminFetchingTheme(id);
+            const result = await adminFetchingTheme(id);
             that.setData({
               loadModal: false
             })
@@ -209,7 +209,7 @@ Page({
       message: "上传中···"
     })
     try {
-      const result = await apiService.adminFetchingNewTheme(param);
+      const result = await adminFetchingNewTheme(param);
       that.setData({
         loadModal: false,
         modalName: null,

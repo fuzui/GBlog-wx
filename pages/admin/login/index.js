@@ -1,7 +1,7 @@
 //获取应用实例
 const app = getApp();
-import apiService from '../../../services/api/api-service'; 
 import apiResult from '../../../utils/api-result';
+import { adminLogin } from '../../../services/api/admin/login';
 import { CustomStyle } from './../../../config/api';
 import { STORAGE_KEY } from '../../../services/const-data/const-data';
 Page({
@@ -59,7 +59,7 @@ Page({
       password: this.data.password
     }
     try {
-      const result = await apiService.adminLogin(param);
+      const result = await adminLogin(param);
       wx.setStorageSync(STORAGE_KEY.adminToken, result.access_token)
       apiResult.success("登录成功");
       wx.switchTab({

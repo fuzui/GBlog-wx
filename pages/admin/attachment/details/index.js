@@ -1,6 +1,6 @@
 const app = getApp();
 import apiResult from '../../../../utils/api-result';
-import apiService from '../../../../services/api/api-service';
+import { adminGetAttachmentDetails, adminEditAttachmentDetails, adminDeleteAttachment } from '../../../../services/api/admin/attachment';
 import config from '../../../../config/api';
 Page({
   data: {
@@ -36,7 +36,7 @@ Page({
    */
   async adminGetAttachmentDetails(id) {
     try {
-      const result = await apiService.adminGetAttachmentDetails(id);
+      const result = await adminGetAttachmentDetails(id);
       return result;
     } catch (error) {
       return await Promise.reject(error)
@@ -74,7 +74,7 @@ Page({
       name: name
     }
     try {
-      const result = await apiService.adminEditAttachmentDetails(id,param);
+      const result = await adminEditAttachmentDetails(id,param);
       that.setData({
         attachment: result,
         modalName: null
@@ -98,7 +98,7 @@ Page({
       success: async(res) => {
         if (res.confirm) {
           try {
-            await apiService.adminDeleteAttachment(id);
+            await adminDeleteAttachment(id);
             apiResult.success("已删除");
             //无需刷新，直接返回附件列表
             let pages = getCurrentPages();

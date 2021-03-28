@@ -1,6 +1,7 @@
 const app = getApp();
 import apiResult from '../../../../utils/api-result';
-import apiService from '../../../../services/api/api-service';
+import { adminGetPhoto, adminAddPhoto } from '../../../../services/api/admin/photo';
+import { adminAddAttachment } from '../../../../services/api/admin/attachment';
 import config from '../../../../config/api';
 Page({
   data: {
@@ -81,7 +82,7 @@ Page({
         size: config.PageSize.attachmentSize,
         sort: 'takeTime,desc'
       };
-      const result = await apiService.adminGetPhoto(param);
+      const result = await adminGetPhoto(param);
       if(result.page < result.pages){
         return that.data.content.concat(result.content);
       }else{
@@ -98,7 +99,7 @@ Page({
       const param = {
         path: imgPath
       }
-      const result = await apiService.adminAddAttachment(param);
+      const result = await adminAddAttachment(param);
       return result
     } catch (error) {
       this.setData({
@@ -115,7 +116,7 @@ Page({
         name: imgInfo.name,
         takeTime: imgInfo.createTime
       }
-      const result = await apiService.adminAddPhoto(param);
+      const result = await adminAddPhoto(param);
       return result
     } catch (error) {
       this.setData({

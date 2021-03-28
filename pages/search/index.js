@@ -1,7 +1,8 @@
 const app = getApp();
-import apiService from '../../services/api/api-service';
-import {PageSize,CustomStyle} from '../../config/api';
-import {STORAGE_KEY} from '../../services/const-data/const-data';
+import { searchArticle } from '../../services/api/content/article';
+import { getTags } from '../../services/api/content/tag';
+import { PageSize, CustomStyle } from '../../config/api';
+import { STORAGE_KEY } from '../../services/const-data/const-data';
 Page({
   data: {
     StatusBar: app.globalData.StatusBar,
@@ -172,7 +173,7 @@ Page({
   async getTags() {
     try {
       const param={};
-      const result = await apiService.getTags(param);
+      const result = await getTags(param);
       return result;
     } catch (error) {
       return await Promise.reject(error)
@@ -203,7 +204,7 @@ Page({
         size: PageSize.searchSize,
         sort: 'createTime,desc'
       };
-      const result = await apiService.searchArticle(param);
+      const result = await searchArticle(param);
       if (result.page < result.pages ) {
         return that.data.content.concat(result.content);
       } else {

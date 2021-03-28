@@ -1,5 +1,5 @@
 const app = getApp();
-import apiService from '../../../services/api/api-service'; 
+import { adminGetEnvironments } from '../../../services/api/admin/environment';
 import {CustomStyle} from '../../../config/api.js';
 Page({
   data: {
@@ -42,7 +42,7 @@ Page({
    */
   async adminGetEnvironments(){
     try {
-      const result = await apiService.adminGetEnvironments();
+      const result = await adminGetEnvironments();
       return result;
     } catch (error) {
       return error.message;

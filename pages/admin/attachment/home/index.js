@@ -1,6 +1,6 @@
 const app = getApp();
 import apiResult from '../../../../utils/api-result';
-import apiService from '../../../../services/api/api-service';
+import { adminGetAttachment, adminAddAttachment, adminBatchDeleteAttachment } from '../../../../services/api/admin/attachment';
 import config from '../../../../config/api';
 Page({
   data: {
@@ -64,7 +64,7 @@ Page({
         size: config.PageSize.attachmentSize,
         sort: 'createTime,desc'
       };
-      const result = await apiService.adminGetAttachment(param);
+      const result = await adminGetAttachment(param);
       if(result.page < result.pages){
         return that.data.content.concat(result.content);
       }else{
@@ -81,7 +81,7 @@ Page({
       const param = {
         path: imgPath
       }
-      const result = await apiService.adminAddAttachment(param);
+      const result = await adminAddAttachment(param);
       return result
     } catch (error) {
       return await Promise.reject(error)
@@ -159,7 +159,7 @@ Page({
             indexs.forEach(element => {
               ids.push(content[element].id)
             });
-            await apiService.adminBatchDeleteAttachment(ids);
+            await adminBatchDeleteAttachment(ids);
             apiResult.success("已删除");
             //无需刷新，视图删
             var tmp = -1;

@@ -1,7 +1,7 @@
 //获取应用实例
 const app = getApp();
-import apiService from '../../../../services/api/api-service'; 
 import apiResult from '../../../../utils/api-result';
+import { adminAddLink, adminEditLink, adminGetLink, adminDeleteLink } from '../../../../services/api/admin/link';
 import { CustomStyle } from './../../../../config/api';
 Page({
   data: {
@@ -105,7 +105,7 @@ Page({
       url: this.data.url
     }
     try {
-      const result = await apiService.adminAddLink(param);
+      const result = await adminAddLink(param);
       //视图添加，而非重新调用接口刷新
       that.data.links.unshift(result);
       that.setData({
@@ -150,7 +150,7 @@ Page({
       url: this.data.url
     }
     try {
-      const result = await apiService.adminEditLink(linkId,param);
+      const result = await adminEditLink(linkId,param);
       // //视图修改，而非重新调用接口刷新
       that.data.links.splice(index,1,result);
       that.setData({
@@ -171,7 +171,7 @@ Page({
       const param = {
         sort: 'createTime,desc'
       };
-      const result = await apiService.adminGetLink(param);
+      const result = await adminGetLink(param);
       return result;
     } catch (error) {
       return await Promise.reject(error)
@@ -194,7 +194,7 @@ Page({
       success: async(res) => {
         if (res.confirm) {
           try {
-            await apiService.adminDeleteLink(id);
+            await adminDeleteLink(id);
             //视图删除，不刷新调用接口
             that.data.links.splice(index,1)
             that.setData({

@@ -1,5 +1,5 @@
 const app = getApp();
-import apiService from '../../../services/api/api-service';
+import { getJournals } from '../../../services/api/content/journal';
 import { PageSize,MpHtmlStyle,CustomStyle } from './../../../config/api';
 Page({
   data: {
@@ -63,7 +63,7 @@ Page({
         size: PageSize.journalSize,
         sort: 'createTime,desc'
       };
-      const result = await apiService.getJournals(param);
+      const result = await getJournals(param);
       if(result.page < result.pages){
         return that.data.content.concat(result.content);
       }else{

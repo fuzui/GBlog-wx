@@ -1,5 +1,5 @@
 const app = getApp();
-import apiService from '../../../services/api/api-service';
+import { getPhotos } from '../../../services/api/content/photo';
 import utils from '../../../utils/utils';
 import {PageSize,CustomStyle} from '../../../config/api';
 Page({
@@ -60,7 +60,7 @@ Page({
         size: PageSize.photoSize,
         sort: 'takeTime,desc'
       };
-      const result = await apiService.getPhotos(param);
+      const result = await getPhotos(param);
       if(result.page < result.pages){
         return that.data.content.concat(result.content);
       }else{

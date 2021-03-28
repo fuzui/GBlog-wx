@@ -1,7 +1,8 @@
 const app = getApp()
-import apiService from '../../../services/api/api-service';
 import apiResult from '../../../utils/api-result';
-import {CustomStyle} from '../../../config/api';
+import { adminGetTag, adminAddTag, adminEditTag, adminDeleteTag } from '../../../services/api/admin/tag';
+import { adminAddAttachment } from '../../../services/api/admin/attachment';
+import { CustomStyle } from '../../../config/api';
 Page({
   data: {
     CustomBar: app.globalData.CustomBar,
@@ -73,7 +74,7 @@ Page({
   async getTags() {
     try {
       const param={};
-      const result = await apiService.adminGetTag(param);
+      const result = await adminGetTag(param);
       return result;
     } catch (error) {
       return await Promise.reject(error)
@@ -120,7 +121,7 @@ Page({
       thumbnail: that.data.thumbnail
     }
     try {
-      const result = await apiService.adminAddTag(param);
+      const result = await adminAddTag(param);
       let tagList = that.data.tagList;
       tagList.unshift(result);
       that.setData({
@@ -148,7 +149,7 @@ Page({
       thumbnail: that.data.thumbnail
     }
     try {
-      const result = await apiService.adminEditTag(id,param);
+      const result = await adminEditTag(id,param);
       let tagList = that.data.tagList;
       tagList.splice(that.data.tagCur,1,result);
       that.setData({
@@ -174,7 +175,7 @@ Page({
       success: async(res) => {
         if (res.confirm) {
           try {
-            await apiService.adminDeleteTag(id);
+            await adminDeleteTag(id);
             //视图删除，不刷新调用接口
             let tagList = that.data.tagList;
             tagList.splice(that.data.tagCur,1)
@@ -230,7 +231,7 @@ Page({
       const param = {
         path: imgPath
       }
-      const result = await apiService.adminAddAttachment(param);
+      const result = await adminAddAttachment(param);
       return result
     } catch (error) {
       this.setData({
