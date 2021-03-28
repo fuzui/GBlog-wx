@@ -5,7 +5,9 @@ const ApiBaseUrl = 'https://www.geekera.cn';//生产上
 
 const Config = {
   AccessKey: '', //接口key，必填
-  guestbookSheetId: 2,  //留言页sheet的id
+  guestbookSheetId: 2,  //留言页sheet的id,
+  logo: '', // 选填，填写将提高首页加载速度
+  blogTitle: '' // 选填，填写将提高首页加载速度
 }
 //海报分享配置
 const ShareConfig = {

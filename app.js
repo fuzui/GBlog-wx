@@ -1,4 +1,4 @@
-import {ShareConfig} from 'config/api.js'
+import { ShareConfig, Config } from 'config/api.js'
 import { compareVersion } from './utils/utils'
 App({
   onLaunch: function() {
@@ -15,12 +15,8 @@ App({
     this.updateManager();
   },
   globalData: {
-    logo: "",
-    blogTitle: "",
-    userInfo: {
-      nickName: "",
-      avatarUrl: ""
-    },
+    logo: Config.logo,
+    blogTitle: Config.blogTitle,
     windowHeight: 1334
   },
   // 更新小程序以及系统信息获取校验
