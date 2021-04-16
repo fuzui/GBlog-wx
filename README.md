@@ -3,7 +3,7 @@
 <p align="center">
  <img src="https://gitee.com/fuzui/GBlog-wx/badge/star.svg?theme=dark" alt="Build Status">
  <img src="https://img.shields.io/github/stars/fuzui/GBlog-wx.svg?style=social" alt="Build Status">
- <img src="https://img.shields.io/badge/halo-1.4.7-brightgreen" alt="Build Status">
+ <img src="https://img.shields.io/badge/halo-1.4.8-brightgreen" alt="Build Status">
 </p>
 
 
