@@ -9,7 +9,7 @@
       </view>
       <view class="cu-item" wx:for="{{comments}}" wx:for-item="comment" wx:key="index">
         <image class="cu-avatar round" 
-          src="{{comment.authorUrl?comment.authorUrl:'https://cdn.v2ex.com/gravatar/'+comment.gravatarMd5+'?s=64&d=monsterid'}}"
+          src="{{comment.authorUrl?comment.authorUrl:gravatarSource+comment.gravatarMd5+'?s=64&d='+gravatarDefault}}"
           binderror="binderrorimg"
           data-errorimg="{{index}}"
           data-gravatarmd5 ="{{comment.gravatarMd5}}"></image>
@@ -42,7 +42,7 @@
             <view class="radius text-sm">
               <view class="flex">
                 <image class="cu-avatar ssm round flex margin-right-xs" 
-                  src="{{children.authorUrl?children.authorUrl:'https://cdn.v2ex.com/gravatar/'+children.gravatarMd5+'?s=32&d=monsterid'}}"
+                  src="{{children.authorUrl?children.authorUrl:gravatarSource+comment.gravatarMd5+'?s=32&d='+gravatarDefault}}"
                   binderror="binderrorimg"
                   data-errorimg="{{index}}"
                   data-gravatarmd5 ="{{children.gravatarMd5}}"

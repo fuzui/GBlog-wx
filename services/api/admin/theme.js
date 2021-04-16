@@ -14,7 +14,6 @@ function adminGetTheme(param) {
   return new Promise((resolve, reject) => {
     apiRequest.Get(moduleName, Object.assign(adminToken, param))
       .then(r => {
-        console.log(r)
         resolve(r)
       }, e => {
         reject(e)

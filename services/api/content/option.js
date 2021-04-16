@@ -16,6 +16,20 @@ function getOptionByKey(key) {
       })
   })
 }
+
+function getOptions() {
+  const url = moduleName + '/list_view';
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(url, {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
 module.exports = {
-  getOptionByKey
+  getOptionByKey,
+  getOptions
 }
