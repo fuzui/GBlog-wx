@@ -10,11 +10,13 @@ function adminAddAttachment(data) {
   const adminToken = {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
+  const url = moduleName + '/upload';
   return new Promise((resolve, reject) => {
-    apiRequest.Upload(moduleName, data, adminToken)
+    apiRequest.Upload(url, data, adminToken)
       .then(r => {
         resolve(r)
       }, e => {
+        console.log(e)
         reject(e)
       })
   })
