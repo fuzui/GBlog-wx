@@ -3,9 +3,9 @@ import qs from './qs'
 import { Config } from './../config/api';
 
 
-function Get(url, data = {}) {
+function Get(url, data) {
   return new Promise((resolve, reject) => {
-    if(data && data !== {}) {
+    if(data) {
       url = url.concat('?', qs.stringify(data, {arrayFormat: 'repeat'}))
     }
     wx.request({
@@ -31,8 +31,8 @@ function Get(url, data = {}) {
   });
 }
 
-function Post(url, data = {}, param = {}) {
-  if(param && param !== {}) {
+function Post(url, data = {}, param) {
+  if(param) {
     url = url.concat('?', qs.stringify(param, {arrayFormat: 'repeat'}))
   }
   return new Promise((resolve, reject) => {
@@ -61,8 +61,8 @@ function Post(url, data = {}, param = {}) {
   
 }
 
-function Upload(url, data = {}, param = {}) {
-  if(param && param !== {}) {
+function Upload(url, data = {}, param) {
+  if(param) {
     url = url.concat('?', qs.stringify(param, {arrayFormat: 'repeat'}))
   }
   return new Promise((resolve, reject) => {
@@ -89,8 +89,8 @@ function Upload(url, data = {}, param = {}) {
   
 }
 
-function Delete(url, data = {}) {
-  if(data && data !== {}) {
+function Delete(url, data) {
+  if(data) {
     url = url.concat('?', qs.stringify(data, {arrayFormat: 'repeat'}))
   }
   return new Promise((resolve, reject) => {
@@ -118,8 +118,8 @@ function Delete(url, data = {}) {
   });
 }
 
-function Put(url, data = {}, param = {}) {
-  if(param && param !== {}) {
+function Put(url, data = {}, param) {
+  if(param) {
     url = url.concat('?', qs.stringify(param, {arrayFormat: 'repeat'}))
   }
   return new Promise((resolve, reject) => {
