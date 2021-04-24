@@ -24,7 +24,7 @@ function getArticleList(params) {
 function searchArticle(params) {
   const url = moduleName + '/search'
   return new Promise((resolve, reject) => {
-    apiRequest.Post(url, params)
+    apiRequest.Post(url, {}, params)
       .then(r => {
         resolve(r)
       }, e => {
