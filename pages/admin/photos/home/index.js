@@ -103,6 +103,7 @@ Page({
       return result
     } catch (error) {
       this.setData({
+        uploadModal: false,
         modalName: null
       })
       return await Promise.reject(error)
@@ -120,6 +121,7 @@ Page({
       return result
     } catch (error) {
       this.setData({
+        uploadModal: false,
         modalName: null
       })
       return await Promise.reject(error)
