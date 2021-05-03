@@ -31,7 +31,7 @@ function adminGetAttachmentDetails(attachmentId) {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
   return new Promise((resolve, reject) => {
-    apiRequest.Get(url, {})
+    apiRequest.Get(url, adminToken)
       .then(r => {
         resolve(r)
       }, e => {
