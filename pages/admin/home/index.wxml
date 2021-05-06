@@ -42,59 +42,60 @@
   <!-- 功能列表 -->
   <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
     <view class="cu-item arrow">
-      <view class="content" bindtap="toJournalPage">
+      <view class="content"  bindtap="toCommentPage">
         <text class="cuIcon-notice text-blue"></text>
         <text class="text-grey">消息</text>
       </view>
-      <view class="action"  bindtap="{{noticeCount == 0?'':'toCommentPage'}}">
+      <view class="action" >
         <text class="text-grey text-sm" wx:if="{{noticeCount == 0}}">暂无未读消息</text>
         <text class="text-red text-sm" wx:if="{{noticeCount != 0}}">有 {{noticeCount}} 条消息待处理</text>
       </view>
     </view>
-    <view class="cu-item arrow">
-      <view class="content" bindtap="toJournalPage">
+    <view class="cu-item arrow" bindtap="toJournalPage">
+      <view class="content" >
         <text class="cuIcon-writefill text-grey"></text>
         <text class="text-grey">速记</text>
       </view>
     </view>
-    <view class="cu-item arrow">
-      <view class="content" bindtap="toPhotosPage">
+    <view class="cu-item arrow" bindtap="toPhotosPage">
+      <view class="content" >
         <text class="cuIcon-camera text-olive"></text>
-        <text class="text-grey">捕捉</text>
+        <text class="text-grey">素材库</text>
       </view>
     </view>
-    <view class="cu-item arrow">
-      <view class="content" bindtap="toLinksPage">
+    <view class="cu-item arrow" bindtap="toLinksPage">
+      <view class="content" >
         <text class="cuIcon-friendadd text-orange"></text>
-        <text class="text-grey">友链管理</text>
+        <text class="text-grey">友链</text>
       </view>
     </view>
-    <view class="cu-item arrow">
-      <view class="content" bindtap="toAttachmentPage">
+    <view class="cu-item arrow" bindtap="toAttachmentPage">
+      <view class="content" >
         <text class="cuIcon-picfill text-purple"></text>
         <text class="text-grey">附件</text>
       </view>
     </view>
-    <view class="cu-item arrow">
-      <view class="content" bindtap="showModal" data-target="themeModal">
+    <view class="cu-item arrow" bindtap="showModal" data-target="themeModal">
+      <view class="content" >
         <text class="cuIcon-clothes text-mauve"></text>
         <text class="text-grey">外观</text>
       </view>
     </view>
-    <view class="cu-item arrow">
-      <view class="content" bindtap="toUserPage">
+    <view class="cu-item arrow" bindtap="toUserPage"> 
+      <view class="content" >
         <text class="cuIcon-footprint text-brown"></text>
         <text class="text-grey">个人信息</text>
       </view>
     </view>
-    <view class="cu-item arrow">
-      <view class="content" bindtap="showModal" data-target="settingsModal">
+    <view class="cu-item arrow" bindtap="showModal" data-target="settingsModal">
+      <view class="content" >
         <text class="cuIcon-settings text-black"></text>
         <text class="text-grey">系统设置</text>
       </view>
     </view>
   </view>
   <view class="cu-tabbar-height"></view>
+
 
 </scroll-view>
 </view>
