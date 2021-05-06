@@ -35,7 +35,7 @@
   </view>
 </view>
 <!-- 文章 -->
-<view class='margin-xs bg-white padding-xs radius shadow-lg'>
+<view class='margin-xs bg-white padding-xs radius shadow-lg text-center'>
   <mp-html
     lazy-load
     scroll-table
