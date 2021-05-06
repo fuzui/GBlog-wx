@@ -42,3 +42,4 @@ package-lock.json
 
 # prod config
 api.js
+project.private.config.json
