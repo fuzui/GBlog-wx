@@ -89,8 +89,8 @@
         </button>
         <text>微信好友</text>
       </view>
-      <view class="article-share">
-        <button class="bg-white xl" bindtap="shareFriends" wx:if="{{shareIsOpen}}">
+      <view class="article-share" wx:if="{{shareIsOpen}}">
+        <button class="bg-white xl" bindtap="shareFriends">
           <image src="/images/icon/poster.svg"></image>
         </button>
         <text>生成海报</text>
