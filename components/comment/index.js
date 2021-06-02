@@ -2,7 +2,6 @@
 const app = getApp();
 import { CustomStyle, MpHtmlStyle } from '../../config/api';
 import { STORAGE_KEY, DEFAULT_VALUE, HALO_OPTION_KEY } from '../../services/const-data/const-data';
-import { getOptions } from '../../services/api/content/option';
 Component({
   data: {
     noContentImage: CustomStyle.noContentImage,
@@ -22,10 +21,6 @@ Component({
   lifetimes: {
     async attached() {
       var options = wx.getStorageSync(STORAGE_KEY.options);
-      if(!options) {
-        options =  await getOptions();
-        wx.setStorageSync(STORAGE_KEY.options, options)
-      }
       var gravatarSource = options[HALO_OPTION_KEY.gravatarSource];
       if(!gravatarSource) {
         gravatarSource = DEFAULT_VALUE.gravatarSource;

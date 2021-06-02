@@ -1,5 +1,7 @@
 import { ShareConfig, Config } from 'config/api.js'
 import { compareVersion } from './utils/utils'
+import { getOptions } from './services/api/content/option';
+import { STORAGE_KEY, HALO_OPTION_KEY } from './services/const-data/const-data';
 App({
   onLaunch: function() {
     if(ShareConfig.isOpen){
@@ -13,11 +15,29 @@ App({
       }
     }
     this.updateManager();
+    this.getOptions();
   },
   globalData: {
     logo: Config.logo,
     blogTitle: Config.blogTitle,
     windowHeight: 1334
+  },
+  async getOptions () {
+    var options = wx.getStorageSync(STORAGE_KEY.options);
+    if(!options) {
+      const optionOrigin =  await getOptions();
+      options = {}
+      optionOrigin.forEach(option => {
+        options[option.key] = option.value
+      });
+      wx.setStorageSync(STORAGE_KEY.options, options)
+    }
+    if(this.globalData.logo=="") {
+      this.globalData.logo = options[HALO_OPTION_KEY.blogFavicon];
+    }
+    if(this.globalData.blogTitle=="") {
+      this.globalData.blogTitle = options[HALO_OPTION_KEY.blogTitle];
+    }
   },
   // 更新小程序以及系统信息获取校验
   updateManager: function () {

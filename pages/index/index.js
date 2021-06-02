@@ -1,9 +1,7 @@
 //获取应用实例
 const app = getApp();
 import { getArticleList } from '../../services/api/content/article';
-import { getOptions } from '../../services/api/content/option';
 import { PageSize, RandomImage, CustomStyle } from '../../config/api';
-import { STORAGE_KEY, HALO_OPTION_KEY } from '../../services/const-data/const-data';
 
 Page({
   data: {
@@ -45,14 +43,6 @@ Page({
     this.setData({
       loadModal:true
     })
-    await this.initOptions();
-    const options = wx.getStorageSync(STORAGE_KEY.options);
-    if(app.globalData.logo=="") {
-      app.globalData.logo = options[HALO_OPTION_KEY.blogFavicon];
-    }
-    if(app.globalData.blogTitle=="") {
-      app.globalData.blogTitle = options[HALO_OPTION_KEY.blogTitle];
-    }
     this.setData({
       logo: app.globalData.logo,
       blogTitle: app.globalData.blogTitle,
@@ -209,13 +199,6 @@ Page({
     this.setData({
       cardCur: e.detail.current
     })
-  },
-  async initOptions() {
-    var options = wx.getStorageSync(STORAGE_KEY.options);
-    if(!options) {
-      options = await getOptions();
-      wx.setStorageSync(STORAGE_KEY.options, options)
-    }
   }
 
 });
