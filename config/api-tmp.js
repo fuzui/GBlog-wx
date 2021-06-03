@@ -28,7 +28,8 @@ const commonTagStyle = {
   h4: 'font-size: 0.67em;line-height: 30px;',
   h5: 'font-size: 0.50em;line-height: 30px;',
   'code': 'word-wrap:break-word;',
-  'pre > code': 'white-space:nowrap;'
+  'pre > code': 'white-space:nowrap;',
+  video: 'width: 100%'
 }
 const commentTagStyle = {
   p: 'margin: 0 0;'
