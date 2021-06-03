@@ -1,1 +1,1 @@
-"use strict";var t={};module.exports={get:function(e){return t[e]},set:function(e,r){return t[e]=r},remove:function(e){return t[e]=void 0}};
+"use strict";var t={};module.exports={get:function(e){return t[e]},set:function(e,n){t[e]=n},remove:function(e){t[e]=void 0}};
