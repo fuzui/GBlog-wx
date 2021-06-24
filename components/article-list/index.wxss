@@ -11,6 +11,10 @@
 	border-radius: 10rpx;
 	margin: 30rpx;
 }
+.cu-card.no-card>.cu-item {
+	margin: 0rpx;
+	border-radius: 0rpx;
+}
 .cu-card.article>.cu-item .content>image {
 	width: 240rpx;
 	height: 6.4em;
@@ -21,7 +25,7 @@
 	width: 350rpx;
 	font-size: 22rpx;
 	color: #888;
-	height: 3.5em;
+	height: 3.3em;
 	overflow: hidden;
 }
 .cu-card.article>.cu-item .title {

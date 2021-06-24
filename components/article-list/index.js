@@ -10,6 +10,14 @@ Component({
       type: Array,
       value: []
     },
+    isMore: {
+      type: Boolean,
+      value: true
+    },
+    layout: {
+      type: String,
+      value: 'card'
+    }
   },
   options: {
     addGlobalClass: true,
