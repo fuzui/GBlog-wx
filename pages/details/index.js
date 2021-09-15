@@ -263,17 +263,7 @@ Page({
           msgFlag: false
         })
       }, 1000)
-    }else{
-      this.setData({
-        msgFlag: true,
-        msgData: result
-      })
-      setTimeout(()=> {
-        this.setData({
-          msgFlag: false
-        })
-      }, 1000)
-    }	
+    }
   },
   addCommentByComponent(e) {
     this.selectComponent("#commentComponent").addComment(e)
