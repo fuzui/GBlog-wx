@@ -42,7 +42,7 @@
     "navigationBarTextStyle": "white"
 	},
 	"usingComponents": {
-		"cu-custom": "/styles/colorui/components/cu-custom"
+		"cu-custom": "styles/colorui/components/cu-custom"
 	},
 	"tabBar": {
 		"custom": true,

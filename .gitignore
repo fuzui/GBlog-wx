@@ -41,5 +41,5 @@ Thumbs.db
 package-lock.json
 
 # prod config
-api.js
+**/api.js
 project.private.config.json
