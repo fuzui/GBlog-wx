@@ -57,7 +57,7 @@ Page({
   },
   toCategoryPage() {
     wx.switchTab({
-      url: '/pages/type/index'
+      url: '/pages/type/home/index'
     });
   },
   toTagPage() {

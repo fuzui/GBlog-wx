@@ -1,0 +1,16 @@
+<cu-custom bgColor="bg-theme" isCustom="{{true}}">
+  <view slot="content">{{name}}</view>
+</cu-custom>
+<!--  文章列表展示  -->
+<article-list content="{{content}}"></article-list>
+<view class="no-content" wx:if="{{!content.length}}">
+  <image src="{{noContentImage}}"></image>
+  <view class="text-xl padding">暂无文章</view>  
+</view>
+<!-- 下拉加载 -->
+<view class="cu-load {{loading==true?'loading':'over'}}" wx:if="{{content.length}}"></view>
+<!-- 弹框加载 -->
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <image src='{{logo}}' class='png' mode='aspectFit'></image>
+  <view class='gray-text'>加载中...</view>
+</view>

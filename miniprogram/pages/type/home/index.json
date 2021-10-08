@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "painter":"../../../components/painter/painter",
+    "article-list": "./../../../components/article-list/index"
+  }
+}

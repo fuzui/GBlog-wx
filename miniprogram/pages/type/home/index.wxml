@@ -1,0 +1,55 @@
+<wxs src="../../../utils/tools.wxs" module="tools" />
+<cu-custom bgColor="bg-theme">
+  <view slot="content">专题</view>
+</cu-custom>
+<view class="type-card case" style="margin-bottom:100rpx;">
+  <view class="cu-item shadow" wx:for="{{categories}}" wx:for-item="item" wx:key="index">
+    <view class="image" bindtap="toDetailPage" data-slug="{{item.slug}}" data-name="{{item.name}}">
+      <image src="{{item.thumbnail?item.thumbnail:tools.getRandomImage(RandomImage)}}" mode="widthFix"></image>
+      <view class="cu-capsule radius">
+        <view class="cu-tag bg-blue">
+          <text>{{item.name}}</text>
+        </view>
+        <view class="cu-tag line-blue bg-white">
+          {{item.postCount}}
+        </view>
+      </view>
+      <view class="cu-bar bg-shadeBottom" catchtap="handleMore" data-id="{{item.id}}">
+        <text class="text-cut">{{item.description}}</text>
+      </view>
+    </view>
+    <view class="cu-list grid col-3 no-border" wx:if="{{currentOpenId == item.id}}">
+      <view class="cu-item">
+        <button bindtap="toDetailPage" data-slug="{{item.slug}}" data-name="{{item.name}}">
+          <view class="share">
+            <image src="/images/icon/article.svg" mode="aspectFit"></image>
+          </view>
+          <text>文章</text>
+        </button>
+      </view>
+      <view class="cu-item">
+        <button open-type="share" data-index="{{index}}">
+          <view class="share">
+            <image src="/images/icon/weixin.svg" mode="aspectFit"></image>
+          </view>
+          <text>分享</text>
+        </button>
+      </view>
+      <view class="cu-item">
+        <button bindtap="shareFriends" data-index="{{index}}">
+          <view class="share">
+            <image src="/images/icon/poster.svg" mode="aspectFit"></image>
+          </view>
+          <text>海报</text>
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 生成海报 -->
+<painter style="position:fixed;top:-9999rpx" palette="{{palette}}" bind:imgOK="toSharePage" />
+<!-- 弹框加载 -->
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <image src='{{logo}}' class='png' mode='aspectFit'></image>
+  <view class='gray-text'>加载中...</view>
+</view>

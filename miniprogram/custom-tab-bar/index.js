@@ -14,7 +14,7 @@ Component({
 				text: "首页"
 			},
       {
-        pagePath: "/pages/type/index",
+        pagePath: "/pages/type/home/index",
         iconPath: "/images/icon/type.svg",
         selectedIconPath: "/images/icon/type-hover.svg",
         text: "分类"

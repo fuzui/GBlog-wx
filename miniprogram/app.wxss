@@ -58,3 +58,7 @@ page{
 	width:400rpx;
 	height: 400rpx;
 }
+
+.bg-theme {
+	background-color: #BDD2EF !important;
+}

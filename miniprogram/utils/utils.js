@@ -56,10 +56,14 @@ const compareVersion = (v1, v2) => {
   }
   return 0
 }
+const getRandomImage = (arr = []) => {
+  return arr[Math.floor((Math.random()*arr.length))];
+}
  
 module.exports = {
   buildURL,
   decodeQuery,
   mergeJsonObject,
-  compareVersion
+  compareVersion,
+  getRandomImage
 }
