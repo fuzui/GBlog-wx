@@ -20,7 +20,8 @@ App({
   globalData: {
     logo: Config.logo,
     blogTitle: Config.blogTitle,
-    windowHeight: 1334
+    windowHeight: 1334,
+    unitConversionRatio: 2
   },
   async getOptions () {
     var options = wx.getStorageSync(STORAGE_KEY.options);
@@ -48,6 +49,8 @@ App({
         // 全局设置
         that.globalData.windowHeight = res.windowHeight * (750/res.windowWidth);
         that.globalData.StatusBar = res.statusBarHeight;
+        // px换算rpx
+        that.globalData.unitConversionRatio = 750/res.windowWidth
         let custom = wx.getMenuButtonBoundingClientRect();
         that.globalData.Custom = custom;  
         that.globalData.CustomBar = custom.bottom + custom.top - res.statusBarHeight;
