@@ -1,17 +1,3 @@
-.UCenter-bg {
-  background-size: cover;
-  height: 270rpx;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
-  flex-direction: column;
-  align-items: center;
-  color: #fff;
-  font-weight: 300;
-  text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
-}
-
 .tag-nav.nav {
   width: 200rpx;
   white-space: initial;

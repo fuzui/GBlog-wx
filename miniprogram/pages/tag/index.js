@@ -7,6 +7,7 @@ Page({
     noContentImage: CustomStyle.noContentImage,
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
+    unitConversionRatio: app.globalData.unitConversionRatio,
     Custom: app.globalData.Custom,
     logo: "",
     loadModal: false,
@@ -22,6 +23,7 @@ Page({
   },
   async onLoad(options) {
     var that = this;
+    console.log(app.globalData.CustomBar)
     that.setData({
       logo: app.globalData.logo,
       loadModal:true

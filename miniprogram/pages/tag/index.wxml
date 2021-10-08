@@ -1,16 +1,7 @@
 <wxs src="../../utils/tools.wxs" module="tools" />
-<view class='cu-custom'>
-  <view class="cu-bar fixed bg-shadeTop" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
-    <navigator class='action' open-type="navigateBack" delta="1" hover-class="none">
-      <text class='cuIcon-back'></text> 返回
-    </navigator>
-    <view class='content' style='top:{{StatusBar}}px;'>标签</view>
-  </view>
-</view>
-
-<!-- 顶图 -->
-<view class="UCenter-bg" wx:if="{{tagList.length!=0}}" style="background-image: url({{tagList[tagCur].thumbnail?tagList[tagCur].thumbnail:tools.getRandomImage(RandomImage)}});">
-</view>
+<cu-custom bgColor="bg-theme" isCustom="{{true}}">
+  <view slot="content">标签</view>
+</cu-custom>
 <view class="no-content" wx:if="{{tagList.length==0}}">
   <image src="{{noContentImage}}"></image>
   <view class="text-xl padding">暂无搜索内容</view>
@@ -24,7 +15,7 @@
 <!-- 标签主页 -->
 <view class="tag-box" wx:if="{{tagList.length!=0}}">
   <!-- 标签 -->
-  <scroll-view class="tag-nav nav" scroll-y scroll-with-animation scroll-top="{{tagNavTop}}" style="height:calc(100vh - 270rpx)">
+  <scroll-view class="tag-nav nav" scroll-y scroll-with-animation scroll-top="{{tagNavTop}}" style="height:calc(100vh - {{CustomBar * unitConversionRatio}}rpx)">
     <view class="cu-item {{index==tagCur?'text-green cur':''}} " wx:for="{{tagList}}" wx:key="index" bindtap='tagSelect' data-slug="{{item.slug}}" data-index="{{index}}">
       <view class="flex">
         <text class="text-cut">{{item.name}}</text>
@@ -33,7 +24,7 @@
     </view>
   </scroll-view>
   <!-- 文章列表 -->
-  <scroll-view class="article-main" scroll-y scroll-with-animation style="height:calc(100vh - 270rpx)" scroll-into-view="main-{{mainCur}}" bindscrolltolower="onReachBottomArticleMain">
+  <scroll-view class="article-main" scroll-y scroll-with-animation style="height:calc(100vh - {{CustomBar * unitConversionRatio}}rpx)" scroll-into-view="main-{{mainCur}}" bindscrolltolower="onReachBottomArticleMain">
     <view class="padding-top padding-lr-sm">
       <view class='cu-bar solid-bottom bg-white'>
         <view class='action'>
