@@ -1,9 +1,8 @@
 const app = getApp()
 import { getTags, getTagsArticle } from '../../services/api/content/tag';
-import { PageSize, RandomImage, CustomStyle } from '../../config/api';
+import { PageSize, CustomStyle } from '../../config/api';
 Page({
   data: {
-    RandomImage: RandomImage,
     noContentImage: CustomStyle.noContentImage,
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,

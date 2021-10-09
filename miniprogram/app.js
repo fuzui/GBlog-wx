@@ -1,27 +1,30 @@
-import { ShareConfig, Config } from 'config/api.js'
+import { CloudConfig, Config, RandomImage } from 'config/api.js'
 import { compareVersion } from './utils/utils'
 import { getOptions } from './services/api/content/option';
 import { STORAGE_KEY, HALO_OPTION_KEY } from './services/const-data/const-data';
+import { getRandomGraph } from './services/api/cloud/cloud';
 App({
   onLaunch: function() {
-    if(ShareConfig.isOpen){
+    if(CloudConfig.isOpen) {
       if (!wx.cloud) {
         console.error('请使用 2.2.3 或以上的基础库以使用云能力')
       } else {
         wx.cloud.init({
-          env: ShareConfig.env,
+          env: CloudConfig.env,
           traceUser: true,
         })
       }
     }
     this.updateManager();
     this.getOptions();
+    this.getRandomGraph();
   },
   globalData: {
     logo: Config.logo,
     blogTitle: Config.blogTitle,
     windowHeight: 1334,
-    unitConversionRatio: 2
+    unitConversionRatio: 2,
+    randomGraphs: []
   },
   async getOptions () {
     var options = wx.getStorageSync(STORAGE_KEY.options);
@@ -38,6 +41,18 @@ App({
     }
     if(this.globalData.blogTitle=="") {
       this.globalData.blogTitle = options[HALO_OPTION_KEY.blogTitle];
+    }
+  },
+  async getRandomGraph () {
+    if(CloudConfig.isOpen && CloudConfig.randomGraphOpen) {
+      var randomGraphs = wx.getStorageSync(STORAGE_KEY.randomGraph);
+      if(!randomGraphs) {
+        randomGraphs =  await getRandomGraph();
+        wx.setStorageSync(STORAGE_KEY.randomGraph, randomGraphs)
+      }
+      this.globalData.randomGraphs = randomGraphs
+    } else {
+      this.globalData.randomGraphs = RandomImage
     }
   },
   // 更新小程序以及系统信息获取校验

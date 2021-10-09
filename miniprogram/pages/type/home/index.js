@@ -3,12 +3,11 @@ const app = getApp();
 import LastMayday from '../../../services/posters/category/base';
 import { getCategories } from '../../../services/api/content/category';
 import { getRandomImage } from '../../../utils/utils';
-import { RandomImage } from '../../../config/api';
 import { STORAGE_KEY } from '../../../services/const-data/const-data';
 
 Page({
   data: {
-    RandomImage: RandomImage,
+    randomGraphs: app.globalData.randomGraphs,
     logo: "",
     pageNo: 0,
     selected: 0, //当前选中
@@ -22,7 +21,7 @@ Page({
     //加载  
     var that = this;
     that.setData({
-      logo: app.globalData.logo,
+      logo: app.globalData.logo
     })
     var slug = '';
     var name = '';
@@ -39,6 +38,7 @@ Page({
     that.setData({
       categories: categories,
     });
+    
   },
   async onShow() {
     var that = this;
@@ -59,7 +59,7 @@ Page({
       const category = this.data.categories[res.target.dataset.index]
       return {
         title: app.globalData.blogTitle + '的' + category.name + '专题',
-        imageUrl: category.thumbnail ? category.thumbnail : getRandomImage(that.data.RandomImage),
+        imageUrl: category.thumbnail ? category.thumbnail : getRandomImage(that.data.randomGraphs),
         path: '/pages/type/details/index?slug=' + category.slug + '&name=' + category.name
       }
     }

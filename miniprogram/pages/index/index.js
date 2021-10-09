@@ -1,13 +1,13 @@
 //获取应用实例
 const app = getApp();
 import { getArticleList } from '../../services/api/content/article';
-import { PageSize, RandomImage, CustomStyle } from '../../config/api';
+import { PageSize, CustomStyle } from '../../config/api';
 
 Page({
   data: {
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
-    RandomImage: RandomImage,
+    randomGraphs: app.globalData.randomGraphs,
     topImage: CustomStyle.topImage,
     swiperImage: CustomStyle.swiperImage,
     logo: "",

@@ -9,7 +9,7 @@
       </view>
       <view class="content">
 
-      <image src="{{item.thumbnail?item.thumbnail:tools.getRandomImage(RandomImage)}}" mode="aspectFill"></image>
+      <image src="{{item.thumbnail?item.thumbnail:tools.getRandomImage(randomGraphs)}}" mode="aspectFill"></image>
 
       <view class="desc">
           <view class="text-content"> {{item.summary}} </view>

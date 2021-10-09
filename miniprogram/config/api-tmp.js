@@ -12,7 +12,9 @@ const Config = {
 //海报分享配置
 const ShareConfig = {
   isOpen: false,
-  env: 'fuzui'  //云环境ID
+  env: 'fuzui',  //云环境ID
+  shareOpen: false,  // 海报分享开启
+  randomGraphOpen: false   // 随机图开启（内容管理）
 }
 //文章、日记自定义样式
 const commonTagStyle = {

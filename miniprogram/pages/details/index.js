@@ -2,14 +2,14 @@
 const app = getApp();
 import { getArticleDetails, doPraise, writeComment, getComments } from '../../services/api/content/article';
 import apiResult from '../../utils/api-result';
-import { ShareConfig,MpHtmlStyle,CustomStyle } from '../../config/api';
+import { CloudConfig,MpHtmlStyle,CustomStyle } from '../../config/api';
 import LastMayday from '../../services/posters/article/base';
 import {STORAGE_KEY} from '../../services/const-data/const-data';
 
 Page({
   data: {
     noContentImage: CustomStyle.noContentImage,
-    shareIsOpen: ShareConfig.isOpen,
+    shareIsOpen: CloudConfig.isOpen && CloudConfig.shareOpen,
     mpHtmlStyle: MpHtmlStyle,
     
     isLoadComment: false,

@@ -5,7 +5,8 @@ export const STORAGE_KEY = {
   searchRecommend: 'searchRecommend',
   gravatarSource: 'gravatarSource',
   gravatarDefault: 'gravatarDefault',
-  options: 'options'
+  options: 'options',
+  randomGraph: 'randomGraph'
 }
 
 export const DEFAULT_VALUE = {

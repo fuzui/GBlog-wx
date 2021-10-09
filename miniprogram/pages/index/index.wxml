@@ -31,7 +31,7 @@
     <swiper class="card-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
       <swiper-item wx:for="{{swiper}}" wx:key="index" class="{{cardCur==index?'cur':''}}">
         <view class="swiper-item bg-white" bindtap="swaper" data-id="{{item.id}}">
-          <image src="{{item.thumbnail?item.thumbnail:tools.getRandomImage(RandomImage)}}" mode="aspectFill" ></image>
+          <image src="{{item.thumbnail?item.thumbnail:tools.getRandomImage(randomGraphs)}}" mode="aspectFill" ></image>
         </view>
       </swiper-item>
     </swiper>
