@@ -7,7 +7,7 @@ import { STORAGE_KEY } from '../../../services/const-data/const-data';
 
 Page({
   data: {
-    randomGraphs: app.globalData.randomGraphs,
+    randomGraphs: [],
     logo: "",
     pageNo: 0,
     selected: 0, //当前选中
@@ -20,8 +20,12 @@ Page({
   async onLoad(options) {
     //加载  
     var that = this;
+    if (!app.globalData.hasInit) {
+      await app.init()
+    }
     that.setData({
-      logo: app.globalData.logo
+      logo: app.globalData.logo,
+      randomGraphs: app.globalData.randomGraphs
     })
     var slug = '';
     var name = '';

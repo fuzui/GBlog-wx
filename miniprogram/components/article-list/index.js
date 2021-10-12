@@ -2,7 +2,7 @@
 const app = getApp();
 Component({
   data: {
-    randomGraphs: app.globalData.randomGraphs,
+    randomGraphs: [],
   },
   properties: {
     content: {
@@ -22,10 +22,13 @@ Component({
     addGlobalClass: true,
   },
   pageLifetimes: {
-    show: function() {
-        this.setData({
-          randomGraphs: app.globalData.randomGraphs
-        })
+    async show() {
+      if (!app.globalData.hasInit) {
+        await app.init()
+      }
+      this.setData({
+        randomGraphs: app.globalData.randomGraphs
+      })
     }
   },
   methods: {

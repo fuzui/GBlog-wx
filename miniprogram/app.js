@@ -4,7 +4,7 @@ import { getOptions } from './services/api/content/option';
 import { STORAGE_KEY, HALO_OPTION_KEY } from './services/const-data/const-data';
 import { getRandomGraph } from './services/api/cloud/cloud';
 App({
-  onLaunch: function() {
+  async onLaunch() {
     if(CloudConfig.isOpen) {
       if (!wx.cloud) {
         console.error('请使用 2.2.3 或以上的基础库以使用云能力')
@@ -15,9 +15,13 @@ App({
         })
       }
     }
-    this.updateManager();
-    this.getOptions();
-    this.getRandomGraph();
+    wx.showLoading({
+      title: '初始化中',
+      mask: true
+    })
+    await this.updateManager();
+    await this.init();
+    wx.hideLoading()
   },
   globalData: {
     logo: Config.logo,
@@ -25,6 +29,11 @@ App({
     windowHeight: 1334,
     unitConversionRatio: 2,
     randomGraphs: []
+  },
+  async init() {
+    await this.getRandomGraph();
+    await this.getOptions();
+    this.globalData.hasInit = true
   },
   async getOptions () {
     var options = wx.getStorageSync(STORAGE_KEY.options);

@@ -7,7 +7,7 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
-    randomGraphs: app.globalData.randomGraphs,
+    randomGraphs: [],
     topImage: CustomStyle.topImage,
     swiperImage: CustomStyle.swiperImage,
     logo: "",
@@ -73,9 +73,15 @@ Page({
     this.setData({
       loadModal:true
     })
+    if (!app.globalData.hasInit) {
+      await app.init()
+    }
     this.setData({
       logo: app.globalData.logo,
       blogTitle: app.globalData.blogTitle,
+      StatusBar: app.globalData.StatusBar,
+      CustomBar: app.globalData.CustomBar,
+      randomGraphs: app.globalData.randomGraphs,
     })
     const swiper = await this.getSwiper();
     const content = await this.getArticleList(true, 0);
