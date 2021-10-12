@@ -7,15 +7,13 @@ import {
   adminEditMenu
 } from '../../../../services/api/admin/menu';
 import {
-  ApiBaseUrl,
-  CustomStyle
+  ApiBaseUrl
 } from '../../../../config/api.js';
 Page({
   data: {
     url: ApiBaseUrl,
     logo: "",
     CustomBar: app.globalData.CustomBar,
-    topImage: CustomStyle.topImage,
     menuList: [],
     targetPicker: ['当前窗口','新窗口'],
     currentIndex: null,

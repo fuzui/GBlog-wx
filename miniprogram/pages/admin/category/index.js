@@ -2,11 +2,9 @@ const app = getApp()
 import { adminGetCategory, adminAddCategory, adminEditCategory, adminDeleteCategory  } from '../../../services/api/admin/category';
 import { adminAddAttachment  } from '../../../services/api/admin/attachment';
 import apiResult from '../../../utils/api-result';
-import {CustomStyle} from '../../../config/api';
 Page({
   data: {
     CustomBar: app.globalData.CustomBar,
-    topImage: CustomStyle.topImage,
     logo: "",
     loadModal: false,
     tagCur: 0,

@@ -2,11 +2,10 @@
 const app = getApp();
 import apiResult from '../../../../utils/api-result';
 import { adminAddJournal, adminGetJournal, adminDeleteJournal, adminEditJournal } from '../../../../services/api/admin/journal';
-import { PageSize, MpHtmlStyle, CustomStyle } from './../../../../config/api';
+import { PageSize, MpHtmlStyle } from './../../../../config/api';
 Page({
   data: {
     mpHtmlStyle:MpHtmlStyle,
-    topImage: CustomStyle.topImage,
     logo: "",
     journalContent: "",
     currentContent: "",

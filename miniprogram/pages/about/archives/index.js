@@ -1,10 +1,8 @@
 const app = getApp();
 import { getArchives } from '../../../services/api/content/archive';
 import { getStatistics } from '../../../services/api/content/statistic';
-import { CustomStyle } from '../../../config/api';
 Page({
   data: {
-    topImage: CustomStyle.topImage,
     archives: [],
     categoryNum: 0,
     tagNum: 0,

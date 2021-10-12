@@ -4,11 +4,10 @@ import { adminAddPostComment, adminGetPostComment, adminDeletePostComment, admin
 import { adminAddSheetComment, adminGetSheetComment, adminDeleteSheetComment, adminEditSheetCommentStatus } from '../../../services/api/admin/sheet';
 import { adminGetUserProfile } from '../../../services/api/admin/user';
 import apiResult from '../../../utils/api-result';
-import { ApiBaseUrl,PageSize,MpHtmlStyle,CustomStyle } from './../../../config/api';
+import { ApiBaseUrl, PageSize, MpHtmlStyle } from './../../../config/api';
 Page({
   data: {
     mpHtmlStyle:MpHtmlStyle,
-    topImage: CustomStyle.topImage,
     logo: "",
     commentContent: "",
     modalName: null,

@@ -1,9 +1,8 @@
 //获取应用实例
 const app = getApp();
-import {CustomStyle,PersonalInfo} from '../../../config/api';
+import { PersonalInfo } from '../../../config/api';
 Page({
   data: {
-    topImage: CustomStyle.topImage,
     mail: PersonalInfo.mail
   },
   onLoad: function () { },

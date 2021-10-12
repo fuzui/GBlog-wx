@@ -9,7 +9,6 @@ Page({
     noContentImage: CustomStyle.noContentImage,
     // 留言页postId
     id: 0,  
-    topImage: CustomStyle.topImage,
     guestbookImage: CustomStyle.guestbookImage,
     logo: "",
     disallowComment: false,

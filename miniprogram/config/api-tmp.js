@@ -69,7 +69,6 @@ const RandomImage = [
 const CustomStyle = {
   photoImage: "https://cdn.fuzui.net/blog/photo_1587292902110.jpg?x-oss-process=style/sm", //光影顶图
   guestbookImage: "https://cdn.fuzui.net/blog/guestbook_1588604516117.png", //留言板顶图
-  topImage: "https://fuzui.oss-cn-shenzhen.aliyuncs.com/img/nav01.png",//多数nav背景图
   swiperImage: "https://cdn.fuzui.net/blog/swiper_1587661045157.png",  //轮播图背景
   noContentImage: "https://cdn.fuzui.net/basis/nocontent.png"  //无内容
 }

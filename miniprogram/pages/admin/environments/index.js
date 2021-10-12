@@ -1,10 +1,8 @@
 const app = getApp();
 import { adminGetEnvironments } from '../../../services/api/admin/environment';
-import {CustomStyle} from '../../../config/api.js';
 Page({
   data: {
     CustomBar: app.globalData.CustomBar,
-    topImage: CustomStyle.topImage,
     environments: {}
   },
   onLoad: function () { 

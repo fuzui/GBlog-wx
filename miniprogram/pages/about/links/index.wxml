@@ -1,4 +1,4 @@
-<cu-custom bgImage="{{topImage}}" isCustom="{{true}}">
+<cu-custom bgColor="bg-theme" isCustom="{{true}}">
   <view slot="content">友链</view>
 </cu-custom>
 <view class="cu-chat-i">

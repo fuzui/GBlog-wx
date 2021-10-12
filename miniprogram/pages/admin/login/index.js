@@ -2,11 +2,9 @@
 const app = getApp();
 import apiResult from '../../../utils/api-result';
 import { adminLogin } from '../../../services/api/admin/login';
-import { CustomStyle } from './../../../config/api';
 import { STORAGE_KEY } from '../../../services/const-data/const-data';
 Page({
   data: {
-    topImage: CustomStyle.topImage,
     logo: "",
     username: "",
     password: "",

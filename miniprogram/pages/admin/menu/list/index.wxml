@@ -1,4 +1,4 @@
-<cu-custom bgImage="{{topImage}}" isCustom="{{true}}">
+<cu-custom bgColor="bg-theme" isCustom="{{true}}">
   <view slot="content">菜单管理</view>
 </cu-custom>
 <view class="cu-bar bg-white fixed" style="top:{{CustomBar}}px;">

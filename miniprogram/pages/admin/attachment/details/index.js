@@ -1,11 +1,9 @@
 const app = getApp();
 import apiResult from '../../../../utils/api-result';
 import { adminGetAttachmentDetails, adminEditAttachmentDetails, adminDeleteAttachment } from '../../../../services/api/admin/attachment';
-import config from '../../../../config/api';
 Page({
   data: {
     CustomBar: app.globalData.CustomBar,
-    topImage: config.CustomStyle.topImage,
     logo: "",
     imgPath: "",
     attachment: {},

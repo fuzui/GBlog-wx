@@ -1,12 +1,11 @@
 const app = getApp();
 import apiResult from '../../../utils/api-result';
 import { adminGetOption } from '../../../services/api/admin/option';
-import { ApiBaseUrl, CustomStyle } from '../../../config/api.js';
+import { ApiBaseUrl } from '../../../config/api.js';
 Page({
   data: {
     url: ApiBaseUrl,
     CustomBar: app.globalData.CustomBar,
-    topImage: CustomStyle.topImage,
     options: {},
     settingType: 0,
     TabCur: 0,

@@ -1,9 +1,7 @@
 const app = getApp();
 import { getLinks } from '../../../services/api/content/link';
-import { CustomStyle } from '../../../config/api'
 Page({
   data: {
-    topImage: CustomStyle.topImage,
     logo: "",
     bottomFlag: false,
     links: [],

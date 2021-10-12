@@ -3,13 +3,12 @@ import apiResult from '../../../utils/api-result';
 import { adminEditUser, adminEditPassword } from '../../../services/api/admin/user';
 import { adminGetStatistics } from '../../../services/api/admin/statistic';
 import { adminAddAttachment } from '../../../services/api/admin/attachment';
-import { ApiBaseUrl, CustomStyle } from '../../../config/api.js';
+import { ApiBaseUrl } from '../../../config/api.js';
 Page({
   data: {
     url: ApiBaseUrl,
     logo: "",
     CustomBar: app.globalData.CustomBar,
-    topImage: CustomStyle.topImage,
     statistics: {},
     username: "",
     nickname: "",

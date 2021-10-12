@@ -5,7 +5,6 @@ import  { PersonalInfo,CustomStyle } from '../../../config/api';
 Page({
   data: {
     title: "关于",
-    topImage: CustomStyle.topImage,
     statistics: {},
     contact: PersonalInfo
   },

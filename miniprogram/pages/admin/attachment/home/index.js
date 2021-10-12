@@ -5,7 +5,6 @@ import config from '../../../../config/api';
 Page({
   data: {
     CustomBar: app.globalData.CustomBar,
-    topImage: config.CustomStyle.topImage,
     logo: "",
     imgPath: "",
     pageNo: 0,

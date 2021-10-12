@@ -2,10 +2,8 @@
 const app = getApp();
 import apiResult from '../../../../utils/api-result';
 import { adminAddLink, adminEditLink, adminGetLink, adminDeleteLink } from '../../../../services/api/admin/link';
-import { CustomStyle } from './../../../../config/api';
 Page({
   data: {
-    topImage: CustomStyle.topImage,
     appLogo: app.globalData.logo,
     logo: "",
     name: "",

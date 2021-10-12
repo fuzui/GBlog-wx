@@ -8,7 +8,6 @@ Page({
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     randomGraphs: [],
-    topImage: CustomStyle.topImage,
     swiperImage: CustomStyle.swiperImage,
     logo: "",
     currentNavCode: "recommend",

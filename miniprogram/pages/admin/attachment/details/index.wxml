@@ -1,4 +1,4 @@
-<cu-custom bgImage="{{topImage}}" isCustom="{{true}}">
+<cu-custom bgColor="bg-theme" isCustom="{{true}}">
 	<view slot="content">附件详情</view>
 </cu-custom>
 

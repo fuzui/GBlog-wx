@@ -7,7 +7,6 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
-    topImage: CustomStyle.topImage,
     noContentImage: CustomStyle.noContentImage,
     historyKeyword: [],
     recommendKeyword: [],

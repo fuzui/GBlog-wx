@@ -2,11 +2,9 @@ const app = getApp()
 import apiResult from '../../../utils/api-result';
 import { adminGetTag, adminAddTag, adminEditTag, adminDeleteTag } from '../../../services/api/admin/tag';
 import { adminAddAttachment } from '../../../services/api/admin/attachment';
-import { CustomStyle } from '../../../config/api';
 Page({
   data: {
     CustomBar: app.globalData.CustomBar,
-    topImage: CustomStyle.topImage,
     logo: "",
     loadModal: false,
     tagCur: 0,

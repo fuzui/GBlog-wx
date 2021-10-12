@@ -1,5 +1,5 @@
 <wxs src="../../../../utils/tools.wxs" module="tools" />
-<cu-custom bgImage="{{topImage}}" isCustom="{{true}}">
+<cu-custom bgColor="bg-theme" isCustom="{{true}}">
   <view slot="content">附件</view>
 </cu-custom>
 <view class="cu-bar bg-white fixed" style="top:{{CustomBar}}px;">

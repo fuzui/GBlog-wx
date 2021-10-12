@@ -1,10 +1,9 @@
 const app = getApp();
 import { getJournals } from '../../../services/api/content/journal';
-import { PageSize,MpHtmlStyle,CustomStyle } from './../../../config/api';
+import { PageSize, MpHtmlStyle } from './../../../config/api';
 Page({
   data: {
     mpHtmlStyle:MpHtmlStyle,
-    topImage: CustomStyle.topImage,
     logo: "",
     pageNo: 0,
     bottomFlag: false,

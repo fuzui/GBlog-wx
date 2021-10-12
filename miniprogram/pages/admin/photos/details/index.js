@@ -5,11 +5,9 @@ import {
   adminEditPhotoDetails,
   adminDeletePhoto
 } from '../../../../services/api/admin/photo';
-import config from '../../../../config/api';
 Page({
   data: {
     CustomBar: app.globalData.CustomBar,
-    topImage: config.CustomStyle.topImage,
     logo: "",
     imgPath: "",
     photo: {},

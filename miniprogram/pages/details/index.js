@@ -2,9 +2,9 @@
 const app = getApp();
 import { getArticleDetails, doPraise, writeComment, getComments } from '../../services/api/content/article';
 import apiResult from '../../utils/api-result';
-import { CloudConfig,MpHtmlStyle,CustomStyle } from '../../config/api';
+import { CloudConfig, MpHtmlStyle, CustomStyle } from '../../config/api';
 import LastMayday from '../../services/posters/article/base';
-import {STORAGE_KEY} from '../../services/const-data/const-data';
+import { STORAGE_KEY } from '../../services/const-data/const-data';
 
 Page({
   data: {
@@ -18,7 +18,6 @@ Page({
     commentMail: "",
     commentPrompt: "发表您的观点",
     modalShare: false,
-    topImage: CustomStyle.topImage,
     logo: "",
     // 是否显示回到顶端图标
     floorstatus: false, 

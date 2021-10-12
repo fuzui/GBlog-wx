@@ -3,10 +3,9 @@ const app = getApp();
 import { adminGetPost, adminDeletePost, adminEditPostStatus } from '../../../services/api/admin/post';
 import { adminGetSheet, adminDeleteSheet, adminEditSheetStatus } from '../../../services/api/admin/sheet';
 import apiResult from '../../../utils/api-result';
-import { PageSize, CustomStyle } from './../../../config/api';
+import { PageSize } from './../../../config/api';
 Page({
   data: {
-    topImage: CustomStyle.topImage,
     logo: "",
     articleList: [],
     pageNo: 0,

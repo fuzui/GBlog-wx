@@ -1,10 +1,9 @@
 //获取应用实例
 const app = getApp();
 import utils from '../../../utils/utils';
-import { CustomStyle, MpHtmlStyle } from '../../../config/api'
+import { MpHtmlStyle } from '../../../config/api'
 Page({
   data: {
-    topImage: CustomStyle.topImage,
     mpHtmlStyle: MpHtmlStyle,
     logo: "",
     floorstatus: false, //是否显示回到顶端图标

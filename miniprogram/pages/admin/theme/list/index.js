@@ -2,15 +2,13 @@ const app = getApp();
 import apiResult from '../../../../utils/api-result';
 import { adminGetTheme, adminActivatesTheme, adminDeleteTheme, adminFetchingTheme, adminFetchingNewTheme } from '../../../../services/api/admin/theme';
 import {
-  ApiBaseUrl,
-  CustomStyle
+  ApiBaseUrl
 } from '../../../../config/api.js';
 Page({
   data: {
     url: ApiBaseUrl,
     logo: "",
     CustomBar: app.globalData.CustomBar,
-    topImage: CustomStyle.topImage,
     themeList: [],
     message: "加载中...",
     loadModal: false,
