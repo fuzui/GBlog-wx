@@ -48,6 +48,8 @@
 </view>
 <!-- 生成海报 -->
 <painter style="position:fixed;top:-9999rpx" palette="{{palette}}" bind:imgOK="toSharePage" />
+<!-- 微信登录 -->
+<authorize modalName="{{modalName}}" />
 <!-- 弹框加载 -->
 <view class='cu-load load-modal' wx:if="{{loadModal}}">
   <image src='{{logo}}' class='png' mode='aspectFit'></image>

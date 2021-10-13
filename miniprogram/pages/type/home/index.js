@@ -153,7 +153,7 @@ Page({
       name: "get_qrcode",
       data: {
         scene: scene,
-        path: "that.data.currentPage.route"
+        path: that.data.currentPage.route
       },
       success(res) {
         const filePath = wx.env.USER_DATA_PATH + '/' + Date.parse(new Date()) + '_buffer2file.jpg';
