@@ -10,7 +10,7 @@ const Config = {
   blogTitle: '' // 选填，填写将提高首页加载速度
 }
 //海报分享配置
-const ShareConfig = {
+const CloudConfig = {
   isOpen: false,
   env: 'fuzui',  //云环境ID
   shareOpen: false,  // 海报分享开启
@@ -88,7 +88,7 @@ module.exports = {
   PageSize,
   MpHtmlStyle,
   Config,
-  ShareConfig,
+  CloudConfig,
   RandomImage,
   CustomStyle,
   PersonalInfo
