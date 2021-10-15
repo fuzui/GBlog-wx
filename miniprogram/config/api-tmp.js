@@ -29,7 +29,7 @@ const commonTagStyle = {
   h3: 'font-size: 0.83em;line-height: 30px;',
   h4: 'font-size: 0.67em;line-height: 30px;',
   h5: 'font-size: 0.50em;line-height: 30px;',
-  'code': 'word-wrap:break-word;',
+  'code': 'word-break: break-all;',
   'pre > code': 'white-space:nowrap;',
   video: 'width: 100%'
 }
