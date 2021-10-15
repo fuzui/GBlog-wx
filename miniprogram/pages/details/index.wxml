@@ -106,44 +106,20 @@
     <text class="text-xl text-bold">评论</text>
   </view>
 </view>
-<view style="margin-bottom: calc(100rpx + env(safe-area-inset-bottom) / 2);">
+<view class="bg-white" style="margin-bottom: calc(100rpx + env(safe-area-inset-bottom) / 2);">
   <comment
     id="commentComponent"
     comments="{{comments}}"
     bind:addComment="addComment">
   </comment>
+  <button class="cu-btn block bg-blue margin-tb-sm lg margin-lr-xl"
+    wx:if="{{articleDetails.commentCount > comments.length}}"
+    data-id='{{id}}' bindtap='toCommentPage'>
+     查看全部评论 <text class="cuIcon-right"></text>
+  </button>
 </view>
 <!-- 下一页 -->
 <view class="text-df text-center text-grey {{isLoadComment==true?'':'hide'}}" bindtap="loadComment">加载更多</view>
-<!-- 评论框 -->
-<view class="cu-modal {{modalName=='commentModal'?'show':''}}">
-  <view class="cu-dialog">
-    <view class="cu-bar bg-white justify-end">
-      <view class="content">{{commentPrompt}}</view>
-      <view class="action" bindtap="hideModal">
-        <text class="cuIcon-close text-red"></text>
-      </view>
-    </view>
-    <view class="padding-xl">
-      <textarea maxlength="-1" bindinput="commentInput" placeholder="" value="{{commentContent}}" disabled="{{modalName!='commentModal'}}"></textarea>
-    </view>
-    <view class="cu-form-group">
-      <view class="title">邮箱地址</view>
-      <input placeholder="必填" bindinput="mailInput" disabled="{{modalName!='commentModal'}}"></input>
-    </view>
-    <view class="cu-form-group">
-      <view class="title">回复是否接受推送</view>
-      <switch class="orange radius sm" bindchange="isAllowNotification" checked="{{notifiStatus}}"></switch>
-    </view>
-    <view class="cu-bar bg-white justify-end">
-      <view class="action">
-        <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
-        <button class="cu-btn bg-green margin-left" bindtap="writeComment">发表</button>
-
-      </view>
-    </view>
-  </view>
-</view>
 
 <!-- 微信登录 -->
 <authorize modalName="{{modalName}}" />
@@ -171,7 +147,7 @@
     <text class="cuIcon-write"></text>
     <input type="text" placeholder="我来评论..." bindtap="addCommentByComponent" data-target="commentModal" data-pid="0" data-prompt="评论博文" disabled="true"></input>
   </view>
-  <view class="action">
+  <view class="action" data-id='{{id}}' bindtap='toPublishCommentPage'>
     <view class='cuIcon-cu-image'>
       <image src="/images/icon/comment.svg"></image>
       <view class="cu-tag badge bg-white" wx:if="{{articleDetails.commentCount}}">{{articleDetails.commentCount}}</view>

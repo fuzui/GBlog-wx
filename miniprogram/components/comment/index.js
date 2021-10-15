@@ -39,8 +39,8 @@ Component({
     addComment(e) {
       const detail = {
         modalName: e.currentTarget.dataset.target,
-        commentPrompt: e.currentTarget.dataset.prompt,
-        commmentPid: e.currentTarget.dataset.pid
+        commmentPid: e.currentTarget.dataset.pid,
+        commmentPname: e.currentTarget.dataset.pname
       }
       this.triggerEvent('addComment', detail)
     },

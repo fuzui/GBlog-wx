@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "article-list": "./../../../components/article-list/index"
+  }
+}

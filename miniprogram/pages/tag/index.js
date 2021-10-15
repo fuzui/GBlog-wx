@@ -22,7 +22,6 @@ Page({
   },
   async onLoad(options) {
     var that = this;
-    console.log(app.globalData.CustomBar)
     that.setData({
       logo: app.globalData.logo,
       loadModal:true

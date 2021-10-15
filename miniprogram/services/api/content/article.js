@@ -83,6 +83,23 @@ function getComments(id,params) {
       })
   })
 }
+
+/**
+ * 获取文章顶级评论
+ * @param {文章id} id 
+ * @param {*} params 
+ */
+function getTopComments(id,params) {
+  const url = moduleName + '/' + id + '/comments/top_view'
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(url, params)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
 /**
  * 发布文章评论
  * @param {*} params 
@@ -105,5 +122,6 @@ module.exports = {
   getArticleDetails,
   doPraise,
   getComments,
+  getTopComments,
   writeComment
 }

@@ -1,4 +1,6 @@
 const app = getApp();
+import { Config } from './../../../config/api';
+import { COMMENT_TYPE } from '../../../services/const-data/const-data';
 Page({
   data: {
     starCount: 0,
@@ -55,9 +57,10 @@ Page({
   /**
    * 跳转到留言页面
    */
-  toGuestbookPage() {
+  toGuestbookPage() { 
     wx.navigateTo({
-      url:"/pages/about/guestbook/index"
+      url: '/pages/comment/home/index?id=' + Config.guestbookSheetId
+        + '&type=' + COMMENT_TYPE.guestbook
     })
   },
   /**

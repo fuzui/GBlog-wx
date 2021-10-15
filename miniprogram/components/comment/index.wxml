@@ -15,10 +15,10 @@
           data-gravatarmd5 ="{{comment.gravatarMd5}}"></image>
         <view class="content">
           <view class="text-grey flex">
-          <view class="cu-tag bg-red light ssm round" wx:if="{{comment.isAdmin}}">博主</view>
-          {{comment.author}}:
+          <text class="cuIcon-servicefill text-blue" wx:if="{{children.isAdmin}}"></text>
+          {{comment.author}}
           </view>
-          <view class=" text-df">
+          <view class="text-df">
             <mp-html
               lazy-load
               scroll-table
@@ -34,26 +34,27 @@
           <view class="flex justify-between">
             <view class="text-gray text-df">{{tools.tsFormatTime(comment.createTime)}}</view>
             <view>
-              <text class="cuIcon-messagefill text-gray margin-left-sm" bindtap="addComment" data-target="commentModal" data-pid="{{comment.id}}" data-prompt="回复 {{comment.author}}:"></text>
+              <text class="cuIcon-comment text-gray margin-left-sm" bindtap="addComment" data-target="commentModal" data-pid="{{comment.id}}" data-pname="{{comment.author}}"></text>
             </view>
           </view>
           <!-- 子评论 -->
-          <view class="content-children "  wx:for="{{comment.children}}" wx:for-item="children" wx:key="childrenIndex" wx:for-index="childrenIndex">
-            <view class="radius text-sm">
-              <view class="flex">
-                <image class="cu-avatar ssm round flex margin-right-xs" 
-                  src="{{children.authorUrl?children.authorUrl:gravatarSource+comment.gravatarMd5+'?s=32&d='+gravatarDefault}}"
-                  binderror="binderrorimg"
-                  data-errorimg="{{index}}"
-                  data-gravatarmd5 ="{{children.gravatarMd5}}"
-                  data-errorchildrenimg ="{{childrenIndex}}"></image>
-                <view class="text-grey flex">
-                <view class="cu-tag bg-red light sssm round" wx:if="{{children.isAdmin}}">博主</view>
-                {{children.author}}:
-                </view>
-                
+          <view class="cu-item-children"  wx:for="{{comment.children}}" wx:for-item="children" wx:key="childrenIndex" wx:for-index="childrenIndex">
+            <image class="cu-avatar round" 
+              src="{{children.authorUrl?children.authorUrl:gravatarSource+children.gravatarMd5+'?s=64&d='+gravatarDefault}}"
+              binderror="binderrorimg"
+              data-errorimg="{{index}}"
+              data-gravatarmd5 ="{{children.gravatarMd5}}"
+              data-errorchildrenimg ="{{childrenIndex}}"></image>
+            <view class="content-children">
+              <view class="text-grey flex">
+                <text class="cuIcon-servicefill text-blue" wx:if="{{children.isAdmin}}"></text>
+                {{children.author}}
+                <block wx:if="{{children.parentAuthor}}">
+                  <text class="cuIcon-playfill text-gray sm margin-lr-sm"></text>
+                  {{children.parentAuthor}}
+                </block>
               </view>
-              <view class="flex-sub-children margin-left-lg">
+              <view class="text-df">
                 <mp-html
                   lazy-load
                   scroll-table
@@ -66,13 +67,13 @@
                   content="{{children.content}}"
                 />
               </view>
-
               <view class="flex justify-between">
-                <view class="text-gray text-xs margin-left-lg">{{tools.tsFormatTime(children.createTime)}}</view>
+                <view class="text-gray text-df">{{tools.tsFormatTime(children.createTime)}}</view>
                 <view>
-                  <text class="cuIcon-messagefill text-gray margin-left-sm" bindtap="addComment" data-target="commentModal" data-pid="{{children.id}}" data-prompt="回复 {{children.author}}:"></text>
+                  <text class="cuIcon-comment text-gray margin-left-sm" bindtap="addComment" data-target="commentModal" data-pid="{{children.id}}" data-pname="{{children.author}}"></text>
                 </view>
               </view>
+
             </view>
           </view>
         </view>

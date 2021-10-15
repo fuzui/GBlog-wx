@@ -6,6 +6,25 @@
 	justify-content: center;
 	align-items: center
 }
+.cu-avatar {
+	font-variant: small-caps;
+	margin: 0;
+	padding: 0;
+	display: inline-flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	background-color: #ccc;
+	color: var(--white);
+	white-space: nowrap;
+	position: relative;
+	width: 60rpx;
+	height: 60rpx;
+	background-size: cover;
+	background-position: center;
+	vertical-align: middle;
+	font-size: 1.5em;
+}
 
 .cu-list.menu-avatar {
 	overflow: hidden;
@@ -26,16 +45,15 @@
 	left: 30rpx
 }
 
+.cu-item-children>.cu-avatar {
+	position: absolute;
+	left: 0rpx
+}
+
 .cu-list.menu-avatar>.cu-item .flex .text-cut {
 	max-width: 510rpx
 }
 
-.cu-list.menu-avatar>.cu-item .content {
-	position: absolute;
-	left: 146rpx;
-	width: calc(100% - 96rpx - 60rpx - 120rpx - 20rpx);
-	line-height: 1.6em;
-}
 
 .cu-list.menu-avatar>.cu-item .content.flex-sub {
 	width: calc(100% - 96rpx - 60rpx - 20rpx);
@@ -55,16 +73,13 @@
 	line-height: 32rpx
 }
 
-.cu-list.menu-avatar>.cu-item .action {
-	width: 100rpx;
-	text-align: center
+.cu-list.menu-avatar.comment>.cu-item > .content {
+	position: relative;
+	left: 0rpx;
+	width: auto;
+	flex: 1;
 }
-
-.cu-list.menu-avatar>.cu-item .action view+view {
-	margin-top: 10rpx
-}
-
-.cu-list.menu-avatar.comment>.cu-item .content {
+.cu-item-children > .content-children {
 	position: relative;
 	left: 0;
 	width: auto;
@@ -72,7 +87,12 @@
 }
 
 .cu-list.menu-avatar.comment>.cu-item {
-	padding: 30rpx 30rpx 30rpx 120rpx;
+	padding: 20rpx 30rpx 20rpx 120rpx;
+	height: auto
+}
+
+.cu-item-children {
+	padding: 15rpx 0rpx 15rpx 90rpx;
 	height: auto
 }
 
@@ -82,8 +102,6 @@
 .content-children{
 	position: relative;
 	left: 0rpx;
-
-	 
 }
 
 .cu-avatar.ssm {

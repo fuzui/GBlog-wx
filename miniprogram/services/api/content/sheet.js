@@ -3,6 +3,23 @@ import { ApiBaseUrl } from '../../../config/api';
 const moduleName = ApiBaseUrl + '/api/content/sheets';
 
 /**
+ * 获取sheet详情
+ * @param {*} id 
+ * @param {*} params 
+ */
+function getSheetDetails(id,params) {
+  const url = moduleName + '/' + id
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(url, params)
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
+/**
  * 获取sheet评论
  * @param {sheet id} id 
  * @param {*} params 
@@ -35,6 +52,7 @@ function writeSheetComment(params) {
 }
 
 module.exports = {
+  getSheetDetails,
   getCommentsBySheetId,
   writeSheetComment
 }

@@ -1,22 +1,17 @@
 //获取应用实例
 const app = getApp();
-import { getArticleDetails, doPraise, writeComment, getComments } from '../../services/api/content/article';
+import { getArticleDetails, doPraise, getTopComments } from '../../services/api/content/article';
 import apiResult from '../../utils/api-result';
 import { CloudConfig, MpHtmlStyle, CustomStyle } from '../../config/api';
 import LastMayday from '../../services/posters/article/base';
-import { STORAGE_KEY } from '../../services/const-data/const-data';
+import { STORAGE_KEY, COMMENT_TYPE } from '../../services/const-data/const-data';
 
 Page({
   data: {
     noContentImage: CustomStyle.noContentImage,
     shareIsOpen: CloudConfig.isOpen && CloudConfig.shareOpen,
     mpHtmlStyle: MpHtmlStyle,
-    
-    isLoadComment: false,
-    commentPage: 0,
-    commmentPid: 0,
-    commentMail: "",
-    commentPrompt: "发表您的观点",
+
     modalShare: false,
     logo: "",
     // 是否显示回到顶端图标
@@ -38,7 +33,6 @@ Page({
     userInfo: {},
     checkStatus: true, //评论开关
     comments: [],
-    childrenComments: [],
     //海报相关
     visible: false,
     imgsInfo: {},
@@ -99,19 +93,15 @@ Page({
 
     var that = this;
     const articleDetails = await this.getArticleDetails(id);
-    const comments = await this.getComments(id,0);
-    if(comments.pages > comments.page+1){
-      that.setData({
-        isLoadComment: true
-      })
-    }
+    const comments = await this.getComments(id);
     const html = articleDetails.formatContent;
     that.setData({
       articleDetails: articleDetails,
+      disallowComment: articleDetails.disallowComment,
       id: articleDetails.id,
       content: html,
       loveCount: articleDetails.likes,
-      comments: comments.content,
+      comments: comments,
     });
     this.setData({
       loadModal:false
@@ -272,7 +262,7 @@ Page({
    */
   addComment(e) {
     // 判断该文章评论功能是否关闭
-    if(this.data.articleDetails.disallowComment){
+    if(this.data.disallowComment){
       apiResult.warn("评论已关闭");
       return ;
     }
@@ -282,12 +272,11 @@ Page({
         modalName: "loginModal",
       })
     }else{
-      this.setData({
-        commentContent: "",
-        modalName: e.detail.modalName,
-        commentPrompt: e.detail.commentPrompt,
-        commmentPid: e.detail.commmentPid,
-        userInfo: userInfo,
+      wx.navigateTo({
+        url: '/pages/comment/publish/index?id=' + this.data.id
+          + '&commmentPid=' + e.detail.commmentPid
+          + '&commmentPname=' + e.detail.commmentPname
+          + '&type=' + COMMENT_TYPE.post
       })
     }
   },
@@ -303,116 +292,25 @@ Page({
     }
     return obj;
   },
-  
-  /**
-   * 评论者输入邮箱
-   */
-  mailInput(e){
-    this.setData({
-      commentMail: e.detail.value
-    });
-  },
-  /**
-   * 评论内容输入
-   * @param {*} e 
-   */
-  commentInput(e){
-    this.setData({
-      commentContent: e.detail.value
-    });
-  },
-  /**
-   * 是否回复邮箱通知
-   * @param {*} e 
-   */
-  isAllowNotification(e){
-    var that = this;
-    if (e.detail.value){
-      that.setData({
-        notifiStatus: true,
-      })
-    }
-  },
-  /**
-   * 发表评论
-   */
-  async writeComment(){
-    var that = this;
-    if(!this.data.commentContent){
-      apiResult.warn("内容不能为空");
-      return ;
-    }
-    if(!this.data.commentMail){
-      apiResult.warn("邮箱不能为空");
-      return ;
-    }
-    wx.showLoading({
-      title: '发布中',
-      mask: true,
-    })
-    const param = {
-      allowNotification: this.data.notifiStatus,
-      author: this.data.userInfo.nickName,
-      authorUrl: this.data.userInfo.avatarUrl,
-      content: this.data.commentContent,
-      email: this.data.commentMail,
-      parentId: this.data.commmentPid,
-      postId: this.data.id
-    }
-    writeComment(param).then(ress => {
-      wx.hideLoading().then(()=>{
-        that.setData({
-          modalName: null
-        })
-        apiResult.success("发表成功");
-      })
-    }, err => {
-      wx.hideLoading().then(()=>{
-        that.setData({
-          modalName: null
-        })
-        apiResult.success("发表失败");
-      })
-    }).catch(error=>{
-        return error.message;
-    })
-  },
+
   /**
    * 获取文章评论
    */
-  async getComments(postId,commentPage) {
+  async getComments(postId) {
     var that = this;
     try {
       const param = {
-        page: commentPage,
+        page: 0,
         sort: 'createTime,desc'
       };
-      const result = await getComments(postId,param);
-      for(var i = 0;i<result.content.length;i++){
-        if(result.content[i].children){
-          const children = that.getChildren(result.content[i].children);
-          result.content[i].children = children;
-        }
+      const result = await getTopComments(postId,param);
+      if (result.content.length > 2) {
+        return result.content.slice(0, 2);
       }
-      return result;
+      return result.content
     } catch (error) {
       return error.message;
     }
-  },
-  /**
-   * 子评论处理
-   * 也就是将树一级节点下的子节点归纳为同一级
-   */
-  getChildren(children){
-    var that = this;
-    //复制一下，避免队列追加后有变，c用于控制循环
-    var c = children;
-    for(var i = 0; i < c.length; i++){
-      if(c[i].children){
-        children = children.concat(that.getChildren(c[i].children));
-      }
-    }
-    return children;
   },
   /**
    * 点击上一篇
@@ -494,27 +392,17 @@ Page({
       modalName: null
     })
   },
-  /**
-   * 加载更多评论
-   */
-  async loadComment(){
-    var that = this;
-    let currentPage = that.data.commentPage;
-    const comments = await this.getComments(that.data.id,currentPage+1);
-    if(comments.pages <= comments.page+1){
-      that.setData({
-        isLoadComment: false
-      })
-    }
-    that.setData({
-      commentPage: currentPage+1,
-      comments: this.data.comments.concat(comments.content)
-    })
-  },
 
   toTagPage(event) {
     wx.navigateTo({
       url: '../tag/index?id=' + event.currentTarget.dataset.id
     });
+  },
+  toCommentPage(event) {
+    wx.navigateTo({
+      url: '/pages/comment/home/index?id=' + event.currentTarget.dataset.id
+        + '&disallowComment=' + this.data.disallowComment
+        + '&type=' + COMMENT_TYPE.post
+    })
   }
 });

@@ -1,0 +1,33 @@
+<cu-custom bgColor="bg-theme" isCustom="{{true}}">
+  <view slot="content">发布</view>
+</cu-custom>
+<view class="padding-sm bg-white">
+  <view class="cu-bar solid-bottom">
+    <view class="cu-avatar round" style="background-image:url({{userInfo.avatarUrl}});"></view>
+    <view class="content">
+      {{title}}
+    </view>
+  </view>
+  <form>
+    <view class="cu-form-group">
+      <textarea bindinput="commentInput"
+        confirm-type='return'
+        maxlength='10000'
+        placeholder="📝 欢迎留下您的建议或看法"
+        value="{{commentContent}}"></textarea>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">邮箱地址</view>
+      <input placeholder="必填" bindinput="mailInput"></input>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">回复是否接受推送</view>
+      <switch class="orange radius sm" bindchange="isAllowNotification" checked="{{notifiStatus}}"></switch>
+    </view>
+    <button class="cu-btn block bg-blue margin-tb-sm lg margin-lr-xl" bindtap='writeComment'>
+      提交
+    </button>
+  </form>
+  
+  
+</view>
