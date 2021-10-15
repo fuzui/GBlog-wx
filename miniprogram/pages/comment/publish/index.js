@@ -1,7 +1,9 @@
 //获取应用实例
 const app = getApp();
+import { CloudConfig } from '../../../config/api.js'
 import { writeComment } from '../../../services/api/content/article';
 import { writeSheetComment } from '../../../services/api/content/sheet';
+import { checkMessage } from '../../../services/api/cloud/cloud';
 import { STORAGE_KEY, HALO_OPTION_KEY, COMMENT_TYPE } from '../../../services/const-data/const-data';
 import apiResult from '../../../utils/api-result';
 
@@ -91,6 +93,15 @@ Page({
       title: '发布中',
       mask: true,
     })
+    if (CloudConfig.isOpen && CloudConfig.checkMessage) {
+      const checkResult = await checkMessage(this.data.commentContent)
+      if (checkResult.code !== 200) {
+        wx.hideLoading().then(()=>{
+          apiResult.warn(checkResult.msg);
+        })
+        return ;
+      }
+    }
     const param = {
       allowNotification: this.data.notifiStatus,
       author: this.data.userInfo.nickName,
