@@ -89,19 +89,17 @@ Page({
       logo: app.globalData.logo,
       loadModal: true,
       scene: "id=" + id,
+      id: id
     })
 
     var that = this;
     const articleDetails = await this.getArticleDetails(id);
-    const comments = await this.getComments(id);
     const html = articleDetails.formatContent;
     that.setData({
       articleDetails: articleDetails,
       disallowComment: articleDetails.disallowComment,
-      id: articleDetails.id,
       content: html,
-      loveCount: articleDetails.likes,
-      comments: comments,
+      loveCount: articleDetails.likes
     });
     this.setData({
       loadModal:false
@@ -113,6 +111,10 @@ Page({
     var currentPage = pages[pages.length - 1];
     that.setData({
       currentPage: currentPage
+    })
+    const comments = await this.getComments(that.data.id);
+    that.setData({
+      comments: comments
     })
   },
   wxmlTagATap(e) {

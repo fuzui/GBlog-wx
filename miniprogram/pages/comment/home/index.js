@@ -11,9 +11,9 @@ Page({
     title: "评论",
     pageNo: 0,
     loadingComplete: false,
-    currentOpenId: 0,
     commmentPid: 0,
     isLoadComment: false,
+    loadModal: true,
     comments: [],
     type: 'post',
     disallowComment: false,
@@ -36,10 +36,22 @@ Page({
     if (!app.globalData.hasInit) {
       await app.init()
     }
-    const detail = await this.getDetails(id);
     that.setData({
       logo: app.globalData.logo,
-      id: id,
+      id: id
+    })
+    
+  },
+  async onShow() {
+    var that = this;
+    that.setData({
+      loadModal: true,
+      comments: [],
+      pageNo: 0
+    })
+    const id = this.data.id
+    const detail = await this.getDetails(id);
+    that.setData({
       disallowComment: detail.disallowComment,
       commentCount: detail.commentCount
     })
@@ -47,9 +59,9 @@ Page({
     that.setData({
       comments: comments,
     });
-    
-  },
-  async onShow() {
+    that.setData({
+      loadModal: false
+    })
   },
   addCommentByComponent(e) {
     this.selectComponent("#commentComponent").addComment(e)

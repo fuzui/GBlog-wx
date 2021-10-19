@@ -33,3 +33,8 @@
     </view>
   </view>
 </view>
+<!-- 加载框 -->
+<view class='cu-load load-modal' wx:if="{{loadModal}}">
+  <image src="{{logo}}" class='png' mode='aspectFit'></image>
+  <view class='gray-text'>加载中...</view>
+</view>
