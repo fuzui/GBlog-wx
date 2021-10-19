@@ -6,7 +6,9 @@ export const STORAGE_KEY = {
   gravatarSource: 'gravatarSource',
   gravatarDefault: 'gravatarDefault',
   options: 'options',
-  randomGraph: 'randomGraph'
+  randomGraph: 'randomGraph',
+  userEmail: 'userEmail',
+  notifiStatus: 'notifiStatus'
 }
 
 export const DEFAULT_VALUE = {

@@ -18,7 +18,7 @@
     </view>
     <view class="cu-form-group">
       <view class="title">邮箱地址</view>
-      <input placeholder="必填" bindinput="mailInput"></input>
+      <input placeholder="必填" value="{{commentMail}}" bindinput="mailInput"></input>
     </view>
     <view class="cu-form-group">
       <view class="title">回复是否接受推送</view>

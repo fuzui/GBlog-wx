@@ -13,6 +13,8 @@ Page({
     logo: "",
     slug: "",
     name: "",
+    commentMail: "",
+    notifiStatus: false,
     pageNo: 0,
     selected: 0, //当前选中
     content: [],
@@ -34,6 +36,14 @@ Page({
     }
     
     const userInfo = wx.getStorageSync(STORAGE_KEY.user);
+    const commentMail = wx.getStorageSync(STORAGE_KEY.userEmail);
+    const notifiStatus = wx.getStorageSync(STORAGE_KEY.notifiStatus);
+    if (commentMail) {
+      that.setData({
+        commentMail: commentMail,
+        notifiStatus: notifiStatus
+      })
+    }
     that.setData({
       userInfo: userInfo,
       commmentPid: commmentPid,
@@ -124,6 +134,12 @@ Page({
       var globalOptions = wx.getStorageSync(STORAGE_KEY.options);
       if (globalOptions[HALO_OPTION_KEY.blogTitle]) {
         tip = '发表成功，等待审核'
+      }
+      if (this.data.commentMail != wx.getStorageSync(STORAGE_KEY.userEmail)) {
+        wx.setStorageSync(STORAGE_KEY.userEmail, this.data.commentMail);
+      }
+      if (this.data.notifiStatus != wx.getStorageSync(STORAGE_KEY.notifiStatus)) {
+        wx.setStorageSync(STORAGE_KEY.notifiStatus, this.data.notifiStatus);
       }
       apiResult.success(tip);
       wx.navigateBack({
