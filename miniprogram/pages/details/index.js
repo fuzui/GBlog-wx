@@ -117,8 +117,6 @@ Page({
       comments: comments
     })
   },
-  wxmlTagATap(e) {
-  },
   /**
    * 上滑刷新
    */

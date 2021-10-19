@@ -131,11 +131,6 @@ Page({
         success: function (e) {
           var page = getCurrentPages().pop();
           if (page == undefined || page == null) return;
-          // var options = {
-          //   id: that.data.id,
-          //   type: that.data.type
-          // }
-          // page.onLoad(options);
         }
       })
     })
