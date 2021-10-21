@@ -36,7 +36,7 @@
       </swiper-item>
     </swiper>
   </view>
-
+  <official-account></official-account>
   <view class="cu-bar">
       <view class="action sub-title">
         <text class="text-xl text-bold text-blue" space="ensp">最新    </text>
