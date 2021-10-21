@@ -5,7 +5,7 @@
 @import "styles/colorui/icon.wxss";
 @import "styles/colorui/animation.wxss";
 page{
-  font-family:-apple-system-font,Helvetica Neue,sans-serif;
+  font-family:JetBrainsMono,-apple-system-font,Helvetica Neue,sans-serif;
 }
 
 /* 显示两行，溢出文字用‘...’替换 */

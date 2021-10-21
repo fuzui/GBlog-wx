@@ -31,6 +31,7 @@ App({
     randomGraphs: []
   },
   async init() {
+    await this.loadFontFace();
     await this.getRandomGraph();
     await this.getOptions();
     this.globalData.hasInit = true
@@ -63,6 +64,31 @@ App({
     } else {
       this.globalData.randomGraphs = RandomImage
     }
+  },
+  async loadFontFace() {
+    wx.loadFontFace({
+      global: true,
+      family: 'JetBrainsMono',
+      source: 'url("https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/ttf/JetBrainsMono-Regular.ttf")',
+      success: (res) => {
+      },
+      fail: function (res) {
+      },
+      complete: function (res) {
+      }
+    });
+    wx.loadFontFace({
+      global: true,
+      family: 'Ali',
+      source: 'url("https://at.alicdn.com/t/webfont_8of3cuhq013.ttf")',
+      success: (res) => {
+      },
+      fail: function (res) {
+      },
+      complete: function (res) {
+
+      }
+    });
   },
   // 更新小程序以及系统信息获取校验
   updateManager: function () {

@@ -70,3 +70,9 @@
 	opacity: 0.4;
 	width: 100rpx;
 }
+
+.ali-font {
+  font-family: Ali, Helvetica Neue, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 40rpx;
+}

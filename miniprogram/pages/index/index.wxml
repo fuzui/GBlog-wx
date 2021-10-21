@@ -10,7 +10,7 @@
   </view>
   <!--  分类导航  -->
   <scroll-view scroll-x class="scroll-view nav text-center text-orange" scroll-with-animation scroll-left="{{scrollLeft}}">
-    <view class="scroll-view-item cu-item {{tab.code==currentNavCode?'text-blue text-lg text-bold cur':'text-df text-gray'}}" wx:for="{{navlist}}" bindtap="handleChangeNavTab" wx:for-item="tab" data-type='{{tab.code}}' wx:key="index">
+    <view class="scroll-view-item cu-item {{tab.code==currentNavCode?'text-blue cur ali-font':'text-df text-gray'}}" wx:for="{{navlist}}" bindtap="handleChangeNavTab" wx:for-item="tab" data-type='{{tab.code}}' wx:key="index">
       {{tab.name}}
     </view>
   </scroll-view>
