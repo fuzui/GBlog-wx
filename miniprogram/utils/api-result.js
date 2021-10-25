@@ -1,3 +1,4 @@
+import { STORAGE_KEY } from '../services/const-data/const-data';
 function requestError(data) {
   wx.showToast({
     title: data.message,
@@ -6,6 +7,7 @@ function requestError(data) {
     image:'/images/prompt/fail.svg'  
   });
   if (data.status == 401) {
+    wx.setStorageSync(STORAGE_KEY.adminToken, '')
     let pages = getCurrentPages();
     let current_page = pages[pages.length - 1].route
     if (current_page !== 'pages/admin/login/index') {
