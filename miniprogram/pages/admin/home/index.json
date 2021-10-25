@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "GeekEra | 关于我"
+  "navigationBarTitleText": "GeekEra | 关于我",
+  "usingComponents": {
+    "admin-login": "../../../components/admin-login/index"
+  }
 }

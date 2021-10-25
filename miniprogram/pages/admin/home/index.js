@@ -1,6 +1,5 @@
 const app = getApp();
 import apiResult from '../../../utils/api-result';
-import { adminLogin } from '../../../services/api/admin/login';
 import { adminGetStatistics } from '../../../services/api/admin/statistic';
 import { adminGetPostComment } from '../../../services/api/admin/post';
 import { adminGetSheetComment } from '../../../services/api/admin/sheet';
@@ -34,7 +33,7 @@ Page({
     })
     var token = wx.getStorageSync(STORAGE_KEY.adminToken)
     if(token){
-      const statistics = await this.adminGetStatistics();
+      const statistics = await adminGetStatistics();
       const noticeCount = await this.getNoticeCount();
       that.setData({
         user: statistics.user,
@@ -48,71 +47,19 @@ Page({
     })
   },
   /**
-   * 输入账号
+   * 登录后置处理
    */
-  usernameInput(e){
-    this.setData({
-      username: e.detail.value
+  async loginSuf(){
+    var that = this
+    const statistics = await adminGetStatistics();
+    const noticeCount = await this.getNoticeCount();
+    that.setData({
+      user: statistics.user,
+      statistics: statistics,
+      noticeCount: noticeCount
     });
-  },
-  /**
-   * 输入密码
-   * @param {*} e 
-   */
-  passwordInput(e){
-    this.setData({
-      password: e.detail.value
-    });
-  },
-  /**
-   * 登录
-   */
-  async login(){
-    var that = this;
-    if(!this.data.username){
-      apiResult.warn("账号不能为空");
-      return ;
-    }
-    if(!this.data.password){
-      apiResult.warn("密码不能为空");
-      return ;
-    }
-    const param = {
-      username: this.data.username,
-      password: this.data.password
-    }
-    try {
-      const result = await adminLogin(param);
-      wx.setStorageSync(STORAGE_KEY.adminToken, result.access_token)
-      const statistics = await this.adminGetStatistics();
-      const noticeCount = await this.getNoticeCount();
-      apiResult.success("登录成功");
-      that.setData({
-        user: statistics.user,
-        statistics: statistics,
-        noticeCount: noticeCount
-      });
-      that.setData({
-        isLogin: true
-      })
-    } catch (error) {
-      wx.setStorageSync(STORAGE_KEY.adminToken, "")
-      apiResult.error("密码错误");
-    }
-  },
-  /**
-   * 复制
-   * @param {*} e 
-   */
-  CopyLink(e) {
-    wx.setClipboardData({
-      data: e.currentTarget.dataset.link,
-      success: res => {
-        wx.showToast({
-          title: '已复制',
-          duration: 1000,
-        })
-      }
+    that.setData({
+      isLogin: true
     })
   },
   showModal(e) {
@@ -257,18 +204,6 @@ Page({
     wx.navigateTo({
       url:"/pages/admin/setting/index"
     })
-  },
-  
-  /**
-   * 获取站点及博主信息
-   */
-  async adminGetStatistics(){
-    try {
-      const result = await adminGetStatistics();
-      return result;
-    } catch (error) {
-      return error.message;
-    }
   },
 
   getMessage() {

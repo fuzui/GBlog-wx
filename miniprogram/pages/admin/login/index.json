@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "mp-html": "../../../components/mp-weixin/index"
+    "admin-login": "../../../components/admin-login/index"
   }
 }

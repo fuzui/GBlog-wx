@@ -21,6 +21,23 @@ function adminLogin(params) {
   })
 }
 
+/**
+ * 登录前置检查
+ * @param {*} params 
+ */
+function adminLoginPreCheck(params) {
+  const url = moduleName + '/precheck';
+  return new Promise((resolve, reject) => {
+    apiRequest.Post(url, params, {})
+      .then(r => {
+        resolve(r)
+      }, e => {
+        reject(e)
+      })
+  })
+}
+
 module.exports = {
-  adminLogin
+  adminLogin,
+  adminLoginPreCheck
 }
