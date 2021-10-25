@@ -7,9 +7,16 @@ Component({
   data: {
     username: "",
     password: "",
-    loginMessage: false
+    authcode: "000000",
+    loginMessage: false,
+    hasAuthcode: false,
+    logining: false
   },
   properties: {
+    logo: {
+      type: String,
+      value: ''
+    },
   },
   options: {
     addGlobalClass: true,
@@ -37,9 +44,16 @@ Component({
       });
     },
     /**
-     * 登录
+     * 输入二步验证码
+     * @param {*} e 
      */
-    async login(){
+    authcodeInput(e){
+      this.setData({
+        authcode: e.detail.value
+      });
+    },
+
+    async loginPreCheck() {
       if(!this.data.username){
         apiResult.warn("账号不能为空");
         return ;
@@ -52,14 +66,42 @@ Component({
         username: this.data.username,
         password: this.data.password
       }
-      try {
-        const result = await adminLogin(param);
-        wx.setStorageSync(STORAGE_KEY.adminToken, result.access_token)
-        apiResult.success("登录成功");
-        this.triggerEvent('loginSuf')
-      } catch (error) {
-        return error.message;
+      const result = await adminLoginPreCheck(param);
+      if (result.needMFACode) {
+        this.setData({
+          hasAuthcode: true,
+          authcode: ""
+        })
+        return ;
       }
+      await this.login();
+    },
+    async checkAuthcode() {
+      if(!this.data.authcode) {
+        apiResult.warn("请输入两步验证码");
+        return ;
+      }
+      await this.login();
+    },
+    /**
+     * 登录
+     */
+    async login() {
+      this.setData({
+        logining: true
+      })
+      const param = {
+        username: this.data.username,
+        password: this.data.password,
+        authcode: this.data.authcode
+      }
+      const result = await adminLogin(param);
+      wx.setStorageSync(STORAGE_KEY.adminToken, result.access_token)
+      this.setData({
+        logining: false
+      })
+      apiResult.success("登录成功");
+      this.triggerEvent('loginSuf')
     },
     /**
      * 复制

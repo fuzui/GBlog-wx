@@ -24,16 +24,22 @@
       </view>
     </block>
     <block wx:if="{{!loginMessage}}">
-      <view class="cu-form-group">
+      <view class="cu-form-group" hidden="{{hasAuthcode}}">
         <text class="cuIcon-people"></text>
-        <input class="padding-left" placeholder="用户名/邮箱" bindinput="usernameInput"></input>
+        <input class="padding-left" value="{{username}}" placeholder="用户名/邮箱" bindinput="usernameInput"></input>
       </view>
-      <view class="cu-form-group">
+      <view class="cu-form-group" hidden="{{hasAuthcode}}">
         <text class="cuIcon-lock"></text>
-        <input password="{{true}}" class="padding-left" placeholder="密码" bindinput="passwordInput"></input>
+        <input password="{{true}}" class="padding-left" value="{{password}}" placeholder="密码" bindinput="passwordInput"></input>
+      </view>
+      <view class="cu-form-group" hidden="{{!hasAuthcode}}">
+        <text class="cuIcon-command"></text>
+        <input class="padding-left" value="{{authcode}}" placeholder="两部验证码" bindinput="authcodeInput"></input>
       </view>
       <view class="cu-bar btn-group">
-        <button class="cu-btn bg-blue shadow-blur" bindtap="login">登录</button>
+        <button class="cu-btn bg-blue shadow-blur" bindtap="{{hasAuthcode ? 'login' : 'loginPreCheck'}}">
+          {{hasAuthcode ? '验证' : '登录'}}
+        </button>
       </view>
     </block>
     <view class="cu-bar bg-white justify-end">
@@ -42,4 +48,9 @@
       </view>
     </view>
   </view>
+</view>
+<!-- 加载框 -->
+<view class='cu-load load-modal' wx:if="{{logining}}">
+  <image src="{{logo}}" class='png' mode='aspectFit'></image>
+  <view class='gray-text'>登陆中...</view>
 </view>

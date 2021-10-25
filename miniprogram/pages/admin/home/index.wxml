@@ -100,7 +100,7 @@
 </scroll-view>
 </view>
 <!-- 登录框 -->
-<admin-login wx:if="{{!isLogin}}" bind:loginSuf="loginSuf"></admin-login>
+<admin-login wx:if="{{!isLogin}}" logo="{{logo}}" bind:loginSuf="loginSuf"></admin-login>
 <!-- 文章管理 -->
 <view class="cu-modal bottom-modal {{modalName=='articleModal'?'show':''}}">
   <view class="cu-dialog">
