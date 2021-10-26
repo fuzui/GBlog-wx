@@ -9,13 +9,17 @@ const Config = {
   logo: '', // 选填，填写将提高首页加载速度
   blogTitle: '' // 选填，填写将提高首页加载速度
 }
-//海报分享配置
+/**
+ * 云开发配置，开启以下任何一项请严格按照文档操作
+ * 文档地址：https://docs.geekera.cn/gblog-wx/
+ */
 const CloudConfig = {
   isOpen: false,
   env: 'fuzui',  //云环境ID
   shareOpen: false,  // 海报分享开启
   randomGraphOpen: false,   // 随机图开启（内容管理）
-  checkMessage: false    // 敏感词检测
+  checkMessage: false,   // 敏感词检测
+  adminUser: false     // 后台免密登陆
 }
 //文章、日记自定义样式
 const commonTagStyle = {

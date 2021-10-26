@@ -34,7 +34,7 @@
       </view>
       <view class="cu-form-group" hidden="{{!hasAuthcode}}">
         <text class="cuIcon-command"></text>
-        <input class="padding-left" value="{{authcode}}" placeholder="两部验证码" bindinput="authcodeInput"></input>
+        <input type="number" class="padding-left" value="{{authcode}}" maxlength="6" placeholder="两部验证码" bindinput="authcodeInput"></input>
       </view>
       <view class="cu-bar btn-group">
         <button class="cu-btn bg-blue shadow-blur" bindtap="{{hasAuthcode ? 'login' : 'loginPreCheck'}}">

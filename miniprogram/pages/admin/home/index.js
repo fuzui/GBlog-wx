@@ -8,7 +8,7 @@ Page({
   data: {
     logo: "",
     statistics: {},
-    isLogin: false,
+    isLogin: true,
     username: "",
     password: "",
     loginMessage: false,
@@ -32,7 +32,7 @@ Page({
       loginMessage: false
     })
     var token = wx.getStorageSync(STORAGE_KEY.adminToken)
-    if(token){
+    if(token) {
       const statistics = await adminGetStatistics();
       const noticeCount = await this.getNoticeCount();
       that.setData({
@@ -40,6 +40,10 @@ Page({
         statistics: statistics,
         noticeCount: noticeCount,
         isLogin: true
+      });
+    } else {
+      that.setData({
+        isLogin: false
       });
     }
     that.setData({
