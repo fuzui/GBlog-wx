@@ -18,7 +18,7 @@
   </view>
 
 <!-- 图库 -->
-<view class="grid col-2 padding-sm" style="margin-bottom:(100rpx + env(safe-area-inset-bottom) / 2);">
+<view class="grid col-2 padding-sm" style="padding-bottom:(100rpx + env(safe-area-inset-bottom) / 2);">
   <view class="padding-xs" wx:for="{{content}}" wx:for-item="item" wx:key="index">
     <view class="bg-img padding-top-xl flex align-end shadow-blur solids-white}}" bindtap="toDetailsPage" data-id="{{item.id}}" data-index="{{index}}" style="background-image: url({{item.thumbnail}});height: 207rpx;">
       <view class="bg-shadeBottom padding padding-top-xl flex-sub text-cut">

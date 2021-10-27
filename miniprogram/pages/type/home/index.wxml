@@ -2,7 +2,7 @@
 <cu-custom bgColor="bg-theme">
   <view slot="content">专题</view>
 </cu-custom>
-<view class="type-card case" style="margin-bottom:100rpx;">
+<view class="type-card case" style="padding-bottom:100rpx;">
   <view class="cu-item shadow" wx:for="{{categories}}" wx:for-item="item" wx:key="index">
     <view class="image" bindtap="toDetailPage" data-slug="{{item.slug}}" data-name="{{item.name}}">
       <image src="{{item.thumbnail?item.thumbnail:tools.getRandomImage(randomGraphs)}}" mode="widthFix"></image>

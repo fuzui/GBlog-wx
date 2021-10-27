@@ -106,7 +106,7 @@
     <text class="text-xl text-bold">评论</text>
   </view>
 </view>
-<view class="bg-white" style="margin-bottom: calc(100rpx + env(safe-area-inset-bottom) / 2);">
+<view class="bg-white" style="padding-bottom: calc(100rpx + env(safe-area-inset-bottom) / 2);">
   <comment
     id="commentComponent"
     comments="{{comments}}"
