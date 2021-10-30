@@ -6,7 +6,7 @@ import { Config } from './../config/api';
 function Get(url, data) {
   return new Promise((resolve, reject) => {
     if(data) {
-      url = url.concat('?', qs.stringify(data, {arrayFormat: 'repeat'}))
+      url = url.concat('?', qs.stringify(data, {skipNulls: true, arrayFormat: 'repeat'}))
     }
     wx.request({
       url: url,
@@ -33,7 +33,7 @@ function Get(url, data) {
 
 function Post(url, data = {}, param) {
   if(param) {
-    url = url.concat('?', qs.stringify(param, {arrayFormat: 'repeat'}))
+    url = url.concat('?', qs.stringify(param, {skipNulls: true, arrayFormat: 'repeat'}))
   }
   return new Promise((resolve, reject) => {
     wx.request({
@@ -63,7 +63,7 @@ function Post(url, data = {}, param) {
 
 function Upload(url, data = {}, param) {
   if(param) {
-    url = url.concat('?', qs.stringify(param, {arrayFormat: 'repeat'}))
+    url = url.concat('?', qs.stringify(param, {skipNulls: true, arrayFormat: 'repeat'}))
   }
   return new Promise((resolve, reject) => {
     wx.uploadFile({
@@ -91,7 +91,7 @@ function Upload(url, data = {}, param) {
 
 function Delete(url, data) {
   if(data) {
-    url = url.concat('?', qs.stringify(data, {arrayFormat: 'repeat'}))
+    url = url.concat('?', qs.stringify(data, {skipNulls: true, arrayFormat: 'repeat'}))
   }
   return new Promise((resolve, reject) => {
     wx.request({
@@ -120,7 +120,7 @@ function Delete(url, data) {
 
 function Put(url, data = {}, param) {
   if(param) {
-    url = url.concat('?', qs.stringify(param, {arrayFormat: 'repeat'}))
+    url = url.concat('?', qs.stringify(param, {skipNulls: true, arrayFormat: 'repeat'}))
   }
   return new Promise((resolve, reject) => {
     wx.request({
