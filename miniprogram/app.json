@@ -3,7 +3,6 @@
 		"pages/index/index",
 		"pages/details/index",
 		"pages/photos/home/index",
-		"pages/photos/details/index",
 		"pages/search/index",
 		"pages/type/home/index",
 		"pages/tag/index",
