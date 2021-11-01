@@ -14,17 +14,17 @@
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 .fixed-bg {
-	position: fixed;
-	width: 100%;
-	top: 0;
-	z-index: 1024;
-	box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1024;
+  box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0.1);
 }
 /* 分类框 */
 .fixed-nav {
-	position: fixed;
-	width: 100%;
-	top: 321rpx;
-	z-index: 1024;
-	box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 321rpx;
+  z-index: 1024;
+  box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0.1);
 }

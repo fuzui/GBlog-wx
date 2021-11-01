@@ -30,20 +30,20 @@
   <form wx:if="{{0==TabCur}}">
     <view class="cu-form-group padding-top">
       <view class="title">博客标题</view>
-      <input placeholder="博客标题" value="{{options.blog_title}}"></input>
+      <input placeholder="博客标题" value="{{options.blog_title}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">博客地址</view>
-      <input placeholder="博客地址" value="{{options.blog_url}}"></input>
+      <input placeholder="博客地址" value="{{options.blog_url}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">Logo</view>
-      <input placeholder="Logo" value="{{options.blog_logo}}"></input>
+      <input placeholder="Logo" value="{{options.blog_logo}}" />
       <text class="cuIcon-pic text-blue"></text>
     </view>
     <view class="cu-form-group">
       <view class="title">Favicon</view>
-      <input placeholder="Favicon" value="{{options.blog_favicon}}"></input>
+      <input placeholder="Favicon" value="{{options.blog_favicon}}" />
       <text class="cuIcon-pic text-blue"></text>
     </view>
     <view class="cu-form-group">
@@ -59,7 +59,7 @@
     </view>
     <view class="cu-form-group">
       <view class="title">关键字</view>
-      <input placeholder="关键字" value="{{options.seo_keywords}}"></input>
+      <input placeholder="关键字" value="{{options.seo_keywords}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">博客描述</view>
@@ -70,34 +70,34 @@
   <form wx:if="{{2==TabCur}}">
     <view class="cu-form-group padding-top">
       <view class="title">首页文章排序</view>
-      <input placeholder="首页文章排序" value="{{options.post_index_sort}}"></input>
+      <input placeholder="首页文章排序" value="{{options.post_index_sort}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">首页每页条数</view>
-      <input placeholder="首页每页条数" value="{{options.post_index_page_size}}"></input>
+      <input placeholder="首页每页条数" value="{{options.post_index_page_size}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">归档每页条数</view>
-      <input placeholder="归档每页条数" value="{{options.post_archives_page_size}}"></input>
+      <input placeholder="归档每页条数" value="{{options.post_archives_page_size}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">RSS 内容类型</view>
-      <input placeholder="RSS 内容类型" value="{{options.rss_content_type}}"></input>
+      <input placeholder="RSS 内容类型" value="{{options.rss_content_type}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">RSS 内容条数</view>
-      <input placeholder="RSS 内容条数" value="{{options.rss_page_size}}"></input>
+      <input placeholder="RSS 内容条数" value="{{options.rss_page_size}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">文章摘要字数</view>
-      <input placeholder="文章摘要字数" value="{{options.post_summary_length}}"></input>
+      <input placeholder="文章摘要字数" value="{{options.post_summary_length}}" />
     </view>
   </form>
   <!-- 评论设置 -->
   <form wx:if="{{3==TabCur}}">
     <view class="cu-form-group padding-top">
       <view class="title">评论者头像</view>
-      <input placeholder="评论者头像" value="{{options.comment_gravatar_default}}"></input>
+      <input placeholder="评论者头像" value="{{options.comment_gravatar_default}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">评论审核后才显示</view>
@@ -117,15 +117,15 @@
     </view>
     <view class="cu-form-group">
       <view class="title">评论模块 JS</view>
-      <input placeholder="评论模块 JS" value="{{options.comment_internal_plugin_js}}"></input>
+      <input placeholder="评论模块 JS" value="{{options.comment_internal_plugin_js}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">每页显示条数</view>
-      <input placeholder="每页显示条数" value="{{options.comment_page_size}}"></input>
+      <input placeholder="每页显示条数" value="{{options.comment_page_size}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">占位提示</view>
-      <input placeholder="占位提示" value="{{options.comment_content_placeholder}}"></input>
+      <input placeholder="占位提示" value="{{options.comment_content_placeholder}}" />
     </view>
   </form>
   <!-- 附件设置 -->
@@ -136,26 +136,22 @@
     </view>
     <view class="cu-form-group">
       <view class="title">最大上传文件数</view>
-      <input placeholder="每页显示条数" value="{{options.attachment_upload_max_files}}"></input>
+      <input placeholder="每页显示条数" value="{{options.attachment_upload_max_files}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">同时上传文件数</view>
-      <input placeholder="同时上传文件数" value="{{options.attachment_upload_max_parallel_uploads}}"></input>
+      <input placeholder="同时上传文件数" value="{{options.attachment_upload_max_parallel_uploads}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">存储位置</view>
-      <input placeholder="存储位置" value="{{options.attachment_type}}"></input>
+      <input placeholder="存储位置" value="{{options.attachment_type}}" />
     </view>
   </form>
   <!-- SMTP 设置 -->
   <form wx:if="{{5==TabCur}}">
     <scroll-view scroll-x class="bg-white nav text-left">
-      <view class="cu-item {{0==SmtpTabCur?'text-blue cur':''}}" bindtap="SmtpTabSelect" data-id="0">
-        发送设置
-      </view>
-      <view class="cu-item {{1==SmtpTabCur?'text-blue cur':''}}" bindtap="SmtpTabSelect" data-id="1">
-        发送测试
-      </view>
+      <view class="cu-item {{0==SmtpTabCur?'text-blue cur':''}}" bindtap="SmtpTabSelect" data-id="0"> 发送设置 </view>
+      <view class="cu-item {{1==SmtpTabCur?'text-blue cur':''}}" bindtap="SmtpTabSelect" data-id="1"> 发送测试 </view>
     </scroll-view>
     <block wx:if="{{0==SmtpTabCur}}">
       <view class="cu-form-group padding-top">
@@ -164,38 +160,42 @@
       </view>
       <view class="cu-form-group">
         <view class="title">SMTP 地址</view>
-        <input placeholder="SMTP 地址" value="{{options.email_host}}"></input>
+        <input placeholder="SMTP 地址" value="{{options.email_host}}" />
       </view>
       <view class="cu-form-group">
         <view class="title">发送协议</view>
-        <input placeholder="发送协议" value="{{options.email_protocol}}"></input>
+        <input placeholder="发送协议" value="{{options.email_protocol}}" />
       </view>
       <view class="cu-form-group">
         <view class="title">SSL 端口</view>
-        <input placeholder="SSL 端口" value="{{options.email_ssl_port}}"></input>
+        <input placeholder="SSL 端口" value="{{options.email_ssl_port}}" />
       </view>
       <view class="cu-form-group">
         <view class="title">邮箱账号</view>
-        <input placeholder="邮箱账号" value="{{options.email_username}}"></input>
+        <input placeholder="邮箱账号" value="{{options.email_username}}" />
       </view>
       <view class="cu-form-group">
         <view class="title">邮箱密码</view>
-        <input password="{{isEmailPassword}}"  value="{{options.email_password}}"></input>
-        <text class="{{isEmailPassword?'cuIcon-attentionforbid text-grey':'cuIcon-attention text-blue'}}" bindtap="viewPassword" data-type="isEmailPassword"></text>
+        <input password="{{isEmailPassword}}" value="{{options.email_password}}" />
+        <text
+          class="{{isEmailPassword?'cuIcon-attentionforbid text-grey':'cuIcon-attention text-blue'}}"
+          bindtap="viewPassword"
+          data-type="isEmailPassword"
+        ></text>
       </view>
       <view class="cu-form-group">
         <view class="title">发件人</view>
-        <input placeholder="发件人" value="{{options.email_from_name}}"></input>
+        <input placeholder="发件人" value="{{options.email_from_name}}" />
       </view>
     </block>
     <block wx:if="{{1==SmtpTabCur}}">
       <view class="cu-form-group">
         <view class="title">收件人</view>
-        <input placeholder="收件人"></input>
+        <input placeholder="收件人" />
       </view>
       <view class="cu-form-group">
         <view class="title">主题</view>
-        <input placeholder="主题"></input>
+        <input placeholder="主题" />
       </view>
       <view class="cu-form-group">
         <view class="title">内容</view>
@@ -207,15 +207,27 @@
   <form wx:if="{{6==TabCur}}">
     <view class="cu-form-group padding-top">
       <view class="title">自定义全局 head</view>
-      <textarea maxlength="-1" placeholder="放置于每个页面的 <head></head> 标签中" value="{{options.blog_custom_head}}"></textarea>
+      <textarea
+        maxlength="-1"
+        placeholder="放置于每个页面的 <head></head> 标签中"
+        value="{{options.blog_custom_head}}"
+      ></textarea>
     </view>
     <view class="cu-form-group">
       <view class="title">自定义内容页 head</view>
-      <textarea maxlength="-1" placeholder="仅放置于内容页面的 <head></head> 标签中" value="{{options.blog_custom_content_head}}"></textarea>
+      <textarea
+        maxlength="-1"
+        placeholder="仅放置于内容页面的 <head></head> 标签中"
+        value="{{options.blog_custom_content_head}}"
+      ></textarea>
     </view>
     <view class="cu-form-group">
       <view class="title">统计代码</view>
-      <textarea maxlength="-1" placeholder="第三方网站统计的代码，如：Google Analytics、百度统计、CNZZ 等" value="{{options.blog_statistics_code}}"></textarea>
+      <textarea
+        maxlength="-1"
+        placeholder="第三方网站统计的代码，如：Google Analytics、百度统计、CNZZ 等"
+        value="{{options.blog_statistics_code}}"
+      ></textarea>
     </view>
   </form>
 </block>
@@ -236,39 +248,39 @@
   <form wx:if="{{0==HighTabCur}}">
     <view class="cu-form-group padding-top">
       <view class="title">文章固定链接类型</view>
-      <input placeholder="{{url +'/archives/${slug}'}}" value="{{options.post_permalink_type}}"></input>
+      <input placeholder="{{url +'/archives/${slug}'}}" value="{{options.post_permalink_type}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">自定义页面前缀</view>
-      <input placeholder="{{url +'/s/${slug}'}}" value="{{options.sheet_prefix}}"></input>
+      <input placeholder="{{url +'/s/${slug}'}}" value="{{options.sheet_prefix}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">友情链接页面前缀</view>
-      <input placeholder="{{url +'/archives/links'}}" value="{{options.links_prefix}}"></input>
+      <input placeholder="{{url +'/archives/links'}}" value="{{options.links_prefix}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">图库页面前缀</view>
-      <input placeholder="{{url +'/archives/photos'}}" value="{{options.photos_prefix}}"></input>
+      <input placeholder="{{url +'/archives/photos'}}" value="{{options.photos_prefix}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">日志页面前缀</view>
-      <input placeholder="{{url +'/journals'}}" value="{{options.journals_prefix}}"></input>
+      <input placeholder="{{url +'/journals'}}" value="{{options.journals_prefix}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">归档前缀</view>
-      <input placeholder="{{url +'/archives'}}" value="{{options.archives_prefix}}"></input>
+      <input placeholder="{{url +'/archives'}}" value="{{options.archives_prefix}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">分类前缀</view>
-      <input placeholder="{{url +'/categories/${slug}'}}" value="{{options.categories_prefix}}"></input>
+      <input placeholder="{{url +'/categories/${slug}'}}" value="{{options.categories_prefix}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">标签前缀</view>
-      <input placeholder="{{url +'/tags/${slug}'}}" value="{{options.tags_prefix}}"></input>
+      <input placeholder="{{url +'/tags/${slug}'}}" value="{{options.tags_prefix}}" />
     </view>
     <view class="cu-form-group">
       <view class="title">路径后缀</view>
-      <input placeholder="{{'* 格式为：.${suffix}，仅对内建路径有效'}}" value="{{options.path_suffix}}"></input>
+      <input placeholder="{{'* 格式为：.${suffix}，仅对内建路径有效'}}" value="{{options.path_suffix}}" />
     </view>
   </form>
   <!-- API 设置 -->
@@ -279,8 +291,12 @@
     </view>
     <view class="cu-form-group">
       <view class="title">Access key</view>
-      <input password="{{isAccessKeyPassword}}"  value="{{options.api_access_key}}"></input>
-      <text class="{{isEmailPassword?'cuIcon-attentionforbid text-grey':'cuIcon-attention text-blue'}}" bindtap="viewPassword" data-type="isAccessKeyPassword"></text>
+      <input password="{{isAccessKeyPassword}}" value="{{options.api_access_key}}" />
+      <text
+        class="{{isEmailPassword?'cuIcon-attentionforbid text-grey':'cuIcon-attention text-blue'}}"
+        bindtap="viewPassword"
+        data-type="isAccessKeyPassword"
+      ></text>
     </view>
   </form>
   <!-- 其他设置 -->
@@ -292,7 +308,7 @@
     <view class="text-sm text-grey">* 对网站上面的所有页面路径、本地附件路径、以及主题中的静态资源路径有效。</view>
   </form>
 </block>
-<view class="margin-tb-sm text-center" style="margin-right:600rpx;">
+<view class="margin-tb-sm text-center" style="margin-right: 600rpx">
   <button class="cu-btn bg-blue shadow" bindtap="saveSettings">保存</button>
 </view>
 <!-- 基础设置、高级设置选择 -->

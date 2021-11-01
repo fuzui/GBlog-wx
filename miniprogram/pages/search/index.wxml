@@ -6,7 +6,14 @@
       </view>
       <view class="search-form round">
         <text class="cuIcon-search"></text>
-        <input type="text" placeholder="搜索文章" value="{{keyword}}" confirm-type="search" bindconfirm="search" bindinput="searchInput"></input>
+        <input
+          type="text"
+          placeholder="搜索文章"
+          value="{{keyword}}"
+          confirm-type="search"
+          bindconfirm="search"
+          bindinput="searchInput"
+        />
       </view>
     </view>
   </view>
@@ -15,7 +22,7 @@
       <view class="action">
         <view>
           <text class="text-xl text-black">搜索历史</text>
-        </view> 
+        </view>
         <view bindtap="clearHistoryKeyword">
           <text class="cuIcon-delete text-grey margin-left text-xl"></text>
         </view>
@@ -30,9 +37,11 @@
       <view class="action">
         <view>
           <text class="text-xl text-black">搜索推荐</text>
-        </view> 
+        </view>
         <view bindtap="changeRecommendView">
-          <text class="cuIcon-{{recommendKeywordView?'attentionfavor':'attentionforbid'}} text-grey margin-left text-xl"></text>
+          <text
+            class="cuIcon-{{recommendKeywordView?'attentionfavor':'attentionforbid'}} text-grey margin-left text-xl"
+          ></text>
         </view>
       </view>
       <view class="action text-sm" bindtap="changeRecommend" wx:if="{{recommendKeyword.length > 1}}">
@@ -58,14 +67,14 @@
     <view class="text-xl padding">暂无搜索内容</view>
     <button class="cu-btn block bg-blue margin-xl lg" bindtap="toHome">
       <text class="cuIcon-homefill"></text> 返回首页
-    </button>    
+    </button>
   </view>
 
   <!-- 下拉加载 -->
   <view class="cu-load {{loading==true?'loading':'over'}}" wx:if="{{isSearch && content.length}}"></view>
   <!-- 弹框加载 -->
-  <view class='cu-load load-modal' wx:if="{{loadModal}}">
-    <image src="{{logo}}" class='png' mode='aspectFit'></image>
-    <view class='gray-text'>加载中...</view>
+  <view class="cu-load load-modal" wx:if="{{loadModal}}">
+    <image src="{{logo}}" class="png" mode="aspectFit"></image>
+    <view class="gray-text">加载中...</view>
   </view>
 </view>

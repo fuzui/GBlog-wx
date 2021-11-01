@@ -1,8 +1,19 @@
-<view class="cu-bar tabbar shadow foot" style="background: white;">
-  <view class="action" wx:for="{{list}}" wx:key="index" data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab" >
-    <view class='cuIcon-cu-image'>
+<view class="cu-bar tabbar shadow foot" style="background: white">
+  <view
+    class="action"
+    wx:for="{{list}}"
+    wx:key="index"
+    data-path="{{item.pagePath}}"
+    data-index="{{index}}"
+    bindtap="switchTab"
+  >
+    <view class="cuIcon-cu-image">
       <image wx:if="{{item.isSpecial != null && item.isSpecial == true}}" src="{{item.iconPath}}"></image>
-      <image wx:else class="animation-{{selected == index?'shake':''}}" src="{{selected == index ? item.selectedIconPath : item.iconPath}}"></image>
+      <image
+        wx:else
+        class="animation-{{selected == index?'shake':''}}"
+        src="{{selected == index ? item.selectedIconPath : item.iconPath}}"
+      ></image>
     </view>
     <view class="{{selected===index?'text-green':'text-gray'}}">{{item.text}}</view>
   </view>

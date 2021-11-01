@@ -4,13 +4,24 @@
 </cu-custom>
 <view class="cu-chat-i margin-bottom-xl">
   <view class="cu-item" wx:for="{{links}}" wx:for-item="item" wx:key="index">
-    <view class="cu-avatar radius" bindtap="showModal" data-target="addModal"  data-flag="edit" data-index="{{index}}" style="background-image:url({{item.logo?item.logo:'https://ossweb-img.qq.com/images/lol/web201310/skin/big143004.jpg'}});"></view>
+    <view
+      class="cu-avatar radius"
+      bindtap="showModal"
+      data-target="addModal"
+      data-flag="edit"
+      data-index="{{index}}"
+      style="background-image:url({{item.logo?item.logo:'https://ossweb-img.qq.com/images/lol/web201310/skin/big143004.jpg'}});"
+    ></view>
     <view class="main">
-      
       <view class="content bg-{{bgColor[index%6]}} shadow">
-        <view class="cu-tag badge cuIcon-close text-red" bindtap="deleteLink" data-id="{{item.id}}" data-index="{{index}}"></view>
-        <view  bindtap="copyLink" data-link="{{item.url}}">{{item.name}}</view>
-        <view class="text-sm"  bindtap="copyLink" data-link="{{item.url}}">{{item.description}}</view>
+        <view
+          class="cu-tag badge cuIcon-close text-red"
+          bindtap="deleteLink"
+          data-id="{{item.id}}"
+          data-index="{{index}}"
+        ></view>
+        <view bindtap="copyLink" data-link="{{item.url}}">{{item.name}}</view>
+        <view class="text-sm" bindtap="copyLink" data-link="{{item.url}}">{{item.description}}</view>
       </view>
     </view>
     <view class="date" bindtap="copyLink" data-link="{{item.url}}">{{item.url}}</view>
@@ -20,14 +31,21 @@
   <view class="action">
     <text class="cuIcon-likefill text-red"></text>
   </view>
-  <input class="solid-bottom" bindtap="showModal" data-target="addModal" adjust-position="{{false}}" focus="{{false}}" disabled="true"></input>
-  
+  <input
+    class="solid-bottom"
+    bindtap="showModal"
+    data-target="addModal"
+    adjust-position="{{false}}"
+    focus="{{false}}"
+    disabled="true"
+  />
+
   <button class="cu-btn bg-green shadow" bindtap="showModal" data-target="addModal">添加</button>
 </view>
 <!-- 加载框 -->
-<view class='cu-load load-modal' wx:if="{{loadModal}}">
-  <image src="{{appLogo}}" class='png' mode='aspectFit'></image>
-  <view class='gray-text'>加载中...</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+  <image src="{{appLogo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">加载中...</view>
 </view>
 
 <!-- 添加、修改框 -->
@@ -41,29 +59,29 @@
     </view>
     <view class="cu-form-group text-left">
       <view class="title">网站名称</view>
-      <input value="{{name}}" bindinput="nameInput"></input>
+      <input value="{{name}}" bindinput="nameInput" />
     </view>
     <view class="cu-form-group text-left">
       <view class="title">网站地址</view>
-      <input value="{{url}}" bindinput="urlInput"></input>
+      <input value="{{url}}" bindinput="urlInput" />
     </view>
     <view class="cu-form-group text-left">
       <view class="title">Logo</view>
-      <input value="{{logo}}" bindinput="logoInput"></input>
+      <input value="{{logo}}" bindinput="logoInput" />
     </view>
     <view class="cu-form-group text-left">
       <view class="title">分组</view>
-      <input value="{{team}}" bindinput="teamInput"></input>
+      <input value="{{team}}" bindinput="teamInput" />
     </view>
     <view class="cu-form-group text-left">
       <view class="title">排序编号</view>
-      <input value="{{priority}}" bindinput="priorityInput"></input>
+      <input value="{{priority}}" bindinput="priorityInput" />
     </view>
     <view class="cu-form-group text-left">
-      <view class="title" style="width:220rpx;">描述</view>
-      <input value="{{description}}" bindinput="descriptionInput"></input>
+      <view class="title" style="width: 220rpx">描述</view>
+      <input value="{{description}}" bindinput="descriptionInput" />
     </view>
-    
+
     <view class="cu-bar bg-white justify-end">
       <view class="action">
         <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>

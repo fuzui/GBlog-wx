@@ -1,7 +1,7 @@
-import apiRequest from './../../../utils/api-request';
+import apiRequest from './../../../utils/api-request'
 import { ApiBaseUrl } from '../../../config/api'
 import { STORAGE_KEY } from '../../const-data/const-data'
-const moduleName = ApiBaseUrl + '/api/admin/posts';
+const moduleName = ApiBaseUrl + '/api/admin/posts'
 
 /**
  * 获取文章列表
@@ -11,30 +11,34 @@ function adminGetPost(param) {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
   return new Promise((resolve, reject) => {
-    apiRequest.Get(moduleName, Object.assign(adminToken, param))
-      .then(r => {
+    apiRequest.Get(moduleName, Object.assign(adminToken, param)).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
 /**
  * 根据id修改文章状态
  */
-function adminEditPostStatus(postId,status) {
+function adminEditPostStatus(postId, status) {
   const adminToken = {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
-  const url = moduleName + '/' + postId + '/status/' + status;
+  const url = moduleName + '/' + postId + '/status/' + status
   return new Promise((resolve, reject) => {
-    apiRequest.Put(url, {}, adminToken)
-      .then(r => {
+    apiRequest.Put(url, {}, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
@@ -45,14 +49,16 @@ function adminDeletePost(postId) {
   const adminToken = {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
-  const url = moduleName + '/' + postId;
+  const url = moduleName + '/' + postId
   return new Promise((resolve, reject) => {
-    apiRequest.Delete(url, adminToken)
-      .then(r => {
+    apiRequest.Delete(url, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
@@ -65,12 +71,14 @@ function adminGetPostComment(param) {
   }
   const url = moduleName + '/comments'
   return new Promise((resolve, reject) => {
-    apiRequest.Get(url, Object.assign(adminToken, param))
-      .then(r => {
+    apiRequest.Get(url, Object.assign(adminToken, param)).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
@@ -83,30 +91,34 @@ function adminAddPostComment(data) {
   }
   const url = moduleName + '/comments'
   return new Promise((resolve, reject) => {
-    apiRequest.Post(url, data, adminToken)
-      .then(r => {
+    apiRequest.Post(url, data, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
 /**
  * 根据id修改文章评论状态
  */
-function adminEditPostCommentStatus(commentId,status) {
+function adminEditPostCommentStatus(commentId, status) {
   const adminToken = {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
-  const url = moduleName + '/comments/' + commentId + '/status/' + status;
+  const url = moduleName + '/comments/' + commentId + '/status/' + status
   return new Promise((resolve, reject) => {
-    apiRequest.Put(url, {}, adminToken)
-      .then(r => {
+    apiRequest.Put(url, {}, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
@@ -117,14 +129,16 @@ function adminDeletePostComment(commentId) {
   const adminToken = {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
-  const url = moduleName + '/comments/' + commentId;
+  const url = moduleName + '/comments/' + commentId
   return new Promise((resolve, reject) => {
-    apiRequest.Delete(url, adminToken)
-      .then(r => {
+    apiRequest.Delete(url, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 

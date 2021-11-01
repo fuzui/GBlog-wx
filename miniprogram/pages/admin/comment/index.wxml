@@ -4,28 +4,59 @@
 </cu-custom>
 
 <scroll-view scroll-x class="bg-gray nav text-left">
-  <view class="cu-item {{1==type?'text-blue bg-white':''}}" bindtap="tabSelect" data-type="1">
-    文章评论
-  </view>
-  <view class="cu-item {{2==type?'text-blue bg-white':''}}" bindtap="tabSelect" data-type="2">
-    页面评论
-  </view>
+  <view class="cu-item {{1==type?'text-blue bg-white':''}}" bindtap="tabSelect" data-type="1"> 文章评论 </view>
+  <view class="cu-item {{2==type?'text-blue bg-white':''}}" bindtap="tabSelect" data-type="2"> 页面评论 </view>
 </scroll-view>
 <block wx:for="{{commentList}}" wx:for-item="item" wx:key="index">
   <view class="cu-bar bg-white">
-    <view class='action'>
-      <text class='cuIcon-titles text-green' wx:if="{{item.status=='PUBLISHED'}}"></text>
-      <text class='cuIcon-titles text-orange' wx:if="{{item.status=='AUDITING'}}"></text>
-      <text class='cuIcon-titles text-black' wx:if="{{item.status=='RECYCLE'}}"></text>
+    <view class="action">
+      <text class="cuIcon-titles text-green" wx:if="{{item.status=='PUBLISHED'}}"></text>
+      <text class="cuIcon-titles text-orange" wx:if="{{item.status=='AUDITING'}}"></text>
+      <text class="cuIcon-titles text-black" wx:if="{{item.status=='RECYCLE'}}"></text>
       {{item.author}}
-      <text class='cuIcon-servicefill text-blue' wx:if="{{item.isAdmin}}"></text>
+      <text class="cuIcon-servicefill text-blue" wx:if="{{item.isAdmin}}"></text>
     </view>
     <view class="action">
-      <view class="cu-tag round bg-blue light" wx:if="{{item.status=='PUBLISHED'}}" bindtap="showModal" data-target="commentModal" data-index="{{index}}">回复</view>
-      <view class="cu-tag round bg-green light" wx:if="{{item.status=='AUDITING'}}" bindtap="auditComment" data-id="{{item.id}}" data-index="{{index}}">通过</view>
-      <view class="cu-tag round bg-orange light" wx:if="{{item.status!='RECYCLE'}}" bindtap="recyclingComment" data-id="{{item.id}}" data-index="{{index}}">回收站</view>
-      <view class="cu-tag round bg-blue light" wx:if="{{item.status=='RECYCLE'}}" bindtap="auditComment" data-id="{{item.id}}" data-index="{{index}}">还原</view>
-      <view class="cu-tag round bg-red light" wx:if="{{item.status=='RECYCLE'}}" bindtap="deleteComment" data-id="{{item.id}}" data-index="{{index}}">删除</view>
+      <view
+        class="cu-tag round bg-blue light"
+        wx:if="{{item.status=='PUBLISHED'}}"
+        bindtap="showModal"
+        data-target="commentModal"
+        data-index="{{index}}"
+        >回复</view
+      >
+      <view
+        class="cu-tag round bg-green light"
+        wx:if="{{item.status=='AUDITING'}}"
+        bindtap="auditComment"
+        data-id="{{item.id}}"
+        data-index="{{index}}"
+        >通过</view
+      >
+      <view
+        class="cu-tag round bg-orange light"
+        wx:if="{{item.status!='RECYCLE'}}"
+        bindtap="recyclingComment"
+        data-id="{{item.id}}"
+        data-index="{{index}}"
+        >回收站</view
+      >
+      <view
+        class="cu-tag round bg-blue light"
+        wx:if="{{item.status=='RECYCLE'}}"
+        bindtap="auditComment"
+        data-id="{{item.id}}"
+        data-index="{{index}}"
+        >还原</view
+      >
+      <view
+        class="cu-tag round bg-red light"
+        wx:if="{{item.status=='RECYCLE'}}"
+        bindtap="deleteComment"
+        data-id="{{item.id}}"
+        data-index="{{index}}"
+        >删除</view
+      >
     </view>
   </view>
   <view class="cu-card article no-card solids-bottom">
@@ -34,7 +65,6 @@
         <view class="text-cut">{{type==1?item.post.title:item.sheet.title}}</view>
       </view>
       <view class="content">
-        
         <view class="desc">
           <view class="text-content">
             <mp-html
@@ -62,9 +92,9 @@
 </block>
 
 <!-- 弹框加载 -->
-<view class='cu-load load-modal' wx:if="{{loadModal}}">
-  <image src='{{logo}}' class='png' mode='aspectFit'></image>
-  <view class='gray-text'>加载中...</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">加载中...</view>
 </view>
 
 <!-- 评论框 -->
@@ -77,14 +107,18 @@
       </view>
     </view>
     <view class="padding-xl">
-      <textarea maxlength="-1" bindinput="commentInput" placeholder="写下要回复的内容" disabled="{{modalName!='commentModal'}}"></textarea>
+      <textarea
+        maxlength="-1"
+        bindinput="commentInput"
+        placeholder="写下要回复的内容"
+        disabled="{{modalName!='commentModal'}}"
+      ></textarea>
     </view>
-    
+
     <view class="cu-bar bg-white justify-end">
       <view class="action">
         <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
         <button class="cu-btn bg-green margin-left" bindtap="replyComment">发表</button>
-
       </view>
     </view>
   </view>

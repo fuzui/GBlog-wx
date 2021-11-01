@@ -1,0 +1,24 @@
+# .prettierignore
+
+*.min.js
+/node_modules
+/dist
+# OS
+.DS_Store
+.idea
+.editorconfig
+.npmrc
+package-lock.json
+# Ignored suffix
+*.log
+*.md
+*.svg
+*.png
+*ignore
+## Built-files
+.cache
+dist
+miniprogram/components/mp-weixin
+miniprogram/components/painter
+miniprogram/styles/colorui
+miniprogram/utils/qs.js

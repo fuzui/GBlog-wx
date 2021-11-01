@@ -1,9 +1,7 @@
 <scroll-view scroll-y class="scrollPage">
   <!-- 顶图 -->
-  <view class="UCenter-bg" style="background-image: url(https://cdn.fuzui.net/blog/home_1588604516121.jpg);">
-    <view class="text-xl">
-      {{blogTitle}}
-    </view>
+  <view class="UCenter-bg" style="background-image: url(https://cdn.fuzui.net/blog/home_1588604516121.jpg)">
+    <view class="text-xl"> {{blogTitle}} </view>
     <view class="margin-top-sm">
       <text>心之所向，即所向披靡</text>
     </view>
@@ -12,23 +10,19 @@
   <!-- 宫格 -->
   <view class="cu-list grid col-4 no-border shadow-warp">
     <view class="cu-item" bindtap="toTagPage">
-      <view class="cuIcon-tag text-yellow">
-      </view>
+      <view class="cuIcon-tag text-yellow"> </view>
       <text>标签</text>
     </view>
     <view class="cu-item" bindtap="toArchivesPage">
-      <view class="cuIcon-read text-cyan">
-      </view>
+      <view class="cuIcon-read text-cyan"> </view>
       <text>归档</text>
     </view>
     <view class="cu-item" bindtap="toJournalPage">
-      <view class="cuIcon-calendar text-olive">
-      </view>
+      <view class="cuIcon-calendar text-olive"> </view>
       <text>日记</text>
     </view>
     <view class="cu-item" bindtap="toGuestbookPage">
-      <view class="cuIcon-messagefill text-black">
-      </view>
+      <view class="cuIcon-messagefill text-black"> </view>
       <text>留言</text>
     </view>
   </view>

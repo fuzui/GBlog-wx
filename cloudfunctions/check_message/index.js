@@ -6,7 +6,7 @@ cloud.init()
 // 云函数入口函数
 exports.main = async (event, context) => {
   try {
-    let result = await cloud.openapi.security.msgSecCheck({
+    const result = await cloud.openapi.security.msgSecCheck({
       content: event.content
     })
     if (result && result.errCode.toString() === '87014') {

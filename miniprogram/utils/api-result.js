@@ -1,18 +1,18 @@
-import { STORAGE_KEY } from '../services/const-data/const-data';
+import { STORAGE_KEY } from '../services/const-data/const-data'
 function requestError(data) {
   wx.showToast({
     title: data.message,
-    duration:1200,
-    mask:true,
-    image:'/images/prompt/fail.svg'  
-  });
-  if (data.status == 401) {
+    duration: 1200,
+    mask: true,
+    image: '/images/prompt/fail.svg'
+  })
+  if (data.status === 401) {
     wx.setStorageSync(STORAGE_KEY.adminToken, '')
-    let pages = getCurrentPages();
-    let current_page = pages[pages.length - 1].route
-    if (current_page !== 'pages/admin/login/index') {
+    const pages = getCurrentPages()
+    const currentPage = pages[pages.length - 1].route
+    if (currentPage !== 'pages/admin/login/index') {
       wx.navigateTo({
-        url: "/pages/admin/login/index"
+        url: '/pages/admin/login/index'
       })
     }
   }
@@ -21,31 +21,31 @@ function requestError(data) {
 function error(msg) {
   wx.showToast({
     title: msg,
-    duration:1500,
-    mask:true,
-    image:'/images/prompt/fail.svg'  
-  });
+    duration: 1500,
+    mask: true,
+    image: '/images/prompt/fail.svg'
+  })
 }
 function warn(msg) {
   wx.showToast({
     title: msg,
-    duration:1500,
-    mask:true,
-    image:'/images/prompt/warn.svg', 
-  });
+    duration: 1500,
+    mask: true,
+    image: '/images/prompt/warn.svg'
+  })
 }
 function success(msg) {
   wx.showToast({
     title: msg,
-    duration:2000,
-    mask:true,
-    image:'/images/prompt/success.svg' 
-  });
+    duration: 2000,
+    mask: true,
+    image: '/images/prompt/success.svg'
+  })
 }
 
 const StateCode = {
   success: 200,
-  error: 500,
+  error: 500
 }
 
 module.exports = {
@@ -53,5 +53,5 @@ module.exports = {
   error,
   warn,
   success,
-  StateCode,
+  StateCode
 }

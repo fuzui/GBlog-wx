@@ -1,28 +1,26 @@
-const app = getApp();
-import { adminGetEnvironments } from '../../../services/api/admin/environment';
+import { adminGetEnvironments } from '../../../services/api/admin/environment'
+const app = getApp()
 Page({
   data: {
     CustomBar: app.globalData.CustomBar,
     environments: {}
   },
-  onLoad: function () { 
-    
-  },
+  onLoad: function () {},
   async onShow() {
-    var that = this;
+    const that = this
     that.setData({
-      loadModal:true
+      loadModal: true
     })
-    const environments = await this.adminGetEnvironments();
+    const environments = await this.adminGetEnvironments()
     that.setData({
       environments: environments,
-      loadModal:false
-    });
+      loadModal: false
+    })
   },
-  
+
   /**
    * 复制
-   * @param {*} e 
+   * @param {*} e
    */
   CopyLink(e) {
     wx.setClipboardData({
@@ -30,7 +28,7 @@ Page({
       success: res => {
         wx.showToast({
           title: '已复制',
-          duration: 1000,
+          duration: 1000
         })
       }
     })
@@ -38,12 +36,12 @@ Page({
   /**
    * 获取服务器配置信息
    */
-  async adminGetEnvironments(){
+  async adminGetEnvironments() {
     try {
-      const result = await adminGetEnvironments();
-      return result;
+      const result = await adminGetEnvironments()
+      return result
     } catch (error) {
-      return error.message;
+      return error.message
     }
-  },
+  }
 })

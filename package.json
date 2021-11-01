@@ -1,0 +1,28 @@
+{
+  "name": "gblog-wx",
+  "version": "1.1.0",
+  "main": "index.js",
+  "type": "commonjs",
+  "repository": "git@github.com:fuzui/GBlog-wx.git",
+  "author": "fuzui <73400@163.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo 'Error: no test specified' && exit 1",
+    "eslint": "eslint ./ --ext .js,.wxs,.sjs",
+    "eslint:fix": "eslint --fix . --ext .js,.wxs,.sjs",
+    "prettier:fix": "prettier --config .prettierrc.js --write './**/*.{js,sjs,wxs,css,wxss,acss,wxml,axml,less,scss,json}'"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/eslint-parser": "^7.16.0",
+    "eslint": "^8.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^5.1.1",
+    "prettier": "^2.4.1",
+    "prettier-eslint-cli": "^5.0.1"
+  }
+}

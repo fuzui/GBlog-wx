@@ -1,103 +1,91 @@
 <wxs src="../../../utils/tools.wxs" module="tools" />
-<view wx:if="{{isLogin}}"> 
+<view wx:if="{{isLogin}}">
   <!-- 顶图 -->
-  <view class="UCenter-bg" style="background-image: url(https://cdn.fuzui.net/blog/home_1588604516121.jpg);">
+  <view class="UCenter-bg" style="background-image: url(https://cdn.fuzui.net/blog/home_1588604516121.jpg)">
     <image src="{{user.avatar}}" class="avatar" mode="widthFix"></image>
-    <view class="text-xl">
-      {{user.nickname}}
-    </view>
+    <view class="text-xl"> {{user.nickname}} </view>
     <view class="margin-top-sm">
       <text>{{user.description}}</text>
     </view>
     <image src="https://cdn.fuzui.net/tmp/wave.gif" mode="scaleToFill" class="gif-wave"></image>
   </view>
   <scroll-view scroll-y class="scrollPage">
-  <!-- 宫格 -->
-<view class="padding flex text-center text-grey bg-white shadow-warp">
-  <view class="flex flex-sub flex-direction solid-right" bindtap="showModal" data-target="articleModal">
-    <view class="text-lg text-orange">{{tools.coutNum(statistics.postCount)}}</view>
-    <view class="margin-top-sm">
-      <text class="cuIcon-read"></text> 文章
-    </view>
-  </view>
-  <view class="flex flex-sub flex-direction solid-right" bindtap="toCommentPage">
-    <view class="text-lg text-blue">{{tools.coutNum(statistics.commentCount)}}</view>
-    <view class="margin-top-sm">
-      <text class="cuIcon-community"></text> 评论
-    </view>
-  </view>
-  <view class="flex flex-sub flex-direction">
-    <view class="text-lg text-green">{{tools.coutNum(statistics.visitCount)}}</view>
-    <view class="margin-top-sm">
-      <text class="cuIcon-attention"></text> 阅读量
-    </view>
-  </view>
-  <view class="flex flex-sub flex-direction">
-    <view class="text-lg text-green">{{tools.coutNum(statistics.establishDays)}}</view>
-    <view class="margin-top-sm">
-      <text class="cuIcon-calendar"></text> 建立天数
-    </view>
-  </view>
-</view>
-  <!-- 功能列表 -->
-  <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
-    <view class="cu-item arrow">
-      <view class="content"  bindtap="toCommentPage">
-        <text class="cuIcon-notice text-blue"></text>
-        <text class="text-grey">消息</text>
+    <!-- 宫格 -->
+    <view class="padding flex text-center text-grey bg-white shadow-warp">
+      <view class="flex flex-sub flex-direction solid-right" bindtap="showModal" data-target="articleModal">
+        <view class="text-lg text-orange">{{tools.coutNum(statistics.postCount)}}</view>
+        <view class="margin-top-sm"> <text class="cuIcon-read"></text> 文章 </view>
       </view>
-      <view class="action" >
-        <text class="text-grey text-sm" wx:if="{{noticeCount == 0}}">暂无未读消息</text>
-        <text class="text-red text-sm" wx:if="{{noticeCount != 0}}">有 {{noticeCount}} 条消息待处理</text>
+      <view class="flex flex-sub flex-direction solid-right" bindtap="toCommentPage">
+        <view class="text-lg text-blue">{{tools.coutNum(statistics.commentCount)}}</view>
+        <view class="margin-top-sm"> <text class="cuIcon-community"></text> 评论 </view>
+      </view>
+      <view class="flex flex-sub flex-direction">
+        <view class="text-lg text-green">{{tools.coutNum(statistics.visitCount)}}</view>
+        <view class="margin-top-sm"> <text class="cuIcon-attention"></text> 阅读量 </view>
+      </view>
+      <view class="flex flex-sub flex-direction">
+        <view class="text-lg text-green">{{tools.coutNum(statistics.establishDays)}}</view>
+        <view class="margin-top-sm"> <text class="cuIcon-calendar"></text> 建立天数 </view>
       </view>
     </view>
-    <view class="cu-item arrow" bindtap="toJournalPage">
-      <view class="content" >
-        <text class="cuIcon-writefill text-grey"></text>
-        <text class="text-grey">速记</text>
+    <!-- 功能列表 -->
+    <view class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+      <view class="cu-item arrow">
+        <view class="content" bindtap="toCommentPage">
+          <text class="cuIcon-notice text-blue"></text>
+          <text class="text-grey">消息</text>
+        </view>
+        <view class="action">
+          <text class="text-grey text-sm" wx:if="{{noticeCount == 0}}">暂无未读消息</text>
+          <text class="text-red text-sm" wx:if="{{noticeCount != 0}}">有 {{noticeCount}} 条消息待处理</text>
+        </view>
+      </view>
+      <view class="cu-item arrow" bindtap="toJournalPage">
+        <view class="content">
+          <text class="cuIcon-writefill text-grey"></text>
+          <text class="text-grey">速记</text>
+        </view>
+      </view>
+      <view class="cu-item arrow" bindtap="toPhotosPage">
+        <view class="content">
+          <text class="cuIcon-camera text-olive"></text>
+          <text class="text-grey">素材库</text>
+        </view>
+      </view>
+      <view class="cu-item arrow" bindtap="toLinksPage">
+        <view class="content">
+          <text class="cuIcon-friendadd text-orange"></text>
+          <text class="text-grey">友链</text>
+        </view>
+      </view>
+      <view class="cu-item arrow" bindtap="toAttachmentPage">
+        <view class="content">
+          <text class="cuIcon-picfill text-purple"></text>
+          <text class="text-grey">附件</text>
+        </view>
+      </view>
+      <view class="cu-item arrow" bindtap="showModal" data-target="themeModal">
+        <view class="content">
+          <text class="cuIcon-clothes text-mauve"></text>
+          <text class="text-grey">外观</text>
+        </view>
+      </view>
+      <view class="cu-item arrow" bindtap="toUserPage">
+        <view class="content">
+          <text class="cuIcon-footprint text-brown"></text>
+          <text class="text-grey">个人信息</text>
+        </view>
+      </view>
+      <view class="cu-item arrow" bindtap="showModal" data-target="settingsModal">
+        <view class="content">
+          <text class="cuIcon-settings text-black"></text>
+          <text class="text-grey">系统设置</text>
+        </view>
       </view>
     </view>
-    <view class="cu-item arrow" bindtap="toPhotosPage">
-      <view class="content" >
-        <text class="cuIcon-camera text-olive"></text>
-        <text class="text-grey">素材库</text>
-      </view>
-    </view>
-    <view class="cu-item arrow" bindtap="toLinksPage">
-      <view class="content" >
-        <text class="cuIcon-friendadd text-orange"></text>
-        <text class="text-grey">友链</text>
-      </view>
-    </view>
-    <view class="cu-item arrow" bindtap="toAttachmentPage">
-      <view class="content" >
-        <text class="cuIcon-picfill text-purple"></text>
-        <text class="text-grey">附件</text>
-      </view>
-    </view>
-    <view class="cu-item arrow" bindtap="showModal" data-target="themeModal">
-      <view class="content" >
-        <text class="cuIcon-clothes text-mauve"></text>
-        <text class="text-grey">外观</text>
-      </view>
-    </view>
-    <view class="cu-item arrow" bindtap="toUserPage"> 
-      <view class="content" >
-        <text class="cuIcon-footprint text-brown"></text>
-        <text class="text-grey">个人信息</text>
-      </view>
-    </view>
-    <view class="cu-item arrow" bindtap="showModal" data-target="settingsModal">
-      <view class="content" >
-        <text class="cuIcon-settings text-black"></text>
-        <text class="text-grey">系统设置</text>
-      </view>
-    </view>
-  </view>
-  <view class="cu-tabbar-height"></view>
-
-
-</scroll-view>
+    <view class="cu-tabbar-height"></view>
+  </scroll-view>
 </view>
 <!-- 登录框 -->
 <admin-login wx:if="{{!isLogin}}" logo="{{logo}}" bind:loginSuf="loginSuf"></admin-login>
@@ -129,7 +117,6 @@
           <view>标签</view>
         </view>
       </view>
-
     </view>
   </view>
 </view>
@@ -179,7 +166,7 @@
 </view>
 
 <!-- 加载框 -->
-<view class='cu-load load-modal' wx:if="{{loadModal}}">
-  <image src="{{logo}}" class='png' mode='aspectFit'></image>
-  <view class='gray-text'>加载中...</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">加载中...</view>
 </view>

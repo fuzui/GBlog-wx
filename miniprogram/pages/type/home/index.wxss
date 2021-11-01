@@ -1,73 +1,72 @@
 /* 图标 */
-.cu-list >.cu-item > button > .share image {
+.cu-list > .cu-item > button > .share image {
   display: inline-block;
-	width: 1.5em;
-	height: 1.5em;
+  width: 1.5em;
+  height: 1.5em;
   vertical-align: middle;
 }
 
-.cu-list >.cu-item > button {
-	line-height: 1;
-	margin:0;
-	background-color: #fff;
+.cu-list > .cu-item > button {
+  line-height: 1;
+  margin: 0;
+  background-color: #fff;
 }
-.cu-list >.cu-item > button::after {
-	border:none;
+.cu-list > .cu-item > button::after {
+  border: none;
 }
-
 
 /* 分类卡片 */
 
- .type-card {
-	display: block;
-	overflow: hidden;
+.type-card {
+  display: block;
+  overflow: hidden;
 }
 
-.type-card>.cu-item {
-	display: block;
-	background-color: var(--white);
-	overflow: hidden;
-	border-radius: 10rpx;
-	margin: 30rpx;
+.type-card > .cu-item {
+  display: block;
+  background-color: var(--white);
+  overflow: hidden;
+  border-radius: 10rpx;
+  margin: 30rpx;
 }
 
-.type-card>.cu-item.shadow-blur {
-	overflow: initial;
+.type-card > .cu-item.shadow-blur {
+  overflow: initial;
 }
 
-.type-card.no-card>.cu-item {
-	margin: 0rpx;
-	border-radius: 0rpx;
+.type-card.no-card > .cu-item {
+  margin: 0rpx;
+  border-radius: 0rpx;
 }
 
 .type-card .grid.grid-square {
-	margin-bottom: -20rpx;
+  margin-bottom: -20rpx;
 }
 
 .type-card.case .image {
-	position: relative;
+  position: relative;
 }
 
 .type-card.case .image image {
-	width: 100%;
+  width: 100%;
 }
 
 .type-card.case .image .cu-capsule {
-	position: absolute;
-	right: 0;
-	top: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .type-card.case .image .cu-bar {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	background-color: transparent;
-	padding: 0rpx 30rpx;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: transparent;
+  padding: 0rpx 30rpx;
 }
 
 .type-card.case.no-card .image {
-	margin: 30rpx 30rpx 0;
-	overflow: hidden;
-	border-radius: 10rpx;
+  margin: 30rpx 30rpx 0;
+  overflow: hidden;
+  border-radius: 10rpx;
 }

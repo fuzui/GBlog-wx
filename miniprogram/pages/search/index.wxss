@@ -1,6 +1,6 @@
 .cu-custom {
-	display: block;
-	position: relative;
+  display: block;
+  position: relative;
 }
 
 .cu-custom .cu-bar .content {
@@ -9,26 +9,25 @@
   /* width: 100%; */
 }
 
-
 .cu-custom .cu-bar .content image {
-	height: 60rpx;
-	width: 540rpx;
+  height: 60rpx;
+  width: 540rpx;
 }
 
 .cu-custom .cu-bar {
-	min-height: 0px;
-	padding-right: 220rpx;
-	box-shadow: 0rpx 0rpx 0rpx;
-	z-index: 9999;
+  min-height: 0px;
+  padding-right: 220rpx;
+  box-shadow: 0rpx 0rpx 0rpx;
+  z-index: 9999;
 }
 .cu-bar .search-form {
-	background-color: #f5f5f5;
-	line-height: 64rpx;
-	height: 64rpx;
-	font-size: 24rpx;
-	color: var(--black);
-	flex: 1;
-	display: flex;
-	align-items: center;
-	margin: 0 30rpx;
+  background-color: #f5f5f5;
+  line-height: 64rpx;
+  height: 64rpx;
+  font-size: 24rpx;
+  color: var(--black);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin: 0 30rpx;
 }

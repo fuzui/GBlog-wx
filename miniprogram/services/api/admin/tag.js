@@ -1,7 +1,7 @@
-import apiRequest from './../../../utils/api-request';
+import apiRequest from './../../../utils/api-request'
 import { ApiBaseUrl } from '../../../config/api'
 import { STORAGE_KEY } from '../../const-data/const-data'
-const moduleName = ApiBaseUrl + '/api/admin/tags';
+const moduleName = ApiBaseUrl + '/api/admin/tags'
 
 /**
  * 获取标签列表
@@ -11,15 +11,16 @@ function adminGetTag(param) {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
   return new Promise((resolve, reject) => {
-    apiRequest.Get(moduleName, Object.assign(adminToken, param))
-      .then(r => {
+    apiRequest.Get(moduleName, Object.assign(adminToken, param)).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
-
 
 /**
  * 添加标签
@@ -29,30 +30,34 @@ function adminAddTag(data) {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
   return new Promise((resolve, reject) => {
-    apiRequest.Post(moduleName, data, adminToken)
-      .then(r => {
+    apiRequest.Post(moduleName, data, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
 /**
  * 根据id编辑标签
  */
-function adminEditTag(tagId,param) {
+function adminEditTag(tagId, param) {
   const adminToken = {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
-  const url = moduleName + '/' + tagId;
+  const url = moduleName + '/' + tagId
   return new Promise((resolve, reject) => {
-    apiRequest.Put(url, param, adminToken)
-      .then(r => {
+    apiRequest.Put(url, param, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
@@ -63,14 +68,16 @@ function adminDeleteTag(tagId) {
   const adminToken = {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
-  const url = moduleName + '/' + tagId;
+  const url = moduleName + '/' + tagId
   return new Promise((resolve, reject) => {
-    apiRequest.Delete(url, adminToken)
-      .then(r => {
+    apiRequest.Delete(url, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 

@@ -4,7 +4,7 @@
     <view class="cu-bar fixed text-blank" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
       <view class="search-form round">
         <text class="cuIcon-search"></text>
-        <input type="text" placeholder="搜索" value="{{keyword}}" confirm-type="search" bindconfirm="onSearch"></input>
+        <input type="text" placeholder="搜索" value="{{keyword}}" confirm-type="search" bindconfirm="onSearch" />
       </view>
     </view>
   </view>
@@ -12,7 +12,7 @@
   <view>
     <view class="cu-bar padding tabbar border shop">
       <view class="btn-group">
-        <view class="search padding-xs radius" style="width: 300rpx;">
+        <view class="search padding-xs radius" style="width: 300rpx">
           <picker bindchange="sortPickerChange" value="{{index}}" range="{{sortPicker}}" range-key="value">
             <view class="picker text-center">
               {{sortPropertyValue}}
@@ -20,7 +20,7 @@
             </view>
           </picker>
         </view>
-        <view class="search padding-xs radius" style="width: 300rpx;">
+        <view class="search padding-xs radius" style="width: 300rpx">
           <picker bindchange="teamPickerChange" value="{{index}}" range="{{teamPicker}}" range-key="value">
             <view class="picker text-center">
               {{teamValue}}
@@ -30,75 +30,84 @@
         </view>
       </view>
     </view>
-    
   </view>
 </view>
 <!--
   图库瀑布流布局
   参考：https://developers.weixin.qq.com/community/develop/article/doc/000a2e9db9ca98a3c379cfa4a5d013
 -->
-<view class="flex align-start grid col-2 padding-sm" style="padding-top:{{2 * CustomBar + StatusBar}}px; padding-bottom:100rpx;" catchtouchmove="{{modalName!='detail'}}">
+<view
+  class="flex align-start grid col-2 padding-sm"
+  style="padding-top:{{2 * CustomBar + StatusBar}}px; padding-bottom:100rpx;"
+  catchtouchmove="{{modalName!='detail'}}"
+>
   <view class="padding-xs" wx:for="{{columns}}" wx:for-item="column" wx:key="columnIndex">
     <view wx:for="{{column}}" style="padding-bottom: {{spacing}}rpx;" wx:for-item="columnItem" wx:key="columnItemIndex">
-      <view class="flex align-end shadow-blur animation-slide-bottom" bindtap="toDetail" data-photo="{{columnItem}}"
-        style="background-image: url({{columnItem.thumbnail}});background-size: 335rpx auto; height: {{columnItem.height*335/750}}rpx;">
-        <view class="bg-shadeBottom padding flex-sub text-cut">
-          {{columnItem.name}}
-        </view> 
+      <view
+        class="flex align-end shadow-blur animation-slide-bottom"
+        bindtap="toDetail"
+        data-photo="{{columnItem}}"
+        style="background-image: url({{columnItem.thumbnail}});background-size: 335rpx auto; height: {{columnItem.height*335/750}}rpx;"
+      >
+        <view class="bg-shadeBottom padding flex-sub text-cut"> {{columnItem.name}} </view>
       </view>
     </view>
   </view>
 </view>
 <view hidden="{{true}}">
-  <image wx:for="{{tempContent}}" wx:key="index" src="{{item.thumbnail}}" bindload="loadPic" binderror="loadPicError" data-index="{{index}}" />
+  <image
+    wx:for="{{tempContent}}"
+    wx:key="index"
+    src="{{item.thumbnail}}"
+    bindload="loadPic"
+    binderror="loadPicError"
+    data-index="{{index}}"
+  />
 </view>
 <!-- 弹框加载 -->
-<view class='cu-load load-modal' wx:if="{{loadModal}}">
-  <image src='{{logo}}' class='png' mode='aspectFit'></image>
-  <view class='gray-text'>加载中...</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">加载中...</view>
 </view>
 <!-- 详情 -->
 <view class="cu-modal {{modalName=='detail'?'show':''}}">
   <view class="cu-dialog">
-    <view class="bg-img flex align-end"
+    <view
+      class="bg-img flex align-end"
       style="background-image: url('{{currentPhoto.url}}');background-size: 680rpx auto;height:{{currentPhoto.height*680/750}}rpx;"
       bindtap="preview"
-      data-url="{{currentPhoto.url}}">
+      data-url="{{currentPhoto.url}}"
+    >
       <view class="bg-shadeBottom padding flex-sub">
         <view class="cu-capsule fl" wx:if="{{currentPhoto.team}}">
           <view class="cu-tag bg-red sm">
             <text class="cuIcon-tag"></text>
           </view>
-          <view class="cu-tag line-red sm">
-            {{currentPhoto.team}}
-          </view>
+          <view class="cu-tag line-red sm"> {{currentPhoto.team}} </view>
         </view>
         <view class="cu-capsule round fl" wx:if="{{currentPhoto.location}}">
           <view class="cu-tag bg-grey sm">
             <text class="cuIcon-location"></text>
           </view>
-          <view class="cu-tag line-grey sm">
-            {{currentPhoto.location}}
-          </view>
+          <view class="cu-tag line-grey sm"> {{currentPhoto.location}} </view>
         </view>
         <view class="cu-capsule round fl" wx:if="{{currentPhoto.takeTime}}">
-          <view class="cu-tag bg-blue sm">
-            拍摄于
-          </view>
-          <view class="cu-tag line-blue sm">
-            {{tools.tsFormatTime(currentPhoto.takeTime)}}
-          </view>
+          <view class="cu-tag bg-blue sm"> 拍摄于 </view>
+          <view class="cu-tag line-blue sm"> {{tools.tsFormatTime(currentPhoto.takeTime)}} </view>
         </view>
         <view class="close text-right text-xl justify-end text-white fr">
           <view class="action" catchtap="hideModal">
             <text class="cuIcon-close"></text>
           </view>
-        </view> 
+        </view>
       </view>
     </view>
-    <scroll-view scroll-y style="height: 130rpx;"
+    <scroll-view
+      scroll-y
+      style="height: 130rpx"
       class="margin-xs bg-white padding-xs radius shadow-lg text-left"
-      wx:if="{{currentPhoto.description}}">
+      wx:if="{{currentPhoto.description}}"
+    >
       <mp-html
         lazy-load
         scroll-table

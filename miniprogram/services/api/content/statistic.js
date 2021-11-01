@@ -1,6 +1,6 @@
-import apiRequest from './../../../utils/api-request';
+import apiRequest from './../../../utils/api-request'
 import { ApiBaseUrl } from '../../../config/api'
-const moduleName = ApiBaseUrl + '/api/content/statistics';
+const moduleName = ApiBaseUrl + '/api/content/statistics'
 
 /**
  * 获取统计信息
@@ -8,12 +8,14 @@ const moduleName = ApiBaseUrl + '/api/content/statistics';
 function getStatistics() {
   const url = moduleName + '/user'
   return new Promise((resolve, reject) => {
-    apiRequest.Get(url, {})
-      .then(r => {
+    apiRequest.Get(url, {}).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 

@@ -7,7 +7,7 @@ const buildURL = (url, query = {}, isSequence = true) => {
     .join('&')
   return url + joiner + queryStr
 }
- 
+
 // 解析query对象
 const decodeQuery = (originQuery = {}, isSequence = true) => {
   const result = {}
@@ -22,20 +22,20 @@ const decodeQuery = (originQuery = {}, isSequence = true) => {
 }
 
 const mergeJsonObject = (jsonObject1 = {}, jsonObject2 = {}) => {
-  var resultJsonObject = {};
-  for (var attr in jsonObject1) {
-    resultJsonObject[attr] = jsonObject1[attr];
+  const resultJsonObject = {}
+  for (const attr in jsonObject1) {
+    resultJsonObject[attr] = jsonObject1[attr]
   }
-  for (var attr in jsonObject2) {
-    resultJsonObject[attr] = jsonObject2[attr];
+  for (const attr in jsonObject2) {
+    resultJsonObject[attr] = jsonObject2[attr]
   }
-  return resultJsonObject;
+  return resultJsonObject
 }
 
 const compareVersion = (v1, v2) => {
   v1 = v1.split('.')
   v2 = v2.split('.')
-  var len = Math.max(v1.length, v2.length)
+  const len = Math.max(v1.length, v2.length)
 
   while (v1.length < len) {
     v1.push('0')
@@ -44,9 +44,9 @@ const compareVersion = (v1, v2) => {
     v2.push('0')
   }
 
-  for (var i = 0; i < len; i++) {
-    var num1 = parseInt(v1[i])
-    var num2 = parseInt(v2[i])
+  for (let i = 0; i < len; i++) {
+    const num1 = parseInt(v1[i])
+    const num2 = parseInt(v2[i])
 
     if (num1 > num2) {
       return 1
@@ -57,9 +57,9 @@ const compareVersion = (v1, v2) => {
   return 0
 }
 const getRandomImage = (arr = []) => {
-  return arr[Math.floor((Math.random()*arr.length))];
+  return arr[Math.floor(Math.random() * arr.length)]
 }
- 
+
 module.exports = {
   buildURL,
   decodeQuery,

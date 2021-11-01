@@ -1,8 +1,8 @@
-//获取应用实例
-const app = getApp();
+// 获取应用实例
+const app = getApp()
 Component({
   data: {
-    randomGraphs: [],
+    randomGraphs: []
   },
   properties: {
     content: {
@@ -19,7 +19,7 @@ Component({
     }
   },
   options: {
-    addGlobalClass: true,
+    addGlobalClass: true
   },
   pageLifetimes: {
     async show() {
@@ -33,10 +33,10 @@ Component({
   },
   methods: {
     details(e) {
-      //详情页跳转
+      // 详情页跳转
       wx.navigateTo({
         url: '/pages/details/index?id=' + e.currentTarget.id
       })
-    },
+    }
   }
 })

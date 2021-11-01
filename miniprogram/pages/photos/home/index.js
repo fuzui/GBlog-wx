@@ -1,6 +1,7 @@
-const app = getApp();
-import { getPhotos } from '../../../services/api/content/photo';
-import { PageSize, CustomStyle } from '../../../config/api';
+import { getPhotos } from '../../../services/api/content/photo'
+import { PageSize, CustomStyle } from '../../../config/api'
+
+const app = getApp()
 
 Page({
   jsData: {
@@ -10,7 +11,7 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
-    logo: "",
+    logo: '',
     pageNo: 0,
     keyword: null,
     team: null,
@@ -18,51 +19,47 @@ Page({
     currentPhoto: {},
     ColorList: app.globalData.ColorList,
     photoImage: CustomStyle.photoImage,
-    columns: [
-      [],
-      []
-    ],
+    columns: [[], []],
     tempContent: [],
     spacing: 20,
     sortProperty: 'takeTime',
-    sortPropertyValue: "拍摄时间",
-    teamValue: "全部分组",
+    sortPropertyValue: '拍摄时间',
+    teamValue: '全部分组',
     sortPicker: [
       {
-        key: "takeTime",
-        value: "拍摄时间"
+        key: 'takeTime',
+        value: '拍摄时间'
       },
       {
-        key: "location",
-        value: "地点"
+        key: 'location',
+        value: '地点'
       },
       {
-        key: "name",
-        value: "名称"
+        key: 'name',
+        value: '名称'
       }
     ],
     teamPicker: [
       {
         key: null,
-        value: "全部"
+        value: '全部'
       }
-    ],
+    ]
   },
-  
-  async onLoad() { 
-    var that = this;
+
+  async onLoad() {
+    const that = this
     that.setData({
       logo: app.globalData.logo
     })
     that.setData({
-      loadModal:true
+      loadModal: true
     })
-    var content = await this.getPhotos();
+    const content = await this.getPhotos()
     that.setData({
       content: content,
-      loadModal:false
-    });
-    
+      loadModal: false
+    })
   },
   async onShow() {
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
@@ -75,22 +72,22 @@ Page({
    * 向下滑动拉去下一页
    */
   async onReachBottom() {
-    var that = this;
-    var pageNo = ++that.data.pageNo;
+    const that = this
+    const pageNo = ++that.data.pageNo
     that.setData({
-      pageNo: pageNo,
-    });
-    const content = await this.getPhotos();
-    if(content){
+      pageNo: pageNo
+    })
+    const content = await this.getPhotos()
+    if (content) {
       that.setData({
         content: content
-      });
+      })
     }
   },
   async onSearch(e) {
-    var that = this
-    const keyword = e.detail.value;
-    if (keyword != that.data.keyword) {
+    const that = this
+    const keyword = e.detail.value
+    if (keyword !== that.data.keyword) {
       that.setData({
         keyword: keyword
       })
@@ -100,12 +97,12 @@ Page({
   },
   /**
    * 排序条件
-   * @param {*} e 
+   * @param {*} e
    */
   async sortPickerChange(e) {
-    var that = this
+    const that = this
     const sortProperty = that.data.sortPicker[e.detail.value].key
-    if (that.data.sortProperty != sortProperty) {
+    if (that.data.sortProperty !== sortProperty) {
       const sortPropertyValue = that.data.sortPicker[e.detail.value].value
       that.setData({
         sortProperty: sortProperty,
@@ -117,12 +114,12 @@ Page({
   },
   /**
    * 分组条件选择
-   * @param {*} e 
+   * @param {*} e
    */
   async teamPickerChange(e) {
-    var that = this
+    const that = this
     const team = that.data.teamPicker[e.detail.value].key
-    if (that.data.team != team) {
+    if (that.data.team !== team) {
       const teamValue = that.data.teamPicker[e.detail.value].value
       that.setData({
         team: team,
@@ -131,18 +128,14 @@ Page({
       that.init()
       await that.getPhotos()
     }
-    
   },
   init() {
-    var that = this
+    const that = this
     that.setData({
       content: [],
-      columns: [
-        [],
-        []
-      ],
+      columns: [[], []],
       tempContent: [],
-      pageNo: 0,
+      pageNo: 0
     })
     that.jsData.columnsHeight = [0, 0]
     that.jsData.isLoading = false
@@ -151,7 +144,7 @@ Page({
    * 获取光影相册
    */
   async getPhotos() {
-    var that = this;
+    const that = this
     try {
       const param = {
         keyword: that.data.keyword,
@@ -159,9 +152,9 @@ Page({
         page: that.data.pageNo,
         size: PageSize.photoSize,
         sort: that.data.sortProperty + ',desc'
-      };
-      const result = await getPhotos(param);
-      if(result.page < result.pages){
+      }
+      const result = await getPhotos(param)
+      if (result.page < result.pages) {
         if (!that.jsData.isLoading) {
           wx.showLoading()
           that.jsData.isLoading = true
@@ -169,19 +162,19 @@ Page({
             tempContent: result.content
           })
         }
-        return that.data.content.concat(result.content);
+        return that.data.content.concat(result.content)
       }
     } catch (error) {
       return await Promise.reject(error)
     }
   },
-  
+
   /**
    * 跳到详情页
-   * @param {*} event 
+   * @param {*} event
    */
   toDetail: function (event) {
-    var that = this;
+    const that = this
     that.setData({
       modalName: 'detail',
       currentPhoto: event.currentTarget.dataset.photo
@@ -189,10 +182,10 @@ Page({
   },
   /**
    * 预览
-   * @param {*} e 
+   * @param {*} e
    */
   preview(event) {
-    const url = event.currentTarget.dataset.url;
+    const url = event.currentTarget.dataset.url
     wx.previewImage({
       urls: [url]
     })
@@ -207,63 +200,69 @@ Page({
   },
   /**
    * 分享
-   * @param {*} res 
+   * @param {*} res
    */
   onShareAppMessage: function (res) {
     return {
-      title: app.globalData.blogTitle+"光影",
+      title: app.globalData.blogTitle + '光影',
       imageUrl: CustomStyle.photoImage,
       path: '/pages/photos/home/index'
     }
   },
   onShareTimeline: function (res) {
     return {
-      title: app.globalData.blogTitle+"光影",
+      title: app.globalData.blogTitle + '光影',
       imageUrl: CustomStyle.photoImage
     }
   },
-  //获取图片尺寸数据
-  loadPic: function(e) {
-    var that = this,
-      data = that.data,
-      tempContent = data.tempContent,
-      index = e.currentTarget.dataset.index
+  // 获取图片尺寸数据
+  loadPic: function (e) {
+    const that = this
+    const data = that.data
+    const tempContent = data.tempContent
+    const index = e.currentTarget.dataset.index
     if (tempContent[index]) {
-      //以750为宽度算出相对应的高度
-      tempContent[index].height = e.detail.height * 750 / e.detail.width
+      // 以750为宽度算出相对应的高度
+      tempContent[index].height = (e.detail.height * 750) / e.detail.width
       tempContent[index].isLoad = true
     }
-    that.setData({
-      tempContent: tempContent
-    }, function() {
-      that.finLoadPic()
-    })
+    that.setData(
+      {
+        tempContent: tempContent
+      },
+      function () {
+        that.finLoadPic()
+      }
+    )
   },
-  //图片加载错误处理
-  loadPicError: function(e) {
-    var that = this,
-      data = that.data,
-      tempContent = data.tempContent,
-      index = e.currentTarget.dataset.index
+  // 图片加载错误处理
+  loadPicError: function (e) {
+    const that = this
+    const data = that.data
+    const tempContent = data.tempContent
+    const index = e.currentTarget.dataset.index
     if (tempContent[index]) {
-      //图片加载错误时高度固定750，展示为正方形
+      // 图片加载错误时高度固定750，展示为正方形
       tempContent[index].height = 750
       tempContent[index].isLoad = true
     }
-    that.setData({
-      tempContent: tempContent
-    }, function() {
-      that.finLoadPic()
-    })
+    that.setData(
+      {
+        tempContent: tempContent
+      },
+      function () {
+        that.finLoadPic()
+      }
+    )
   },
-  //判断图片是否加载完成
-  finLoadPic: function() {
-    var that = this,
-      data = that.data,
-      tempContent = data.tempContent,
-      length = tempContent.length,
-      fin = true
-    for (var i = 0; i < length; i++) {
+  // 判断图片是否加载完成
+  finLoadPic: function () {
+    const that = this
+    const data = that.data
+    const tempContent = data.tempContent
+    const length = tempContent.length
+    let fin = true
+    for (let i = 0; i < length; i++) {
       if (!tempContent[i].isLoad) {
         fin = false
         break
@@ -277,16 +276,16 @@ Page({
       }
     }
   },
-  //渲染到瀑布流
-  renderPage: function() {
-    var that = this,
-      data = that.data,
-      columns = data.columns,
-      tempContent = data.tempContent,
-      length = tempContent.length,
-      columnsHeight = that.jsData.columnsHeight,
-      index = 0
-    for (var i = 0; i < length; i++) {
+  // 渲染到瀑布流
+  renderPage: function () {
+    const that = this
+    const data = that.data
+    const columns = data.columns
+    const tempContent = data.tempContent
+    const length = tempContent.length
+    const columnsHeight = that.jsData.columnsHeight
+    let index = 0
+    for (let i = 0; i < length; i++) {
       index = columnsHeight[1] < columnsHeight[0] ? 1 : 0
       columns[index].push(tempContent[i])
       columnsHeight[index] += tempContent[i].height
@@ -297,6 +296,5 @@ Page({
       tempContent: []
     })
     that.jsData.columnsHeight = columnsHeight
-  },
+  }
 })
-

@@ -1,52 +1,46 @@
-const app = getApp();
-import { getLinks } from '../../../services/api/content/link';
+import { getLinks } from '../../../services/api/content/link'
+
+const app = getApp()
+
 Page({
   data: {
-    logo: "",
+    logo: '',
     bottomFlag: false,
     links: [],
-    bgColor: [
-      "green",
-      "red",
-      "grey",
-      "blue",
-      "cyan",
-      "purple"
-    ]
+    bgColor: ['green', 'red', 'grey', 'blue', 'cyan', 'purple']
   },
-  onLoad: function () { 
-    var that = this;
+  onLoad: function () {
+    const that = this
     that.setData({
       logo: app.globalData.logo
     })
   },
   async onShow() {
-    var that = this;
+    const that = this
     that.setData({
-      loadModal:true
+      loadModal: true
     })
-    var links = await this.getLinks();
+    const links = await this.getLinks()
     that.setData({
       links: links,
-      loadModal:false
-    });
+      loadModal: false
+    })
   },
   /**
    * 获取友链
    */
   async getLinks() {
     try {
-      const param = {
-      };
-      const result = await getLinks(param);
-      return result;
+      const param = {}
+      const result = await getLinks(param)
+      return result
     } catch (error) {
       return await Promise.reject(error)
     }
   },
   /**
    * 复制
-   * @param {*} e 
+   * @param {*} e
    */
   copyLink(e) {
     wx.setClipboardData({
@@ -54,7 +48,7 @@ Page({
       success: res => {
         wx.showToast({
           title: '已复制',
-          duration: 1000,
+          duration: 1000
         })
       }
     })

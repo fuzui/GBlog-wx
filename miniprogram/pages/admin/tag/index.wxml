@@ -4,26 +4,42 @@
 <!-- 标签主页 -->
 <view class="tag-box">
   <!-- 标签 -->
-  <scroll-view class="tag-nav nav" scroll-y scroll-with-animation scroll-top="{{tagNavTop}}" style="height:calc(100vh - {{CustomBar}}px)">
-    <view class="cu-item {{-1==tagCur?'text-blue cur':''}} " bindtap='tagSelect' data-index="-1">
+  <scroll-view
+    class="tag-nav nav"
+    scroll-y
+    scroll-with-animation
+    scroll-top="{{tagNavTop}}"
+    style="height:calc(100vh - {{CustomBar}}px)"
+  >
+    <view class="cu-item {{-1==tagCur?'text-blue cur':''}} " bindtap="tagSelect" data-index="-1">
       <view class="flex">
         <text class="cuIcon-add text-blue"></text>
         <text class="text-cut margin-left">新增</text>
       </view>
     </view>
-    <view class="cu-item {{index==tagCur?'text-green cur':''}} " wx:for="{{tagList}}" wx:key="index" bindtap='tagSelect' data-index="{{index}}">
+    <view
+      class="cu-item {{index==tagCur?'text-green cur':''}} "
+      wx:for="{{tagList}}"
+      wx:key="index"
+      bindtap="tagSelect"
+      data-index="{{index}}"
+    >
       <view class="flex">
         <text class="text-cut">{{item.name}}</text>
       </view>
     </view>
   </scroll-view>
   <!-- 详情 -->
-  <scroll-view class="article-main" scroll-y scroll-with-animation style="height:calc(100vh - {{CustomBar}}px)"  bindscrolltolower="onReachBottomArticleMain">
+  <scroll-view
+    class="article-main"
+    scroll-y
+    scroll-with-animation
+    style="height:calc(100vh - {{CustomBar}}px)"
+    bindscrolltolower="onReachBottomArticleMain"
+  >
     <view class="padding-top padding-lr-sm">
-      <view class='cu-bar solid-bottom bg-white'>
-        <view class='action'>
-          <text class='cuIcon-title text-green'></text> {{tagCur=='-1'?'新增':name}} 
-        </view>
+      <view class="cu-bar solid-bottom bg-white">
+        <view class="action"> <text class="cuIcon-title text-green"></text> {{tagCur=='-1'?'新增':name}} </view>
         <view class="action" wx:if="{{tagCur!=-1}}">
           <text class="cuIcon-delete text-red" bindtap="deleteTag"></text>
         </view>
@@ -31,17 +47,17 @@
       <form>
         <view class="cu-form-group padding-top">
           <view class="title">名称</view>
-          <input placeholder="名称" value="{{name}}" bindinput="nameInput"></input>
+          <input placeholder="名称" value="{{name}}" bindinput="nameInput" />
         </view>
         <view class="text-sm text-grey padding-left bg-white">* 页面上所显示的名称</view>
         <view class="cu-form-group padding-top">
           <view class="title">别名</view>
-          <input placeholder="别名" value="{{slug}}" bindinput="slugInput"></input>
+          <input placeholder="别名" value="{{slug}}" bindinput="slugInput" />
         </view>
         <view class="text-sm text-grey padding-left bg-white">* 一般为单个标签页面的标识，最好为英文</view>
         <view class="cu-form-group padding-top">
           <view class="title">封面图</view>
-          <input placeholder="封面图" value="{{thumbnail}}" bindinput="thumbnailInput"></input>
+          <input placeholder="封面图" value="{{thumbnail}}" bindinput="thumbnailInput" />
           <text class="cuIcon-pic text-blue" bindtap="showModal" data-target="selectImageModal"></text>
         </view>
         <view class="text-sm text-grey padding-left bg-white">* 在标签页面可展示，需要主题支持</view>
@@ -53,14 +69,14 @@
   </scroll-view>
 </view>
 <!-- 弹框加载 -->
-<view class='cu-load load-modal' wx:if="{{loadModal}}">
-  <image src='{{logo}}' class='png' mode='aspectFit'></image>
-  <view class='gray-text'>加载中...</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">加载中...</view>
 </view>
 <!-- 弹框上传加载 -->
-<view class='cu-load load-modal' wx:if="{{uploadModal}}">
-  <image src='{{logo}}' class='png' mode='aspectFit'></image>
-  <view class='gray-text'>上传中...</view>
+<view class="cu-load load-modal" wx:if="{{uploadModal}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">上传中...</view>
 </view>
 
 <!-- 封面图选择 -->

@@ -1,29 +1,32 @@
 <wxs src="../../utils/tools.wxs" module="tools" />
 <view class="cu-card article {{layout == 'card'?'':'no-card'}}">
-  <view class="cu-item shadow-blur" id="{{item.id}}" bindtap='details' wx:for="{{content}}" wx:key="key">
-      <view class="title">
-        <view class="text-cut">
-          <view class="cu-tag bg-red light sm round" wx:if="{{item.topPriority==true}}">置顶</view>
-          {{item.title}}
-        </view>
+  <view class="cu-item shadow-blur" id="{{item.id}}" bindtap="details" wx:for="{{content}}" wx:key="key">
+    <view class="title">
+      <view class="text-cut">
+        <view class="cu-tag bg-red light sm round" wx:if="{{item.topPriority==true}}">置顶</view>
+        {{item.title}}
       </view>
-      <view class="content">
-
+    </view>
+    <view class="content">
       <image src="{{item.thumbnail?item.thumbnail:tools.getRandomImage(randomGraphs)}}" mode="aspectFill"></image>
 
       <view class="desc">
-          <view class="text-content"> {{item.summary}} </view>
-          <view class="text-gray text-sm">
-          
-            <view class="cu-tag bg-blue light sm round" wx:if="{{item.categories.length}}"> {{item.categories[0].name}} </view>
-            <block wx:if="{{isMore}}"><text class="cuIcon-timefill margin-lr-xs"></text> {{tools.tsFormatTime(item.createTime)}}</block>
+        <view class="text-content"> {{item.summary}} </view>
+        <view class="text-gray text-sm">
+          <view class="cu-tag bg-blue light sm round" wx:if="{{item.categories.length}}">
+            {{item.categories[0].name}}
           </view>
-          <view class="text-gray text-sm" wx:if="{{isMore}}">
-            <text class="cuIcon-attentionfill margin-lr-xs"></text> {{item.visits}}
-            <text class="cuIcon-appreciatefill margin-lr-xs"></text> {{item.likes}}
-            <text class="cuIcon-messagefill margin-lr-xs" wx:if="{{item.commentCount!=null}}"></text> {{item.commentCount}}
-          </view>
+          <block wx:if="{{isMore}}"
+            ><text class="cuIcon-timefill margin-lr-xs"></text> {{tools.tsFormatTime(item.createTime)}}</block
+          >
+        </view>
+        <view class="text-gray text-sm" wx:if="{{isMore}}">
+          <text class="cuIcon-attentionfill margin-lr-xs"></text> {{item.visits}}
+          <text class="cuIcon-appreciatefill margin-lr-xs"></text> {{item.likes}}
+          <text class="cuIcon-messagefill margin-lr-xs" wx:if="{{item.commentCount!=null}}"></text>
+          {{item.commentCount}}
         </view>
       </view>
+    </view>
   </view>
 </view>

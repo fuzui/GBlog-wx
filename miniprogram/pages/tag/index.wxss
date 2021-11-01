@@ -2,7 +2,7 @@
   width: 200rpx;
   white-space: initial;
 }
-.tag-nav>.cu-item .flex .text-cut {
+.tag-nav > .cu-item .flex .text-cut {
   max-width: 100rpx;
   align-items: center;
   justify-content: center;
@@ -21,7 +21,7 @@
   background-color: #f1f1f1;
 }
 .tag-nav.nav .cu-item.cur::after {
-  content: "";
+  content: '';
   width: 8rpx;
   height: 30rpx;
   border-radius: 10rpx 0 0 10rpx;
@@ -32,61 +32,61 @@
   bottom: 0;
   margin: auto;
 }
-.tag-box{
+.tag-box {
   display: flex;
 }
-.article-main{
+.article-main {
   background-color: #f1f1f1;
 }
 /* 自定义标签卡片 */
 .cu-list.tag-page {
-	overflow: hidden;
+  overflow: hidden;
 }
 
-.cu-list.tag-page>.cu-item {
-	position: relative;
-	display: flex;
-	padding-right: 10rpx;
-	height: 140rpx;
-	background-color: var(--white);
-	justify-content: flex-end;
-	align-items: center
+.cu-list.tag-page > .cu-item {
+  position: relative;
+  display: flex;
+  padding-right: 10rpx;
+  height: 140rpx;
+  background-color: var(--white);
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.cu-list.tag-page>.cu-item .flex .text-cut {
-	max-width: 510rpx;
+.cu-list.tag-page > .cu-item .flex .text-cut {
+  max-width: 510rpx;
 }
 
-.cu-list.tag-page>.cu-item .content {
-	position: absolute;
-	left: 30rpx;
-	width: calc(100% - 96rpx - 60rpx - 20rpx);
-	line-height: 1.6em;
+.cu-list.tag-page > .cu-item .content {
+  position: absolute;
+  left: 30rpx;
+  width: calc(100% - 96rpx - 60rpx - 20rpx);
+  line-height: 1.6em;
 }
 
-.cu-list.tag-page>.cu-item .content.flex-sub {
-	width: calc(100% - 96rpx - 60rpx - 20rpx);
+.cu-list.tag-page > .cu-item .content.flex-sub {
+  width: calc(100% - 96rpx - 60rpx - 20rpx);
 }
 
-.cu-list.tag-page>.cu-item .content>view:first-child {
-	font-size: 30rpx;
-	display: flex;
-	align-items: center
+.cu-list.tag-page > .cu-item .content > view:first-child {
+  font-size: 30rpx;
+  display: flex;
+  align-items: center;
 }
 
-.cu-list.tag-page>.cu-item .action .likes {
-	display: inline-block;
-	text-align:center;
-	height: 28rpx;
-	font-size: 18rpx;
-	line-height: 32rpx
+.cu-list.tag-page > .cu-item .action .likes {
+  display: inline-block;
+  text-align: center;
+  height: 28rpx;
+  font-size: 18rpx;
+  line-height: 32rpx;
 }
 
-.cu-list.tag-page>.cu-item .action {
-	width: 120rpx;
-	text-align: center
+.cu-list.tag-page > .cu-item .action {
+  width: 120rpx;
+  text-align: center;
 }
 
-.cu-list.tag-page>.cu-item .action view+view {
-	margin-top: 10rpx
+.cu-list.tag-page > .cu-item .action view + view {
+  margin-top: 10rpx;
 }

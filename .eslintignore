@@ -1,0 +1,7 @@
+# .eslintignore
+
+node_modules
+miniprogram/components/mp-weixin
+miniprogram/components/painter
+miniprogram/styles/colorui
+miniprogram/utils/qs.js

@@ -1,5 +1,5 @@
-//获取应用实例
-const app = getApp();
+// 获取应用实例
+const app = getApp()
 Page({
   data: {
     shareImage: null,
@@ -14,16 +14,16 @@ Page({
       })
     })
   },
-  onShareAppMessage: function(res) {
+  onShareAppMessage: function (res) {
     return {
-      title: app.globalData.blogTitle+'分享海报',
+      title: app.globalData.blogTitle + '分享海报',
       imageUrl: this.data.shareImage,
       path: this.data.path
     }
   },
   onShareTimeline: function (res) {
     return {
-      title: app.globalData.blogTitle+'分享海报',
+      title: app.globalData.blogTitle + '分享海报',
       imageUrl: app.globalData.logo
     }
   },
@@ -31,12 +31,12 @@ Page({
     const { shareImage } = this.data
     if (shareImage) {
       this.saveImageToPhotosAlbum({
-        filePath: shareImage,
+        filePath: shareImage
       }).then(() => {
         wx.showToast({
           icon: 'none',
           title: '海报已保存至相册',
-          duration: 2000,
+          duration: 2000
         })
       })
     }
@@ -47,13 +47,13 @@ Page({
       wx.saveImageToPhotosAlbum({
         ...option,
         success: resolve,
-        fail: reject,
+        fail: reject
       })
     })
   },
-  backPage(){
+  backPage() {
     wx.navigateBack({
       delta: 1
     })
   }
-});
+})

@@ -1,8 +1,7 @@
-import apiRequest from './../../../utils/api-request';
+import apiRequest from './../../../utils/api-request'
 import { ApiBaseUrl } from '../../../config/api'
 import { STORAGE_KEY } from '../../const-data/const-data'
-const moduleName = ApiBaseUrl + '/api/admin/themes';
-
+const moduleName = ApiBaseUrl + '/api/admin/themes'
 
 /**
  * 获取主题列表
@@ -12,12 +11,14 @@ function adminGetTheme(param) {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
   return new Promise((resolve, reject) => {
-    apiRequest.Get(moduleName, Object.assign(adminToken, param))
-      .then(r => {
+    apiRequest.Get(moduleName, Object.assign(adminToken, param)).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
@@ -30,12 +31,14 @@ function adminActivatesTheme(thmemId) {
   }
   const url = moduleName + '/' + thmemId + '/activation'
   return new Promise((resolve, reject) => {
-    apiRequest.Post(url, {}, adminToken)
-      .then(r => {
+    apiRequest.Post(url, {}, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
@@ -48,12 +51,14 @@ function adminFetchingNewTheme(data) {
   }
   const url = moduleName + '/fetching'
   return new Promise((resolve, reject) => {
-    apiRequest.Post(url, data, adminToken)
-      .then(r => {
+    apiRequest.Post(url, data, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
@@ -64,14 +69,16 @@ function adminDeleteTheme(thmemId) {
   const adminToken = {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
-  const url = moduleName + '/' + thmemId;
+  const url = moduleName + '/' + thmemId
   return new Promise((resolve, reject) => {
-    apiRequest.Delete(url, adminToken)
-      .then(r => {
+    apiRequest.Delete(url, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
@@ -82,14 +89,16 @@ function adminFetchingTheme(thmemId) {
   const adminToken = {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
-  const url = moduleName + '/fetching/' + thmemId;
+  const url = moduleName + '/fetching/' + thmemId
   return new Promise((resolve, reject) => {
-    apiRequest.Put(url, {}, adminToken)
-      .then(r => {
+    apiRequest.Put(url, {}, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
@@ -98,5 +107,5 @@ module.exports = {
   adminActivatesTheme,
   adminDeleteTheme,
   adminFetchingTheme,
-  adminFetchingNewTheme,
+  adminFetchingNewTheme
 }

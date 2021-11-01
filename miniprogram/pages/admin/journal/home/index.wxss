@@ -1,36 +1,36 @@
 .cu-bar.btn-group button {
   padding: 20rpx 32rpx;
   flex: 1;
-	margin: 0 20rpx;
-	max-width: 80%;
+  margin: 0 20rpx;
+  max-width: 80%;
 }
 textarea {
-  border:medium double blue;
+  border: medium double blue;
 }
 /* 日期 */
 .cu-timeline .cu-time {
-	width: 300rpx;
-	text-align: left;
-	padding: 20rpx 30rpx;
-	font-size: 26rpx;
-	color: #888;
-	display: block;
+  width: 300rpx;
+  text-align: left;
+  padding: 20rpx 30rpx;
+  font-size: 26rpx;
+  color: #888;
+  display: block;
 }
 /* 分割线 */
 .title {
-	font-size: 30rpx;
-	font-weight: 900;
-	color: var(--black);
-	line-height: 100rpx;
-	padding: 0 30rpx;
+  font-size: 30rpx;
+  font-weight: 900;
+  color: var(--black);
+  line-height: 100rpx;
+  padding: 0 30rpx;
 }
 /* 分隔线--底部 */
-.line{
+.line {
   position: relative;
   top: 90rpx;
-  width: 90%;    /* 分隔线的长度 */
+  width: 90%; /* 分隔线的长度 */
   margin: auto;
-  height: 1px;    /* 分隔线粗细 */
+  height: 1px; /* 分隔线粗细 */
   text-align: center;
   font-size: 24rpx;
   color: #aaa;
@@ -38,21 +38,21 @@ textarea {
   margin-top: 5px;
   margin-bottom: 22px;
 }
-.line span{
+.line span {
   position: relative;
   top: -8px;
   background: #fff;
   padding: 0px 10px;
 }
 
-.cu-bar .action.sub-title text[class*="text-"]:last-child {
-	position: absolute;
-	display: inline-block;
-	bottom: -0.7rem;
-	left: 0.5rem;
-	opacity: 0.2;
-	z-index: 0;
-	text-align: center;
-	font-weight: 900;
-	font-size: 20rpx;
+.cu-bar .action.sub-title text[class*='text-']:last-child {
+  position: absolute;
+  display: inline-block;
+  bottom: -0.7rem;
+  left: 0.5rem;
+  opacity: 0.2;
+  z-index: 0;
+  text-align: center;
+  font-weight: 900;
+  font-size: 20rpx;
 }

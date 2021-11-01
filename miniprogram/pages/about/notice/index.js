@@ -1,15 +1,15 @@
-const app = getApp();
+const app = getApp()
 Page({
   data: {
-    notice: "",
-    blogTitle: "",
+    notice: '',
+    blogTitle: ''
   },
-  onLoad: function () { },
+  onLoad: function () {},
   async onShow() {
-    var that = this;
+    const that = this
     that.setData({
-      notice: "",
+      notice: '',
       blogTitle: app.globalData.blogTitle
-    });
-  },
-});
+    })
+  }
+})

@@ -3,10 +3,15 @@
 </cu-custom>
 <view class="cu-chat-i">
   <view class="cu-item" wx:for="{{links}}" wx:for-item="item" wx:key="index">
-    <view class="cu-avatar radius" bindtap="copyLink" data-link="{{item.url}}" style="background-image:url({{item.logo?item.logo:'https://ossweb-img.qq.com/images/lol/web201310/skin/big143004.jpg'}});"></view>
+    <view
+      class="cu-avatar radius"
+      bindtap="copyLink"
+      data-link="{{item.url}}"
+      style="background-image:url({{item.logo?item.logo:'https://ossweb-img.qq.com/images/lol/web201310/skin/big143004.jpg'}});"
+    ></view>
     <view class="main" bindtap="copyLink" data-link="{{item.url}}">
       <view class="content bg-{{bgColor[index%6]}} shadow">
-        <view >{{item.name}}</view>
+        <view>{{item.name}}</view>
         <view class="text-sm">{{item.description}}</view>
       </view>
     </view>
@@ -14,7 +19,7 @@
   </view>
 </view>
 <!-- 加载框 -->
-<view class='cu-load load-modal' wx:if="{{loadModal}}">
-  <image src="{{logo}}" class='png' mode='aspectFit'></image>
-  <view class='gray-text'>加载中...</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">加载中...</view>
 </view>

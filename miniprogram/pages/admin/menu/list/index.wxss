@@ -1,4 +1,4 @@
 /* 表单名宽度 */
 .cu-form-group > .title {
-	width: 220rpx;
-} 
+  width: 220rpx;
+}

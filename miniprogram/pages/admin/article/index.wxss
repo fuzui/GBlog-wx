@@ -1,41 +1,40 @@
 .cu-card.article {
-	display: block;
+  display: block;
 }
 
-.cu-card.article>.cu-item {
-	padding-bottom: 30rpx;
+.cu-card.article > .cu-item {
+  padding-bottom: 30rpx;
 }
 
-.cu-card.article>.cu-item .title {
-	font-size: 26rpx;
-	font-weight: 500;
-	color: var(--black);
-	line-height: 80rpx;
-	padding: 0 10rpx;
+.cu-card.article > .cu-item .title {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: var(--black);
+  line-height: 80rpx;
+  padding: 0 10rpx;
 }
 
-.cu-card.article>.cu-item .content {
-	display: flex;
-	padding: 0 30rpx;
+.cu-card.article > .cu-item .content {
+  display: flex;
+  padding: 0 30rpx;
 }
 
-.cu-card.article>.cu-item .content>image {
-	width: 240rpx;
-	height: 6.4em;
-	margin-right: 20rpx;
-	border-radius: 6rpx;
+.cu-card.article > .cu-item .content > image {
+  width: 240rpx;
+  height: 6.4em;
+  margin-right: 20rpx;
+  border-radius: 6rpx;
 }
 
-.cu-card.article>.cu-item .content .desc {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+.cu-card.article > .cu-item .content .desc {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.cu-card.article>.cu-item .content .text-content {
-	font-size: 26rpx;
-	color: #888;
-	height: auto;
-
+.cu-card.article > .cu-item .content .text-content {
+  font-size: 26rpx;
+  color: #888;
+  height: auto;
 }

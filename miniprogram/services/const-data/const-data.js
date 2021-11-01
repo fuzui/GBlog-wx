@@ -29,4 +29,3 @@ export const COMMENT_TYPE = {
   guestbook: 'guestbook',
   sheet: 'sheet'
 }
-

@@ -7,31 +7,56 @@
   <view class="text-xl padding">暂无搜索内容</view>
   <button class="cu-btn block line-cyan margin-xl lg" bindtap="backPage">
     <text class="cuIcon-back"></text> 返回上页
-  </button>   
+  </button>
   <button class="cu-btn block bg-blue margin-xl lg" bindtap="toHome">
     <text class="cuIcon-homefill"></text> 返回首页
-  </button>    
+  </button>
 </view>
 <!-- 标签主页 -->
 <view class="tag-box" wx:if="{{tagList.length!=0}}">
   <!-- 标签 -->
-  <scroll-view class="tag-nav nav" scroll-y scroll-with-animation scroll-top="{{tagNavTop}}" style="height:calc(100vh - {{CustomBar * unitConversionRatio}}rpx)">
-    <view class="cu-item {{index==tagCur?'text-green cur':''}} " wx:for="{{tagList}}" wx:key="index" bindtap='tagSelect' data-slug="{{item.slug}}" data-index="{{index}}">
+  <scroll-view
+    class="tag-nav nav"
+    scroll-y
+    scroll-with-animation
+    scroll-top="{{tagNavTop}}"
+    style="height:calc(100vh - {{CustomBar * unitConversionRatio}}rpx)"
+  >
+    <view
+      class="cu-item {{index==tagCur?'text-green cur':''}} "
+      wx:for="{{tagList}}"
+      wx:key="index"
+      bindtap="tagSelect"
+      data-slug="{{item.slug}}"
+      data-index="{{index}}"
+    >
       <view class="flex">
         <text class="text-cut">{{item.name}}</text>
       </view>
-      
     </view>
   </scroll-view>
   <!-- 文章列表 -->
-  <scroll-view class="article-main" scroll-y scroll-with-animation style="height:calc(100vh - {{CustomBar * unitConversionRatio}}rpx)" scroll-into-view="main-{{mainCur}}" bindscrolltolower="onReachBottomArticleMain">
+  <scroll-view
+    class="article-main"
+    scroll-y
+    scroll-with-animation
+    style="height:calc(100vh - {{CustomBar * unitConversionRatio}}rpx)"
+    scroll-into-view="main-{{mainCur}}"
+    bindscrolltolower="onReachBottomArticleMain"
+  >
     <view class="padding-top padding-lr-sm">
-      <view class='cu-bar solid-bottom bg-white'>
-        <view class='action'>
-          <text class='cuIcon-title text-green'></text> {{tagList[tagCur].name}} </view>
+      <view class="cu-bar solid-bottom bg-white">
+        <view class="action"> <text class="cuIcon-title text-green"></text> {{tagList[tagCur].name}} </view>
       </view>
       <view class="cu-list tag-page">
-        <view class="cu-item" id="{{item.id}}" data-id="{{item.id}}" bindtap='toDetail' wx:for="{{content}}" wx:key="key">
+        <view
+          class="cu-item"
+          id="{{item.id}}"
+          data-id="{{item.id}}"
+          bindtap="toDetail"
+          wx:for="{{content}}"
+          wx:key="key"
+        >
           <view></view>
           <view class="content">
             <view class="text-brown">
@@ -43,7 +68,7 @@
           </view>
           <view class="action">
             <view class="text-grey text-xs">{{tools.tsFormatTime(item.createTime)}}</view>
-            <text class="cuIcon-appreciatefill likes"> {{item.likes}}</text> 
+            <text class="cuIcon-appreciatefill likes"> {{item.likes}}</text>
           </view>
         </view>
       </view>
@@ -52,7 +77,7 @@
     </view>
   </scroll-view>
 </view>
-<view class='cu-load load-modal' wx:if="{{loadModal}}">
-  <image src='{{logo}}' class='png' mode='aspectFit'></image>
-  <view class='gray-text'>加载中...</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">加载中...</view>
 </view>

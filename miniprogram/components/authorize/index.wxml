@@ -4,7 +4,10 @@
     <view class="padding-top text-lg">
       <text class="text-black text-bold">您还未登录</text>
     </view>
-    <view class="bg-img" style="background-image: url('https://oss.fuzui.net/default/forbid-access.svg');height:400rpx;">
+    <view
+      class="bg-img"
+      style="background-image: url('https://oss.fuzui.net/default/forbid-access.svg'); height: 400rpx"
+    >
       <view class="margin-top text-grey">请先登录再进行操作</view>
     </view>
     <view class="padding-tb">

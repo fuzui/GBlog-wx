@@ -1,58 +1,58 @@
 {
-	"pages": [
-		"pages/index/index",
-		"pages/details/index",
-		"pages/photos/home/index",
-		"pages/search/index",
-		"pages/type/home/index",
-		"pages/tag/index",
-		"pages/about/home/index",
-		"pages/about/about/index",
-		"pages/about/archives/index",
-		"pages/about/disclaimer/index",
-		"pages/about/journal/index",
-		"pages/about/links/index",
-		"pages/about/notice/index",
-		"pages/admin/article/index",
-		"pages/admin/attachment/home/index",
-		"pages/admin/attachment/details/index",
-		"pages/admin/attachment/select/index",
-		"pages/admin/category/index",
-		"pages/admin/comment/index",
-		"pages/admin/environments/index",
-		"pages/admin/home/index",
-		"pages/admin/journal/home/index",
-		"pages/admin/links/home/index",
-		"pages/admin/login/index",
-		"pages/admin/menu/list/index",
-		"pages/admin/photos/details/index",
-		"pages/admin/photos/home/index",
-		"pages/admin/setting/index",
-		"pages/admin/tag/index",
-		"pages/admin/theme/list/index",
-		"pages/admin/user/index",
+  "pages": [
+    "pages/index/index",
+    "pages/details/index",
+    "pages/photos/home/index",
+    "pages/search/index",
+    "pages/type/home/index",
+    "pages/tag/index",
+    "pages/about/home/index",
+    "pages/about/about/index",
+    "pages/about/archives/index",
+    "pages/about/disclaimer/index",
+    "pages/about/journal/index",
+    "pages/about/links/index",
+    "pages/about/notice/index",
+    "pages/admin/article/index",
+    "pages/admin/attachment/home/index",
+    "pages/admin/attachment/details/index",
+    "pages/admin/attachment/select/index",
+    "pages/admin/category/index",
+    "pages/admin/comment/index",
+    "pages/admin/environments/index",
+    "pages/admin/home/index",
+    "pages/admin/journal/home/index",
+    "pages/admin/links/home/index",
+    "pages/admin/login/index",
+    "pages/admin/menu/list/index",
+    "pages/admin/photos/details/index",
+    "pages/admin/photos/home/index",
+    "pages/admin/setting/index",
+    "pages/admin/tag/index",
+    "pages/admin/theme/list/index",
+    "pages/admin/user/index",
     "components/article-list/index"
-	],
-	"window": {
-		"navigationBarBackgroundColor": "#39b54a",
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#39b54a",
     "navigationBarTitleText": "Geek Era",
     "navigationStyle": "custom",
     "navigationBarTextStyle": "white"
-	},
-	"usingComponents": {
-		"cu-custom": "styles/colorui/components/cu-custom"
-	},
-	"tabBar": {
-		"custom": true,
-		"color": "#7A7E83",
-		"selectedColor": "#000000",
-		"borderStyle": "black",
-		"backgroundColor": "#fdfefa",
-		"list": [
-			{
-				"pagePath": "pages/index/index",
-				"text": "首页"
-			},
+  },
+  "usingComponents": {
+    "cu-custom": "styles/colorui/components/cu-custom"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#7A7E83",
+    "selectedColor": "#000000",
+    "borderStyle": "black",
+    "backgroundColor": "#fdfefa",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
       {
         "pagePath": "pages/type/home/index",
         "text": "分类"
@@ -61,20 +61,20 @@
         "pagePath": "pages/photos/home/index",
         "text": "光影"
       },
-			{
-				"pagePath": "pages/about/home/index",
-				"text": "关于"
-			},
-			{
-				"pagePath": "pages/admin/home/index",
-				"text": "管理"
-			}
-		]
-	},
-	"networkTimeout": {
-		"request": 60000,
-		"downloadFile": 60000
-	},
-	"debug": true,
-	"sitemapLocation": "sitemap.json"
+      {
+        "pagePath": "pages/about/home/index",
+        "text": "关于"
+      },
+      {
+        "pagePath": "pages/admin/home/index",
+        "text": "管理"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 60000,
+    "downloadFile": 60000
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json"
 }

@@ -1,39 +1,43 @@
-import apiRequest from './../../../utils/api-request';
+import apiRequest from './../../../utils/api-request'
 import { ApiBaseUrl } from '../../../config/api'
 import { STORAGE_KEY } from '../../const-data/const-data'
-const moduleName = ApiBaseUrl + '/api/admin/login';
+const moduleName = ApiBaseUrl + '/api/admin/login'
 
 /**
  * 登录
- * @param {*} params 
+ * @param {*} params
  */
 function adminLogin(params) {
   const adminToken = {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
   return new Promise((resolve, reject) => {
-    apiRequest.Post(moduleName, params, adminToken)
-      .then(r => {
+    apiRequest.Post(moduleName, params, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
 /**
  * 登录前置检查
- * @param {*} params 
+ * @param {*} params
  */
 function adminLoginPreCheck(params) {
-  const url = moduleName + '/precheck';
+  const url = moduleName + '/precheck'
   return new Promise((resolve, reject) => {
-    apiRequest.Post(url, params, {})
-      .then(r => {
+    apiRequest.Post(url, params, {}).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 

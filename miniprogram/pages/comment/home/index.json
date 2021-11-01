@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "painter":"../../../components/painter/painter",
+    "painter": "../../../components/painter/painter",
     "article-list": "./../../../components/article-list/index",
     "authorize": "../../../components/authorize/index",
     "comment": "../../../components/comment/index"

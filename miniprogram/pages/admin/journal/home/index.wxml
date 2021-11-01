@@ -2,12 +2,10 @@
 <cu-custom bgColor="bg-theme" isCustom="{{true}}">
   <view slot="content">速记</view>
 </cu-custom>
-<view class="bg-white padding radius shadow-blur shadow-lg"> 
-  <view class="text-blue text-center text-xxl padding">
-    
-  </view>
+<view class="bg-white padding radius shadow-blur shadow-lg">
+  <view class="text-blue text-center text-xxl padding"> </view>
   <view class="cu-card dynamic no-card">
-    <view class="cu-form-group ">
+    <view class="cu-form-group">
       <textarea class="content" maxlength="-1" bindinput="journalInput" placeholder="写点什么吧..."></textarea>
     </view>
     <view class="cu-form-group">
@@ -28,23 +26,28 @@
       </view>
       <view class="action">
         <text class="cuIcon-edit text-blue" bindtap="showModal" data-target="editModal" data-index="{{index}}"></text>
-        <text class="cuIcon-delete text-red" bindtap="deleteJournal" data-id="{{item.id}}" data-index="{{index}}"></text>
+        <text
+          class="cuIcon-delete text-red"
+          bindtap="deleteJournal"
+          data-id="{{item.id}}"
+          data-index="{{index}}"
+        ></text>
       </view>
     </view>
-      <view class="cu-item {{item.type=='PUBLIC'?'text-blue cuIcon-unlock':'text-grey cuIcon-lock'}}">
-        <view class="content bg-grey shadow-blur">
-          <mp-html
-            lazy-load
-            scroll-table
-            selectable
-            tag-style="{{mpHtmlStyle.journalTagStyle}}"
-            container-style="{{mpHtmlStyle.journalContainerStyle}}"
-            loading-img="{{mpHtmlStyle.loadingImage}}"
-            error-img="{{mpHtmlStyle.errorImage}}"
-            content="{{item.content}}"
-          />
-        </view>
-      </view> 
+    <view class="cu-item {{item.type=='PUBLIC'?'text-blue cuIcon-unlock':'text-grey cuIcon-lock'}}">
+      <view class="content bg-grey shadow-blur">
+        <mp-html
+          lazy-load
+          scroll-table
+          selectable
+          tag-style="{{mpHtmlStyle.journalTagStyle}}"
+          container-style="{{mpHtmlStyle.journalContainerStyle}}"
+          loading-img="{{mpHtmlStyle.loadingImage}}"
+          error-img="{{mpHtmlStyle.errorImage}}"
+          content="{{item.content}}"
+        />
+      </view>
+    </view>
   </block>
   <!-- 底部分割线 -->
   <view class="line" wx-if="{{bottomFlag}}">
@@ -62,13 +65,19 @@
       </view>
     </view>
     <view class="cu-form-group">
-      <textarea class="content" maxlength="-1" bindinput="journalEditInput" value="{{currentContent}}" disabled="{{modalName!='editModal'}}"></textarea>
+      <textarea
+        class="content"
+        maxlength="-1"
+        bindinput="journalEditInput"
+        value="{{currentContent}}"
+        disabled="{{modalName!='editModal'}}"
+      ></textarea>
     </view>
     <view class="cu-form-group">
       <view class="title">是否公开</view>
       <switch class="orange radius sm" bindchange="isPublic" checked="{{currentType =='PUBLIC'}}"></switch>
     </view>
-    
+
     <view class="cu-bar bg-white justify-end">
       <view class="action">
         <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>

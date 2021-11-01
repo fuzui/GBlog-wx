@@ -3,7 +3,6 @@
   <view slot="content">主题</view>
 </cu-custom>
 
-
 <view class="cu-card case" wx:for="{{themeList}}" wx:key="index">
   <view class="cu-item shadow">
     <view class="cu-bar bg-white">
@@ -18,27 +17,33 @@
         <text class="text-cut" wx:if="{{item.description}}">{{item.description}}</text>
       </view>
     </view>
-    
-    <view class="bg-white text-center" style="background-color:#fafafa;">
-      
-        <view class="flex">
-          <view class="flex-sub bg-white padding-sm margin-xs radius solids-right" 
-            bindtap="activatesTheme" data-id="{{item.id}}" data-index="{{index}}">
-            <text class="{{item.activated?'cuIcon-unlock text-blue':'cuIcon-lock text-grey'}} padding-right-sm">
-            </text>
-            {{item.activated?'已启用':'启用'}}
-          </view>
-          <view class="flex-sub bg-white padding-sm margin-xs radius solids-right" bindtap="setTheme">
-            <text class="cuIcon-settings text-grey padding-right-sm"></text>设置
-          </view>
-          <view class="flex-sub bg-white padding-sm margin-xs radius" bindtap="showModal" 
-            data-target="moreModal" data-id="{{item.id}}" data-index="{{index}}">
-            <text class="cuIcon-more text-grey padding-right-sm"></text>更多
-          </view>
+
+    <view class="bg-white text-center" style="background-color: #fafafa">
+      <view class="flex">
+        <view
+          class="flex-sub bg-white padding-sm margin-xs radius solids-right"
+          bindtap="activatesTheme"
+          data-id="{{item.id}}"
+          data-index="{{index}}"
+        >
+          <text class="{{item.activated?'cuIcon-unlock text-blue':'cuIcon-lock text-grey'}} padding-right-sm"> </text>
+          {{item.activated?'已启用':'启用'}}
         </view>
+        <view class="flex-sub bg-white padding-sm margin-xs radius solids-right" bindtap="setTheme">
+          <text class="cuIcon-settings text-grey padding-right-sm"></text>设置
+        </view>
+        <view
+          class="flex-sub bg-white padding-sm margin-xs radius"
+          bindtap="showModal"
+          data-target="moreModal"
+          data-id="{{item.id}}"
+          data-index="{{index}}"
+        >
+          <text class="cuIcon-more text-grey padding-right-sm"></text>更多
+        </view>
+      </view>
     </view>
   </view>
-
 </view>
 
 <!-- 更多 -->
@@ -69,9 +74,9 @@
 </button>
 
 <!-- 加载框 -->
-<view class='cu-load load-modal' wx:if="{{loadModal}}">
-  <image src="{{logo}}" class='png' mode='aspectFit'></image>
-  <view class='gray-text'>{{message}}</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">{{message}}</view>
 </view>
 
 <!-- 添加、修改框 -->
@@ -89,17 +94,16 @@
       </view>
     </view>
     <view class="cu-form-group text-left solid solid-bottom">
-      <input bindinput="urlInput"></input>
+      <input bindinput="urlInput" />
     </view>
-    
+
     <view class="cu-bar bg-white justify-end">
       <view class="action">
         <button class="cu-btn bg-blue margin-left" bindtap="fetchingNewTheme">下载</button>
       </view>
     </view>
     <view class="text-sm text-grey padding-bottom-sm">
-      远程地址即主题仓库地址，使用这种方式安装的一般为开发版本，请谨慎使用。
-      更多主题请访问： https://halo.run/p/themes
+      远程地址即主题仓库地址，使用这种方式安装的一般为开发版本，请谨慎使用。 更多主题请访问： https://halo.run/p/themes
     </view>
   </view>
 </view>

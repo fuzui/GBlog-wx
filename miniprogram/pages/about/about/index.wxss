@@ -16,10 +16,10 @@ page {
   font-weight: 300;
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
-.cu-list.menu>.cu-item .content>image {
+.cu-list.menu > .cu-item .content > image {
   display: inline-block;
-	width: 1.3em;
-	height: 1.3em;
+  width: 1.3em;
+  height: 1.3em;
   vertical-align: middle;
   margin-right: 15rpx;
 }

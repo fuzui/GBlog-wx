@@ -1,5 +1,4 @@
 .UCenter-bg {
-  
   background-size: cover;
   height: 397rpx;
   display: flex;
@@ -22,21 +21,20 @@
   height: 200rpx;
 }
 
-.UCenter-bg .gif-wave{
+.UCenter-bg .gif-wave {
   position: absolute;
   width: 100%;
   bottom: 0;
   left: 0;
   z-index: 99;
-  mix-blend-mode: screen;  
-  height: 100rpx;   
+  mix-blend-mode: screen;
+  height: 100rpx;
 }
 /* 图标 */
-.cu-list.menu>.cu-item .content>image {
+.cu-list.menu > .cu-item .content > image {
   display: inline-block;
-	width: 1.3em;
-	height: 1.3em;
+  width: 1.3em;
+  height: 1.3em;
   vertical-align: middle;
   margin-right: 30rpx;
 }
-

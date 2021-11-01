@@ -20,26 +20,30 @@
 </view>
 
 <!-- 附件 -->
-<view class="grid col-2 padding-sm" style="margin-top:200rpx;">
+<view class="grid col-2 padding-sm" style="margin-top: 200rpx">
   <view class="padding-xs" wx:for="{{content}}" wx:for-item="item" wx:key="index">
-    <view class="bg-img padding-top-xl flex align-end shadow-blur {{tools.isContain(indexs,item.id)?'solids-blue':''}}" bindtap="{{batchView?'selectAttachment':'toDetailsPage'}}" data-id="{{item.id}}" data-index="{{index}}" style="background-image: url({{item.thumbPath}});height: 207rpx;">
+    <view
+      class="bg-img padding-top-xl flex align-end shadow-blur {{tools.isContain(indexs,item.id)?'solids-blue':''}}"
+      bindtap="{{batchView?'selectAttachment':'toDetailsPage'}}"
+      data-id="{{item.id}}"
+      data-index="{{index}}"
+      style="background-image: url({{item.thumbPath}});height: 207rpx;"
+    >
       <radio class="round" checked="{{tools.isContain(indexs,index)}}" wx:if="{{batchView}}"></radio>
-      <view class="bg-shadeBottom padding padding-top-xl flex-sub text-cut">
-        {{item.name}}
-      </view>
+      <view class="bg-shadeBottom padding padding-top-xl flex-sub text-cut"> {{item.name}} </view>
     </view>
   </view>
 </view>
 
 <!-- 弹框加载 -->
-<view class='cu-load load-modal' wx:if="{{loadModal}}">
-  <image src='{{logo}}' class='png' mode='aspectFit'></image>
-  <view class='gray-text'>加载中...</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">加载中...</view>
 </view>
 <!-- 弹框上传加载 -->
-<view class='cu-load load-modal' wx:if="{{uploadModal}}">
-  <image src='{{logo}}' class='png' mode='aspectFit'></image>
-  <view class='gray-text'>上传中...</view>
+<view class="cu-load load-modal" wx:if="{{uploadModal}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">上传中...</view>
 </view>
 
 <view class="cu-modal bottom-modal {{modalName=='uploadModal'?'show':''}}">

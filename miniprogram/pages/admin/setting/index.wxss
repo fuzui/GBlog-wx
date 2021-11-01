@@ -7,5 +7,5 @@
   height: 50rpx;
   width: 50rpx;
   bottom: 30rpx;
-	right: 30rpx;
+  right: 30rpx;
 }

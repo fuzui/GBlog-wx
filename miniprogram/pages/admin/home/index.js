@@ -1,67 +1,69 @@
-const app = getApp();
-import apiResult from '../../../utils/api-result';
-import { adminGetStatistics } from '../../../services/api/admin/statistic';
-import { adminGetPostComment } from '../../../services/api/admin/post';
-import { adminGetSheetComment } from '../../../services/api/admin/sheet';
-import { STORAGE_KEY } from '../../../services/const-data/const-data';
+import apiResult from '../../../utils/api-result'
+import { adminGetStatistics } from '../../../services/api/admin/statistic'
+import { adminGetPostComment } from '../../../services/api/admin/post'
+import { adminGetSheetComment } from '../../../services/api/admin/sheet'
+import { STORAGE_KEY } from '../../../services/const-data/const-data'
+
+const app = getApp()
+
 Page({
   data: {
-    logo: "",
+    logo: '',
     statistics: {},
     isLogin: true,
-    username: "",
-    password: "",
+    username: '',
+    password: '',
     loginMessage: false,
     noticeCount: 0
   },
-  onLoad: function () { 
-    var that = this;
+  onLoad: function () {
+    const that = this
     that.setData({
       logo: app.globalData.logo
     })
   },
   async onShow() {
-    var that = this;
+    const that = this
     if (typeof that.getTabBar === 'function' && that.getTabBar()) {
       that.getTabBar().setData({
         selected: 4
       })
     }
     that.setData({
-      loadModal:true,
+      loadModal: true,
       loginMessage: false
     })
-    var token = wx.getStorageSync(STORAGE_KEY.adminToken)
-    if(token) {
-      const statistics = await adminGetStatistics();
-      const noticeCount = await this.getNoticeCount();
+    const token = wx.getStorageSync(STORAGE_KEY.adminToken)
+    if (token) {
+      const statistics = await adminGetStatistics()
+      const noticeCount = await this.getNoticeCount()
       that.setData({
         user: statistics.user,
         statistics: statistics,
         noticeCount: noticeCount,
         isLogin: true
-      });
+      })
     } else {
       that.setData({
         isLogin: false
-      });
+      })
     }
     that.setData({
-      loadModal:false
+      loadModal: false
     })
   },
   /**
    * 登录后置处理
    */
-  async loginSuf(){
-    var that = this
-    const statistics = await adminGetStatistics();
-    const noticeCount = await this.getNoticeCount();
+  async loginSuf() {
+    const that = this
+    const statistics = await adminGetStatistics()
+    const noticeCount = await this.getNoticeCount()
     that.setData({
       user: statistics.user,
       statistics: statistics,
       noticeCount: noticeCount
-    });
+    })
     that.setData({
       isLogin: true
     })
@@ -85,7 +87,7 @@ Page({
       modalName: null
     })
     wx.navigateTo({
-      url:"/pages/admin/journal/home/index"
+      url: '/pages/admin/journal/home/index'
     })
   },
   /**
@@ -96,7 +98,7 @@ Page({
       modalName: null
     })
     wx.navigateTo({
-      url:"/pages/admin/photos/home/index"
+      url: '/pages/admin/photos/home/index'
     })
   },
   /**
@@ -107,7 +109,7 @@ Page({
       modalName: null
     })
     wx.navigateTo({
-      url:"/pages/admin/links/home/index"
+      url: '/pages/admin/links/home/index'
     })
   },
   /**
@@ -118,7 +120,7 @@ Page({
       modalName: null
     })
     wx.navigateTo({
-      url:"/pages/admin/environments/index"
+      url: '/pages/admin/environments/index'
     })
   },
   /**
@@ -129,7 +131,7 @@ Page({
       modalName: null
     })
     wx.navigateTo({
-      url:"/pages/admin/user/index"
+      url: '/pages/admin/user/index'
     })
   },
 
@@ -141,7 +143,7 @@ Page({
       modalName: null
     })
     wx.navigateTo({
-      url:"/pages/admin/comment/index"
+      url: '/pages/admin/comment/index'
     })
   },
   toCategoryPage() {
@@ -149,7 +151,7 @@ Page({
       modalName: null
     })
     wx.navigateTo({
-      url:"/pages/admin/category/index"
+      url: '/pages/admin/category/index'
     })
   },
   toTagPage() {
@@ -157,7 +159,7 @@ Page({
       modalName: null
     })
     wx.navigateTo({
-      url:"/pages/admin/tag/index"
+      url: '/pages/admin/tag/index'
     })
   },
   toArticlePage() {
@@ -165,14 +167,14 @@ Page({
       modalName: null
     })
     wx.navigateTo({
-      url:"/pages/admin/article/index"
+      url: '/pages/admin/article/index'
     })
   },
   toAddArticlePage() {
     this.setData({
       modalName: null
     })
-    apiResult.warn("请前往PC端");
+    apiResult.warn('请前往PC端')
     // wx.navigateTo({
     //   url:"/pages/admin/article/add/index"
     // })
@@ -182,7 +184,7 @@ Page({
       modalName: null
     })
     wx.navigateTo({
-      url:"/pages/admin/menu/list/index"
+      url: '/pages/admin/menu/list/index'
     })
   },
   toThemePage() {
@@ -190,7 +192,7 @@ Page({
       modalName: null
     })
     wx.navigateTo({
-      url:"/pages/admin/theme/list/index"
+      url: '/pages/admin/theme/list/index'
     })
   },
   toAttachmentPage() {
@@ -198,7 +200,7 @@ Page({
       modalName: null
     })
     wx.navigateTo({
-      url:"/pages/admin/attachment/home/index"
+      url: '/pages/admin/attachment/home/index'
     })
   },
   toSettingPage() {
@@ -206,18 +208,18 @@ Page({
       modalName: null
     })
     wx.navigateTo({
-      url:"/pages/admin/setting/index"
+      url: '/pages/admin/setting/index'
     })
   },
 
   getMessage() {
-    var that = this;
-    const loginMessage = that.data.loginMessage;
-    if(loginMessage){
+    const that = this
+    const loginMessage = that.data.loginMessage
+    if (loginMessage) {
       that.setData({
         loginMessage: false
       })
-    }else{
+    } else {
       that.setData({
         loginMessage: true
       })
@@ -226,14 +228,14 @@ Page({
   /**
    * 获取消息数量
    */
-  async getNoticeCount(){
+  async getNoticeCount() {
     const param = {
       page: 1,
       size: 0,
-      status: "AUDITING"
+      status: 'AUDITING'
     }
-    const postResult = await adminGetPostComment(param);
-    const sheetResult = await adminGetSheetComment(param);
-    return postResult.total+sheetResult.total;
+    const postResult = await adminGetPostComment(param)
+    const sheetResult = await adminGetSheetComment(param)
+    return postResult.total + sheetResult.total
   }
 })

@@ -1,8 +1,8 @@
-@import "/app.wxss";
+@import '/app.wxss';
 
 .cu-bar.btn-group button {
   padding: 20rpx 32rpx;
   flex: 1;
-	margin: 0 20rpx;
-	max-width: 80%;
+  margin: 0 20rpx;
+  max-width: 80%;
 }

@@ -3,36 +3,36 @@
 </cu-custom>
 <view class="cu-bar bg-white fixed" style="top:{{CustomBar}}px;">
   <view class="margin-tb-sm text-center padding">
-    <button class="cu-btn bg-blue shadow" bindtap="showModal" data-target="addModal">
-      新增
-    </button>
+    <button class="cu-btn bg-blue shadow" bindtap="showModal" data-target="addModal">新增</button>
   </view>
 </view>
 
-<view class="cu-list menu" style="margin-top:200rpx;">
+<view class="cu-list menu" style="margin-top: 200rpx">
   <view class="cu-item" wx:for="{{menuList}}" wx:key="index">
     <view class="content padding-tb-sm">
-      <view>
-         <text class="cuIcon-title text-cyan "></text>{{item.name}}
-      </view> 
-      <view class="text-gray text-sm">
-        <text class="text-shadow bg-gray margin-lr-lg"> url:</text> {{item.url}}
-      </view>
+      <view> <text class="cuIcon-title text-cyan"></text>{{item.name}} </view>
+      <view class="text-gray text-sm"> <text class="text-shadow bg-gray margin-lr-lg"> url:</text> {{item.url}} </view>
       <view class="text-gray text-sm">
         <text class="text-shadow bg-gray margin-lr-lg"> 排序:</text> {{item.priority}}
       </view>
     </view>
     <view class="action">
-      <text class="cuIcon-edit text-blue margin-right-xs" bindtap="showModal" data-target="addModal" data-flag="edit" data-index="{{index}}"></text>
+      <text
+        class="cuIcon-edit text-blue margin-right-xs"
+        bindtap="showModal"
+        data-target="addModal"
+        data-flag="edit"
+        data-index="{{index}}"
+      ></text>
       <text class="cuIcon-delete text-red" bindtap="deleteMenu" data-id="{{item.id}}" data-index="{{index}}"></text>
     </view>
   </view>
 </view>
 
 <!-- 加载框 -->
-<view class='cu-load load-modal' wx:if="{{loadModal}}">
-  <image src="{{logo}}" class='png' mode='aspectFit'></image>
-  <view class='gray-text'>{{message}}</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">{{message}}</view>
 </view>
 
 <!-- 添加、修改框 -->
@@ -46,41 +46,37 @@
     </view>
     <view class="cu-form-group text-left">
       <view class="title">名称</view>
-      <input value="{{name}}" bindinput="nameInput"></input>
+      <input value="{{name}}" bindinput="nameInput" />
     </view>
     <view class="cu-form-group text-left">
       <view class="title">url</view>
-      <input value="{{url}}" bindinput="urlInput"></input>
+      <input value="{{url}}" bindinput="urlInput" />
     </view>
     <view class="cu-form-group padding-top">
       <view class="title">上级目录</view>
       <picker bindchange="parentIdInput" value="{{index}}" range="{{menuList}}" range-key="name">
-        <view class="picker">
-          {{parentId}}
-        </view>
+        <view class="picker"> {{parentId}} </view>
       </picker>
     </view>
     <view class="cu-form-group text-left">
       <view class="title">图标</view>
-      <input value="{{icon}}" bindinput="iconInput"></input>
+      <input value="{{icon}}" bindinput="iconInput" />
     </view>
     <view class="cu-form-group text-left">
       <view class="title">分组</view>
-      <input value="{{team}}" bindinput="teamInput"></input>
+      <input value="{{team}}" bindinput="teamInput" />
     </view>
     <view class="cu-form-group text-left">
       <view class="title">排序</view>
-      <input value="{{priority}}" bindinput="priorityInput"></input>
+      <input value="{{priority}}" bindinput="priorityInput" />
     </view>
     <view class="cu-form-group text-left">
-      <view class="title" style="width:220rpx;">打开方式</view>
+      <view class="title" style="width: 220rpx">打开方式</view>
       <picker bindchange="targetInput" value="{{target}}" range="{{targetPicker}}">
-        <view class="picker">
-          {{target=='_blank'?targetPicker[1]:targetPicker[0]}}
-        </view>
-	    </picker>
+        <view class="picker"> {{target=='_blank'?targetPicker[1]:targetPicker[0]}} </view>
+      </picker>
     </view>
-    
+
     <view class="cu-bar bg-white justify-end">
       <view class="action">
         <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>

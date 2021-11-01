@@ -1,18 +1,18 @@
-const app = getApp();
-import { Config } from './../../../config/api';
-import { COMMENT_TYPE } from '../../../services/const-data/const-data';
+import { Config } from './../../../config/api'
+import { COMMENT_TYPE } from '../../../services/const-data/const-data'
+
+const app = getApp()
+
 Page({
   data: {
     starCount: 0,
     forksCount: 0,
     visitTotal: 0,
-    blogTitle: ""
+    blogTitle: ''
   },
-  onLoad: function () { 
-    
-  },
+  onLoad: function () {},
   async onShow() {
-    var that = this;
+    const that = this
     if (typeof that.getTabBar === 'function' && that.getTabBar()) {
       that.getTabBar().setData({
         selected: 3
@@ -20,12 +20,12 @@ Page({
     }
     that.setData({
       blogTitle: app.globalData.blogTitle
-    });
+    })
   },
 
   /**
    * 复制
-   * @param {*} e 
+   * @param {*} e
    */
   CopyLink(e) {
     wx.setClipboardData({
@@ -33,7 +33,7 @@ Page({
       success: res => {
         wx.showToast({
           title: '已复制',
-          duration: 1000,
+          duration: 1000
         })
       }
     })
@@ -43,7 +43,7 @@ Page({
    */
   toTagPage() {
     wx.navigateTo({
-      url:"/pages/tag/index"
+      url: '/pages/tag/index'
     })
   },
   /**
@@ -51,16 +51,15 @@ Page({
    */
   toArchivesPage() {
     wx.navigateTo({
-      url:"/pages/about/archives/index"
+      url: '/pages/about/archives/index'
     })
   },
   /**
    * 跳转到留言页面
    */
-  toGuestbookPage() { 
+  toGuestbookPage() {
     wx.navigateTo({
-      url: '/pages/comment/home/index?id=' + Config.guestbookSheetId
-        + '&type=' + COMMENT_TYPE.guestbook
+      url: '/pages/comment/home/index?id=' + Config.guestbookSheetId + '&type=' + COMMENT_TYPE.guestbook
     })
   },
   /**
@@ -68,7 +67,7 @@ Page({
    */
   toJournalPage() {
     wx.navigateTo({
-      url:"/pages/about/journal/index"
+      url: '/pages/about/journal/index'
     })
   }
 })

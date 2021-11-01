@@ -1,29 +1,29 @@
 /* 轮播图 */
 .card-swiper {
-	height: 520rpx !important;
+  height: 520rpx !important;
 }
 
 .card-swiper swiper-item {
-	width: 670rpx !important;
-	left: 40rpx;
-	box-sizing: border-box;
-	padding: 150rpx 20rpx 10rpx;
-	overflow: initial;
+  width: 670rpx !important;
+  left: 40rpx;
+  box-sizing: border-box;
+  padding: 150rpx 20rpx 10rpx;
+  overflow: initial;
 }
 
 .card-swiper swiper-item .swiper-item {
-	width: 100%;
-	display: block;
-	height: 100%;
-	border-radius: 10rpx;
-	transform: scale(0.9);
-	transition: all 0.2s ease-in 0s;
-	overflow: hidden;
+  width: 100%;
+  display: block;
+  height: 100%;
+  border-radius: 10rpx;
+  transform: scale(0.9);
+  transition: all 0.2s ease-in 0s;
+  overflow: hidden;
 }
 
 .card-swiper swiper-item.cur .swiper-item {
-	transform: none;
-	transition: all 0.2s ease-in 0s;
+  transform: none;
+  transition: all 0.2s ease-in 0s;
 }
 /* 顶图样式 */
 .recommend {
@@ -40,40 +40,40 @@
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 .recommend-swiper-before {
-	position:absolute;
-	top: 0rpx;
-	left: -20%;
-	height: 550rpx;
-	width: 140%;
-	border-radius: 0 0 50% 50%;
-	background-color: #BDD2EF !important;
+  position: absolute;
+  top: 0rpx;
+  left: -20%;
+  height: 550rpx;
+  width: 140%;
+  border-radius: 0 0 50% 50%;
+  background-color: #bdd2ef !important;
 }
 .fixed-bg {
-	position: fixed;
-	width: 100%;
-	top: 0;
-	z-index: 1024;
-	box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1024;
+  box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0.1);
 }
 
 /* 分类框 */
 .fixed-nav {
-	position: fixed;
-	width: 100%;
-	z-index: 1024;
-	background-color: #BDD2EF !important;
-	box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  z-index: 1024;
+  background-color: #bdd2ef !important;
+  box-shadow: 0 1rpx 6rpx rgba(0, 0, 0, 0.1);
 }
 
 .search-form {
-	/* background-color: rgb(175, 215, 237) !important; */
-	opacity: 0.4;
-	width: 100rpx;
+  /* background-color: rgb(175, 215, 237) !important; */
+  opacity: 0.4;
+  width: 100rpx;
 }
 
 .ali-font {
   font-family: Ali, Helvetica Neue, Helvetica, sans-serif;
   font-weight: bold;
-	font-size: 40rpx;
-	text-align: center;
+  font-size: 40rpx;
+  text-align: center;
 }

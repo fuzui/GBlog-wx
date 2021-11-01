@@ -4,73 +4,79 @@
 </cu-custom>
 
 <view class="cu-list menu-avatar">
-    <view class="cu-item">
-      <view class="cu-avatar round lg" style="background-image:url({{statistics.user.avatar}});" bindtap="toSettingPage" bindtap="showModal" data-target="selectAvatarModal">
-        <view class="cu-tag badge bg-cyan"><text class="cuIcon-post text-white"></text></view>
-      </view>
-      <view class="content">
-        <view class="text-grey">{{statistics.user.nickname}}</view>
-        <view class="text-gray text-sm flex">
-          <text class="text-cut">
-							<text class="cuIcon-discover text-blue  margin-right-xs"></text> {{statistics.user.description}}
-          </text>
-        </view>
-      </view>
-      <view class="action" bindtap="showModal" data-target="selectModal">
-        <view class="text-grey text-xs"></view>
-        <view class="cu-tag cuIcon-more bg-grey sm"></view>
+  <view class="cu-item">
+    <view
+      class="cu-avatar round lg"
+      style="background-image:url({{statistics.user.avatar}});"
+      bindtap="toSettingPage"
+      bindtap="showModal"
+      data-target="selectAvatarModal"
+    >
+      <view class="cu-tag badge bg-cyan"><text class="cuIcon-post text-white"></text></view>
+    </view>
+    <view class="content">
+      <view class="text-grey">{{statistics.user.nickname}}</view>
+      <view class="text-gray text-sm flex">
+        <text class="text-cut">
+          <text class="cuIcon-discover text-blue margin-right-xs"></text> {{statistics.user.description}}
+        </text>
       </view>
     </view>
+    <view class="action" bindtap="showModal" data-target="selectModal">
+      <view class="text-grey text-xs"></view>
+      <view class="cu-tag cuIcon-more bg-grey sm"></view>
+    </view>
+  </view>
 </view>
-<view class="cu-list menu ">
-    <view class="cu-item">
-      <view class="content">
-        <text class="cuIcon-link text-grey"></text>
-        <text class="text-blue" bindtap="CopyLink" data-link="{{url}}">{{url}}</text>
-      </view>
+<view class="cu-list menu">
+  <view class="cu-item">
+    <view class="content">
+      <text class="cuIcon-link text-grey"></text>
+      <text class="text-blue" bindtap="CopyLink" data-link="{{url}}">{{url}}</text>
     </view>
-    <view class="cu-item">
-      <view class="content">
-        <text class="cuIcon-mail text-grey"></text>
-        <text class="text-grey">{{statistics.user.email}}</text>
-      </view>
+  </view>
+  <view class="cu-item">
+    <view class="content">
+      <text class="cuIcon-mail text-grey"></text>
+      <text class="text-grey">{{statistics.user.email}}</text>
     </view>
-    <view class="cu-item">
-      <view class="content">
-        <text class="cuIcon-calendar text-grey"></text>
-        <text class="text-grey">{{statistics.establishDays}} 天</text>
-      </view>
+  </view>
+  <view class="cu-item">
+    <view class="content">
+      <text class="cuIcon-calendar text-grey"></text>
+      <text class="text-grey">{{statistics.establishDays}} 天</text>
     </view>
-    <view class="cu-item">
-      <view class="content">
-        <text class="text-grey">累计发表了 {{statistics.postCount}} 篇文章。</text>
-      </view>
+  </view>
+  <view class="cu-item">
+    <view class="content">
+      <text class="text-grey">累计发表了 {{statistics.postCount}} 篇文章。</text>
     </view>
-    <view class="cu-item">
-      <view class="content">
-        <text class="text-grey">累计创建了 {{statistics.categoryCount}} 个分类。</text>
-      </view>
+  </view>
+  <view class="cu-item">
+    <view class="content">
+      <text class="text-grey">累计创建了 {{statistics.categoryCount}} 个分类。</text>
     </view>
-    <view class="cu-item">
-      <view class="content">
-        <text class="text-grey">累计创建了 {{statistics.tagCount}} 个标签。</text>
-      </view>
+  </view>
+  <view class="cu-item">
+    <view class="content">
+      <text class="text-grey">累计创建了 {{statistics.tagCount}} 个标签。</text>
     </view>
-    <view class="cu-item">
-      <view class="content">
-        <text class="text-grey">累计获得了 {{statistics.commentCount}} 条评论。</text>
-      </view>
+  </view>
+  <view class="cu-item">
+    <view class="content">
+      <text class="text-grey">累计获得了 {{statistics.commentCount}} 条评论。</text>
     </view>
-    <view class="cu-item">
-      <view class="content">
-        <text class="text-grey">累计添加了 {{statistics.linkCount}} 个友链。</text>
-      </view>
+  </view>
+  <view class="cu-item">
+    <view class="content">
+      <text class="text-grey">累计添加了 {{statistics.linkCount}} 个友链。</text>
     </view>
-    <view class="cu-item">
-      <view class="content">
-        <text class="text-grey">文章总阅读 {{statistics.visitCount}} 次。</text>
-      </view>
+  </view>
+  <view class="cu-item">
+    <view class="content">
+      <text class="text-grey">文章总阅读 {{statistics.visitCount}} 次。</text>
     </view>
+  </view>
 </view>
 
 <view class="cu-modal bottom-modal {{modalName=='selectModal'?'show':''}}">
@@ -110,24 +116,24 @@
     </view>
     <view class="cu-form-group text-left">
       <view class="title">用户名</view>
-      <input value="{{username}}" bindinput="usernameInput"></input>
+      <input value="{{username}}" bindinput="usernameInput" />
     </view>
     <view class="cu-form-group text-left">
       <view class="title">昵称</view>
-      <input value="{{nickname}}" bindinput="nicknameInput"></input>
+      <input value="{{nickname}}" bindinput="nicknameInput" />
     </view>
     <view class="cu-form-group text-left">
       <view class="title">邮箱</view>
-      <input value="{{email}}" bindinput="emailInput"></input>
+      <input value="{{email}}" bindinput="emailInput" />
     </view>
     <view class="cu-form-group text-left">
       <view class="title">个人说明</view>
-      <input value="{{description}}" bindinput="descriptionInput"></input>
+      <input value="{{description}}" bindinput="descriptionInput" />
     </view>
     <view class="cu-bar bg-white justify-end">
       <view class="action">
         <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
-        <button class="cu-btn bg-green margin-left" bindtap="editUser">确认修改</button>  
+        <button class="cu-btn bg-green margin-left" bindtap="editUser">确认修改</button>
       </view>
     </view>
   </view>
@@ -144,23 +150,35 @@
     </view>
     <view class="cu-form-group text-left">
       <view class="title">原密码</view>
-      <input password="{{isOldPassword}}" bindinput="oldPasswordInput"></input>
-      <text class="{{isOldPassword?'cuIcon-attentionforbid text-grey':'cuIcon-attention text-blue'}}" bindtap="viewPassword" data-type="isOldPassword"></text>
+      <input password="{{isOldPassword}}" bindinput="oldPasswordInput" />
+      <text
+        class="{{isOldPassword?'cuIcon-attentionforbid text-grey':'cuIcon-attention text-blue'}}"
+        bindtap="viewPassword"
+        data-type="isOldPassword"
+      ></text>
     </view>
     <view class="cu-form-group text-left">
       <view class="title">新密码</view>
-      <input password="{{isNewPassword}}" bindinput="newPasswordInput"></input>
-      <text class="{{isNewPassword?'cuIcon-attentionforbid text-grey':'cuIcon-attention text-blue'}}" bindtap="viewPassword" data-type="isNewPassword"></text>
+      <input password="{{isNewPassword}}" bindinput="newPasswordInput" />
+      <text
+        class="{{isNewPassword?'cuIcon-attentionforbid text-grey':'cuIcon-attention text-blue'}}"
+        bindtap="viewPassword"
+        data-type="isNewPassword"
+      ></text>
     </view>
     <view class="cu-form-group text-left">
       <view class="title">确认密码</view>
-      <input password="{{isConfirmPassword}}" bindinput="confirmPasswordInput"></input>
-      <text class="{{isConfirmPassword?'cuIcon-attentionforbid text-grey':'cuIcon-attention text-blue'}}" bindtap="viewPassword" data-type="isConfirmPassword"></text>
+      <input password="{{isConfirmPassword}}" bindinput="confirmPasswordInput" />
+      <text
+        class="{{isConfirmPassword?'cuIcon-attentionforbid text-grey':'cuIcon-attention text-blue'}}"
+        bindtap="viewPassword"
+        data-type="isConfirmPassword"
+      ></text>
     </view>
     <view class="cu-bar bg-white justify-end">
       <view class="action">
         <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
-        <button class="cu-btn bg-green margin-left" bindtap="editPassword">确认修改</button>  
+        <button class="cu-btn bg-green margin-left" bindtap="editPassword">确认修改</button>
       </view>
     </view>
   </view>
@@ -192,12 +210,12 @@
   </view>
 </view>
 <!-- 弹框加载 -->
-<view class='cu-load load-modal' wx:if="{{loadModal}}">
-  <image src='{{logo}}' class='png' mode='aspectFit'></image>
-  <view class='gray-text'>加载中...</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">加载中...</view>
 </view>
 <!-- 弹框上传加载 -->
-<view class='cu-load load-modal' wx:if="{{uploadModal}}">
-  <image src='{{logo}}' class='png' mode='aspectFit'></image>
-  <view class='gray-text'>上传中...</view>
+<view class="cu-load load-modal" wx:if="{{uploadModal}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">上传中...</view>
 </view>

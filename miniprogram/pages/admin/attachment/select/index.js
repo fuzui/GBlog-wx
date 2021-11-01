@@ -1,19 +1,21 @@
-const app = getApp();
-import { adminGetAttachment } from '../../../../services/api/admin/attachment';
-import config from '../../../../config/api';
+import { adminGetAttachment } from '../../../../services/api/admin/attachment'
+import config from '../../../../config/api'
+
+const app = getApp()
+
 Page({
   data: {
     CustomBar: app.globalData.CustomBar,
-    logo: "",
+    logo: '',
     selectAttachment: null,
     pageNo: 0,
     bottomFlag: false,
     content: [],
-    selectId: null,
+    selectId: null
   },
-  async onLoad(options) { 
-    var that = this;
-    if(options.type == 3){
+  async onLoad(options) {
+    const that = this
+    if (options.type === 3) {
       that.setData({
         tagCur: options.tagCur
       })
@@ -21,53 +23,51 @@ Page({
     that.setData({
       logo: app.globalData.logo
     })
-    
   },
   async onShow() {
-    var that = this;
+    const that = this
     that.setData({
-      loadModal:true,
+      loadModal: true,
       content: [],
-      pageNo: 0,
+      pageNo: 0
     })
-    var content = await this.getAttachments();
+    const content = await this.getAttachments()
     that.setData({
       content: content,
-      loadModal:false
-    });
+      loadModal: false
+    })
   },
   /**
    * 向下滑动拉去下一页
    */
   async onReachBottom() {
-    var that = this;
-    var pageNo = ++that.data.pageNo;
+    const that = this
+    const pageNo = ++that.data.pageNo
     that.setData({
-      pageNo: pageNo,
-    });
-    const content = await this.getAttachments();
-    if(content){
+      pageNo: pageNo
+    })
+    const content = await this.getAttachments()
+    if (content) {
       that.setData({
         content: content
-      });
+      })
     }
-    
   },
   /**
    * 获取附件列表
    */
   async getAttachments() {
-    var that = this;
+    const that = this
     try {
       const param = {
         page: that.data.pageNo,
         size: config.PageSize.attachmentSize,
         sort: 'createTime,desc'
-      };
-      const result = await adminGetAttachment(param);
-      if(result.page < result.pages){
-        return that.data.content.concat(result.content);
-      }else{
+      }
+      const result = await adminGetAttachment(param)
+      if (result.page < result.pages) {
+        return that.data.content.concat(result.content)
+      } else {
         that.setData({
           bottomFlag: true
         })
@@ -100,51 +100,51 @@ Page({
       })
     }
   },
-  
+
   submitSelect() {
-    var that=this;
-    var selectAttachment = that.data.selectAttachment;
-    let pages= getCurrentPages();
-    let prevPage = null; 
+    const that = this
+    const selectAttachment = that.data.selectAttachment
+    const pages = getCurrentPages()
+    let prevPage = null
     if (pages.length >= 2) {
-      prevPage = pages[pages.length - 2]; 
+      prevPage = pages[pages.length - 2]
       if (prevPage) {
-        if(that.data.tagCur){
+        if (that.data.tagCur) {
           prevPage.setData({
             tagCur: that.data.tagCur
-          });
+          })
         }
         prevPage.setData({
           selectAttachment: selectAttachment
-        });
+        })
       }
     }
     wx.navigateBack({
-      delta : 1
+      delta: 1
     })
   },
   returnPage() {
-    var that = this;
-    if(that.data.tagCur){
-      let pages= getCurrentPages();
-      let prevPage = null; 
+    const that = this
+    if (that.data.tagCur) {
+      const pages = getCurrentPages()
+      let prevPage = null
       if (pages.length >= 2) {
-        prevPage = pages[pages.length - 2]; 
+        prevPage = pages[pages.length - 2]
         if (prevPage) {
           prevPage.setData({
             tagCur: that.data.tagCur
-          });
+          })
         }
       }
     }
     wx.navigateBack({
-      delta : 1
+      delta: 1
     })
   },
-  selectAttachment(event){
-    var that = this;
-    const index = event.currentTarget.dataset.index; 
-    const selectAttachment = that.data.content[index];
+  selectAttachment(event) {
+    const that = this
+    const index = event.currentTarget.dataset.index
+    const selectAttachment = that.data.content[index]
     that.setData({
       selectId: selectAttachment.id,
       selectAttachment: selectAttachment

@@ -1,37 +1,37 @@
-@import "/app.wxss";
+@import '/app.wxss';
 /* 文章样式 */
 .cu-card {
-	display: block;
-	overflow: hidden;
+  display: block;
+  overflow: hidden;
 }
-.cu-card>.cu-item {
-	display: block;
-	background-color: var(--white);
-	overflow: hidden;
-	border-radius: 10rpx;
-	margin: 30rpx;
+.cu-card > .cu-item {
+  display: block;
+  background-color: var(--white);
+  overflow: hidden;
+  border-radius: 10rpx;
+  margin: 30rpx;
 }
-.cu-card.no-card>.cu-item {
-	margin: 0rpx;
-	border-radius: 0rpx;
+.cu-card.no-card > .cu-item {
+  margin: 0rpx;
+  border-radius: 0rpx;
 }
-.cu-card.article>.cu-item .content>image {
-	width: 240rpx;
-	height: 6.4em;
-	margin-right: 20rpx;
-	border-radius: 6rpx;
+.cu-card.article > .cu-item .content > image {
+  width: 240rpx;
+  height: 6.4em;
+  margin-right: 20rpx;
+  border-radius: 6rpx;
 }
-.cu-card.article>.cu-item .content .text-content {
-	width: 350rpx;
-	font-size: 22rpx;
-	color: #888;
-	height: 3.3em;
-	overflow: hidden;
+.cu-card.article > .cu-item .content .text-content {
+  width: 350rpx;
+  font-size: 22rpx;
+  color: #888;
+  height: 3.3em;
+  overflow: hidden;
 }
-.cu-card.article>.cu-item .title {
-	font-size: 30rpx;
-	font-weight: 900;
-	color: var(--black);
-	line-height: 100rpx;
-	padding: 0 30rpx;
+.cu-card.article > .cu-item .title {
+  font-size: 30rpx;
+  font-weight: 900;
+  color: var(--black);
+  line-height: 100rpx;
+  padding: 0 30rpx;
 }

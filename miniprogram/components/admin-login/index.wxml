@@ -1,11 +1,8 @@
 <wxs src="../../utils/tools.wxs" module="tools" />
-<view class="bg-white padding radius shadow-blur shadow-lg margin-xl" style="top:300rpx;"> 
-  <view class="text-blue text-center text-xxl padding">
-    Halo
-  </view>
+<view class="bg-white padding radius shadow-blur shadow-lg margin-xl" style="top: 300rpx">
+  <view class="text-blue text-center text-xxl padding"> Halo </view>
   <view class="cu-card dynamic no-card">
     <block wx:if="{{loginMessage}}">
-      
       <view class="solid-bottom text-sm padding">
         <text class="text-grey">该小程序管理端仅供博主使用；</text>
       </view>
@@ -13,28 +10,49 @@
         <text class="text-grey">欢迎搭建配置一个专属自己的小程序！</text>
       </view>
       <view class="solid-bottom text-sm padding">
-        <text class="text-grey">开源地址：</text><text class="text-blue" bindtap="CopyLink" 
-        data-link="https://github.com/fuzui">https://github.com/fuzui</text>
+        <text class="text-grey">开源地址：</text
+        ><text class="text-blue" bindtap="CopyLink" data-link="https://github.com/fuzui">https://github.com/fuzui</text>
       </view>
       <view class="padding">
-        <view class="cu-avatar round" style="background-image:url('https://oss.fuzui.net/logo/github.svg');" 
-        bindtap="CopyLink" data-link="https://github.com/fuzui"></view>
-        <view class="cu-avatar round margin-left" style="background-image:url('https://oss.fuzui.net/logo/gitee.svg');"
-         bindtap="CopyLink" data-link="https://gitee.com/fuzui"></view>
+        <view
+          class="cu-avatar round"
+          style="background-image: url('https://oss.fuzui.net/logo/github.svg')"
+          bindtap="CopyLink"
+          data-link="https://github.com/fuzui"
+        ></view>
+        <view
+          class="cu-avatar round margin-left"
+          style="background-image: url('https://oss.fuzui.net/logo/gitee.svg')"
+          bindtap="CopyLink"
+          data-link="https://gitee.com/fuzui"
+        ></view>
       </view>
     </block>
     <block wx:if="{{!loginMessage}}">
       <view class="cu-form-group" hidden="{{hasAuthcode}}">
         <text class="cuIcon-people"></text>
-        <input class="padding-left" value="{{username}}" placeholder="用户名/邮箱" bindinput="usernameInput"></input>
+        <input class="padding-left" value="{{username}}" placeholder="用户名/邮箱" bindinput="usernameInput" />
       </view>
       <view class="cu-form-group" hidden="{{hasAuthcode}}">
         <text class="cuIcon-lock"></text>
-        <input password="{{true}}" class="padding-left" value="{{password}}" placeholder="密码" bindinput="passwordInput"></input>
+        <input
+          password="{{true}}"
+          class="padding-left"
+          value="{{password}}"
+          placeholder="密码"
+          bindinput="passwordInput"
+        />
       </view>
       <view class="cu-form-group" hidden="{{!hasAuthcode}}">
         <text class="cuIcon-command"></text>
-        <input type="number" class="padding-left" value="{{authcode}}" maxlength="6" placeholder="两部验证码" bindinput="authcodeInput"></input>
+        <input
+          type="number"
+          class="padding-left"
+          value="{{authcode}}"
+          maxlength="6"
+          placeholder="两部验证码"
+          bindinput="authcodeInput"
+        />
       </view>
       <view class="cu-bar btn-group">
         <button class="cu-btn bg-blue shadow-blur" bindtap="{{hasAuthcode ? 'login' : 'loginPreCheck'}}">
@@ -50,7 +68,7 @@
   </view>
 </view>
 <!-- 加载框 -->
-<view class='cu-load load-modal' wx:if="{{logining}}">
-  <image src="{{logo}}" class='png' mode='aspectFit'></image>
-  <view class='gray-text'>登陆中...</view>
+<view class="cu-load load-modal" wx:if="{{logining}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">登陆中...</view>
 </view>

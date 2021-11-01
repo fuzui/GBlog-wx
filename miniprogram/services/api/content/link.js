@@ -1,19 +1,21 @@
-import apiRequest from './../../../utils/api-request';
+import apiRequest from './../../../utils/api-request'
 import { ApiBaseUrl } from '../../../config/api'
-const moduleName = ApiBaseUrl + '/api/content/links';
+const moduleName = ApiBaseUrl + '/api/content/links'
 
 /**
  * 获取友链
- * @param {*} params 
+ * @param {*} params
  */
 function getLinks(params) {
   return new Promise((resolve, reject) => {
-    apiRequest.Get(moduleName, params)
-      .then(r => {
+    apiRequest.Get(moduleName, params).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 

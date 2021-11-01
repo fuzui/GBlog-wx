@@ -1,7 +1,7 @@
-import apiRequest from './../../../utils/api-request';
+import apiRequest from './../../../utils/api-request'
 import { ApiBaseUrl } from '../../../config/api'
 import { STORAGE_KEY } from '../../const-data/const-data'
-const moduleName = ApiBaseUrl + '/api/admin/links';
+const moduleName = ApiBaseUrl + '/api/admin/links'
 
 /**
  * 新建友链
@@ -11,12 +11,14 @@ function adminAddLink(data) {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
   return new Promise((resolve, reject) => {
-    apiRequest.Post(moduleName, data, adminToken)
-      .then(r => {
+    apiRequest.Post(moduleName, data, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
@@ -28,12 +30,14 @@ function adminGetLink(param) {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
   return new Promise((resolve, reject) => {
-    apiRequest.Get(moduleName, Object.assign(adminToken, param))
-      .then(r => {
+    apiRequest.Get(moduleName, Object.assign(adminToken, param)).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
@@ -44,32 +48,36 @@ function adminDeleteLink(linkId) {
   const adminToken = {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
-  const url = moduleName + '/' + linkId;
+  const url = moduleName + '/' + linkId
   return new Promise((resolve, reject) => {
-    apiRequest.Delete(url, adminToken)
-      .then(r => {
+    apiRequest.Delete(url, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
 /**
  * 根据友链id修改友链
  */
-function adminEditLink(linkId,param) {
+function adminEditLink(linkId, param) {
   const adminToken = {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
-  const url = moduleName + '/' + linkId;
+  const url = moduleName + '/' + linkId
   return new Promise((resolve, reject) => {
-    apiRequest.Put(url, param, adminToken)
-      .then(r => {
+    apiRequest.Put(url, param, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
@@ -77,5 +85,5 @@ module.exports = {
   adminAddLink,
   adminGetLink,
   adminDeleteLink,
-  adminEditLink,
+  adminEditLink
 }

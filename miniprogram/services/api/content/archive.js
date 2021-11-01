@@ -1,6 +1,6 @@
-import apiRequest from './../../../utils/api-request';
+import apiRequest from './../../../utils/api-request'
 import { ApiBaseUrl } from '../../../config/api'
-const moduleName = ApiBaseUrl + '/api/content/archives';
+const moduleName = ApiBaseUrl + '/api/content/archives'
 
 /**
  * 获取归档
@@ -8,12 +8,14 @@ const moduleName = ApiBaseUrl + '/api/content/archives';
 function getArchives() {
   const url = moduleName + '/months'
   return new Promise((resolve, reject) => {
-    apiRequest.Get(url, {})
-      .then(r => {
+    apiRequest.Get(url, {}).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 

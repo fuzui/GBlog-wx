@@ -1,123 +1,123 @@
 .cu-chat-i {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .cu-chat-i .cu-item {
-	display: flex;
-	padding: 30rpx 30rpx 70rpx;
-	position: relative;
+  display: flex;
+  padding: 30rpx 30rpx 70rpx;
+  position: relative;
 }
 
-.cu-chat-i .cu-item>.cu-avatar {
-	width: 80rpx;
-	height: 80rpx;
+.cu-chat-i .cu-item > .cu-avatar {
+  width: 80rpx;
+  height: 80rpx;
 }
 
-.cu-chat-i .cu-item>.main {
-	max-width: calc(100% - 260rpx);
-	margin: 0 40rpx;
-	display: flex;
-	align-items: center;
+.cu-chat-i .cu-item > .main {
+  max-width: calc(100% - 260rpx);
+  margin: 0 40rpx;
+  display: flex;
+  align-items: center;
 }
 
-.cu-chat-i .cu-item>image {
-	height: 320rpx;
+.cu-chat-i .cu-item > image {
+  height: 320rpx;
 }
 
-.cu-chat-i .cu-item>.main .content {
-	padding: 20rpx;
-	border-radius: 6rpx;
-	/* display: inline-flex; */
-	max-width: 100%;
-	align-items: center;
-	font-size: 30rpx;
-	position: relative;
-	min-height: 80rpx;
-	line-height: 40rpx;
-	text-align: left;
+.cu-chat-i .cu-item > .main .content {
+  padding: 20rpx;
+  border-radius: 6rpx;
+  /* display: inline-flex; */
+  max-width: 100%;
+  align-items: center;
+  font-size: 30rpx;
+  position: relative;
+  min-height: 80rpx;
+  line-height: 40rpx;
+  text-align: left;
 }
 
-.cu-chat-i .cu-item>.main .content:not([class*="bg-"]) {
-	background-color: var(--white);
-	color: var(--black);
+.cu-chat-i .cu-item > .main .content:not([class*='bg-']) {
+  background-color: var(--white);
+  color: var(--black);
 }
 
 .cu-chat-i .cu-item .date {
-	position: absolute;
-	font-size: 24rpx;
-	color: var(--grey);
-	width: calc(100% - 320rpx);
-	bottom: 20rpx;
-	left: 160rpx;
+  position: absolute;
+  font-size: 24rpx;
+  color: var(--grey);
+  width: calc(100% - 320rpx);
+  bottom: 20rpx;
+  left: 160rpx;
 }
 
 .cu-chat-i .cu-item .action {
-	padding: 0 30rpx;
-	display: flex;
-	align-items: center;
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
 }
 
-.cu-chat-i .cu-item>.main .content::after {
-	content: "";
-	top: 27rpx;
-	transform: rotate(45deg);
-	position: absolute;
-	z-index: 100;
-	/* display: inline-block; */
-	overflow: hidden;
-	width: 24rpx;
-	height: 24rpx;
-	left: -12rpx;
-	right: initial;
-	background-color: inherit;
+.cu-chat-i .cu-item > .main .content::after {
+  content: '';
+  top: 27rpx;
+  transform: rotate(45deg);
+  position: absolute;
+  z-index: 100;
+  /* display: inline-block; */
+  overflow: hidden;
+  width: 24rpx;
+  height: 24rpx;
+  left: -12rpx;
+  right: initial;
+  background-color: inherit;
 }
 
-.cu-chat-i .cu-item.self>.main .content::after {
-	left: auto;
-	right: -12rpx;
+.cu-chat-i .cu-item.self > .main .content::after {
+  left: auto;
+  right: -12rpx;
 }
 
-.cu-chat-i .cu-item>.main .content::before {
-	content: "";
-	top: 30rpx;
-	transform: rotate(45deg);
-	position: absolute;
-	z-index: -1;
-	display: inline-block;
-	overflow: hidden;
-	width: 24rpx;
-	height: 24rpx;
-	left: -12rpx;
-	right: initial;
-	background-color: inherit;
-	filter: blur(5rpx);
-	opacity: 0.3;
+.cu-chat-i .cu-item > .main .content::before {
+  content: '';
+  top: 30rpx;
+  transform: rotate(45deg);
+  position: absolute;
+  z-index: -1;
+  display: inline-block;
+  overflow: hidden;
+  width: 24rpx;
+  height: 24rpx;
+  left: -12rpx;
+  right: initial;
+  background-color: inherit;
+  filter: blur(5rpx);
+  opacity: 0.3;
 }
 
-.cu-chat-i .cu-item>.main .content:not([class*="bg-"])::before {
-	background-color: var(--black);
-	opacity: 0.1;
+.cu-chat-i .cu-item > .main .content:not([class*='bg-'])::before {
+  background-color: var(--black);
+  opacity: 0.1;
 }
 
-.cu-chat-i .cu-item.self>.main .content::before {
-	left: auto;
-	right: -12rpx;
+.cu-chat-i .cu-item.self > .main .content::before {
+  left: auto;
+  right: -12rpx;
 }
 
 .cu-chat-i .cu-item.self {
-	justify-content: flex-end;
-	text-align: right;
+  justify-content: flex-end;
+  text-align: right;
 }
 
 .cu-chat-i .cu-info {
-	display: inline-block;
-	margin: 20rpx auto;
-	font-size: 24rpx;
-	padding: 8rpx 12rpx;
-	background-color: rgba(0, 0, 0, 0.2);
-	border-radius: 6rpx;
-	color: var(--white);
-	max-width: 400rpx;
-	line-height: 1.4;
+  display: inline-block;
+  margin: 20rpx auto;
+  font-size: 24rpx;
+  padding: 8rpx 12rpx;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 6rpx;
+  color: var(--white);
+  max-width: 400rpx;
+  line-height: 1.4;
 }

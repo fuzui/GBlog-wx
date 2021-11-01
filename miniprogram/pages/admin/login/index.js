@@ -1,27 +1,25 @@
-//获取应用实例
-const app = getApp();
+// 获取应用实例
+const app = getApp()
 Page({
   data: {
-    logo: ""
+    logo: ''
   },
-  async onLoad() { 
-    var that = this;
+  async onLoad() {
+    const that = this
     that.setData({
-      logo: app.globalData.logo,
+      logo: app.globalData.logo
     })
   },
-  async onShow() {
-  },
+  async onShow() {},
   /**
    * 登录后置处理
    */
-  async loginSuf(){
-    let pages = getCurrentPages();
-    let beforePage = pages[pages.length - 2];
-    beforePage.onLoad();
+  async loginSuf() {
+    const pages = getCurrentPages()
+    const beforePage = pages[pages.length - 2]
+    beforePage.onLoad()
     wx.navigateBack({
-      delta: 1,
+      delta: 1
     })
   }
-  
 })

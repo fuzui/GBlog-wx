@@ -1,7 +1,7 @@
-import apiRequest from './../../../utils/api-request';
+import apiRequest from './../../../utils/api-request'
 import { ApiBaseUrl } from '../../../config/api'
 import { STORAGE_KEY } from '../../const-data/const-data'
-const moduleName = ApiBaseUrl + '/api/admin/journals';
+const moduleName = ApiBaseUrl + '/api/admin/journals'
 
 /**
  * 新建日记
@@ -11,12 +11,14 @@ function adminAddJournal(data) {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
   return new Promise((resolve, reject) => {
-    apiRequest.Post(moduleName, data, adminToken)
-      .then(r => {
+    apiRequest.Post(moduleName, data, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
@@ -28,12 +30,14 @@ function adminGetJournal(param) {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
   return new Promise((resolve, reject) => {
-    apiRequest.Get(moduleName, Object.assign(adminToken, param))
-      .then(r => {
+    apiRequest.Get(moduleName, Object.assign(adminToken, param)).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
@@ -44,32 +48,36 @@ function adminDeleteJournal(journalId) {
   const adminToken = {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
-  const url = moduleName + '/' + journalId;
+  const url = moduleName + '/' + journalId
   return new Promise((resolve, reject) => {
-    apiRequest.Delete(url, adminToken)
-      .then(r => {
+    apiRequest.Delete(url, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 
 /**
  * 根据日记id修改日记
  */
-function adminEditJournal(journalId,param) {
+function adminEditJournal(journalId, param) {
   const adminToken = {
     admin_token: wx.getStorageSync(STORAGE_KEY.adminToken)
   }
-  const url = moduleName + '/' + journalId;
+  const url = moduleName + '/' + journalId
   return new Promise((resolve, reject) => {
-    apiRequest.Put(url, param, adminToken)
-      .then(r => {
+    apiRequest.Put(url, param, adminToken).then(
+      r => {
         resolve(r)
-      }, e => {
+      },
+      e => {
         reject(e)
-      })
+      }
+    )
   })
 }
 

@@ -1,12 +1,18 @@
-const app = getApp();
-import apiResult from '../../../../utils/api-result';
-import { adminGetAttachment, adminAddAttachment, adminBatchDeleteAttachment } from '../../../../services/api/admin/attachment';
-import config from '../../../../config/api';
+import apiResult from '../../../../utils/api-result'
+import {
+  adminGetAttachment,
+  adminAddAttachment,
+  adminBatchDeleteAttachment
+} from '../../../../services/api/admin/attachment'
+import config from '../../../../config/api'
+
+const app = getApp()
+
 Page({
   data: {
     CustomBar: app.globalData.CustomBar,
-    logo: "",
-    imgPath: "",
+    logo: '',
+    imgPath: '',
     pageNo: 0,
     bottomFlag: false,
     uploadModal: false,
@@ -14,59 +20,57 @@ Page({
     batchView: false,
     indexs: []
   },
-  async onLoad() { 
-    var that = this;
+  async onLoad() {
+    const that = this
     that.setData({
       logo: app.globalData.logo
     })
-    
   },
   async onShow() {
-    var that = this;
+    const that = this
     that.setData({
-      loadModal:true,
+      loadModal: true,
       content: [],
       pageNo: 0,
       indexs: []
     })
-    var content = await this.getAttachments();
+    const content = await this.getAttachments()
     that.setData({
       content: content,
-      loadModal:false
-    });
+      loadModal: false
+    })
   },
   /**
    * 向下滑动拉去下一页
    */
   async onReachBottom() {
-    var that = this;
-    var pageNo = ++that.data.pageNo;
+    const that = this
+    const pageNo = ++that.data.pageNo
     that.setData({
-      pageNo: pageNo,
-    });
-    const content = await this.getAttachments();
-    if(content){
+      pageNo: pageNo
+    })
+    const content = await this.getAttachments()
+    if (content) {
       that.setData({
         content: content
-      });
+      })
     }
-    
   },
   /**
    * 获取附件列表
    */
   async getAttachments() {
-    var that = this;
+    const that = this
     try {
       const param = {
         page: that.data.pageNo,
         size: config.PageSize.attachmentSize,
         sort: 'createTime,desc'
-      };
-      const result = await adminGetAttachment(param);
-      if(result.page < result.pages){
-        return that.data.content.concat(result.content);
-      }else{
+      }
+      const result = await adminGetAttachment(param)
+      if (result.page < result.pages) {
+        return that.data.content.concat(result.content)
+      } else {
         that.setData({
           bottomFlag: true
         })
@@ -75,17 +79,16 @@ Page({
       return await Promise.reject(error)
     }
   },
-  async adminAddAttachment(imgPath){
-    try{
+  async adminAddAttachment(imgPath) {
+    try {
       const param = {
         path: imgPath
       }
-      const result = await adminAddAttachment(param);
+      const result = await adminAddAttachment(param)
       return result
     } catch (error) {
       return await Promise.reject(error)
     }
-    
   },
   showModal(e) {
     this.setData({
@@ -101,97 +104,94 @@ Page({
    * 选择图片
    */
   async chooseImage(event) {
-    var that = this;
-    const type = event.currentTarget.dataset.type;
-    const sourceType = [type];
+    const that = this
+    const type = event.currentTarget.dataset.type
+    const sourceType = [type]
     that.setData({
       uploadModal: true,
       modalName: null
     })
     wx.chooseImage({
-      count: 1, //默认9
-      sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
-      sourceType: sourceType, //从相册选择
-      success: async(res) => {
-        const result = await that.adminAddAttachment(res.tempFilePaths[0]);
-        that.data.content.unshift(result);
+      count: 1, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: sourceType, // 从相册选择
+      success: async res => {
+        const result = await that.adminAddAttachment(res.tempFilePaths[0])
+        that.data.content.unshift(result)
         that.setData({
           content: that.data.content
         })
-        that.returnTop();
+        that.returnTop()
         that.setData({
           uploadModal: false
         })
-        apiResult.success("上传成功")
-        
+        apiResult.success('上传成功')
       },
-      fail: err=>{
+      fail: () => {
         that.setData({
           uploadModal: false
         })
-        apiResult.warn("取消上传")
+        apiResult.warn('取消上传')
       }
-    });
-    
+    })
   },
-  
+
   /**
    * 批量删除附件
    */
   async deleteBatchAttachment() {
-    var that = this;
-    const indexs = that.data.indexs;
-    if(indexs.length == 0){
-      apiResult.warn("请勾选附件");
-      return ;
+    const that = this
+    const indexs = that.data.indexs
+    if (indexs.length === 0) {
+      apiResult.warn('请勾选附件')
+      return
     }
     wx.showModal({
       title: 'Creator',
-      content: '确定要删除这'+indexs.length+'张附件吗？',
+      content: '确定要删除这' + indexs.length + '张附件吗？',
       cancelText: '再看看',
       confirmText: '再见',
-      success: async(res) => {
+      success: async res => {
         if (res.confirm) {
           try {
-            const ids = [];
-            const content = that.data.content;
+            const ids = []
+            const content = that.data.content
             indexs.forEach(element => {
               ids.push(content[element].id)
-            });
-            await adminBatchDeleteAttachment(ids);
-            apiResult.success("已删除");
-            //无需刷新，视图删
-            var tmp = -1;
+            })
+            await adminBatchDeleteAttachment(ids)
+            apiResult.success('已删除')
+            // 无需刷新，视图删
+            let tmp = -1
             indexs.forEach(element => {
-              var k = 0
-              if(element > tmp && tmp != -1){
+              let k = 0
+              if (element > tmp && tmp !== -1) {
                 k = 1
               }
-              tmp = element;
-              content.splice(element-k,1)
-            });
+              tmp = element
+              content.splice(element - k, 1)
+            })
             that.setData({
               content: content,
               indexs: []
             })
-
           } catch (error) {
-            apiResult.error("网络异常");
-            return error.message;
+            apiResult.error('网络异常')
+            return error.message
           }
         }
       }
     })
   },
-  
+
   /**
    * 跳到详情页
-   * @param {*} event 
+   * @param {*} event
    */
   toDetailsPage: function (event) {
-    const id = event.currentTarget.dataset.id;
+    const id = event.currentTarget.dataset.id
     wx.navigateTo({
-      url:'/pages/admin/attachment/details/index?id='+id
+      url: '/pages/admin/attachment/details/index?id=' + id
     })
   },
 
@@ -207,7 +207,7 @@ Page({
       })
     }
   },
-  
+
   showBatchView() {
     this.setData({
       batchView: true
@@ -219,18 +219,18 @@ Page({
       indexs: []
     })
   },
-  selectAttachment(event){
-    var that = this;
-    const id = event.currentTarget.dataset.index; //这里id存附件数组的index
-    const indexs = that.data.indexs;
-    const index = indexs.indexOf(id);
-    if(index > -1){
-      indexs.splice(index,1)
-    }else{
+  selectAttachment(event) {
+    const that = this
+    const id = event.currentTarget.dataset.index // 这里id存附件数组的index
+    const indexs = that.data.indexs
+    const index = indexs.indexOf(id)
+    if (index > -1) {
+      indexs.splice(index, 1)
+    } else {
       indexs.push(id)
     }
     that.setData({
-      indexs:indexs
+      indexs: indexs
     })
   }
 })

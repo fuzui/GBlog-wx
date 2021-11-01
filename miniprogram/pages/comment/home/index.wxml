@@ -4,37 +4,40 @@
 </cu-custom>
 
 <view class="bg-white">
-  <comment
-    id="commentComponent"
-    comments="{{comments}}"
-    bind:addComment="addComment">
-  </comment>
+  <comment id="commentComponent" comments="{{comments}}" bind:addComment="addComment"> </comment>
   <!-- 下拉加载分页 -->
-  <view style="padding-bottom: 100rpx;" class="cu-load {{!loadingComplete?'loading':'over'}}"></view>
+  <view style="padding-bottom: 100rpx" class="cu-load {{!loadingComplete?'loading':'over'}}"></view>
 </view>
 
 <!-- 微信登录 -->
 <authorize modalName="{{modalName}}" />
 <!-- 弹框加载 -->
-<view class='cu-load load-modal' wx:if="{{loadModal}}">
-  <image src='{{logo}}' class='png' mode='aspectFit'></image>
-  <view class='gray-text'>加载中...</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">加载中...</view>
 </view>
 <!-- 发表评论、点赞、转发 -->
-<view class="cu-bar tabbar shadow foot" style="background: white;">
-  <view class="search-form round comment" style="width:400rpx;">
+<view class="cu-bar tabbar shadow foot" style="background: white">
+  <view class="search-form round comment" style="width: 400rpx">
     <text class="cuIcon-write"></text>
-    <input type="text" placeholder="我来{{title}}..." bindtap="addCommentByComponent" data-target="commentModal" data-pid="0" disabled="true"></input>
+    <input
+      type="text"
+      placeholder="我来{{title}}..."
+      bindtap="addCommentByComponent"
+      data-target="commentModal"
+      data-pid="0"
+      disabled="true"
+    />
   </view>
   <view class="action">
-    <view class='cuIcon-cu-image'>
+    <view class="cuIcon-cu-image">
       <image src="/images/icon/comment.svg"></image>
       <view class="cu-tag badge bg-white" wx:if="{{commentCount}}">{{commentCount}}</view>
     </view>
   </view>
 </view>
 <!-- 加载框 -->
-<view class='cu-load load-modal' wx:if="{{loadModal}}">
-  <image src="{{logo}}" class='png' mode='aspectFit'></image>
-  <view class='gray-text'>加载中...</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">加载中...</view>
 </view>

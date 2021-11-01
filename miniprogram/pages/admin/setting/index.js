@@ -1,7 +1,9 @@
-const app = getApp();
-import apiResult from '../../../utils/api-result';
-import { adminGetOption } from '../../../services/api/admin/option';
-import { ApiBaseUrl } from '../../../config/api.js';
+import apiResult from '../../../utils/api-result'
+import { adminGetOption } from '../../../services/api/admin/option'
+import { ApiBaseUrl } from '../../../config/api.js'
+
+const app = getApp()
+
 Page({
   data: {
     url: ApiBaseUrl,
@@ -11,28 +13,26 @@ Page({
     TabCur: 0,
     HighTabCur: 0,
     SmtpTabCur: 0,
-    scrollLeft:0,
+    scrollLeft: 0,
     isEmailPassword: true,
-    isAccessKeyPassword: true,
+    isAccessKeyPassword: true
   },
-  onLoad: function () { 
-    
-  },
+  onLoad: function () {},
   async onShow() {
-    var that = this;
+    const that = this
     that.setData({
-      loadModal:true
+      loadModal: true
     })
-    const options = await this.adminGetOption();
+    const options = await this.adminGetOption()
     that.setData({
       options: options,
-      loadModal:false
-    });
+      loadModal: false
+    })
   },
-  
+
   /**
    * 复制
-   * @param {*} e 
+   * @param {*} e
    */
   CopyLink(e) {
     wx.setClipboardData({
@@ -40,7 +40,7 @@ Page({
       success: res => {
         wx.showToast({
           title: '已复制',
-          duration: 1000,
+          duration: 1000
         })
       }
     })
@@ -48,60 +48,60 @@ Page({
   /**
    * 获取设置信息
    */
-  async adminGetOption(){
+  async adminGetOption() {
     try {
-      const result = await adminGetOption();
-      return result;
+      const result = await adminGetOption()
+      return result
     } catch (error) {
-      return error.message;
+      return error.message
     }
   },
   tabSelect(e) {
     this.setData({
-      TabCur: e.currentTarget.dataset.id,
+      TabCur: e.currentTarget.dataset.id
     })
   },
   highTabSelect(e) {
     this.setData({
-      HighTabCur: e.currentTarget.dataset.id,
+      HighTabCur: e.currentTarget.dataset.id
     })
   },
   SmtpTabSelect(e) {
     this.setData({
-      SmtpTabCur: e.currentTarget.dataset.id,
+      SmtpTabCur: e.currentTarget.dataset.id
     })
   },
   /**
    * 密码框是否可见
-   * @param {*} e 
+   * @param {*} e
    */
-  viewPassword(e){
-    var that = this;
-    const passwordType = e.currentTarget.dataset.type;
-    if(passwordType == 'isEmailPassword'){
-      let flag = true;
-      if(that.data.isEmailPassword){
-        flag = false;
+  viewPassword(e) {
+    const that = this
+    const passwordType = e.currentTarget.dataset.type
+    if (passwordType === 'isEmailPassword') {
+      let flag = true
+      if (that.data.isEmailPassword) {
+        flag = false
       }
       this.setData({
-        isEmailPassword: flag,
+        isEmailPassword: flag
       })
     }
-    if(passwordType == 'isAccessKeyPassword'){
-      let flag = true;
-      if(that.data.isAccessKeyPassword){
-        flag = false;
+    if (passwordType === 'isAccessKeyPassword') {
+      let flag = true
+      if (that.data.isAccessKeyPassword) {
+        flag = false
       }
       this.setData({
-        isAccessKeyPassword: flag,
+        isAccessKeyPassword: flag
       })
     }
   },
-  selectSettingType(){
-    var that = this;
-    let flag = 0;
-    if(that.data.settingType == 0){
-      flag = 1;
+  selectSettingType() {
+    const that = this
+    let flag = 0
+    if (that.data.settingType === 0) {
+      flag = 1
     }
     that.setData({
       TabCur: 0,
@@ -109,7 +109,7 @@ Page({
       settingType: flag
     })
   },
-  saveSettings(){
-    apiResult.warn("功能开发中");
+  saveSettings() {
+    apiResult.warn('功能开发中')
   }
 })

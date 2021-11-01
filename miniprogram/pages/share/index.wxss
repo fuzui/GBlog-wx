@@ -1,5 +1,5 @@
 page {
-  background-color: #7566B4!important;
+  background-color: #7566b4 !important;
   text-align: center;
 }
 .share-image {
@@ -12,5 +12,5 @@ page {
   border-radius: 20rpx;
   width: 650rpx;
   height: 164rpx;
-  background-color:#ffffff;
+  background-color: #ffffff;
 }

@@ -4,14 +4,13 @@
 function getRandomGraph() {
   return new Promise((resolve, reject) => {
     wx.cloud.callFunction({
-      name: "get_random_graph",
-      data: {
-      },
+      name: 'get_random_graph',
+      data: {},
       success(res) {
-        var randomGraphs = new Array()
+        const randomGraphs = []
         res.result.data.forEach(r => {
           randomGraphs.push(r.url)
-        });
+        })
         resolve(randomGraphs)
       },
       fail(e) {
@@ -27,7 +26,7 @@ function getRandomGraph() {
 function checkMessage(content) {
   return new Promise((resolve, reject) => {
     wx.cloud.callFunction({
-      name: "check_message",
+      name: 'check_message',
       data: {
         content: content
       },

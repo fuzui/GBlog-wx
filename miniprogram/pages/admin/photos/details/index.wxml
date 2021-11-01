@@ -1,87 +1,63 @@
 <wxs src="../../../../utils/tools.wxs" module="tools" />
 <cu-custom bgColor="bg-theme" isCustom="{{true}}">
-	<view slot="content">附件详情</view>
+  <view slot="content">附件详情</view>
 </cu-custom>
 
 <!-- 弹框加载 -->
-<view class='cu-load load-modal' wx:if="{{loadModal}}">
-	<image src='{{logo}}' class='png' mode='aspectFit'></image>
-	<view class='gray-text'>加载中...</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">加载中...</view>
 </view>
 
 <!-- 详情 -->
 <view class="cu-list menu text-left">
-	<view class="cu-item">
-		<view class="content padding-tb-sm">
-			<view>
-				照片详情
-			</view>
-			<view class="text-gray text-sm">
-				<image src="{{photo.url}}" mode="widthFix" style="width:700rpx;"></image>
-			</view>
-		</view>
-	</view>
-	<view class="cu-item">
-		<view class="content padding-tb-sm">
-			<view>
-				缩略图地址: <text class="cuIcon-copy text-blue margin-left-sm" bindtap="copyLink" data-link="{{photo.thumbnail}}"></text>
-			</view>
-			<view class="text-gray text-sm">
-				{{photo.thumbnail}}
-			</view>
-		</view>
-	</view>
-	<view class="cu-item">
-		<view class="content padding-tb-sm">
-			<view>
-				名:称 
-			</view>
-			<view class="text-gray text-sm">
-				{{photo.name}}
-			</view>
-		</view>
-	</view>
-	<view class="cu-item">
-		<view class="content padding-tb-sm">
-			<view>
-				拍摄日期:
-			</view>
-			<view class="text-gray text-sm">
-				{{photo.takeTime?tools.tsFormatTime(photo.takeTime):''}}
-			</view>
-		</view>
-	</view>
-	<view class="cu-item">
-		<view class="content padding-tb-sm">
-			<view>
-				拍摄地点:
-			</view>
-			<view class="text-gray text-sm">
-				{{photo.location}}
-			</view>
-		</view>
-	</view>
-	<view class="cu-item">
-		<view class="content padding-tb-sm">
-			<view>
-				分组:
-			</view>
-			<view class="text-gray text-sm">
-				{{photo.team}}
-			</view>
-		</view>
-	</view>
-	<view class="cu-item">
-		<view class="content padding-tb-sm">
-			<view>
-				描述:
-			</view>
-			<view class="text-gray text-sm">
-				{{photo.description}}
-			</view>
-		</view>
-	</view>
-	
+  <view class="cu-item">
+    <view class="content padding-tb-sm">
+      <view> 照片详情 </view>
+      <view class="text-gray text-sm">
+        <image src="{{photo.url}}" mode="widthFix" style="width: 700rpx"></image>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content padding-tb-sm">
+      <view>
+        缩略图地址:
+        <text class="cuIcon-copy text-blue margin-left-sm" bindtap="copyLink" data-link="{{photo.thumbnail}}"></text>
+      </view>
+      <view class="text-gray text-sm"> {{photo.thumbnail}} </view>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content padding-tb-sm">
+      <view> 名:称 </view>
+      <view class="text-gray text-sm"> {{photo.name}} </view>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content padding-tb-sm">
+      <view> 拍摄日期: </view>
+      <view class="text-gray text-sm"> {{photo.takeTime?tools.tsFormatTime(photo.takeTime):''}} </view>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content padding-tb-sm">
+      <view> 拍摄地点: </view>
+      <view class="text-gray text-sm"> {{photo.location}} </view>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content padding-tb-sm">
+      <view> 分组: </view>
+      <view class="text-gray text-sm"> {{photo.team}} </view>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content padding-tb-sm">
+      <view> 描述: </view>
+      <view class="text-gray text-sm"> {{photo.description}} </view>
+    </view>
+  </view>
 </view>
 
 <!-- 编辑框 -->
@@ -93,35 +69,39 @@
         <text class="cuIcon-close text-red"></text>
       </view>
     </view>
-		<view class="cu-form-group text-left">
+    <view class="cu-form-group text-left">
       <view class="title">缩略图地址</view>
-      <input value="{{thumbnail}}" bindinput="thumbnailInput"></input>
+      <input value="{{thumbnail}}" bindinput="thumbnailInput" />
     </view>
     <view class="cu-form-group text-left">
       <view class="title">名称</view>
-      <input value="{{name}}" bindinput="nameInput"></input>
+      <input value="{{name}}" bindinput="nameInput" />
     </view>
     <view class="cu-form-group text-left">
       <view class="title">拍摄日期</view>
-			<picker mode="date" value="{{takeTime?tools.tsFormatTime(takeTime):''}}" start="1980-01-01" end="2025-12-31" bindchange="takeTimeInput">
-				<view class="picker">
-					{{takeTime?tools.tsFormatTime(takeTime):''}}
-				</view>
-			</picker>
+      <picker
+        mode="date"
+        value="{{takeTime?tools.tsFormatTime(takeTime):''}}"
+        start="1980-01-01"
+        end="2025-12-31"
+        bindchange="takeTimeInput"
+      >
+        <view class="picker"> {{takeTime?tools.tsFormatTime(takeTime):''}} </view>
+      </picker>
     </view>
     <view class="cu-form-group text-left">
       <view class="title">拍摄地点</view>
-      <input value="{{location}}" bindinput="locationInput"></input>
+      <input value="{{location}}" bindinput="locationInput" />
     </view>
     <view class="cu-form-group text-left">
       <view class="title">分组</view>
-      <input value="{{team}}" bindinput="teamInput"></input>
+      <input value="{{team}}" bindinput="teamInput" />
     </view>
     <view class="cu-form-group text-left">
       <view class="title">描述</view>
-      <input value="{{description}}" bindinput="descriptionInput"></input>
+      <input value="{{description}}" bindinput="descriptionInput" />
     </view>
-    
+
     <view class="cu-bar bg-white justify-end">
       <view class="action">
         <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
@@ -131,7 +111,7 @@
   </view>
 </view>
 
-<view class="margin-tb-sm text-center" style="margin-left:450rpx;">
-	<button class="cu-btn line-blue shadow" bindtap="showModal" data-target="editModal">编辑</button>
+<view class="margin-tb-sm text-center" style="margin-left: 450rpx">
+  <button class="cu-btn line-blue shadow" bindtap="showModal" data-target="editModal">编辑</button>
   <button class="cu-btn bg-red shadow margin-left-sm" bindtap="deletePhoto">删除</button>
 </view>

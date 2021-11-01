@@ -1,22 +1,46 @@
 <wxs src="../../utils/tools.wxs" module="tools" />
 <view class="fixed-nav">
-  <view class="cu-custom" style="height:{{CustomBar}}px">
+  <view class="cu-custom" style="height: {{CustomBar}}px;">
     <view class="cu-bar fixed text-blank" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
       <view class="search-form round">
         <text class="cuIcon-search"></text>
-        <input type="text" placeholder="搜索文章"  bindtap="onSearch" disabled></input>
+        <input type="text" placeholder="搜索文章" bindtap="onSearch" disabled />
       </view>
     </view>
   </view>
   <!--  分类导航  -->
-  <scroll-view scroll-x class="scroll-view nav text-center text-orange" scroll-with-animation scroll-left="{{scrollLeft}}">
-    <view class="scroll-view-item cu-item {{tab.code==currentNavCode?'text-blue cur ali-font':'text-df text-gray'}}" wx:for="{{navlist}}" bindtap="handleChangeNavTab" wx:for-item="tab" data-type='{{tab.code}}' wx:key="index">
+  <scroll-view
+    scroll-x
+    class="scroll-view nav text-center text-orange"
+    scroll-with-animation
+    scroll-left="{{scrollLeft}}"
+  >
+    <view
+      class="scroll-view-item cu-item {{tab.code==currentNavCode?'text-blue cur ali-font':'text-df text-gray'}}"
+      wx:for="{{navlist}}"
+      bindtap="handleChangeNavTab"
+      wx:for-item="tab"
+      data-type="{{tab.code}}"
+      wx:key="index"
+    >
       {{tab.name}}
     </view>
   </scroll-view>
   <view wx:if="{{currentNavCode == 'rank'}}">
-    <scroll-view scroll-x class="scroll-view bg-white nav text-center text-orange" scroll-with-animation scroll-left="{{scrollLeft}}">
-      <view class="scroll-view-item cu-item {{tab.code==currentRankType?'text-black text-bold cur':'text-df text-gray'}}" wx:for="{{rankType}}" bindtap="handleChangeRankType" wx:for-item="tab" data-type='{{tab.code}}' wx:key="index">
+    <scroll-view
+      scroll-x
+      class="scroll-view bg-white nav text-center text-orange"
+      scroll-with-animation
+      scroll-left="{{scrollLeft}}"
+    >
+      <view
+        class="scroll-view-item cu-item {{tab.code==currentRankType?'text-black text-bold cur':'text-df text-gray'}}"
+        wx:for="{{rankType}}"
+        bindtap="handleChangeRankType"
+        wx:for-item="tab"
+        data-type="{{tab.code}}"
+        wx:key="index"
+      >
         {{tab.name}}
       </view>
     </scroll-view>
@@ -26,45 +50,45 @@
 <view wx:if="{{currentNavCode == 'recommend'}}">
   <view class="recommend">
     <!--轮播图 -->
-    <view class="recommend-swiper-before">
-    </view>
-    <swiper class="card-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" bindchange="cardSwiper" indicator-color="#8799a3" indicator-active-color="#0081ff">
+    <view class="recommend-swiper-before"> </view>
+    <swiper
+      class="card-swiper square-dot"
+      indicator-dots="true"
+      circular="true"
+      autoplay="true"
+      interval="5000"
+      duration="500"
+      bindchange="cardSwiper"
+      indicator-color="#8799a3"
+      indicator-active-color="#0081ff"
+    >
       <swiper-item wx:for="{{swiper}}" wx:key="index" class="{{cardCur==index?'cur':''}}">
         <view class="swiper-item bg-white" bindtap="swaper" data-id="{{item.id}}">
-          <image src="{{item.thumbnail?item.thumbnail:tools.getRandomImage(randomGraphs)}}" mode="aspectFill" ></image>
+          <image src="{{item.thumbnail?item.thumbnail:tools.getRandomImage(randomGraphs)}}" mode="aspectFill"></image>
         </view>
       </swiper-item>
     </swiper>
   </view>
   <official-account></official-account>
   <view class="cu-bar">
-      <view class="action sub-title">
-        <text class="text-xl text-bold text-blue" space="ensp">最新    </text>
-        <text class="text-blue">文章</text>
-        <!-- last-child选择器-->
-      </view>
+    <view class="action sub-title">
+      <text class="text-xl text-bold text-blue" space="ensp">最新 </text>
+      <text class="text-blue">文章</text>
+      <!-- last-child选择器-->
+    </view>
   </view>
   <!--  文章列表展示  -->
   <article-list content="{{content}}" layout="card" isMore="{{true}}"></article-list>
-  
-  
 </view>
 <!-- 榜单 -->
-<view style="padding-top: 300rpx;" wx:if="{{currentNavCode == 'rank'}}">
-  <!-- <view class="bg-white">
-    <scroll-view scroll-x class="scroll-view bg-white nav text-center text-orange" scroll-with-animation scroll-left="{{scrollLeft}}" style="padding-top:{{CustomBar*2}}px">
-      <view class="scroll-view-item cu-item {{tab.code==currentRankType?'text-black text-bold cur':'text-df text-gray'}}" wx:for="{{rankType}}" bindtap="handleChangeRankType" wx:for-item="tab" data-type='{{tab.code}}' wx:key="index">
-        {{tab.name}}
-      </view>
-    </scroll-view>
-  </view> -->
+<view style="padding-top: 300rpx" wx:if="{{currentNavCode == 'rank'}}">
   <!--  榜单文章列表展示  -->
   <article-list content="{{rankArticleList}}" layout="card" isMore="{{true}}"></article-list>
 </view>
 <!-- 下拉加载分页 -->
-<view style="padding-bottom: 100rpx;" class="cu-load {{loading==true?'loading':'over'}}"></view>
+<view style="padding-bottom: 100rpx" class="cu-load {{loading==true?'loading':'over'}}"></view>
 <!-- 加载框 -->
-<view class='cu-load load-modal' wx:if="{{loadModal}}">
-  <image src="{{logo}}" class='png' mode='aspectFit'></image>
-  <view class='gray-text'>加载中...</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">加载中...</view>
 </view>

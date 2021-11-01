@@ -1,106 +1,84 @@
 <cu-custom bgColor="bg-theme" isCustom="{{true}}">
-	<view slot="content">附件详情</view>
+  <view slot="content">附件详情</view>
 </cu-custom>
 
 <!-- 弹框加载 -->
-<view class='cu-load load-modal' wx:if="{{loadModal}}">
-	<image src='{{logo}}' class='png' mode='aspectFit'></image>
-	<view class='gray-text'>加载中...</view>
+<view class="cu-load load-modal" wx:if="{{loadModal}}">
+  <image src="{{logo}}" class="png" mode="aspectFit"></image>
+  <view class="gray-text">加载中...</view>
 </view>
 
 <!-- 详情 -->
 <view class="cu-list menu text-left">
-	<view class="cu-item">
-		<view class="content padding-tb-sm">
-			<view>
-				附件详情
-			</view>
-			<view class="text-gray text-sm">
-				<image src="{{attachment.path}}" mode="widthFix" style="width:700rpx;"></image>
-			</view>
-		</view>
-	</view>
-	<view class="cu-item">
-		<view class="content padding-tb-sm">
-			<view>
-				附件名: <text class="cuIcon-write text-blue margin-left-sm" bindtap="showModal" data-target="editModal"></text>
-			</view>
-			<view class="text-gray text-sm">
-				{{attachment.name}}
-			</view>
-		</view>
-	</view>
-	<view class="cu-item">
-		<view class="content padding-tb-sm">
-			<view>
-				附件类型:
-			</view>
-			<view class="text-gray text-sm">
-				{{attachment.mediaType}}
-			</view>
-		</view>
-	</view>
-	<view class="cu-item">
-		<view class="content padding-tb-sm">
-			<view>
-				存储位置:
-			</view>
-			<view class="text-gray text-sm">
-				{{attachment.type}}
-			</view>
-		</view>
-	</view>
-	<view class="cu-item">
-		<view class="content padding-tb-sm">
-			<view>
-				附件大小:
-			</view>
-			<view class="text-gray text-sm">
-				{{attachment.size}}
-			</view>
-		</view>
-	</view>
+  <view class="cu-item">
+    <view class="content padding-tb-sm">
+      <view> 附件详情 </view>
+      <view class="text-gray text-sm">
+        <image src="{{attachment.path}}" mode="widthFix" style="width: 700rpx"></image>
+      </view>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content padding-tb-sm">
+      <view>
+        附件名: <text class="cuIcon-write text-blue margin-left-sm" bindtap="showModal" data-target="editModal"></text>
+      </view>
+      <view class="text-gray text-sm"> {{attachment.name}} </view>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content padding-tb-sm">
+      <view> 附件类型: </view>
+      <view class="text-gray text-sm"> {{attachment.mediaType}} </view>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content padding-tb-sm">
+      <view> 存储位置: </view>
+      <view class="text-gray text-sm"> {{attachment.type}} </view>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content padding-tb-sm">
+      <view> 附件大小: </view>
+      <view class="text-gray text-sm"> {{attachment.size}} </view>
+    </view>
+  </view>
 
-	<view class="cu-item">
-		<view class="content padding-tb-sm">
-			<view>
-				图片尺寸:
-			</view>
-			<view class="text-gray text-sm">
-				{{attachment.width}} X {{attachment.height}}
-			</view>
-		</view>
-	</view>
-	<view class="cu-item">
-		<view class="content padding-tb-sm">
-			<view>
-				上传日期:
-			</view>
-			<view class="text-gray text-sm">
-				{{attachment.createTime}}
-			</view>
-		</view>
-	</view>
-	<view class="cu-item">
-		<view class="content padding-tb-sm">
-			<view>
-				普通链接: <text class="cuIcon-copy text-blue margin-left-sm" bindtap="copyLink" data-link="{{attachment.path}}"></text>
-			</view>
-			<view class="text-gray text-sm">
-				{{attachment.path}}
-			</view>
-		</view>
-	</view>
-	<view class="cu-item">
-		<view class="content padding-tb-sm">
-			<view>
-				Markdown 格式: <text class="cuIcon-copy text-blue margin-left-sm" bindtap="copyLink" data-link="![{{attachment.name}}]({{attachment.path}})"></text>
-			</view>
-			<view class="text-gray text-sm">
-				![{{attachment.name}}]({{attachment.path}})
-			</view>
-		</view>
-	</view>
+  <view class="cu-item">
+    <view class="content padding-tb-sm">
+      <view> 图片尺寸: </view>
+      <view class="text-gray text-sm"> {{attachment.width}} X {{attachment.height}} </view>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content padding-tb-sm">
+      <view> 上传日期: </view>
+      <view class="text-gray text-sm"> {{attachment.createTime}} </view>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content padding-tb-sm">
+      <view>
+        普通链接:
+        <text class="cuIcon-copy text-blue margin-left-sm" bindtap="copyLink" data-link="{{attachment.path}}"></text>
+      </view>
+      <view class="text-gray text-sm"> {{attachment.path}} </view>
+    </view>
+  </view>
+  <view class="cu-item">
+    <view class="content padding-tb-sm">
+      <view>
+        Markdown 格式:
+        <text
+          class="cuIcon-copy text-blue margin-left-sm"
+          bindtap="copyLink"
+          data-link="![{{attachment.name}}]({{attachment.path}})"
+        ></text>
+      </view>
+      <view class="text-gray text-sm"> ![{{attachment.name}}]({{attachment.path}}) </view>
+    </view>
+  </view>
 </view>
 
 <!-- 编辑框 -->
@@ -113,9 +91,15 @@
       </view>
     </view>
     <view class="padding-xl">
-      <textarea maxlength="-1" bindinput="nameInput" placeholder="" value="{{name}}" disabled="{{modalName!='editModal'}}"></textarea>
+      <textarea
+        maxlength="-1"
+        bindinput="nameInput"
+        placeholder=""
+        value="{{name}}"
+        disabled="{{modalName!='editModal'}}"
+      ></textarea>
     </view>
-    
+
     <view class="cu-bar bg-white justify-end">
       <view class="action">
         <button class="cu-btn line-green text-green" bindtap="hideModal">取消</button>
@@ -125,6 +109,6 @@
   </view>
 </view>
 
-<view class="margin-tb-sm text-center" style="margin-left:600rpx;">
+<view class="margin-tb-sm text-center" style="margin-left: 600rpx">
   <button class="cu-btn bg-red shadow" bindtap="deleteAttachment">删除</button>
 </view>

@@ -1,0 +1,32 @@
+# .editorconfig
+# http://editorconfig.org
+# https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
+
+
+# 根目录的配置文件，编辑器会由当前目录向上查找，如果找到 `roor = true` 的文件，则不再查找
+root = true
+
+# 匹配所有的文件
+[*]
+# 缩进风格：space
+indent_style = space
+# 缩进大小 2
+indent_size = 2
+# 换行符 lf
+end_of_line = lf
+# 字符集 utf-8
+charset = utf-8
+# 不保留行末的空格
+trim_trailing_whitespace = true
+# 文件末尾添加一个空行
+insert_final_newline = true
+# 运算符两遍都有空格
+spaces_around_operators = true
+
+# 对所有的 js 文件生效
+[*.js]
+# 字符串使用单引号
+quote_type = single
+
+[*.md]
+trim_trailing_whitespace = false
