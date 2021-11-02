@@ -32,10 +32,8 @@ Page({
       title: '加载中...',
       mask: true
     })
-
     const tagList = await this.getTags()
-    const selected = options.id ? (tagList || []).findIndex(tag => tag.id === options.id) : 0
-
+    const selected = options.id ? (tagList || []).findIndex(tag => tag.id === parseInt(options.id)) : 0
     that.setData({
       tagCur: selected
     })

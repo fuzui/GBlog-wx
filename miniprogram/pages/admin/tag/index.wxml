@@ -11,7 +11,7 @@
     scroll-top="{{tagNavTop}}"
     style="height:calc(100vh - {{CustomBar}}px)"
   >
-    <view class="cu-item {{-1==tagCur?'text-blue cur':''}} " bindtap="tagSelect" data-index="-1">
+    <view class="cu-item {{-1==tagCur?'text-blue cur':''}} " bindtap="tagSelect" data-index="{{-1}}">
       <view class="flex">
         <text class="cuIcon-add text-blue"></text>
         <text class="text-cut margin-left">新增</text>

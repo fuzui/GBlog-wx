@@ -30,7 +30,7 @@ Page({
     if (type === COMMENT_TYPE.guestbook) {
       title = '留言'
     }
-    if (commmentPid !== 0) {
+    if (commmentPid !== '0') {
       title = '正在回复 ' + commmentPname
     }
 

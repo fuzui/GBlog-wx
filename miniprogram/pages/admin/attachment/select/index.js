@@ -15,7 +15,7 @@ Page({
   },
   async onLoad(options) {
     const that = this
-    if (options.type === 3) {
+    if (options.type === '3') {
       that.setData({
         tagCur: options.tagCur
       })
