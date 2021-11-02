@@ -39,7 +39,6 @@
 <view
   class="flex align-start grid col-2 padding-sm"
   style="padding-top:{{2 * CustomBar + StatusBar}}px; padding-bottom:100rpx;"
-  catchtouchmove="{{modalName!='detail'}}"
 >
   <view class="padding-xs" wx:for="{{columns}}" wx:for-item="column" wx:key="columnIndex">
     <view wx:for="{{column}}" style="padding-bottom: {{spacing}}rpx;" wx:for-item="columnItem" wx:key="columnItemIndex">
@@ -70,7 +69,7 @@
   <view class="gray-text">加载中...</view>
 </view>
 <!-- 详情 -->
-<view class="cu-modal {{modalName=='detail'?'show':''}}">
+<view class="cu-modal {{modalName=='detail'?'show':''}}" catchtouchmove="preventTouchMove">
   <view class="cu-dialog">
     <view
       class="bg-img flex align-end"

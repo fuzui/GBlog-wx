@@ -296,5 +296,7 @@ Page({
       tempContent: []
     })
     that.jsData.columnsHeight = columnsHeight
-  }
+  },
+  // 阻止滑动
+  preventTouchMove() {}
 })
