@@ -1,4 +1,3 @@
-// 获取应用实例
 import {
   adminAddPostComment,
   adminGetPostComment,

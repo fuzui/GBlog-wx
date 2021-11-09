@@ -1,4 +1,3 @@
-// 获取应用实例
 import apiResult from '../../utils/api-result'
 import { STORAGE_KEY } from '../../services/const-data/const-data'
 Component({

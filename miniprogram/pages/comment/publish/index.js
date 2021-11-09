@@ -1,4 +1,3 @@
-// 获取应用实例
 import { CloudConfig } from '../../../config/api.js'
 import { writeComment } from '../../../services/api/content/article'
 import { writeSheetComment } from '../../../services/api/content/sheet'

@@ -1,5 +1,5 @@
 import { getPhotos } from '../../../services/api/content/photo'
-import { PageSize, CustomStyle } from '../../../config/api'
+import { PageSize } from '../../../config/api'
 
 const app = getApp()
 
@@ -18,7 +18,6 @@ Page({
     content: [],
     currentPhoto: {},
     ColorList: app.globalData.ColorList,
-    photoImage: CustomStyle.photoImage,
     columns: [[], []],
     tempContent: [],
     spacing: 20,
@@ -205,14 +204,12 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: app.globalData.blogTitle + '光影',
-      imageUrl: CustomStyle.photoImage,
       path: '/pages/photos/home/index'
     }
   },
   onShareTimeline: function (res) {
     return {
-      title: app.globalData.blogTitle + '光影',
-      imageUrl: CustomStyle.photoImage
+      title: app.globalData.blogTitle + '光影'
     }
   },
   // 获取图片尺寸数据

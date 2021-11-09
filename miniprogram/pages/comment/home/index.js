@@ -1,4 +1,3 @@
-// 获取应用实例
 import { getComments, getArticleDetails } from '../../../services/api/content/article'
 import { getCommentsBySheetId, getSheetDetails } from '../../../services/api/content/sheet'
 import { STORAGE_KEY, COMMENT_TYPE } from '../../../services/const-data/const-data'
