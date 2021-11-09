@@ -1,0 +1,18 @@
+<wxs src="../../utils/tools.wxs" module="tools" />
+<image
+  class="custom-class"
+  wx:if="{{!finishLoadFlag}}"
+  mode="{{mode}}"
+  src="{{loadErrorFlag ? loadErrorImage : defaultImage}}"
+  style="{{width ? 'width:' + width : ''}}; {{height ? 'height:' + height : ''}}"
+>
+</image>
+<image
+  mode="{{mode}}"
+  class="{{finishLoadFlag ? '' : 'before-load'}} custom-class"
+  src="{{originalImage}}"
+  bindload="finishLoad"
+  binderror="loadError"
+  style="{{finishLoadFlag && width ? 'width:' + width : ''}};{{finishLoadFlag && height ? 'height:' + height : ''}}"
+>
+</image>

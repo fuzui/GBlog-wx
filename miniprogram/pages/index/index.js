@@ -1,5 +1,5 @@
 import { getArticleList } from '../../services/api/content/article'
-import { PageSize, CustomStyle } from '../../config/api'
+import { PageSize } from '../../config/api'
 
 const app = getApp()
 
@@ -8,7 +8,6 @@ Page({
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     randomGraphs: [],
-    swiperImage: CustomStyle.swiperImage,
     logo: '',
     currentNavCode: 'recommend',
     navlist: [

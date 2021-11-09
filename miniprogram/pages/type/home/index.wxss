@@ -47,10 +47,6 @@
   position: relative;
 }
 
-.type-card.case .image image {
-  width: 100%;
-}
-
 .type-card.case .image .cu-capsule {
   position: absolute;
   right: 0;

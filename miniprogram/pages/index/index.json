@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "article-list": "./../../components/article-list/index"
+    "article-list": "./../../components/article-list/index",
+    "image-loader": "./../../components/image-loader/index"
   }
 }

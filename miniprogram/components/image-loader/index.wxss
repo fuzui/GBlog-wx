@@ -1,0 +1,8 @@
+@import '/app.wxss';
+
+.before-load {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  display: none;
+}

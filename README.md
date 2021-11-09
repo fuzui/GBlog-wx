@@ -66,13 +66,13 @@ GBlog-wx：微信小程序博客
     guestbookSheetId: 2
   }
   ```
-  
+
   1.`ApiBaseUrl`为halo后台地址，上线必须为域名，在开发者工具中可点击`右上角详情——本地设置`，将不校验合法域名打勾。
-  
+
   2.`AccessKey`为halo api的AccessKey。进入halo后台管理系统，在`系统——博客设置——高级选项——API设置`中，将API 服务开启，并设置Access key。将此Access key填入上述js文件中对应位置。
-  
+
   ![123](https://cdn.fuzui.net/blog/123_1588867938268.png)
-  
+
   3.`guestbookSheetId`该值是留言板页面id，默认为关于页的评论，可自行前往表结构中查看。（默认2）
 
 
@@ -124,7 +124,7 @@ GBlog-wx：微信小程序博客
 ### 五、结构
 
 ```
-GBLOG-WX     
+GBLOG-WX
 ├── cloudfunctions                  // 云服务
 │      └── check_message            // 云函数 敏感词汇过滤
 │      └── get_qrcode               // 云函数 小程序码生成
@@ -135,6 +135,7 @@ GBLOG-WX
 │              └── article-list     // 文章列表
 │              └── authorize        // 微信登录
 │              └── comment          // 评论列表
+│              └── image-loader     // 图片处理组件
 │              └── painter          // painter小程序生成图片组件
 │              └── mp-weixin        // mp-html小程序富文本组件
 │      └── config                   // 配置文件
@@ -146,7 +147,7 @@ GBLOG-WX
 │              └── const-data       // 常量
 │              └── posters          // 海报样式
 │      └── styles                   // 样式
-│              └── colorui          // color-ui组件库 
+│              └── colorui          // color-ui组件库
 │      └── utils                    // 公用js
 ├── extension                       // 扩展资源
 │      └── cloud                    // 云开发数据

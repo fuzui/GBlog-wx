@@ -8,8 +8,11 @@
       </view>
     </view>
     <view class="content">
-      <image src="{{item.thumbnail?item.thumbnail:tools.getRandomImage(randomGraphs)}}" mode="aspectFill"></image>
-
+      <image-loader
+        custom-class="image-loader"
+        originalImage="{{item.thumbnail?item.thumbnail:tools.getRandomImage(randomGraphs)}}"
+        mode="aspectFill"
+      ></image-loader>
       <view class="desc">
         <view class="text-content"> {{item.summary}} </view>
         <view class="text-gray text-sm">

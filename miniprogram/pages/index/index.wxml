@@ -63,8 +63,12 @@
       indicator-active-color="#0081ff"
     >
       <swiper-item wx:for="{{swiper}}" wx:key="index" class="{{cardCur==index?'cur':''}}">
-        <view class="swiper-item bg-white" bindtap="swaper" data-id="{{item.id}}">
-          <image src="{{item.thumbnail?item.thumbnail:tools.getRandomImage(randomGraphs)}}" mode="aspectFill"></image>
+        <view class="swiper-item bg-white" bindtap="swaper">
+          <image-loader
+            data-id="{{item.id}}"
+            originalImage="{{item.thumbnail?item.thumbnail:tools.getRandomImage(randomGraphs)}}"
+            mode="aspectFill"
+          ></image-loader>
         </view>
       </swiper-item>
     </swiper>

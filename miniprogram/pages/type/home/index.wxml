@@ -5,7 +5,11 @@
 <view class="type-card case" style="padding-bottom: 100rpx">
   <view class="cu-item shadow" wx:for="{{categories}}" wx:for-item="item" wx:key="index">
     <view class="image" bindtap="toDetailPage" data-slug="{{item.slug}}" data-name="{{item.name}}">
-      <image src="{{item.thumbnail?item.thumbnail:tools.getRandomImage(randomGraphs)}}" mode="widthFix"></image>
+      <image-loader
+        width="100%"
+        originalImage="{{item.thumbnail?item.thumbnail:tools.getRandomImage(randomGraphs)}}"
+        mode="widthFix"
+      ></image-loader>
       <view class="cu-capsule radius">
         <view class="cu-tag bg-blue">
           <text>{{item.name}}</text>

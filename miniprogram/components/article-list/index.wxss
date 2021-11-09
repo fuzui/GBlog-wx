@@ -15,7 +15,7 @@
   margin: 0rpx;
   border-radius: 0rpx;
 }
-.cu-card.article > .cu-item .content > image {
+.image-loader {
   width: 240rpx;
   height: 6.4em;
   margin-right: 20rpx;
