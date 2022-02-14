@@ -1,11 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/details/index",
-    "pages/photos/home/index",
-    "pages/search/index",
-    "pages/type/home/index",
-    "pages/tag/index",
     "pages/about/home/index",
     "pages/about/about/index",
     "pages/about/archives/index",
@@ -31,7 +26,15 @@
     "pages/admin/tag/index",
     "pages/admin/theme/list/index",
     "pages/admin/user/index",
-    "components/article-list/index"
+    "pages/comment/home/index",
+    "pages/comment/publish/index",
+    "pages/details/index",
+    "pages/photos/home/index",
+    "pages/search/index",
+    "pages/share/index",
+    "pages/tag/index",
+    "pages/type/details/index",
+    "pages/type/home/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#39b54a",
