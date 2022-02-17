@@ -1,6 +1,6 @@
 import LastMayday from '../../../services/posters/category/base'
 import { getCategories } from '../../../services/api/content/category'
-import { getRandomImage } from '../../../utils/utils'
+import { convertImageUrl } from '../../../utils/utils'
 import { STORAGE_KEY } from '../../../services/const-data/const-data'
 
 const app = getApp()
@@ -54,7 +54,7 @@ Page({
       const category = this.data.categories[res.target.dataset.index]
       return {
         title: app.globalData.blogTitle + '的' + category.name + '专题',
-        imageUrl: category.thumbnail ? category.thumbnail : getRandomImage(that.data.randomGraphs),
+        imageUrl: convertImageUrl(category.thumbnail, that.data.randomGraphs),
         path: '/pages/type/details/index?slug=' + category.slug + '&name=' + category.name
       }
     }

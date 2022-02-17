@@ -1,4 +1,3 @@
-<wxs src="../../utils/tools.wxs" module="tools" />
 <view class="fixed-nav">
   <view class="cu-custom" style="height: {{CustomBar}}px;">
     <view class="cu-bar fixed text-blank" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;">
@@ -66,7 +65,8 @@
         <view class="swiper-item bg-white" bindtap="swaper">
           <image-loader
             data-id="{{item.id}}"
-            originalImage="{{item.thumbnail?item.thumbnail:tools.getRandomImage(randomGraphs)}}"
+            originalImage="{{item.thumbnail}}"
+            randomGraphs="{{randomGraphs}}"
             mode="aspectFill"
           ></image-loader>
         </view>

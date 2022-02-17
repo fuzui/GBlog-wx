@@ -1,5 +1,5 @@
 import { getPhotos } from '../../../services/api/content/photo'
-import { PageSize } from '../../../config/api'
+import { ApiBaseUrl, PageSize } from '../../../config/api'
 
 const app = getApp()
 
@@ -9,6 +9,7 @@ Page({
     isLoading: false
   },
   data: {
+    ApiBaseUrl,
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     logo: '',

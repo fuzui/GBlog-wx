@@ -19,7 +19,7 @@
       bindtap="selectAttachment"
       data-id="{{item.id}}"
       data-index="{{index}}"
-      style="background-image: url({{item.thumbPath}});height: 207rpx;"
+      style="{{'background-image: url(' + tools.convertImageUrl(ApiBaseUrl, item.thumbPath) + ');height: 207rpx;'}}"
     >
       <radio class="round" checked="{{selectId==item.id}}"></radio>
     </view>

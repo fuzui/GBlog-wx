@@ -15,7 +15,7 @@
     <view class="content padding-tb-sm">
       <view> 照片详情 </view>
       <view class="text-gray text-sm">
-        <image src="{{photo.url}}" mode="widthFix" style="width: 700rpx"></image>
+        <image src="{{tools.convertImageUrl(ApiBaseUrl, photo.url)}}" mode="widthFix" style="width: 700rpx"></image>
       </view>
     </view>
   </view>

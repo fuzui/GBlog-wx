@@ -1,13 +1,15 @@
 import { getArticleDetails, doPraise, getTopComments } from '../../services/api/content/article'
 import apiResult from '../../utils/api-result'
-import { CloudConfig, MpHtmlStyle, CustomStyle } from '../../config/api'
+import { ApiBaseUrl, CloudConfig, MpHtmlStyle, CustomStyle } from '../../config/api'
 import LastMayday from '../../services/posters/article/base'
 import { STORAGE_KEY, COMMENT_TYPE } from '../../services/const-data/const-data'
+import { convertImageUrl } from '../../utils/utils'
 
 const app = getApp()
 
 Page({
   data: {
+    ApiBaseUrl,
     noContentImage: CustomStyle.noContentImage,
     shareIsOpen: CloudConfig.isOpen && CloudConfig.shareOpen,
     mpHtmlStyle: MpHtmlStyle,
@@ -64,14 +66,14 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: this.data.articleDetails.title,
-      imageUrl: this.data.articleDetails.thumbnail ? this.data.articleDetails.thumbnail : app.globalData.logo,
+      imageUrl: convertImageUrl(this.data.articleDetails.thumbnail, [app.globalData.logo]),
       path: '/pages/details/index?id=' + this.data.id
     }
   },
   onShareTimeline: function (res) {
     return {
       title: this.data.articleDetails.title,
-      imageUrl: this.data.articleDetails.thumbnail ? this.data.articleDetails.thumbnail : app.globalData.logo,
+      imageUrl: convertImageUrl(this.data.articleDetails.thumbnail, [app.globalData.logo]),
       query: 'id=' + this.data.id
     }
   },

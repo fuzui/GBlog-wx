@@ -1,3 +1,4 @@
+<wxs src="../../../../utils/tools.wxs" module="tools" />
 <cu-custom bgColor="bg-theme" isCustom="{{true}}">
   <view slot="content">附件详情</view>
 </cu-custom>
@@ -14,7 +15,7 @@
     <view class="content padding-tb-sm">
       <view> 附件详情 </view>
       <view class="text-gray text-sm">
-        <image src="{{attachment.path}}" mode="widthFix" style="width: 700rpx"></image>
+        <image src="{{tools.convertImageUrl(ApiBaseUrl, attachment.path)}}" mode="widthFix" style="width: 700rpx"></image>
       </view>
     </view>
   </view>

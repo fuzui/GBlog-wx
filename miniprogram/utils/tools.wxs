@@ -111,11 +111,34 @@ function isContain(arr, id) {
   return false
 }
 
+/**
+ * 图片路径处理
+ *
+ * @param apiBaseUrl
+ * @param url
+ * @param randomImages 如果为空表示不处理随机图
+ */
+function convertImageUrl(apiBaseUrl, url, randomImages) {
+  if (!url) {
+    if (randomImages && randomImages.length > 0) {
+      url = getRandomImage(randomImages)
+    } else {
+      return null
+    }
+  }
+  // 是否为相对路径
+  if (url.substring(0, 1) === '/' && url.substring(1, 2) !== '/' && url.substring(0, 7) !== '/iamges') {
+    return apiBaseUrl + url
+  }
+  return url
+}
+
 module.exports = {
   formatTime: formatTime,
   tsFormatTime: tsFormatTime,
   getDateDiff: getDateDiff,
   getRandomImage: getRandomImage,
   coutNum: coutNum,
-  isContain: isContain
+  isContain: isContain,
+  convertImageUrl: convertImageUrl
 }

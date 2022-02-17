@@ -10,7 +10,7 @@
 <image
   mode="{{mode}}"
   class="{{finishLoadFlag ? '' : 'before-load'}} custom-class"
-  src="{{originalImage}}"
+  src="{{tools.convertImageUrl(ApiBaseUrl, originalImage, randomGraphs)}}"
   bindload="finishLoad"
   binderror="loadError"
   style="{{finishLoadFlag && width ? 'width:' + width : ''}};{{finishLoadFlag && height ? 'height:' + height : ''}}"

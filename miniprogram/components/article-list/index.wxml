@@ -10,7 +10,8 @@
     <view class="content">
       <image-loader
         custom-class="image-loader"
-        originalImage="{{item.thumbnail?item.thumbnail:tools.getRandomImage(randomGraphs)}}"
+        originalImage="{{item.thumbnail}}"
+        randomGraphs="{{randomGraphs}}"
         mode="aspectFill"
       ></image-loader>
       <view class="desc">

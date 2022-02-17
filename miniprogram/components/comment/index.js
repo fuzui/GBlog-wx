@@ -1,7 +1,8 @@
-import { CustomStyle, MpHtmlStyle } from '../../config/api'
+import { ApiBaseUrl, CustomStyle, MpHtmlStyle } from '../../config/api'
 import { STORAGE_KEY, DEFAULT_VALUE, HALO_OPTION_KEY } from '../../services/const-data/const-data'
 Component({
   data: {
+    ApiBaseUrl,
     noContentImage: CustomStyle.noContentImage,
     mpHtmlStyle: MpHtmlStyle,
     gravatarSource: DEFAULT_VALUE.gravatarSource,

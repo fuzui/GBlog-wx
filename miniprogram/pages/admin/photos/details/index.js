@@ -1,10 +1,12 @@
 import apiResult from '../../../../utils/api-result'
 import { adminGetPhotoDetails, adminEditPhotoDetails, adminDeletePhoto } from '../../../../services/api/admin/photo'
+import { ApiBaseUrl } from '../../../../config/api'
 
 const app = getApp()
 
 Page({
   data: {
+    ApiBaseUrl,
     CustomBar: app.globalData.CustomBar,
     logo: '',
     imgPath: '',

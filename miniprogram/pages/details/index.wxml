@@ -35,6 +35,7 @@
     loading-img="{{mpHtmlStyle.loadingImage}}"
     error-img="{{mpHtmlStyle.errorImage}}"
     content="{{content}}"
+    domain="{{ApiBaseUrl}}"
   />
   <!-- 正文结束分割线 -->
   <view class="line">

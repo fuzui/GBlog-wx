@@ -1,4 +1,5 @@
 import apiResult from '../../../../utils/api-result'
+import { ApiBaseUrl } from '../../../../config/api'
 import {
   adminGetAttachmentDetails,
   adminEditAttachmentDetails,
@@ -9,6 +10,7 @@ const app = getApp()
 
 Page({
   data: {
+    ApiBaseUrl,
     CustomBar: app.globalData.CustomBar,
     logo: '',
     imgPath: '',

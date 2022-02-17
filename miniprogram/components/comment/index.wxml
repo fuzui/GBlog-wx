@@ -31,6 +31,7 @@
               loading-img="{{mpHtmlStyle.loadingImage}}"
               error-img="{{mpHtmlStyle.errorImage}}"
               content="{{comment.content}}"
+              domain="{{ApiBaseUrl}}"
             />
           </view>
           <view class="flex justify-between">
@@ -81,6 +82,7 @@
                   loading-img="{{mpHtmlStyle.loadingImage}}"
                   error-img="{{mpHtmlStyle.errorImage}}"
                   content="{{children.content}}"
+                  domain="{{ApiBaseUrl}}"
                 />
               </view>
               <view class="flex justify-between">

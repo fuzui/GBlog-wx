@@ -27,7 +27,7 @@
       bindtap="{{batchView?'selectAttachment':'toDetailsPage'}}"
       data-id="{{item.id}}"
       data-index="{{index}}"
-      style="background-image: url({{item.thumbPath}});height: 207rpx;"
+      style="{{'background-image: url(' + tools.convertImageUrl(ApiBaseUrl, item.thumbPath) + ');height: 207rpx;'}}"
     >
       <radio class="round" checked="{{tools.isContain(indexs,index)}}" wx:if="{{batchView}}"></radio>
       <view class="bg-shadeBottom padding padding-top-xl flex-sub text-cut"> {{item.name}} </view>

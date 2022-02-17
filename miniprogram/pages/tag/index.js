@@ -1,5 +1,6 @@
 import { getTags, getTagsArticle } from '../../services/api/content/tag'
 import { PageSize, CustomStyle } from '../../config/api'
+import { convertImageUrl } from '../../utils/utils'
 
 const app = getApp()
 
@@ -149,7 +150,7 @@ Page({
     const currentTag = that.data.tagList[that.data.tagCur]
     return {
       title: app.globalData.blogTitle + '标签：' + currentTag.name,
-      imageUrl: app.globalData.logo,
+      imageUrl: convertImageUrl(currentTag.thumbnail, [app.globalData.logo]),
       path: '/pages/tag/index?id=' + currentTag.id
     }
   },
@@ -158,7 +159,7 @@ Page({
     const currentTag = that.data.tagList[that.data.tagCur]
     return {
       title: app.globalData.blogTitle + '标签：' + currentTag.name,
-      imageUrl: currentTag.thumbnail ? app.globalData.logo : currentTag.thumbnail,
+      imageUrl: convertImageUrl(currentTag.thumbnail, [app.globalData.logo]),
       query: 'id=' + currentTag.id
     }
   }

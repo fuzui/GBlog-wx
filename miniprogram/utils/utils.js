@@ -1,3 +1,4 @@
+import { ApiBaseUrl } from './../config/api'
 // 构建url
 const buildURL = (url, query = {}, isSequence = true) => {
   if (!query) return url
@@ -60,10 +61,31 @@ const getRandomImage = (arr = []) => {
   return arr[Math.floor(Math.random() * arr.length)]
 }
 
+/**
+ * 图片路径处理
+ * @param url
+ * @param randomImages 随机图，为空不使用
+ */
+const convertImageUrl = (url, randomImages) => {
+  if (!url) {
+    if (randomImages && randomImages.length > 0) {
+      url = getRandomImage(randomImages)
+    } else {
+      return null
+    }
+  }
+  // 是否为相对路径
+  if (url.substring(0, 1) === '/' && url.substring(1, 2) !== '/' && url.substring(0, 7) !== '/iamges') {
+    return ApiBaseUrl + url
+  }
+  return url
+}
+
 module.exports = {
   buildURL,
   decodeQuery,
   mergeJsonObject,
   compareVersion,
-  getRandomImage
+  getRandomImage,
+  convertImageUrl
 }

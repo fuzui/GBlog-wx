@@ -10,6 +10,7 @@ const app = getApp()
 
 Page({
   data: {
+    ApiBaseUrl: config.ApiBaseUrl,
     CustomBar: app.globalData.CustomBar,
     logo: '',
     imgPath: '',

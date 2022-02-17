@@ -46,7 +46,7 @@
         class="flex align-end shadow-blur animation-slide-bottom"
         bindtap="toDetail"
         data-photo="{{columnItem}}"
-        style="background-image: url({{columnItem.thumbnail}});background-size: 335rpx auto; height: {{columnItem.height*335/750}}rpx;"
+        style="{{'background-image: url(' + tools.convertImageUrl(ApiBaseUrl, columnItem.thumbnail) + ');background-size: 335rpx auto; height: ' + columnItem.height*335/750 + 'rpx;'}}"
       >
         <view class="bg-shadeBottom padding flex-sub text-cut"> {{columnItem.name}} </view>
       </view>
@@ -57,7 +57,7 @@
   <image
     wx:for="{{tempContent}}"
     wx:key="index"
-    src="{{item.thumbnail}}"
+    src="{{tools.convertImageUrl(ApiBaseUrl, item.thumbnail)}}"
     bindload="loadPic"
     binderror="loadPicError"
     data-index="{{index}}"
@@ -73,9 +73,10 @@
   <view class="cu-dialog">
     <view
       class="bg-img flex align-end"
-      style="background-image: url('{{currentPhoto.url}}');background-size: 680rpx auto;height:{{currentPhoto.height*680/750}}rpx;"
+      wx:if="{{currentPhoto.url}}"
+      style="{{'background-image: url(' + tools.convertImageUrl(ApiBaseUrl, currentPhoto.url) + ');background-size: 680rpx auto; height: ' + currentPhoto.height*680/750 + 'rpx;'}}"
       bindtap="preview"
-      data-url="{{currentPhoto.url}}"
+      data-url="{{tools.convertImageUrl(ApiBaseUrl, currentPhoto.urL)}}"
     >
       <view class="bg-shadeBottom padding flex-sub">
         <view class="cu-capsule fl" wx:if="{{currentPhoto.team}}">
@@ -117,6 +118,7 @@
         loading-img="{{mpHtmlStyle.loadingImage}}"
         error-img="{{mpHtmlStyle.errorImage}}"
         content="{{currentPhoto.description}}"
+        domain="{{ApiBaseUrl}}"
       />
     </scroll-view>
   </view>

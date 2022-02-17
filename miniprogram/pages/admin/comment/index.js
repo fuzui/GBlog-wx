@@ -18,6 +18,7 @@ const app = getApp()
 
 Page({
   data: {
+    ApiBaseUrl,
     mpHtmlStyle: MpHtmlStyle,
     logo: '',
     commentContent: '',

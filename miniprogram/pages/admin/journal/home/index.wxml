@@ -45,6 +45,7 @@
           loading-img="{{mpHtmlStyle.loadingImage}}"
           error-img="{{mpHtmlStyle.errorImage}}"
           content="{{item.content}}"
+          domain="{{ApiBaseUrl}}"
         />
       </view>
     </view>

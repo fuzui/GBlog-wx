@@ -7,7 +7,8 @@
     <view class="image" bindtap="toDetailPage" data-slug="{{item.slug}}" data-name="{{item.name}}">
       <image-loader
         width="100%"
-        originalImage="{{item.thumbnail?item.thumbnail:tools.getRandomImage(randomGraphs)}}"
+        originalImage="{{item.thumbnail}}"
+        randomGraphs="{{randomGraphs}}"
         mode="widthFix"
       ></image-loader>
       <view class="cu-capsule radius">

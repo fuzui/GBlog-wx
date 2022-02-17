@@ -1,4 +1,4 @@
-import { CustomStyle } from '../../config/api'
+import { ApiBaseUrl, CustomStyle } from '../../config/api'
 
 Component({
   externalClasses: ['custom-class'],
@@ -26,9 +26,14 @@ Component({
     mode: {
       type: String,
       value: 'widthFix'
+    },
+    randomGraphs: {
+      type: Array,
+      value: []
     }
   },
   data: {
+    ApiBaseUrl,
     finishLoadFlag: false,
     loadErrorFlag: false
   },

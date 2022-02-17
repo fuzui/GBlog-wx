@@ -5,12 +5,13 @@ import {
   adminDeleteJournal,
   adminEditJournal
 } from '../../../../services/api/admin/journal'
-import { PageSize, MpHtmlStyle } from './../../../../config/api'
+import { ApiBaseUrl, PageSize, MpHtmlStyle } from './../../../../config/api'
 
 const app = getApp()
 
 Page({
   data: {
+    ApiBaseUrl,
     mpHtmlStyle: MpHtmlStyle,
     logo: '',
     journalContent: '',
