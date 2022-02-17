@@ -36,7 +36,6 @@ Component({
   },
   methods: {
     addComment(e) {
-      console.log(e.currentTarget.dataset.pid)
       const detail = {
         modalName: e.currentTarget.dataset.target,
         commmentPid: e.currentTarget.dataset.pid,
