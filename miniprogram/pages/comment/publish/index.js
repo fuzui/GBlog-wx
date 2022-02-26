@@ -91,10 +91,6 @@ Page({
       apiResult.warn('内容不能为空')
       return
     }
-    if (!this.data.commentMail) {
-      apiResult.warn('邮箱不能为空')
-      return
-    }
     wx.showLoading({
       title: '发布中',
       mask: true
