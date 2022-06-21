@@ -1,5 +1,6 @@
-import { getPhotos } from '../../../services/api/content/photo'
-import { ApiBaseUrl, PageSize } from '../../../config/api'
+import { getPhotos, getPhotoTeams } from '../../../services/api/content/photo'
+import { ApiBaseUrl } from '../../../config/api'
+import { THEME_SETTING_KEY } from '../../../services/const-data/theme-setting-key'
 
 const app = getApp()
 
@@ -15,16 +16,16 @@ Page({
     logo: '',
     pageNo: 0,
     keyword: null,
-    team: null,
     content: [],
     currentPhoto: {},
+    teams: ['全部'],
     ColorList: app.globalData.ColorList,
     columns: [[], []],
     tempContent: [],
     spacing: 20,
     sortProperty: 'takeTime',
     sortPropertyValue: '拍摄时间',
-    teamValue: '全部分组',
+    team: '全部',
     sortPicker: [
       {
         key: 'takeTime',
@@ -38,26 +39,22 @@ Page({
         key: 'name',
         value: '名称'
       }
-    ],
-    teamPicker: [
-      {
-        key: null,
-        value: '全部'
-      }
     ]
   },
 
   async onLoad() {
     const that = this
     that.setData({
-      logo: app.globalData.logo
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]
     })
     that.setData({
       loadModal: true
     })
     const content = await this.getPhotos()
+    const teams = await getPhotoTeams()
     that.setData({
       content: content,
+      teams: that.data.teams.concat(teams),
       loadModal: false
     })
   },
@@ -118,12 +115,10 @@ Page({
    */
   async teamPickerChange(e) {
     const that = this
-    const team = that.data.teamPicker[e.detail.value].key
+    const team = that.data.teams[e.detail.value]
     if (that.data.team !== team) {
-      const teamValue = that.data.teamPicker[e.detail.value].value
       that.setData({
-        team: team,
-        teamValue: teamValue
+        team: team
       })
       that.init()
       await that.getPhotos()
@@ -150,9 +145,10 @@ Page({
         keyword: that.data.keyword,
         team: that.data.team,
         page: that.data.pageNo,
-        size: PageSize.photoSize,
+        size: app.themeSettings[THEME_SETTING_KEY.PAGE_SIZE_PHOTO],
         sort: that.data.sortProperty + ',desc'
       }
+      param.team = that.data.team !== '全部' ? that.data.team : null
       const result = await getPhotos(param)
       if (result.page < result.pages) {
         if (!that.jsData.isLoading) {
@@ -204,13 +200,13 @@ Page({
    */
   onShareAppMessage: function (res) {
     return {
-      title: app.globalData.blogTitle + '光影',
+      title: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE] + '光影',
       path: '/pages/photos/home/index'
     }
   },
   onShareTimeline: function (res) {
     return {
-      title: app.globalData.blogTitle + '光影'
+      title: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE] + '光影'
     }
   },
   // 获取图片尺寸数据

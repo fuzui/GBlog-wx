@@ -3,6 +3,7 @@ import { adminGetStatistics } from '../../../services/api/admin/statistic'
 import { adminGetPostComment } from '../../../services/api/admin/post'
 import { adminGetSheetComment } from '../../../services/api/admin/sheet'
 import { STORAGE_KEY } from '../../../services/const-data/const-data'
+import { THEME_SETTING_KEY } from '../../../services/const-data/theme-setting-key'
 
 const app = getApp()
 
@@ -19,7 +20,7 @@ Page({
   onLoad: function () {
     const that = this
     that.setData({
-      logo: app.globalData.logo
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]
     })
   },
   async onShow() {

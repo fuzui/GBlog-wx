@@ -12,14 +12,15 @@ import {
 } from '../../../services/api/admin/sheet'
 import { adminGetUserProfile } from '../../../services/api/admin/user'
 import apiResult from '../../../utils/api-result'
-import { ApiBaseUrl, PageSize, MpHtmlStyle } from './../../../config/api'
+import { ApiBaseUrl } from './../../../config/api'
+import { THEME_SETTING_KEY } from '../../../services/const-data/theme-setting-key'
 
 const app = getApp()
 
 Page({
   data: {
     ApiBaseUrl,
-    mpHtmlStyle: MpHtmlStyle,
+    mpHtmlStyle: {},
     logo: '',
     commentContent: '',
     modalName: null,
@@ -34,8 +35,15 @@ Page({
   },
   async onLoad() {
     const that = this
+    const mpHtmlStyle = {
+      commentTagStyle: app.themeSettings[THEME_SETTING_KEY.COMMENT_TAG_STYLE],
+      commentContainerStyle: app.themeSettings[THEME_SETTING_KEY.COMMENT_CONTAINER_STYLE],
+      loadingImage: app.themeSettings[THEME_SETTING_KEY.PLACEHOLDER_IMAGE],
+      errorImage: app.themeSettings[THEME_SETTING_KEY.LOAD_ERROR_IMAGE]
+    }
     that.setData({
-      logo: app.globalData.logo
+      mpHtmlStyle: mpHtmlStyle,
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]
     })
   },
   async onShow() {
@@ -110,7 +118,7 @@ Page({
       const type = that.data.type
       const param = {
         page: that.data.pageNo,
-        size: PageSize.journalSize,
+        size: 10,
         sort: 'createTime,desc'
       }
       let result = []

@@ -6,7 +6,7 @@ export const STORAGE_KEY = {
   gravatarSource: 'gravatarSource',
   gravatarDefault: 'gravatarDefault',
   options: 'options',
-  randomGraph: 'randomGraph',
+  themeSettings: 'themeSettings',
   userEmail: 'userEmail',
   notifiStatus: 'notifiStatus'
 }

@@ -1,22 +1,33 @@
 import { getJournals } from '../../../services/api/content/journal'
-import { ApiBaseUrl, PageSize, MpHtmlStyle } from './../../../config/api'
+import { ApiBaseUrl } from './../../../config/api'
+import { THEME_SETTING_KEY } from '../../../services/const-data/theme-setting-key'
 
 const app = getApp()
 
 Page({
   data: {
     ApiBaseUrl,
-    mpHtmlStyle: MpHtmlStyle,
+    mpHtmlStyle: {},
     logo: '',
     pageNo: 0,
     bottomFlag: false,
     content: [],
     bgColor: ['green', 'red', 'grey', 'blue', 'cyan', 'purple']
   },
-  onLoad: function () {
+  async onLoad() {
     const that = this
+    if (!app.globalData.hasInit) {
+      await app.init()
+    }
+    const mpHtmlStyle = {
+      journalTagStyle: app.themeSettings[THEME_SETTING_KEY.JOURNAL_TAG_STYLE],
+      journalContainerStyle: app.themeSettings[THEME_SETTING_KEY.JOURNAL_CONTAINER_STYLE],
+      loadingImage: app.themeSettings[THEME_SETTING_KEY.PLACEHOLDER_IMAGE],
+      errorImage: app.themeSettings[THEME_SETTING_KEY.LOAD_ERROR_IMAGE]
+    }
     that.setData({
-      logo: app.globalData.logo
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO],
+      mpHtmlStyle: mpHtmlStyle
     })
   },
   async onShow() {
@@ -54,7 +65,7 @@ Page({
     try {
       const param = {
         page: that.data.pageNo,
-        size: PageSize.journalSize,
+        size: app.themeSettings[THEME_SETTING_KEY.PAGE_SIZE_JOURNAL],
         sort: 'createTime,desc'
       }
       const result = await getJournals(param)
@@ -71,14 +82,14 @@ Page({
   },
   onShareAppMessage: function (res) {
     return {
-      title: app.globalData.blogTitle + '的日记本',
+      title: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE] + '的日记本',
       path: '/pages/about/journal/index'
     }
   },
   onShareTimeline: function (res) {
     return {
-      title: app.globalData.blogTitle + '的日记本',
-      imageUrl: app.globalData.logo
+      title: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE] + '的日记本',
+      imageUrl: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]
     }
   }
 })

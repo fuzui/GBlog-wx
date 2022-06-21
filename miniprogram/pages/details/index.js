@@ -1,19 +1,23 @@
 import { getArticleDetails, doPraise, getTopComments } from '../../services/api/content/article'
 import apiResult from '../../utils/api-result'
-import { ApiBaseUrl, CloudConfig, MpHtmlStyle, CustomStyle } from '../../config/api'
+import { ApiBaseUrl } from '../../config/api'
 import LastMayday from '../../services/posters/article/base'
 import { STORAGE_KEY, COMMENT_TYPE } from '../../services/const-data/const-data'
 import { convertImageUrl } from '../../utils/utils'
+import { THEME_SETTING_KEY } from '../../services/const-data/theme-setting-key'
 
 const app = getApp()
-
 Page({
   data: {
     ApiBaseUrl,
-    noContentImage: CustomStyle.noContentImage,
-    shareIsOpen: CloudConfig.isOpen && CloudConfig.shareOpen,
-    mpHtmlStyle: MpHtmlStyle,
-
+    noContentImage: '',
+    shareIsOpen: false,
+    mpHtmlStyle: {
+      tagStyle: '',
+      containerStyle: '',
+      loadingImage: '',
+      errorImage: ''
+    },
     modalShare: false,
     logo: '',
     // 是否显示回到顶端图标
@@ -66,18 +70,21 @@ Page({
   onShareAppMessage: function (res) {
     return {
       title: this.data.articleDetails.title,
-      imageUrl: convertImageUrl(this.data.articleDetails.thumbnail, [app.globalData.logo]),
+      imageUrl: convertImageUrl(this.data.articleDetails.thumbnail, [app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]]),
       path: '/pages/details/index?id=' + this.data.id
     }
   },
   onShareTimeline: function (res) {
     return {
       title: this.data.articleDetails.title,
-      imageUrl: convertImageUrl(this.data.articleDetails.thumbnail, [app.globalData.logo]),
+      imageUrl: convertImageUrl(this.data.articleDetails.thumbnail, [app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]]),
       query: 'id=' + this.data.id
     }
   },
   async onLoad(options) {
+    if (!app.globalData.hasInit) {
+      await app.init()
+    }
     let id = 0
     // 扫码打开
     if (options.scene && !options.id) {
@@ -87,8 +94,18 @@ Page({
     } else {
       id = options.id
     }
+    const mpHtmlStyle = {
+      tagStyle: app.themeSettings[THEME_SETTING_KEY.POST_TAG_STYLE],
+      containerStyle: app.themeSettings[THEME_SETTING_KEY.POST_CONTAINER_STYLE],
+      loadingImage: app.themeSettings[THEME_SETTING_KEY.PLACEHOLDER_IMAGE],
+      errorImage: app.themeSettings[THEME_SETTING_KEY.LOAD_ERROR_IMAGE]
+    }
     this.setData({
-      logo: app.globalData.logo,
+      mpHtmlStyle: mpHtmlStyle,
+      noContentImage: app.themeSettings[THEME_SETTING_KEY.NO_CONTENT_IMAGE],
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO],
+      shareIsOpen:
+        app.themeSettings[THEME_SETTING_KEY.CLOUD_IS_OPEN] && app.themeSettings[THEME_SETTING_KEY.CLOUD_SHARE_OPEN],
       loadModal: true,
       scene: 'id=' + id,
       id: id
@@ -96,7 +113,7 @@ Page({
 
     const that = this
     const articleDetails = await this.getArticleDetails(id)
-    const html = articleDetails.formatContent
+    const html = articleDetails.content
     that.setData({
       articleDetails: articleDetails,
       disallowComment: articleDetails.disallowComment,
@@ -194,7 +211,7 @@ Page({
           data: res.result.buffer,
           success(res) {
             const palette = new LastMayday().palette(
-              app.globalData.blogTitle,
+              app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE],
               userInfo.nickName,
               userInfo.avatarUrl,
               '/images/bg/background-share.png',

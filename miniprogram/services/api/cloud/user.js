@@ -1,11 +1,11 @@
-import { CloudConfig } from '../../../config/api'
+import { Config } from '../../../config/api'
 /**
  * 检查用户
  */
 function checkUser(openid) {
   return new Promise((resolve, reject) => {
     const db = wx.cloud.database({
-      env: CloudConfig.env
+      env: Config.cloudEnv
     })
     db.collection('admin_user').get({
       success: function (res) {
@@ -28,7 +28,7 @@ function checkUser(openid) {
 function createUser(param) {
   return new Promise((resolve, reject) => {
     const db = wx.cloud.database({
-      env: CloudConfig.env
+      env: Config.cloudEnv
     })
     db.collection('admin_user').add({
       data: {
@@ -51,7 +51,7 @@ function createUser(param) {
 function updateUser(param) {
   return new Promise((resolve, reject) => {
     const db = wx.cloud.database({
-      env: CloudConfig.env
+      env: Config.cloudEnv
     })
     db.collection('admin_user')
       .doc(param.id)

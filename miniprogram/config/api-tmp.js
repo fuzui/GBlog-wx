@@ -1,100 +1,59 @@
-import { mergeJsonObject } from './../utils/utils'
-const ApiBaseUrl = 'https://www.geekera.cn' // 生产上
-// const ApiBaseUrl = 'http://127.0.0.1:8090';//本地
-// const ApiBaseUrl = 'https://test.geekera.cn';//测试
+import { THEME_SETTING_KEY } from '../services/const-data/theme-setting-key'
+
+const ApiBaseUrl = 'http://127.0.0.1:8091'
 
 const Config = {
   AccessKey: '', // 接口key，必填
-  guestbookSheetId: 2, // 留言页sheet的id,
-  logo: '', // 选填，填写将提高首页加载速度
-  blogTitle: '' // 选填，填写将提高首页加载速度
-}
-/**
- * 云开发配置，开启以下任何一项请严格按照文档操作
- * 文档地址：https://docs.geekera.cn/gblog-wx/
- */
-const CloudConfig = {
-  isOpen: false,
-  env: 'fuzui', // 云环境ID
-  shareOpen: false, // 海报分享开启
-  randomGraphOpen: false, // 随机图开启（内容管理）
-  checkMessage: false, // 敏感词检测
-  adminUser: false // 后台免密登陆
-}
-// 文章、日记自定义样式
-const commonTagStyle = {
-  table: 'border-collapse:collapse;border-top:1px solid gray;border-left:1px solid gray;margin: 28rpx 0;',
-  th: 'border-right:1px solid gray;border-bottom:1px solid gray;background: #ccc;',
-  td: 'border-right:1px solid gray;border-bottom:1px solid gray;',
-  blockquote:
-    'background-color:#e7f6ed;border-left:6px solid #4caf50;color:rgb(136, 136, 136);padding: 20rpx 40rpx 20rpx 30rpx;margin: 28rpx 0;',
-  ul: 'padding-left: 25px;',
-  ol: 'padding-left: 25px;',
-  h1: 'font-size: 1.5em;line-height: 50px;',
-  h2: 'font-size: 1.17em;line-height: 40px;',
-  h3: 'font-size: 0.83em;line-height: 30px;',
-  h4: 'font-size: 0.67em;line-height: 30px;',
-  h5: 'font-size: 0.50em;line-height: 30px;',
-  code: 'word-break: break-all;',
-  'pre > code': 'white-space:nowrap;',
-  video: 'width: 100%'
-}
-const commentTagStyle = {
-  p: 'margin: 0 0;'
-}
-const MpHtmlStyle = {
-  tagStyle: commonTagStyle,
-  containerStyle: 'padding: 12px;font-size: 15px;line-height: 25px',
-  commentTagStyle: mergeJsonObject(commonTagStyle, commentTagStyle),
-  commentContainerStyle: '',
-  journalTagStyle: commentTagStyle,
-  journalContainerStyle: '',
-  loadingImage: '/images/default/image-loading.svg',
-  errorImage: '/images/default/image-error.svg'
+  cloudEnv: '', // 云环境ID
+  themeSettingsCache: true
 }
 
-const PageSize = {
-  indexSize: 6, // 每页文章数
-  searchSize: 6, // 每页搜索结果数
-  swiperPage: 0, // 轮播起始页
-  swiperSize: 5, // 轮播数
-  categorySize: 6, // 每页分类文章数
-  tagSize: 7, // 标签每页文章数
-  photoSize: 10, // 每页光影数
-  journal: 10, // 每页日记数
-  attachmentSize: 12 // 每页附件数
-}
-
-// 随机默认图，可加减数组
-const RandomImage = [
-  'https://cdn.fuzui.net/blog/bg2_1592326421605.jpg',
-  'https://cdn.fuzui.net/blog/bg1_1592326421605.jpg'
-]
-
-// 自定义部分样式
-const CustomStyle = {
-  noContentImage: 'https://cdn.fuzui.net/basis/nocontent.png', // 无内容
-  placeholderImage: '/images/placeholder/default.png', // 占位图
-  loadErrorImage: '/images/bg/background-share.png' // 加载错误提示图
-}
-
-// 关于页面中个人信息，置空不显示
-const PersonalInfo = {
-  blog: 'https://www.geekera.cn',
-  qq: '229999223',
-  wx: '15555542203',
-  mail: 'i@geekera.cn',
-  github: 'https://github.com/fuzui',
-  gitee: 'https://gitee.com/fuzui'
+const themeSettings = {
+  [THEME_SETTING_KEY.BLOG_TITLE]: '',
+  [THEME_SETTING_KEY.BLOG_LOGO]: '',
+  [THEME_SETTING_KEY.GUESTBOOK_SHEET_ID]: 2,
+  [THEME_SETTING_KEY.CLOUD_IS_OPEN]: false,
+  [THEME_SETTING_KEY.CLOUD_ENV]: 'cloud_env',
+  [THEME_SETTING_KEY.CLOUD_SHARE_OPEN]: false,
+  [THEME_SETTING_KEY.CLOUD_CHECK_MESSAGE]: false,
+  [THEME_SETTING_KEY.CLOUD_ADMIN_USER]: false,
+  // 关于页面中个人信息，置空不显示
+  [THEME_SETTING_KEY.BLOG]: 'https://www.geekera.cn',
+  [THEME_SETTING_KEY.QQ]: '59210983',
+  [THEME_SETTING_KEY.WX]: '59210983',
+  [THEME_SETTING_KEY.MAIL]: 'zes@qq.com',
+  [THEME_SETTING_KEY.GITHUB]: 'https://github.com/fuzui',
+  [THEME_SETTING_KEY.GITEE]: 'https://gitee.com/fuzui',
+  [THEME_SETTING_KEY.WX_MP]: '',
+  // 无内容占位图
+  [THEME_SETTING_KEY.NO_CONTENT_IMAGE]: 'no_content_image',
+  // 占位图
+  [THEME_SETTING_KEY.PLACEHOLDER_IMAGE]: '',
+  // 加载失败占位图
+  [THEME_SETTING_KEY.LOAD_ERROR_IMAGE]: 'load_error_image',
+  // 随机图,分号隔开
+  [THEME_SETTING_KEY.RANDOM_IMAGE]: '',
+  // 样式
+  [THEME_SETTING_KEY.POST_TAG_STYLE]: '',
+  [THEME_SETTING_KEY.POST_CONTAINER_STYLE]: '',
+  [THEME_SETTING_KEY.COMMENT_TAG_STYLE]: '',
+  [THEME_SETTING_KEY.COMMENT_CONTAINER_STYLE]: '',
+  [THEME_SETTING_KEY.JOURNAL_TAG_STYLE]: '',
+  [THEME_SETTING_KEY.JOURNAL_CONTAINER_STYLE]: '',
+  // 分页信息
+  [THEME_SETTING_KEY.SWIPER_START]: 0,
+  [THEME_SETTING_KEY.PAGE_SIZE_SWIPER]: 6,
+  [THEME_SETTING_KEY.PAGE_SIZE_INDEX]: 6,
+  [THEME_SETTING_KEY.PAGE_SIZE_SEARCH]: 6,
+  [THEME_SETTING_KEY.PAGE_SIZE_CATEGORY]: 6,
+  [THEME_SETTING_KEY.PAGE_SIZE_TAG]: 6,
+  [THEME_SETTING_KEY.PAGE_SIZE_PHOTO]: 6,
+  [THEME_SETTING_KEY.PAGE_SIZE_JOURNAL]: 6,
+  [THEME_SETTING_KEY.PAGE_SIZE_ATTACHMENT]: 6
 }
 
 module.exports = {
   ApiBaseUrl,
-  PageSize,
-  MpHtmlStyle,
   Config,
-  CloudConfig,
-  RandomImage,
-  CustomStyle,
-  PersonalInfo
+  themeSettings
 }

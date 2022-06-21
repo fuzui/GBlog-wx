@@ -1,39 +1,40 @@
-import { CloudConfig, Config, RandomImage } from 'config/api.js'
+import { Config, themeSettings } from 'config/api.js'
 import { compareVersion } from './utils/utils'
 import { getOptions } from './services/api/content/option'
+import { getThemeSettingsById } from './services/api/content/theme'
 import { STORAGE_KEY, HALO_OPTION_KEY } from './services/const-data/const-data'
-import { getRandomGraph } from './services/api/cloud/cloud'
+import { THEME_SETTING_KEY } from './services/const-data/theme-setting-key'
+
 App({
   async onLaunch() {
-    if (CloudConfig.isOpen) {
-      if (!wx.cloud) {
-        console.error('请使用 2.2.3 或以上的基础库以使用云能力')
-      } else {
-        wx.cloud.init({
-          env: CloudConfig.env,
-          traceUser: true
-        })
-      }
-    }
     wx.showLoading({
       title: '初始化中',
       mask: true
     })
     await this.updateManager()
     await this.init()
+    if (this.themeSettings[THEME_SETTING_KEY.CLOUD_IS_OPEN]) {
+      if (!wx.cloud) {
+        console.error('请使用 2.2.3 或以上的基础库以使用云能力')
+      } else {
+        wx.cloud.init({
+          env: Config.cloudEnv,
+          traceUser: true
+        })
+      }
+    }
     wx.hideLoading()
   },
   globalData: {
-    logo: Config.logo,
-    blogTitle: Config.blogTitle,
     windowHeight: 1334,
-    unitConversionRatio: 2,
-    randomGraphs: []
+    unitConversionRatio: 2
   },
+  themeSettings: themeSettings,
   async init() {
     await this.loadFontFace()
-    await this.getRandomGraph()
     await this.getOptions()
+    // 必须在options后
+    await this.getThemeSettings()
     this.globalData.hasInit = true
   },
   async getOptions() {
@@ -46,24 +47,43 @@ App({
       })
       wx.setStorageSync(STORAGE_KEY.options, options)
     }
-    if (this.globalData.logo === '') {
-      this.globalData.logo = options[HALO_OPTION_KEY.blogFavicon]
-    }
-    if (this.globalData.blogTitle === '') {
-      this.globalData.blogTitle = options[HALO_OPTION_KEY.blogTitle]
-    }
   },
-  async getRandomGraph() {
-    if (CloudConfig.isOpen && CloudConfig.randomGraphOpen) {
-      let randomGraphs = wx.getStorageSync(STORAGE_KEY.randomGraph)
-      if (!randomGraphs) {
-        randomGraphs = await getRandomGraph()
-        wx.setStorageSync(STORAGE_KEY.randomGraph, randomGraphs)
+  async getThemeSettings() {
+    let settings
+    // 是否使用缓存判断
+    if (Config.themeSettingsCache) {
+      settings = wx.getStorageSync(STORAGE_KEY.themeSettings)
+      if (!settings) {
+        settings = await getThemeSettingsById('gblogwx_config')
+        wx.setStorageSync(STORAGE_KEY.themeSettings, settings)
       }
-      this.globalData.randomGraphs = randomGraphs
     } else {
-      this.globalData.randomGraphs = RandomImage
+      settings = await getThemeSettingsById('gblogwx_config')
     }
+
+    // 博客名和logo处理
+    const options = wx.getStorageSync(STORAGE_KEY.options)
+    if (!settings[THEME_SETTING_KEY.BLOG_TITLE] || !settings[THEME_SETTING_KEY.BLOG_LOGO]) {
+      settings[THEME_SETTING_KEY.BLOG_TITLE] =
+        settings[THEME_SETTING_KEY.BLOG_TITLE] || options[HALO_OPTION_KEY.blogTitle]
+      settings[THEME_SETTING_KEY.BLOG_LOGO] =
+        settings[THEME_SETTING_KEY.BLOG_LOGO] || options[HALO_OPTION_KEY.blogFavicon]
+    }
+    Object.assign(this.themeSettings, settings)
+    // 随机图转为数组
+    this.themeSettings[THEME_SETTING_KEY.RANDOM_IMAGE] = this.themeSettings[THEME_SETTING_KEY.RANDOM_IMAGE]
+      .trim()
+      .split(';')
+    // 解析样式处理
+    this.themeSettings[THEME_SETTING_KEY.POST_TAG_STYLE] = this.themeSettings[THEME_SETTING_KEY.POST_TAG_STYLE]
+      ? JSON.parse(this.themeSettings[THEME_SETTING_KEY.POST_TAG_STYLE].trim())
+      : ''
+    this.themeSettings[THEME_SETTING_KEY.COMMENT_TAG_STYLE] = this.themeSettings[THEME_SETTING_KEY.COMMENT_TAG_STYLE]
+      ? JSON.parse(this.themeSettings[THEME_SETTING_KEY.COMMENT_TAG_STYLE].trim())
+      : ''
+    this.themeSettings[THEME_SETTING_KEY.JOURNAL_TAG_STYLE] = this.themeSettings[THEME_SETTING_KEY.JOURNAL_TAG_STYLE]
+      ? JSON.parse(this.themeSettings[THEME_SETTING_KEY.JOURNAL_TAG_STYLE].trim())
+      : ''
   },
   async loadFontFace() {
     wx.loadFontFace({

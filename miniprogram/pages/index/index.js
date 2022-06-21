@@ -1,5 +1,5 @@
 import { getArticleList } from '../../services/api/content/article'
-import { PageSize } from '../../config/api'
+import { THEME_SETTING_KEY } from '../../services/const-data/theme-setting-key'
 
 const app = getApp()
 
@@ -75,11 +75,11 @@ Page({
       await app.init()
     }
     this.setData({
-      logo: app.globalData.logo,
-      blogTitle: app.globalData.blogTitle,
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO],
+      blogTitle: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE],
       StatusBar: app.globalData.StatusBar,
       CustomBar: app.globalData.CustomBar,
-      randomGraphs: app.globalData.randomGraphs
+      randomGraphs: app.themeSettings[THEME_SETTING_KEY.RANDOM_IMAGE]
     })
     const swiper = await this.getSwiper()
     const content = await this.getArticleList(true, 0)
@@ -154,15 +154,15 @@ Page({
    */
   onShareAppMessage: function (res) {
     return {
-      title: app.globalData.blogTitle,
-      imageUrl: app.globalData.logo,
+      title: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE],
+      imageUrl: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO],
       path: '/pages/index/index'
     }
   },
   onShareTimeline: function (res) {
     return {
-      title: app.globalData.blogTitle,
-      imageUrl: app.globalData.logo
+      title: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE],
+      imageUrl: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]
     }
   },
   /**
@@ -180,8 +180,8 @@ Page({
   async getSwiper() {
     try {
       const param = {
-        page: PageSize.swiperPage,
-        size: PageSize.swiperSize,
+        page: app.themeSettings[THEME_SETTING_KEY.SWIPER_START],
+        size: app.themeSettings[THEME_SETTING_KEY.PAGE_SIZE_SWIPER],
         sort: 'visits,desc'
       }
       const result = await getArticleList(param)
@@ -211,7 +211,7 @@ Page({
       }
       const param = {
         page: pageNo,
-        size: PageSize.indexSize,
+        size: app.themeSettings[THEME_SETTING_KEY.PAGE_SIZE_INDEX],
         sort: ['topPriority,desc', 'createTime,desc']
       }
       const result = await getArticleList(param)
@@ -253,7 +253,7 @@ Page({
       }
       const param = {
         page: rankArticlePageNo,
-        size: PageSize.indexSize,
+        size: app.themeSettings[THEME_SETTING_KEY.PAGE_SIZE_INDEX],
         sort: [sort + ',desc', 'createTime,desc']
       }
       const result = await getArticleList(param)

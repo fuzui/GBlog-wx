@@ -1,5 +1,6 @@
 import { getArchives } from '../../../services/api/content/archive'
 import { getStatistics } from '../../../services/api/content/statistic'
+import { THEME_SETTING_KEY } from '../../../services/const-data/theme-setting-key'
 
 const app = getApp()
 
@@ -13,7 +14,7 @@ Page({
   onLoad: function () {
     const that = this
     that.setData({
-      logo: app.globalData.logo
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]
     })
   },
   async onShow() {
@@ -67,14 +68,14 @@ Page({
   },
   onShareAppMessage: function (res) {
     return {
-      title: app.globalData.blogTitle + '的归档文章',
+      title: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE] + '的归档文章',
       path: '/pages/about/archives/index'
     }
   },
   onShareTimeline: function (res) {
     return {
-      title: app.globalData.blogTitle + '的归档文章',
-      imageUrl: app.globalData.logo
+      title: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE] + '的归档文章',
+      imageUrl: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]
     }
   }
 })

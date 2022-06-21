@@ -1,10 +1,13 @@
-import { ApiBaseUrl, CustomStyle, MpHtmlStyle } from '../../config/api'
+import { ApiBaseUrl } from '../../config/api'
 import { STORAGE_KEY, DEFAULT_VALUE, HALO_OPTION_KEY } from '../../services/const-data/const-data'
+import { THEME_SETTING_KEY } from '../../services/const-data/theme-setting-key'
+
+const app = getApp()
 Component({
   data: {
     ApiBaseUrl,
-    noContentImage: CustomStyle.noContentImage,
-    mpHtmlStyle: MpHtmlStyle,
+    noContentImage: '',
+    mpHtmlStyle: {},
     gravatarSource: DEFAULT_VALUE.gravatarSource,
     gravatarDefault: DEFAULT_VALUE.gravatarDefault
   },
@@ -19,6 +22,9 @@ Component({
   },
   lifetimes: {
     async attached() {
+      if (!app.globalData.hasInit) {
+        await app.init()
+      }
       const options = wx.getStorageSync(STORAGE_KEY.options)
       let gravatarSource = options[HALO_OPTION_KEY.gravatarSource]
       if (!gravatarSource) {
@@ -28,9 +34,17 @@ Component({
       if (!gravatarDefault) {
         gravatarDefault = DEFAULT_VALUE.gravatarDefault
       }
+      const mpHtmlStyle = {
+        commentTagStyle: app.themeSettings[THEME_SETTING_KEY.COMMENT_TAG_STYLE],
+        commentContainerStyle: app.themeSettings[THEME_SETTING_KEY.COMMENT_CONTAINER_STYLE],
+        loadingImage: app.themeSettings[THEME_SETTING_KEY.PLACEHOLDER_IMAGE],
+        errorImage: app.themeSettings[THEME_SETTING_KEY.LOAD_ERROR_IMAGE]
+      }
       this.setData({
+        mpHtmlStyle: mpHtmlStyle,
         gravatarSource: gravatarSource,
-        gravatarDefault: gravatarDefault
+        gravatarDefault: gravatarDefault,
+        noContentImage: app.themeSettings[THEME_SETTING_KEY.NO_CONTENT_IMAGE]
       })
     }
   },

@@ -1,6 +1,8 @@
 import apiResult from '../../../utils/api-result'
 import { adminGetTag, adminAddTag, adminEditTag, adminDeleteTag } from '../../../services/api/admin/tag'
 import { adminAddAttachment } from '../../../services/api/admin/attachment'
+import { THEME_SETTING_KEY } from '../../../services/const-data/theme-setting-key'
+
 const app = getApp()
 Page({
   data: {
@@ -20,7 +22,7 @@ Page({
   async onLoad() {
     const that = this
     that.setData({
-      logo: app.globalData.logo,
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO],
       loadModal: true
     })
     const tagList = await this.getTags()

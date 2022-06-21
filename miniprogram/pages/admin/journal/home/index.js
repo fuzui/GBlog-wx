@@ -5,14 +5,15 @@ import {
   adminDeleteJournal,
   adminEditJournal
 } from '../../../../services/api/admin/journal'
-import { ApiBaseUrl, PageSize, MpHtmlStyle } from './../../../../config/api'
+import { ApiBaseUrl } from './../../../../config/api'
+import { THEME_SETTING_KEY } from '../../../../services/const-data/theme-setting-key'
 
 const app = getApp()
 
 Page({
   data: {
     ApiBaseUrl,
-    mpHtmlStyle: MpHtmlStyle,
+    mpHtmlStyle: {},
     logo: '',
     journalContent: '',
     currentContent: '',
@@ -26,8 +27,18 @@ Page({
   },
   async onLoad() {
     const that = this
+    if (!app.globalData.hasInit) {
+      await app.init()
+    }
+    const mpHtmlStyle = {
+      journalTagStyle: app.themeSettings[THEME_SETTING_KEY.JOURNAL_TAG_STYLE],
+      journalContainerStyle: app.themeSettings[THEME_SETTING_KEY.JOURNAL_CONTAINER_STYLE],
+      loadingImage: app.themeSettings[THEME_SETTING_KEY.PLACEHOLDER_IMAGE],
+      errorImage: app.themeSettings[THEME_SETTING_KEY.LOAD_ERROR_IMAGE]
+    }
     that.setData({
-      logo: app.globalData.logo
+      mpHtmlStyle: mpHtmlStyle,
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]
     })
   },
   async onShow() {
@@ -88,7 +99,7 @@ Page({
     try {
       const param = {
         page: that.data.pageNo,
-        size: PageSize.journalSize,
+        size: 10,
         sort: 'createTime,desc'
       }
       const result = await adminGetJournal(param)

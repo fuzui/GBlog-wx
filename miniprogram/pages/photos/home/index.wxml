@@ -21,9 +21,9 @@
           </picker>
         </view>
         <view class="search padding-xs radius" style="width: 300rpx">
-          <picker bindchange="teamPickerChange" value="{{index}}" range="{{teamPicker}}" range-key="value">
+          <picker bindchange="teamPickerChange" value="{{index}}" range="{{teams}}">
             <view class="picker text-center">
-              {{teamValue}}
+              {{team}}
               <text class="cuIcon-unfold fr"></text>
             </view>
           </picker>

@@ -1,6 +1,7 @@
 import apiResult from '../../../../utils/api-result'
 import { adminGetPhotoDetails, adminEditPhotoDetails, adminDeletePhoto } from '../../../../services/api/admin/photo'
 import { ApiBaseUrl } from '../../../../config/api'
+import { THEME_SETTING_KEY } from '../../../../services/const-data/theme-setting-key'
 
 const app = getApp()
 
@@ -23,7 +24,7 @@ Page({
     const that = this
     const id = options.id
     that.setData({
-      logo: app.globalData.logo
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]
     })
     that.setData({
       loadModal: true

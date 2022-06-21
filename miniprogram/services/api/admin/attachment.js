@@ -17,7 +17,6 @@ function adminAddAttachment(data) {
         resolve(r)
       },
       e => {
-        console.log(e)
         reject(e)
       }
     )

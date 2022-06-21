@@ -1,8 +1,10 @@
-import { CloudConfig } from '../../config/api'
 import apiResult from '../../utils/api-result'
 import { adminLogin, adminLoginPreCheck } from '../../services/api/admin/login'
 import { checkUser, createUser, updateUser } from '../../services/api/cloud/user'
 import { STORAGE_KEY } from '../../services/const-data/const-data'
+import { THEME_SETTING_KEY } from '../../services/const-data/theme-setting-key'
+
+const app = getApp()
 Component({
   data: {
     username: '',
@@ -24,7 +26,10 @@ Component({
   },
   lifetimes: {
     async attached() {
-      if (CloudConfig.adminUser) {
+      if (!app.globalData.hasInit) {
+        await app.init()
+      }
+      if (app.themeSettings[THEME_SETTING_KEY.CLOUD_ADMIN_USER]) {
         const user = await checkUser()
         if (!user._openid) {
           this.setData({
@@ -127,7 +132,7 @@ Component({
         password: this.data.password,
         id: this.data.adminUserId
       }
-      if (CloudConfig.adminUser) {
+      if (app.themeSettings[THEME_SETTING_KEY.CLOUD_ADMIN_USER]) {
         if (this.data.firstBind) {
           await createUser(param)
         } else {

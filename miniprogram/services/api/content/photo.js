@@ -19,6 +19,25 @@ function getPhotos(params) {
   })
 }
 
+/**
+ * 光影分组
+ * @param {*} params
+ */
+function getPhotoTeams() {
+  return new Promise((resolve, reject) => {
+    const url = moduleName + '/teams'
+    apiRequest.Get(url, {}).then(
+      r => {
+        resolve(r)
+      },
+      e => {
+        reject(e)
+      }
+    )
+  })
+}
+
 module.exports = {
-  getPhotos
+  getPhotos,
+  getPhotoTeams
 }

@@ -1,7 +1,7 @@
 import { adminGetPost, adminDeletePost, adminEditPostStatus } from '../../../services/api/admin/post'
 import { adminGetSheet, adminDeleteSheet, adminEditSheetStatus } from '../../../services/api/admin/sheet'
 import apiResult from '../../../utils/api-result'
-import { PageSize } from './../../../config/api'
+import { THEME_SETTING_KEY } from '../../../services/const-data/theme-setting-key'
 
 const app = getApp()
 
@@ -15,8 +15,11 @@ Page({
   },
   async onLoad() {
     const that = this
+    if (!app.globalData.hasInit) {
+      await app.init()
+    }
     that.setData({
-      logo: app.globalData.logo
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]
     })
   },
   async onShow() {
@@ -40,7 +43,7 @@ Page({
       const type = that.data.type
       const param = {
         page: that.data.pageNo,
-        size: PageSize.journalSize,
+        size: app.themeSettings[THEME_SETTING_KEY.PAGE_SIZE_INDEX],
         sort: 'createTime,desc'
       }
       let result = []

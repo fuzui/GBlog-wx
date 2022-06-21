@@ -1,13 +1,14 @@
 import apiResult from '../../../../utils/api-result'
 import { adminGetPhoto, adminAddPhoto } from '../../../../services/api/admin/photo'
 import { adminAddAttachment } from '../../../../services/api/admin/attachment'
-import config from '../../../../config/api'
+import { ApiBaseUrl } from '../../../../config/api'
+import { THEME_SETTING_KEY } from '../../../../services/const-data/theme-setting-key'
 
 const app = getApp()
 
 Page({
   data: {
-    ApiBaseUrl: config.ApiBaseUrl,
+    ApiBaseUrl: ApiBaseUrl,
     CustomBar: app.globalData.CustomBar,
     logo: '',
     imgPath: '',
@@ -22,7 +23,7 @@ Page({
   async onLoad() {
     const that = this
     that.setData({
-      logo: app.globalData.logo
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]
     })
   },
   async onShow() {
@@ -78,7 +79,7 @@ Page({
     try {
       const param = {
         page: that.data.pageNo,
-        size: config.PageSize.attachmentSize,
+        size: 12,
         sort: 'takeTime,desc'
       }
       const result = await adminGetPhoto(param)

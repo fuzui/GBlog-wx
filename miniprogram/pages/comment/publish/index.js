@@ -1,10 +1,11 @@
-import { CloudConfig } from '../../../config/api.js'
 import { writeComment } from '../../../services/api/content/article'
 import { writeSheetComment } from '../../../services/api/content/sheet'
 import { checkMessage } from '../../../services/api/cloud/cloud'
 import { STORAGE_KEY, HALO_OPTION_KEY, COMMENT_TYPE } from '../../../services/const-data/const-data'
 import apiResult from '../../../utils/api-result'
+import { THEME_SETTING_KEY } from '../../../services/const-data/theme-setting-key'
 
+const app = getApp()
 Page({
   data: {
     title: '分类',
@@ -21,6 +22,9 @@ Page({
 
   async onLoad(options) {
     const that = this
+    if (!app.globalData.hasInit) {
+      await app.init()
+    }
     const id = options.id
     const commmentPid = options.commmentPid
     const commmentPname = options.commmentPname
@@ -95,7 +99,10 @@ Page({
       title: '发布中',
       mask: true
     })
-    if (CloudConfig.isOpen && CloudConfig.checkMessage) {
+    if (
+      app.themeSettings[THEME_SETTING_KEY.CLOUD_IS_OPEN] &&
+      app.themeSettings[THEME_SETTING_KEY.CLOUD_CHECK_MESSAGE]
+    ) {
       const checkResult = await checkMessage(this.data.commentContent)
       if (checkResult.code !== 200) {
         wx.hideLoading().then(() => {

@@ -7,6 +7,7 @@ import {
   adminFetchingNewTheme
 } from '../../../../services/api/admin/theme'
 import { ApiBaseUrl } from '../../../../config/api.js'
+import { THEME_SETTING_KEY } from '../../../../services/const-data/theme-setting-key'
 
 const app = getApp()
 
@@ -23,7 +24,7 @@ Page({
   onLoad: function () {
     const that = this
     that.setData({
-      logo: app.globalData.logo
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]
     })
   },
   async onShow() {

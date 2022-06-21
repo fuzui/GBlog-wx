@@ -1,12 +1,11 @@
 import { getTags, getTagsArticle } from '../../services/api/content/tag'
-import { PageSize, CustomStyle } from '../../config/api'
 import { convertImageUrl } from '../../utils/utils'
+import { THEME_SETTING_KEY } from '../../services/const-data/theme-setting-key'
 
 const app = getApp()
-
 Page({
   data: {
-    noContentImage: CustomStyle.noContentImage,
+    noContentImage: '',
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     unitConversionRatio: app.globalData.unitConversionRatio,
@@ -25,13 +24,17 @@ Page({
   },
   async onLoad(options) {
     const that = this
-    that.setData({
-      logo: app.globalData.logo,
-      loadModal: true
-    })
     wx.showLoading({
       title: '加载中...',
       mask: true
+    })
+    if (!app.globalData.hasInit) {
+      await app.init()
+    }
+    that.setData({
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO],
+      noContentImage: app.themeSettings[THEME_SETTING_KEY.PLACEHOLDER_IMAGE],
+      loadModal: true
     })
     const tagList = await this.getTags()
     const selected = options.id ? (tagList || []).findIndex(tag => tag.id === parseInt(options.id)) : 0
@@ -96,7 +99,7 @@ Page({
       }
       const param = {
         page: pageNo,
-        size: PageSize.tagSize
+        size: app.themeSettings[THEME_SETTING_KEY.PAGE_SIZE_TAG]
       }
       const result = await getTagsArticle(slug, param)
       if (result.page < result.pages) {
@@ -149,8 +152,8 @@ Page({
     const that = this
     const currentTag = that.data.tagList[that.data.tagCur]
     return {
-      title: app.globalData.blogTitle + '标签：' + currentTag.name,
-      imageUrl: convertImageUrl(currentTag.thumbnail, [app.globalData.logo]),
+      title: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE] + '标签：' + currentTag.name,
+      imageUrl: convertImageUrl(currentTag.thumbnail, [app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]]),
       path: '/pages/tag/index?id=' + currentTag.id
     }
   },
@@ -158,8 +161,8 @@ Page({
     const that = this
     const currentTag = that.data.tagList[that.data.tagCur]
     return {
-      title: app.globalData.blogTitle + '标签：' + currentTag.name,
-      imageUrl: convertImageUrl(currentTag.thumbnail, [app.globalData.logo]),
+      title: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE] + '标签：' + currentTag.name,
+      imageUrl: convertImageUrl(currentTag.thumbnail, [app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]]),
       query: 'id=' + currentTag.id
     }
   }

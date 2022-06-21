@@ -1,3 +1,5 @@
+import { THEME_SETTING_KEY } from '../../services/const-data/theme-setting-key'
+
 // 获取应用实例
 const app = getApp()
 Component({
@@ -27,7 +29,7 @@ Component({
         await app.init()
       }
       this.setData({
-        randomGraphs: app.globalData.randomGraphs
+        randomGraphs: app.themeSettings[THEME_SETTING_KEY.RANDOM_IMAGE]
       })
     }
   },

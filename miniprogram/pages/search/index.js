@@ -1,7 +1,7 @@
 import { searchArticle } from '../../services/api/content/article'
 import { getTags } from '../../services/api/content/tag'
-import { PageSize, CustomStyle } from '../../config/api'
 import { STORAGE_KEY } from '../../services/const-data/const-data'
+import { THEME_SETTING_KEY } from '../../services/const-data/theme-setting-key'
 
 const app = getApp()
 
@@ -9,7 +9,7 @@ Page({
   data: {
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
-    noContentImage: CustomStyle.noContentImage,
+    noContentImage: '',
     historyKeyword: [],
     recommendKeyword: [],
     recommendKeywordIndex: 0,
@@ -25,8 +25,12 @@ Page({
   },
 
   async onLoad() {
+    if (!app.globalData.hasInit) {
+      await app.init()
+    }
     this.setData({
-      logo: app.globalData.logo
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO],
+      noContentImage: app.themeSettings[THEME_SETTING_KEY.PLACEHOLDER_IMAGE]
     })
     const historyKeyword = wx.getStorageSync(STORAGE_KEY.searchHistory)
     if (historyKeyword) {
@@ -164,7 +168,7 @@ Page({
   onShareAppMessage: function () {
     const that = this
     return {
-      title: app.globalData.blogTitle,
+      title: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE],
       path: '/pages/search/index?keyword=' + that.data.keyword
     }
   },
@@ -202,7 +206,7 @@ Page({
       const param = {
         keyword: keyword,
         page: pageNo,
-        size: PageSize.searchSize,
+        size: app.themeSettings[THEME_SETTING_KEY.PAGE_SIZE_SEARCH],
         sort: 'createTime,desc'
       }
       const result = await searchArticle(param)

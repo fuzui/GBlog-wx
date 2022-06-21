@@ -1,11 +1,12 @@
 import apiResult from '../../../../utils/api-result'
 import { adminAddLink, adminEditLink, adminGetLink, adminDeleteLink } from '../../../../services/api/admin/link'
+import { THEME_SETTING_KEY } from '../../../../services/const-data/theme-setting-key'
 
 const app = getApp()
 
 Page({
   data: {
-    appLogo: app.globalData.logo,
+    appLogo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO],
     logo: '',
     name: '',
     url: '',

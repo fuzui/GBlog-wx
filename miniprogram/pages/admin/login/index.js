@@ -1,3 +1,5 @@
+import { THEME_SETTING_KEY } from '../../../services/const-data/theme-setting-key'
+
 // 获取应用实例
 const app = getApp()
 Page({
@@ -7,7 +9,7 @@ Page({
   async onLoad() {
     const that = this
     that.setData({
-      logo: app.globalData.logo
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]
     })
   },
   async onShow() {},

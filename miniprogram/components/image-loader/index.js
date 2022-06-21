@@ -1,15 +1,17 @@
-import { ApiBaseUrl, CustomStyle } from '../../config/api'
+import { ApiBaseUrl } from '../../config/api'
+import { THEME_SETTING_KEY } from '../../services/const-data/theme-setting-key'
 
+const app = getApp()
 Component({
   externalClasses: ['custom-class'],
   properties: {
     defaultImage: {
       type: String,
-      value: CustomStyle.placeholderImage
+      value: ''
     },
     loadErrorImage: {
       type: String,
-      value: CustomStyle.loadErrorImage
+      value: ''
     },
     originalImage: {
       type: String,
@@ -36,6 +38,17 @@ Component({
     ApiBaseUrl,
     finishLoadFlag: false,
     loadErrorFlag: false
+  },
+  lifetimes: {
+    async attached() {
+      if (!app.globalData.hasInit) {
+        await app.init()
+      }
+      this.setData({
+        defaultImage: app.themeSettings[THEME_SETTING_KEY.PLACEHOLDER_IMAGE],
+        loadErrorImage: app.themeSettings[THEME_SETTING_KEY.LOAD_ERROR_IMAGE]
+      })
+    }
   },
   methods: {
     finishLoad: function (e) {

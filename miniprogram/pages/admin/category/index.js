@@ -6,6 +6,7 @@ import {
 } from '../../../services/api/admin/category'
 import { adminAddAttachment } from '../../../services/api/admin/attachment'
 import apiResult from '../../../utils/api-result'
+import { THEME_SETTING_KEY } from '../../../services/const-data/theme-setting-key'
 
 const app = getApp()
 
@@ -29,7 +30,7 @@ Page({
   async onLoad() {
     const that = this
     that.setData({
-      logo: app.globalData.logo,
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO],
       loadModal: true
     })
     const categoryList = await this.getCategorys()

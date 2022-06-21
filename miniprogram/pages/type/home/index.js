@@ -2,6 +2,7 @@ import LastMayday from '../../../services/posters/category/base'
 import { getCategories } from '../../../services/api/content/category'
 import { convertImageUrl } from '../../../utils/utils'
 import { STORAGE_KEY } from '../../../services/const-data/const-data'
+import { THEME_SETTING_KEY } from '../../../services/const-data/theme-setting-key'
 
 const app = getApp()
 
@@ -24,11 +25,11 @@ Page({
       await app.init()
     }
     that.setData({
-      logo: app.globalData.logo,
-      randomGraphs: app.globalData.randomGraphs
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO],
+      randomGraphs: app.themeSettings[THEME_SETTING_KEY.RANDOM_IMAGE]
     })
     this.setData({
-      logo: app.globalData.logo
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]
     })
     const categories = await this.getCategories()
     that.setData({
@@ -53,20 +54,20 @@ Page({
     if (res.from === 'button') {
       const category = this.data.categories[res.target.dataset.index]
       return {
-        title: app.globalData.blogTitle + '的' + category.name + '专题',
+        title: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE] + '的' + category.name + '专题',
         imageUrl: convertImageUrl(category.thumbnail, that.data.randomGraphs),
         path: '/pages/type/details/index?slug=' + category.slug + '&name=' + category.name
       }
     }
     return {
-      title: app.globalData.blogTitle + '专题栏',
+      title: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE] + '专题栏',
       path: '/pages/type/home/index'
     }
   },
   onShareTimeline: function (res) {
     return {
-      title: app.globalData.blogTitle + '专题栏',
-      imageUrl: app.globalData.logo
+      title: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE] + '专题栏',
+      imageUrl: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]
     }
   },
   /**
@@ -154,7 +155,7 @@ Page({
           data: res.result.buffer,
           success(res) {
             const palette = new LastMayday().palette(
-              app.globalData.blogTitle,
+              app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE],
               userInfo.nickName,
               userInfo.avatarUrl,
               '/images/bg/background-share.png',

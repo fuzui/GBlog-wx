@@ -2,6 +2,7 @@ import { getComments, getArticleDetails } from '../../../services/api/content/ar
 import { getCommentsBySheetId, getSheetDetails } from '../../../services/api/content/sheet'
 import { STORAGE_KEY, COMMENT_TYPE } from '../../../services/const-data/const-data'
 import apiResult from '../../../utils/api-result'
+import { THEME_SETTING_KEY } from '../../../services/const-data/theme-setting-key'
 
 const app = getApp()
 
@@ -37,7 +38,7 @@ Page({
       await app.init()
     }
     that.setData({
-      logo: app.globalData.logo,
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO],
       id: id
     })
   },

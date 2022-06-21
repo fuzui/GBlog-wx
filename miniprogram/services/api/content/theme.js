@@ -18,6 +18,25 @@ function getThemeSettings() {
     )
   })
 }
+
+/**
+ * 根据主题id获取主题设置
+ * @param {*} key
+ */
+function getThemeSettingsById(id) {
+  const url = moduleName + '/' + id + '/settings'
+  return new Promise((resolve, reject) => {
+    apiRequest.Get(url, {}).then(
+      r => {
+        resolve(r)
+      },
+      e => {
+        reject(e)
+      }
+    )
+  })
+}
 module.exports = {
-  getThemeSettings
+  getThemeSettings,
+  getThemeSettingsById
 }

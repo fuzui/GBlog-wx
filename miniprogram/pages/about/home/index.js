@@ -1,5 +1,5 @@
-import { Config } from './../../../config/api'
 import { COMMENT_TYPE } from '../../../services/const-data/const-data'
+import { THEME_SETTING_KEY } from '../../../services/const-data/theme-setting-key'
 
 const app = getApp()
 
@@ -13,13 +13,16 @@ Page({
   onLoad: function () {},
   async onShow() {
     const that = this
+    if (!app.globalData.hasInit) {
+      await app.init()
+    }
     if (typeof that.getTabBar === 'function' && that.getTabBar()) {
       that.getTabBar().setData({
         selected: 3
       })
     }
     that.setData({
-      blogTitle: app.globalData.blogTitle
+      blogTitle: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE]
     })
   },
 
@@ -59,7 +62,11 @@ Page({
    */
   toGuestbookPage() {
     wx.navigateTo({
-      url: '/pages/comment/home/index?id=' + Config.guestbookSheetId + '&type=' + COMMENT_TYPE.guestbook
+      url:
+        '/pages/comment/home/index?id=' +
+        app.themeSettings[THEME_SETTING_KEY.GUESTBOOK_SHEET_ID] +
+        '&type=' +
+        COMMENT_TYPE.guestbook
     })
   },
   /**

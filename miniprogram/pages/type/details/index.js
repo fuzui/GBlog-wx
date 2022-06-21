@@ -1,11 +1,11 @@
 import { getCategories, getCategoriesArticle } from '../../../services/api/content/category'
-import { PageSize, CustomStyle } from '../../../config/api'
+import { THEME_SETTING_KEY } from '../../../services/const-data/theme-setting-key'
 
 const app = getApp()
 
 Page({
   data: {
-    noContentImage: CustomStyle.noContentImage,
+    noContentImage: '',
     title: '分类',
     logo: '',
     slug: '',
@@ -18,6 +18,9 @@ Page({
 
   async onLoad(options) {
     const that = this
+    if (!app.globalData.hasInit) {
+      await app.init()
+    }
     let slug = ''
     // 扫码打开
     if (options.scene && !options.slug) {
@@ -28,7 +31,8 @@ Page({
       slug = options.slug
     }
     that.setData({
-      logo: app.globalData.logo,
+      logo: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO],
+      noContentImage: app.themeSettings[THEME_SETTING_KEY.PLACEHOLDER_IMAGE],
       loadModal: true,
       scene: 'slug=' + slug,
       slug: slug,
@@ -58,14 +62,14 @@ Page({
   },
   onShareAppMessage: function (res) {
     return {
-      title: app.globalData.blogTitle + '之' + this.data.slug,
+      title: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE] + '-' + this.data.slug,
       path: '/pages/type/details/index'
     }
   },
   onShareTimeline: function (res) {
     return {
-      title: app.globalData.blogTitle + '之' + this.data.slug,
-      imageUrl: app.globalData.logo
+      title: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE] + '-' + this.data.slug,
+      imageUrl: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]
     }
   },
   /**
@@ -110,7 +114,7 @@ Page({
       }
       const param = {
         page: pageNo,
-        size: PageSize.categorySize,
+        size: app.themeSettings[THEME_SETTING_KEY.PAGE_SIZE_CATEGORY],
         sort: ['topPriority,desc', 'createTime,desc']
       }
       const result = await getCategoriesArticle(slug, param)

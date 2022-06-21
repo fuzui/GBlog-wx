@@ -1,4 +1,5 @@
-// 获取应用实例
+import { THEME_SETTING_KEY } from '../../services/const-data/theme-setting-key'
+
 const app = getApp()
 Page({
   data: {
@@ -16,15 +17,15 @@ Page({
   },
   onShareAppMessage: function (res) {
     return {
-      title: app.globalData.blogTitle + '分享海报',
+      title: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE] + '分享海报',
       imageUrl: this.data.shareImage,
       path: this.data.path
     }
   },
   onShareTimeline: function (res) {
     return {
-      title: app.globalData.blogTitle + '分享海报',
-      imageUrl: app.globalData.logo
+      title: app.themeSettings[THEME_SETTING_KEY.BLOG_TITLE] + '分享海报',
+      imageUrl: app.themeSettings[THEME_SETTING_KEY.BLOG_LOGO]
     }
   },
   saveImage() {
