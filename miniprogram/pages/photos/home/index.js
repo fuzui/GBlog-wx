@@ -1,6 +1,7 @@
 import { getPhotos, getPhotoTeams } from '../../../services/api/content/photo'
 import { ApiBaseUrl } from '../../../config/api'
 import { THEME_SETTING_KEY } from '../../../services/const-data/theme-setting-key'
+import { convertImageUrl } from '../../../utils/utils'
 
 const app = getApp()
 
@@ -180,8 +181,8 @@ Page({
    * 预览
    * @param {*} e
    */
-  preview(event) {
-    const url = event.currentTarget.dataset.url
+  preview() {
+    const url = convertImageUrl(this.data.currentPhoto.url)
     wx.previewImage({
       urls: [url]
     })
