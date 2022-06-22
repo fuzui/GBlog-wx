@@ -47,7 +47,7 @@ Component({
       if (!app.globalData.hasInit) {
         await app.init()
       }
-      let list = this.data.list
+      const list = this.data.list
       list[0].text = app.themeSettings[THEME_SETTING_KEY.TAB_BAR_HOME] || list[0].text
       list[1].text = app.themeSettings[THEME_SETTING_KEY.TAB_BAR_CATEGORY] || list[1].text
       list[2].text = app.themeSettings[THEME_SETTING_KEY.TAB_BAR_PHOTO] || list[2].text
