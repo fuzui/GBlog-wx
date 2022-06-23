@@ -78,7 +78,7 @@ GBlog-wx：微信小程序博客
 
   **注意拉取主题后勿启用，仅仅是作为配置使用。**
 
-  <img src="https://oss.fuzui.net/img/202206220154144.png" style="zoom:40%;left:0" align="left" />
+  <img src="https://oss.fuzui.net/img/202206220154144.png" style="width: 30%;" align="left" />
 
 * 配置
 
